@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.gif?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.gif?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="（更新中…上次更新于2018.11.25） 因为最近一直在做机器学习相关的实验，于是就想着开始学习Linux相关的知识啦~ 我装的Linux发行版是ubantu的16.04.5，相关镜像可以到我所共享的资源链接中的开源镜像站里面去找。 我没有删掉原来的Windows，装的双系统，具体安装方法大家自行百度吧，如果后面有时间的话我也会写一份教程。 装这个的主要目的是想在Linux上做机器学习的开发，听">
+<meta name="keywords" content="Linux,Ubuntu,命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一、Linux常用命令（Linux学习系列）">
+<meta property="og:url" content="http://cjh.zone/2018/11/23/一、Linux常用命令（Linux学习系列）/index.html">
+<meta property="og:site_name" content="不想长大的石头">
+<meta property="og:description" content="（更新中…上次更新于2018.11.25） 因为最近一直在做机器学习相关的实验，于是就想着开始学习Linux相关的知识啦~ 我装的Linux发行版是ubantu的16.04.5，相关镜像可以到我所共享的资源链接中的开源镜像站里面去找。 我没有删掉原来的Windows，装的双系统，具体安装方法大家自行百度吧，如果后面有时间的话我也会写一份教程。 装这个的主要目的是想在Linux上做机器学习的开发，听">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://cjh.zone/2018/11/23/一、Linux常用命令（Linux学习系列）/umask.png">
+<meta property="og:updated_time" content="2018-11-26T08:24:21.296Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一、Linux常用命令（Linux学习系列）">
+<meta name="twitter:description" content="（更新中…上次更新于2018.11.25） 因为最近一直在做机器学习相关的实验，于是就想着开始学习Linux相关的知识啦~ 我装的Linux发行版是ubantu的16.04.5，相关镜像可以到我所共享的资源链接中的开源镜像站里面去找。 我没有删掉原来的Windows，装的双系统，具体安装方法大家自行百度吧，如果后面有时间的话我也会写一份教程。 装这个的主要目的是想在Linux上做机器学习的开发，听">
+<meta name="twitter:image" content="http://cjh.zone/2018/11/23/一、Linux常用命令（Linux学习系列）/umask.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://cjh.zone/2018/11/23/一、Linux常用命令（Linux学习系列）/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>一、Linux常用命令（Linux学习系列） | 不想长大的石头</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不想长大的石头</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Give you my world.</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">3</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-guestbook">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/guestbook/" rel="section"><i class="menu-item-icon fa fa-fw fa-comments"></i> <br>留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-share_resource">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjh.zone/2018/11/23/一、Linux常用命令（Linux学习系列）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈建虎">
+      <meta itemprop="description" content="不想长大的石头">
+      <meta itemprop="image" content="/images/100x100.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不想长大的石头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">一、Linux常用命令（Linux学习系列）
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-23 22:14:23" itemprop="dateCreated datePublished" datetime="2018-11-23T22:14:23+08:00">2018-11-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-26 16:24:21" itemprop="dateModified" datetime="2018-11-26T16:24:21+08:00">2018-11-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux相关/" itemprop="url" rel="index"><span itemprop="name">Linux相关</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/23/一、Linux常用命令（Linux学习系列）/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/11/23/一、Linux常用命令（Linux学习系列）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/23/一、Linux常用命令（Linux学习系列）/" class="leancloud_visitors" data-flag-title="一、Linux常用命令（Linux学习系列）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>（更新中…上次更新于2018.11.25）</strong></p>
+<p>因为最近一直在做机器学习相关的实验，于是就想着开始学习Linux相关的知识啦~</p>
+<p>我装的Linux发行版是ubantu的16.04.5，相关镜像可以到我所<a href="http://cjh.zone/share_resource/">共享的资源链接</a>中的开源镜像站里面去找。</p>
+<p>我没有删掉原来的Windows，装的双系统，具体安装方法大家自行百度吧，如果后面有时间的话我也会写一份教程。</p>
+<p>装这个的主要目的是想在Linux上做机器学习的开发，听说比Windows更方便哦~</p>
+<h2 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h2><h3 id="目录处理命令mkdir"><a href="#目录处理命令mkdir" class="headerlink" title="目录处理命令mkdir"></a>目录处理命令mkdir</h3><ul>
+<li>命令名称：mkdir </li>
+<li>英文原意： <strong>m</strong>a<strong>k</strong>e <strong>dir</strong>ectories</li>
+<li>所在路径：/bin/mkdir</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：mkdir -p [目录名]</li>
+<li>功能描述：创建新目录，-p为递归创建</li>
+<li>范例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p /tmp/China/Jiangsu/Suzhou</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="目录处理命令cp"><a href="#目录处理命令cp" class="headerlink" title="目录处理命令cp"></a>目录处理命令cp</h3><ul>
+<li>命令名称：cp</li>
+<li>英文原意：<strong> c</strong>o<strong>p</strong>y</li>
+<li>所在路径：/bin/cp</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：cp -rp [原文件或目录] [目标目录]  </li>
+<li>功能描述：复制文件或目录，其中-r 复制目录，-p 保留文件属性</li>
+</ul>
+<h3 id="目录处理命令mv"><a href="#目录处理命令mv" class="headerlink" title="目录处理命令mv"></a>目录处理命令mv</h3><ul>
+<li>命令名称：mv</li>
+<li>英文原意：<strong> m</strong>o<strong>v</strong>e</li>
+<li>所在路径：/bin/mv</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：mv [原文件或目录] [目标目录]  </li>
+<li>功能描述：剪切目录、<strong>改名</strong></li>
+</ul>
+<h3 id="目录处理命令rm"><a href="#目录处理命令rm" class="headerlink" title="目录处理命令rm"></a>目录处理命令rm</h3><ul>
+<li>命令名称：rm</li>
+<li>英文原意：<strong>r</strong>e<strong> m</strong>o<strong>v</strong>e</li>
+<li>所在路径：/bin/rm</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：mv -rf [原文件或目录] </li>
+<li>功能描述：删除文件，其中-r为删除目录，-f为强制执行</li>
+</ul>
+<h3 id="文件处理命令touchu"><a href="#文件处理命令touchu" class="headerlink" title="文件处理命令touchu"></a>文件处理命令touchu</h3><ul>
+<li>命令名称：touchu</li>
+<li>所在路径：/bin/touch</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：touch [文件名]</li>
+<li>功能描述：创建空文件</li>
+<li>范例：  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> touch book.list</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="文件处理命令cat"><a href="#文件处理命令cat" class="headerlink" title="文件处理命令cat"></a>文件处理命令cat</h3><ul>
+<li>命令名称：cat</li>
+<li>所在路径：/bin/cat</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：cat -n [文件名]</li>
+<li>功能描述：显示文件内容，其中-n显示行号</li>
+<li>范例：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat /etc/issue</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> cat -n /etc/services</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="文件处理命令tac"><a href="#文件处理命令tac" class="headerlink" title="文件处理命令tac"></a>文件处理命令tac</h3><ul>
+<li>命令名称：tac</li>
+<li>所在路径：/usr/bin/tac</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：tac [文件名]</li>
+<li>功能描述：显示文件内容（反向列示）</li>
+<li>范例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tac /etc/issue</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="文件处理命令more"><a href="#文件处理命令more" class="headerlink" title="文件处理命令more"></a>文件处理命令more</h3><ul>
+<li>命令名称：more</li>
+<li>所在路径：/bin/more</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：more [文件名]</li>
+<li>功能描述：分页显示文件内容，（空格）或f翻页，（Enter）换行，b返回，q或Q退出</li>
+<li>范例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ more /etc/services</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="文件处理命令less"><a href="#文件处理命令less" class="headerlink" title="文件处理命令less"></a>文件处理命令less</h3><ul>
+<li>命令名称：less</li>
+<li>所在路径：/usr/bin/less</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：less [文件名]</li>
+<li>功能描述：分页显示文件内容（可向上翻页），n-&gt;next，可以通过<code>/关键词</code>进行查找</li>
+<li>范例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ less /etc/services</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="文件处理命令head"><a href="#文件处理命令head" class="headerlink" title="文件处理命令head"></a>文件处理命令head</h3><ul>
+<li>命令名称：head</li>
+<li>所在路径：/usr/bin/head</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：head [文件名]</li>
+<li>功能描述：显示文件前面几行，可以通过-n指定行数，不加-n时默认显示前10行</li>
+<li>范例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ head -n 20 /etc/services</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="文件处理命令tail"><a href="#文件处理命令tail" class="headerlink" title="文件处理命令tail"></a>文件处理命令tail</h3><ul>
+<li>命令名称：tail</li>
+<li>所在路径：/usr/bin/tail</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：tail [文件名]</li>
+<li>功能描述：显示文件后面几行，可以通过-n指定行数，-f动态显示文件末尾的内容</li>
+<li>范例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tail -n 18 /etc/services</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="文件处理命令ln"><a href="#文件处理命令ln" class="headerlink" title="文件处理命令ln"></a>文件处理命令ln</h3><ul>
+<li>命令名称：ln</li>
+<li>英文原意：<strong>l</strong>i<strong>n</strong>k</li>
+<li>所在路径：/bin/ln</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：ln -s [原文件] [目标文件]</li>
+<li>功能描述：生成链接文件，-s表示创建软链接</li>
+<li>范例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建文件/etc/issue的软连接/tmp/issue.soft</span></span><br><span class="line">$ ln -s /etc/issue /tmp/issue.soft</span><br><span class="line"><span class="comment"># 创建文件/etc/issue的硬链接/tmp/issue.hard</span></span><br><span class="line">$ ln /etc/issue /tmp/issue.hard</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>软链接的特征：类似于Windows的快捷方式</p>
+<ol>
+<li>权限<code>lrwxrwxrwx</code>中的<code>l</code>表示软连接，软连接的文件权限都为<code>rwxrwxrwx</code></li>
+<li>文件大小-只是符号链接</li>
+<li>/tmp/issue.soft -&gt; /etc/issue 箭头指向源文件</li>
+</ol>
+<p>硬链接的特征：</p>
+<ol>
+<li>拷贝cp -p + 同步更新<code>echo &quot;www.baidu.com&quot; &gt;&gt; /etc/issue</code> </li>
+<li>通过i节点识别</li>
+<li>不能跨分区</li>
+<li>不能针对目录使用</li>
+</ol>
+<h2 id="权限管理命令"><a href="#权限管理命令" class="headerlink" title="权限管理命令"></a>权限管理命令</h2><h3 id="权限管理命令chmod"><a href="#权限管理命令chmod" class="headerlink" title="权限管理命令chmod"></a>权限管理命令chmod</h3><ul>
+<li>命令名称：chmod</li>
+<li>英文原意：<strong>ch</strong>ange the permissions <strong>mod</strong>e of a file</li>
+<li>所在路径：/bin/chmod</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：chmod [{ugoa}{+-=}{rwx}] [文件或目录] / chmod [mode=421] [文件或目录]</li>
+<li>功能描述：改变文件或目录的权限，通过-R可以实现递归修改</li>
+<li>范例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 赋予文件testfile所属组写权限</span></span><br><span class="line">$ chmod g+w testfile</span><br><span class="line"><span class="comment"># 修改目录testdir及其目录下文件为所有用户具有全部权限</span></span><br><span class="line">$ chmod -R 777 testdir</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>权限的数字表示及其意义：  </strong>  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字母</th>
+<th style="text-align:center">数字表示</th>
+<th style="text-align:center">文件意义</th>
+<th style="text-align:center">目录意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">可以查看文件内容</td>
+<td style="text-align:center">可以列出目录中的内容</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">可以修改文件内容</td>
+<td style="text-align:center">可以在目录中创建、删除文件</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">可以执行文件</td>
+<td style="text-align:center">可以进入目录</td>
+</tr>
+</tbody>
+</table>
+<p><strong>数字表示举例：</strong><br><code>rwxrw-r--</code>的数字表示为：764</p>
+<h3 id="权限管理命令chown"><a href="#权限管理命令chown" class="headerlink" title="权限管理命令chown"></a>权限管理命令chown</h3><ul>
+<li>命令名称：chown</li>
+<li>英文原意：<strong>ch</strong>ange file <strong>own</strong>ership</li>
+<li>所在路径：/bin/chown</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：chown [用户] [文件或目录]</li>
+<li>功能描述：改变文件或目录的所有者</li>
+<li>范例：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 改变文件testfile的所有者为xiaoming</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> chown xiaoming testfile</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="权限管理命令chgrp"><a href="#权限管理命令chgrp" class="headerlink" title="权限管理命令chgrp"></a>权限管理命令chgrp</h3><ul>
+<li>命令名称：chgrp</li>
+<li>英文原意：<strong>ch</strong>ange file <strong>gr</strong>ou<strong>p</strong> ownership</li>
+<li>所在路径：/bin/chgrp</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：chown [用户组] [文件或目录]</li>
+<li>功能描述：改变文件或目录的所属组</li>
+<li>范例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 改变文件testfile的所属组为teacher</span></span><br><span class="line">$ chgrp teacher testfile</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="权限管理命令umask"><a href="#权限管理命令umask" class="headerlink" title="权限管理命令umask"></a>权限管理命令umask</h3><ul>
+<li>命令名称：umask</li>
+<li>英文原意：the <strong>u</strong>ser file-creation <strong>mas</strong>k</li>
+<li>所在路径：Shell内置命令</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：umask [-S]（注意大写S）</li>
+<li>功能描述：显示、设置文件的缺省权限，其中-S表示以rwx形式显示新建文件缺省权限</li>
+<li>范例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">umask</span> -S</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>注：</strong><br>当直接写<code>umask</code>时，即不以<code>rwx</code>的形式显示文件的缺省权限，会出现类似如下的结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">umask</span></span><br><span class="line">0022</span><br></pre></td></tr></table></figure>
+<p>系统会输出类似0022这样的结果，这里的0022就是目前文件的缺省权限，那这串数字到底是怎么来的呢？把下面这张图看懂吧~<br><img src="./umask.png" width="200px"><br>也就是说，前面的0表示特殊权限，将后面的022转换为<code>rwx</code>形式就是<code>----w--w-</code>，再将它与<code>rwxrwxrwx</code>按位求异或就可以得到结果啦~<br>上面的方法有点麻烦吧，其实可以直接用全权限777直接减去022就可以得到755，再将755转换为<code>rwx-wx-wx</code>的形式也可以得到结果</p>
+<h2 id="文件搜索命令"><a href="#文件搜索命令" class="headerlink" title="文件搜索命令"></a>文件搜索命令</h2><h3 id="文件搜索命令find"><a href="#文件搜索命令find" class="headerlink" title="文件搜索命令find"></a>文件搜索命令find</h3><ul>
+<li>命令名称：find</li>
+<li>所在路径：/bin/find</li>
+<li>执行权限：所有用户</li>
+<li>语法格式：find [搜索范围] [匹配条件]</li>
+<li>功能描述：文件搜索</li>
+<li>范例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在目录/etc中查找文件init</span></span><br><span class="line">$ find /etc -name init</span><br><span class="line">$</span><br><span class="line"><span class="comment"># 在根目录下查找大于100MB的文件，+n大于，-n小于，n等于</span></span><br><span class="line">$ find / -size +204800</span><br><span class="line">$</span><br><span class="line"><span class="comment"># 在/home目录下查找所有者为liming的文件</span></span><br><span class="line">$ find /home -user liming</span><br><span class="line">$</span><br><span class="line"><span class="comment"># 在/home目录下查找所属组为teacher的文件</span></span><br><span class="line">$ find /home -group teacher</span><br><span class="line">$</span><br><span class="line"><span class="comment"># 在/etc目录下查找5分钟内修改过属性的文件和目录</span></span><br><span class="line">$ find /etc -cmin -5</span><br><span class="line"><span class="comment"># 还有其他的选项可选：</span></span><br><span class="line"><span class="comment"># -amin 访问时间 access</span></span><br><span class="line"><span class="comment"># -cmin 文件属性 change</span></span><br><span class="line"><span class="comment"># -mmin 文件内容 modify</span></span><br><span class="line">$</span><br><span class="line"><span class="comment"># 在/etc下查找大于80MB小于100MB的文件</span></span><br><span class="line"><span class="comment"># 其中-a表示两个条件同时满足，也可以使用-o表示条件满足任意一个即可</span></span><br><span class="line">$ find /etc -size +16384 -a -size -204800</span><br><span class="line">$</span><br><span class="line"><span class="comment"># 在/etc下查找inittab文件并显示其详细信息</span></span><br><span class="line">$ find /etc -name inittab -<span class="built_in">exec</span> ls &#123;&#125; \;</span><br><span class="line"><span class="comment"># -exec/-ok 命令&#123;&#125; \;表示对搜索结果执行操作</span></span><br><span class="line"><span class="comment"># -type 根据文件类型查找（文件类型有：f文件，d目录，l软链接文件）</span></span><br><span class="line"><span class="comment"># -inum 根据i节点查找</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果你觉得此页面对你有帮助，或者想资瓷我一下，欢迎点击下面打赏哦，谢谢~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChatQR.png" alt="陈建虎 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPayQR.png" alt="陈建虎 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          
+            <a href="/tags/命令/" rel="tag"># 命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/22/python3安装freetype和cv2的方法/" rel="next" title="python3安装freetype、cv2和captcha的方法">
+                <i class="fa fa-chevron-left"></i> python3安装freetype、cv2和captcha的方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/" rel="prev" title="科学上网-Linux(Ubuntu 16.04)配置shadowsocks客户端">
+                科学上网-Linux(Ubuntu 16.04)配置shadowsocks客户端 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/100x100.gif" alt="陈建虎">
+            
+              <p class="site-author-name" itemprop="name">陈建虎</p>
+              <p class="site-description motion-element" itemprop="description">不想长大的石头</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/jianhuchen" title="GitHub &rarr; https://github.com/jianhuchen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cjh18@mail.ustc.edu.cn" title="E-Mail &rarr; mailto:cjh18@mail.ustc.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/cjh2018" title="Weibo &rarr; https://weibo.com/cjh2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://keyanjie.net" title="http://keyanjie.net" rel="noopener" target="_blank">柯延杰</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件处理命令"><span class="nav-number">1.</span> <span class="nav-text">文件处理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录处理命令mkdir"><span class="nav-number">1.1.</span> <span class="nav-text">目录处理命令mkdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录处理命令cp"><span class="nav-number">1.2.</span> <span class="nav-text">目录处理命令cp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录处理命令mv"><span class="nav-number">1.3.</span> <span class="nav-text">目录处理命令mv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录处理命令rm"><span class="nav-number">1.4.</span> <span class="nav-text">目录处理命令rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件处理命令touchu"><span class="nav-number">1.5.</span> <span class="nav-text">文件处理命令touchu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件处理命令cat"><span class="nav-number">1.6.</span> <span class="nav-text">文件处理命令cat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件处理命令tac"><span class="nav-number">1.7.</span> <span class="nav-text">文件处理命令tac</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件处理命令more"><span class="nav-number">1.8.</span> <span class="nav-text">文件处理命令more</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件处理命令less"><span class="nav-number">1.9.</span> <span class="nav-text">文件处理命令less</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件处理命令head"><span class="nav-number">1.10.</span> <span class="nav-text">文件处理命令head</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件处理命令tail"><span class="nav-number">1.11.</span> <span class="nav-text">文件处理命令tail</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件处理命令ln"><span class="nav-number">1.12.</span> <span class="nav-text">文件处理命令ln</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权限管理命令"><span class="nav-number">2.</span> <span class="nav-text">权限管理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#权限管理命令chmod"><span class="nav-number">2.1.</span> <span class="nav-text">权限管理命令chmod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限管理命令chown"><span class="nav-number">2.2.</span> <span class="nav-text">权限管理命令chown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限管理命令chgrp"><span class="nav-number">2.3.</span> <span class="nav-text">权限管理命令chgrp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限管理命令umask"><span class="nav-number">2.4.</span> <span class="nav-text">权限管理命令umask</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件搜索命令"><span class="nav-number">3.</span> <span class="nav-text">文件搜索命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件搜索命令find"><span class="nav-number">3.1.</span> <span class="nav-text">文件搜索命令find</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助命令"><span class="nav-number">4.</span> <span class="nav-text">帮助命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈建虎</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  |本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz',
+        appKey: 'FTmW5pj1DN6mdeaKvW8ajsIo',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!\n填写正确的邮箱，这样如果有人回复您就会有邮件提醒哦~ \n此回复框MarkDown全语法支持',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz",
+                'X-LC-Key': "FTmW5pj1DN6mdeaKvW8ajsIo",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.gif?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.gif?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="（未完，更新中……） 如果发现错误请联系我，感激不尽！  第5次实验日期：2018.11.21 实验题目1 Given a linked list, return the node where the cycle begins. If there is no cycle, return null. Note: Do not modify the linked list. Follow up:Can">
+<meta name="keywords" content="科大,实验,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="科大软院-《算法设计与分析》实验汇总-Part2">
+<meta property="og:url" content="http://cjh.zone/2018/12/05/科大软院-《算法设计与分析》实验汇总-Part2 /index.html">
+<meta property="og:site_name" content="不想长大的石头">
+<meta property="og:description" content="（未完，更新中……） 如果发现错误请联系我，感激不尽！  第5次实验日期：2018.11.21 实验题目1 Given a linked list, return the node where the cycle begins. If there is no cycle, return null. Note: Do not modify the linked list. Follow up:Can">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://cjh.zone/2018/12/05/科大软院-《算法设计与分析》实验汇总-Part2%20/6-1.jpg">
+<meta property="og:image" content="http://cjh.zone/2018/12/05/科大软院-《算法设计与分析》实验汇总-Part2%20/6-2.jpg">
+<meta property="og:updated_time" content="2018-12-05T05:31:43.836Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="科大软院-《算法设计与分析》实验汇总-Part2">
+<meta name="twitter:description" content="（未完，更新中……） 如果发现错误请联系我，感激不尽！  第5次实验日期：2018.11.21 实验题目1 Given a linked list, return the node where the cycle begins. If there is no cycle, return null. Note: Do not modify the linked list. Follow up:Can">
+<meta name="twitter:image" content="http://cjh.zone/2018/12/05/科大软院-《算法设计与分析》实验汇总-Part2%20/6-1.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://cjh.zone/2018/12/05/科大软院-《算法设计与分析》实验汇总-Part2 /">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>科大软院-《算法设计与分析》实验汇总-Part2 | 不想长大的石头</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不想长大的石头</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Give you my world.</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">3</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-guestbook">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/guestbook/" rel="section"><i class="menu-item-icon fa fa-fw fa-comments"></i> <br>留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-share_resource">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjh.zone/2018/12/05/科大软院-《算法设计与分析》实验汇总-Part2 /">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈建虎">
+      <meta itemprop="description" content="不想长大的石头">
+      <meta itemprop="image" content="/images/100x100.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不想长大的石头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">科大软院-《算法设计与分析》实验汇总-Part2
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-05 13:17:00 / 修改时间：13:31:43" itemprop="dateCreated datePublished" datetime="2018-12-05T13:17:00+08:00">2018-12-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Others/" itemprop="url" rel="index"><span itemprop="name">Others</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/05/科大软院-《算法设计与分析》实验汇总-Part2 /#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/05/科大软院-《算法设计与分析》实验汇总-Part2 /" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/05/科大软院-《算法设计与分析》实验汇总-Part2 /" class="leancloud_visitors" data-flag-title="科大软院-《算法设计与分析》实验汇总-Part2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>（未完，更新中……）</p>
+<p>如果发现错误请联系我，感激不尽！</p>
+<p><br></p>
+<h2 id="第5次实验"><a href="#第5次实验" class="headerlink" title="第5次实验"></a>第5次实验</h2><p>日期：2018.11.21</p>
+<h3 id="实验题目1"><a href="#实验题目1" class="headerlink" title="实验题目1"></a>实验题目1</h3><ol>
+<li><p>Given a linked list, return the node where the cycle begins. If there is no cycle, return <code>null</code>.</p>
+<p><strong>Note:</strong> Do not modify the linked list.</p>
+<p><strong>Follow up</strong>:<br>Can you solve it without using extra space?</p>
+<p><strong>例1：</strong><br>输入：1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>输出：1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL<br><strong>例2：</strong><br>输入： 2 -&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL<br>输出：2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL  </p>
+</li>
+</ol>
+<h3 id="参考代码1"><a href="#参考代码1" class="headerlink" title="参考代码1"></a>参考代码1</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @File 	: 5-1.py</span></span><br><span class="line"><span class="comment"># @Author 	: jianhuChen</span></span><br><span class="line"><span class="comment"># @Date 	: 2018-11-21 16:32:11</span></span><br><span class="line"><span class="comment"># @License 	: Copyright(C), USTC</span></span><br><span class="line"><span class="comment"># @Last Modified by  : jianhuChen</span></span><br><span class="line"><span class="comment"># @Last Modified time: 2018-11-21 20:45:07</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.val = x</span><br><span class="line">        self.next = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># isRandom：是否随机找一个点循环</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">toRandomCycleList</span><span class="params">(L, isRandom=False, cycleStart=<span class="number">1</span>)</span>:</span></span><br><span class="line">	Nodes = [ListNode(<span class="number">0</span>)]</span><br><span class="line">	<span class="keyword">for</span> x <span class="keyword">in</span> L:</span><br><span class="line">		Nodes.append(ListNode(int(x)))</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(len(Nodes)<span class="number">-1</span>):</span><br><span class="line">		Nodes[i].next = Nodes[i+<span class="number">1</span>]</span><br><span class="line">	<span class="keyword">if</span> isRandom:</span><br><span class="line">		Nodes[len(Nodes)<span class="number">-1</span>].next = Nodes[randint(<span class="number">1</span>, len(Nodes)<span class="number">-1</span>)]</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		Nodes[len(Nodes)<span class="number">-1</span>].next = Nodes[cycleStart]</span><br><span class="line">	<span class="keyword">return</span> Nodes[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findCycleStart</span><span class="params">(head)</span>:</span></span><br><span class="line">	isCycle = <span class="keyword">False</span></span><br><span class="line">	fast = head</span><br><span class="line">	slow = head</span><br><span class="line">	<span class="keyword">while</span> slow != <span class="keyword">None</span> <span class="keyword">and</span> fast != <span class="keyword">None</span>:</span><br><span class="line">		slow = slow.next</span><br><span class="line">		<span class="keyword">if</span> fast.next == <span class="keyword">None</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">		fast = fast.next.next</span><br><span class="line">		<span class="keyword">if</span> slow == fast:</span><br><span class="line">			isCycle = <span class="keyword">True</span></span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> isCycle:</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">	slow = head</span><br><span class="line">	<span class="keyword">while</span> slow != fast:</span><br><span class="line">		slow = slow.next</span><br><span class="line">		fast = fast.next</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> slow</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	L1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</span><br><span class="line">	<span class="comment"># 将列表转换为链表形式，注意返回的链表带有一个头结点</span></span><br><span class="line">	<span class="comment"># 所以待会儿找循环的起始位置时，传入的链表head应该为L1_head.next</span></span><br><span class="line">	L1_head = toRandomCycleList(L1, isRandom=<span class="keyword">True</span>)</span><br><span class="line">	start = findCycleStart(L1_head.next)</span><br><span class="line">	<span class="comment"># 如果没有循环则输出None </span></span><br><span class="line">	<span class="keyword">if</span> start:</span><br><span class="line">		print(start.val)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		print(<span class="string">"None"</span>)</span><br></pre></td></tr></table></figure>
+<p>参考资料：<a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/linked-list-cycle-ii/</a></p>
+<h3 id="实验题目2"><a href="#实验题目2" class="headerlink" title="实验题目2"></a>实验题目2</h3><ol>
+<li>Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.<br>You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.</li>
+</ol>
+<h3 id="参考代码2"><a href="#参考代码2" class="headerlink" title="参考代码2"></a>参考代码2</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @File 	: 5-2.py</span></span><br><span class="line"><span class="comment"># @Author 	: jianhuChen</span></span><br><span class="line"><span class="comment"># @Date 	: 2018-11-21 16:32:32</span></span><br><span class="line"><span class="comment"># @License 	: Copyright(C), USTC</span></span><br><span class="line"><span class="comment"># @Last Modified by  : jianhuChen</span></span><br><span class="line"><span class="comment"># @Last Modified time: 2018-11-21 19:02:21</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.val = x</span><br><span class="line">        self.next = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getListVal</span><span class="params">(node, List)</span>:</span></span><br><span class="line">	<span class="keyword">if</span> node != <span class="keyword">None</span>:</span><br><span class="line">		List.append(node.val)</span><br><span class="line">		getListVal(node.next, List)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">toList</span><span class="params">(L)</span>:</span></span><br><span class="line">	Nodes = [ListNode(<span class="number">0</span>)]</span><br><span class="line">	<span class="keyword">for</span> x <span class="keyword">in</span> L:</span><br><span class="line">		Nodes.append(ListNode(int(x)))</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(len(Nodes)<span class="number">-1</span>):</span><br><span class="line">		Nodes[i].next = Nodes[i+<span class="number">1</span>]</span><br><span class="line">	<span class="keyword">return</span> Nodes[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">oddEvenList</span><span class="params">(L)</span>:</span></span><br><span class="line">	<span class="keyword">if</span> L != <span class="keyword">None</span>:</span><br><span class="line">		odd = L <span class="comment"># 奇数索引首节点</span></span><br><span class="line">		even = L.next <span class="comment"># 偶数索引首节点</span></span><br><span class="line">		evenHead = even</span><br><span class="line">		<span class="keyword">while</span> even != <span class="keyword">None</span> <span class="keyword">and</span> even.next != <span class="keyword">None</span>:</span><br><span class="line">			odd.next = odd.next.next</span><br><span class="line">			even.next = even.next.next</span><br><span class="line">			odd = odd.next</span><br><span class="line">			even = even.next</span><br><span class="line">		odd.next = evenHead</span><br><span class="line">	<span class="keyword">return</span> L</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	L1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">	L1_head = toList(L1)</span><br><span class="line">	<span class="comment"># 转换</span></span><br><span class="line">	head = oddEvenList(L1_head.next)</span><br><span class="line">	List = []</span><br><span class="line">	getListVal(head, List)</span><br><span class="line">	print(<span class="string">"before："</span>,L1)</span><br><span class="line">	print(<span class="string">"after ："</span>,List)</span><br></pre></td></tr></table></figure>
+<p>参考资料：<a href="https://leetcode.com/problems/odd-even-linked-list/" target="_blank" rel="noopener">https://leetcode.com/problems/odd-even-linked-list/</a></p>
+<p><br></p>
+<h2 id="第6次实验"><a href="#第6次实验" class="headerlink" title="第6次实验"></a>第6次实验</h2><p>日期：2018.11.28</p>
+<h3 id="实验题目1-1"><a href="#实验题目1-1" class="headerlink" title="实验题目1"></a>实验题目1</h3><ol>
+<li><p>Given two binary trees and imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not.</p>
+<p>You need to merge them into a new binary tree. The merge rule is that if two nodes overlap, then sum node values up as the new value of the merged node. Otherwise, the NOT null node will be used as the node of new tree.</p>
+<p><strong>Example 1:</strong></p>
+</li>
+</ol>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">Tree<span class="number"> 1 </span>                    Tree<span class="number"> 2 </span>                 </span><br><span class="line">        <span class="number"> 1 </span>                       <span class="number"> 2 </span>                            </span><br><span class="line">        / \                       / \                            </span><br><span class="line">      <span class="number"> 3 </span> <span class="number"> 2 </span>                   <span class="number"> 1 </span> <span class="number"> 3 </span>                       </span><br><span class="line">      /                           \   \                      </span><br><span class="line">    <span class="number"> 5 </span>                           <span class="number"> 4 </span> <span class="number"> 7 </span>                 </span><br><span class="line">Output: </span><br><span class="line">Merged tree:</span><br><span class="line">     3</span><br><span class="line">    / \</span><br><span class="line">  <span class="number"> 4 </span>  5</span><br><span class="line">  / \   \ </span><br><span class="line"><span class="number"> 5 </span> <span class="number"> 4 </span>  7</span><br></pre></td></tr></table></figure>
+<p>   <strong>Note:</strong> The merging process must start from the root nodes of both trees.</p>
+<h3 id="参考代码1-1"><a href="#参考代码1-1" class="headerlink" title="参考代码1"></a>参考代码1</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @File 	: 6-1.py</span></span><br><span class="line"><span class="comment"># @Author 	: jianhuChen</span></span><br><span class="line"><span class="comment"># @Date 	: 2018-11-27 19:09:27</span></span><br><span class="line"><span class="comment"># @License 	: Copyright(C), USTC</span></span><br><span class="line"><span class="comment"># @Last Modified by  : jianhuChen</span></span><br><span class="line"><span class="comment"># @Last Modified time: 2018-11-27 20:23:57</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span><span class="params">(object)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x=<span class="number">0</span>)</span>:</span></span><br><span class="line">		self.val = x</span><br><span class="line">		self.left = <span class="keyword">None</span>;</span><br><span class="line">		self.right = <span class="keyword">None</span>;</span><br><span class="line">	<span class="comment"># 将树转换为先序列表</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">getListFromTree</span><span class="params">(self, listTree)</span>:</span></span><br><span class="line">		listTree.append(self.val)</span><br><span class="line">		<span class="keyword">if</span> self.left:</span><br><span class="line">			self.left.getListFromTree(listTree)</span><br><span class="line">		<span class="keyword">if</span> self.right:</span><br><span class="line">			self.right.getListFromTree(listTree)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一棵树，供后面测试用</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_tset</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="comment"># 第一棵树</span></span><br><span class="line">	tree1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">	Node1_1 = TreeNode(<span class="number">3</span>)</span><br><span class="line">	Node1_2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">	Node1_3 = TreeNode(<span class="number">5</span>)</span><br><span class="line">	tree1.left = Node1_1</span><br><span class="line">	tree1.right = Node1_2</span><br><span class="line">	Node1_1.left = Node1_3</span><br><span class="line">	<span class="comment"># 第二棵树</span></span><br><span class="line">	tree2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">	Node2_1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">	Node2_2 = TreeNode(<span class="number">3</span>)</span><br><span class="line">	Node2_3 = TreeNode(<span class="number">4</span>)</span><br><span class="line">	Node2_4 = TreeNode(<span class="number">7</span>)</span><br><span class="line">	tree2.left = Node2_1</span><br><span class="line">	tree2.right = Node2_2</span><br><span class="line">	Node2_1.right = Node2_3</span><br><span class="line">	Node2_2.right = Node2_4</span><br><span class="line">	<span class="keyword">return</span> tree1, tree2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法一：使用递归</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mergeTrees</span><span class="params">(t1, t2)</span>:</span></span><br><span class="line">	<span class="keyword">if</span> t1 == <span class="keyword">None</span>: <span class="comment"># 若t1为空，则返回t2的地址，此时若t2也为空，则最后该节点的位置为空</span></span><br><span class="line">		<span class="keyword">return</span> t2</span><br><span class="line">	<span class="keyword">if</span> t2 == <span class="keyword">None</span>: <span class="comment"># 若t2为空，则返回t1地址</span></span><br><span class="line">		<span class="keyword">return</span> t1</span><br><span class="line">	t1.val += t2.val <span class="comment"># 若两者都不为空，将t1的值改为他们的和</span></span><br><span class="line">	t1.left = mergeTrees(t1.left, t2.left)</span><br><span class="line">	t1.right = mergeTrees(t1.right, t2.right)</span><br><span class="line">	<span class="keyword">return</span> t1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Complexity Analysis</span></span><br><span class="line"><span class="comment"># Time complexity : O(m). A total of m nodes need to be traversed. Here, mm represents the minimum number of nodes from the two given trees.</span></span><br><span class="line"><span class="comment"># Space complexity : O(m). The depth of the recursion tree can go upto m in the case of a skewed tree. In average case, depth will be O(logm).</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">	t1, t2= init_tset()</span><br><span class="line">	t1 = mergeTrees(t1, t2)</span><br><span class="line">	listTree = []</span><br><span class="line">	t1.getListFromTree(listTree)</span><br><span class="line">	print(<span class="string">"先序遍历:"</span>, listTree)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	main()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二个迭代的方法可以看看下方的参考资料链接</span></span><br></pre></td></tr></table></figure>
+<p>参考资料：<a href="https://leetcode.com/articles/merge-two-binary-trees/" target="_blank" rel="noopener">https://leetcode.com/articles/merge-two-binary-trees/</a></p>
+<h3 id="运行结果1"><a href="#运行结果1" class="headerlink" title="运行结果1"></a>运行结果1</h3><p><img src="./6-1.jpg" alt="6-1"></p>
+<h3 id="实验题目2-1"><a href="#实验题目2-1" class="headerlink" title="实验题目2"></a>实验题目2</h3><ol>
+<li><p>Given the root node of a binary search tree (BST) and a value. You need to find the node in the BST that the node’s value equals the given value. Return the subtree rooted with that node. If such node doesn’t exist, you should return NULL.</p>
+<p>For example, </p>
+</li>
+</ol>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Given <span class="keyword">the</span> tree:</span><br><span class="line">       <span class="number">4</span></span><br><span class="line">      / \</span><br><span class="line">     <span class="number">2</span>   <span class="number">7</span></span><br><span class="line">    / \</span><br><span class="line">   <span class="number">1</span>   <span class="number">3</span></span><br><span class="line"></span><br><span class="line">And <span class="keyword">the</span> <span class="built_in">value</span> <span class="built_in">to</span> search: <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>You should return this subtree:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">2</span>     </span><br><span class="line"> / \   </span><br><span class="line"><span class="number">1</span>   <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h3 id="参考代码2-1"><a href="#参考代码2-1" class="headerlink" title="参考代码2"></a>参考代码2</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @File 	: 6-2.py</span></span><br><span class="line"><span class="comment"># @Author 	: jianhuChen</span></span><br><span class="line"><span class="comment"># @Date 	: 2018-11-27 19:26:27</span></span><br><span class="line"><span class="comment"># @License 	: Copyright(C), USTC</span></span><br><span class="line"><span class="comment"># @Last Modified by  : jianhuChen</span></span><br><span class="line"><span class="comment"># @Last Modified time: 2018-11-27 20:28:41</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span><span class="params">(object)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x=<span class="number">0</span>)</span>:</span></span><br><span class="line">		self.val = x</span><br><span class="line">		self.left = <span class="keyword">None</span></span><br><span class="line">		self.right = <span class="keyword">None</span></span><br><span class="line">	<span class="comment"># 将树转换为先序列表</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">getListFromTree</span><span class="params">(self, listTree)</span>:</span></span><br><span class="line">		listTree.append(self.val)</span><br><span class="line">		<span class="keyword">if</span> self.left:</span><br><span class="line">			self.left.getListFromTree(listTree)</span><br><span class="line">		<span class="keyword">if</span> self.right:</span><br><span class="line">			self.right.getListFromTree(listTree)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">searchBST</span><span class="params">(root, val)</span>:</span></span><br><span class="line">	stack = [root]</span><br><span class="line">	<span class="keyword">while</span> stack:</span><br><span class="line">		cur = stack.pop()</span><br><span class="line">		<span class="keyword">if</span> cur.val == val:</span><br><span class="line">			<span class="keyword">return</span> cur</span><br><span class="line">		<span class="keyword">if</span> cur.left <span class="keyword">and</span> cur.val &gt; val: <span class="comment"># 含有左孩子，并且待查找关键字比当节点的值小，此时去左边找</span></span><br><span class="line">			stack.append(cur.left)</span><br><span class="line">		<span class="keyword">elif</span> cur.right <span class="keyword">and</span> cur.val &lt; val: <span class="comment"># 含有右孩子，并且待查找关键字比当节点的值大，此时去右边找</span></span><br><span class="line">			stack.append(cur.right)</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一棵树，供后面测试用</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_tset</span><span class="params">()</span>:</span></span><br><span class="line">	tree = TreeNode(<span class="number">4</span>)</span><br><span class="line">	Node1 = TreeNode(<span class="number">2</span>)</span><br><span class="line">	Node2 = TreeNode(<span class="number">7</span>)</span><br><span class="line">	Node3 = TreeNode(<span class="number">1</span>)</span><br><span class="line">	Node4 = TreeNode(<span class="number">3</span>)</span><br><span class="line">	tree.left = Node1</span><br><span class="line">	tree.right = Node2</span><br><span class="line">	Node1.left = Node3</span><br><span class="line">	Node1.right = Node4</span><br><span class="line">	<span class="keyword">return</span> tree</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">	newTree = searchBST(init_tset(), <span class="number">4</span>) <span class="comment"># 注意我这里找的是4，所以才会得到下面的输出结果</span></span><br><span class="line">	listTree = []</span><br><span class="line">	newTree.getListFromTree(listTree)</span><br><span class="line">	print(<span class="string">"先序遍历:"</span>, listTree)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure>
+<p>参考资料：<a href="https://leetcode.com/problems/search-in-a-binary-search-tree/" target="_blank" rel="noopener">https://leetcode.com/problems/search-in-a-binary-search-tree/</a></p>
+<h3 id="运行结果2"><a href="#运行结果2" class="headerlink" title="运行结果2"></a>运行结果2</h3><p><img src="./6-2.jpg" alt="6-2"></p>
+<blockquote>
+<p>注意我代码第49行里找的是4，所以才会得到上面的输出结果</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果你觉得此页面对你有帮助，或者想资瓷我一下，欢迎点击下面打赏哦，谢谢~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChatQR.png" alt="陈建虎 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPayQR.png" alt="陈建虎 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/科大/" rel="tag"># 科大</a>
+          
+            <a href="/tags/实验/" rel="tag"># 实验</a>
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/28/ubuntu16-04安装TensorFlow-GPU/" rel="next" title="ubuntu16.04安装TensorFlow-GPU">
+                <i class="fa fa-chevron-left"></i> ubuntu16.04安装TensorFlow-GPU
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/100x100.gif" alt="陈建虎">
+            
+              <p class="site-author-name" itemprop="name">陈建虎</p>
+              <p class="site-description motion-element" itemprop="description">不想长大的石头</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/jianhuchen" title="GitHub &rarr; https://github.com/jianhuchen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cjh18@mail.ustc.edu.cn" title="E-Mail &rarr; mailto:cjh18@mail.ustc.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/cjh2018" title="Weibo &rarr; https://weibo.com/cjh2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://keyanjie.net" title="http://keyanjie.net" rel="noopener" target="_blank">柯延杰</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第5次实验"><span class="nav-number">1.</span> <span class="nav-text">第5次实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验题目1"><span class="nav-number">1.1.</span> <span class="nav-text">实验题目1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码1"><span class="nav-number">1.2.</span> <span class="nav-text">参考代码1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验题目2"><span class="nav-number">1.3.</span> <span class="nav-text">实验题目2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码2"><span class="nav-number">1.4.</span> <span class="nav-text">参考代码2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第6次实验"><span class="nav-number">2.</span> <span class="nav-text">第6次实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验题目1-1"><span class="nav-number">2.1.</span> <span class="nav-text">实验题目1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码1-1"><span class="nav-number">2.2.</span> <span class="nav-text">参考代码1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行结果1"><span class="nav-number">2.3.</span> <span class="nav-text">运行结果1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验题目2-1"><span class="nav-number">2.4.</span> <span class="nav-text">实验题目2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码2-1"><span class="nav-number">2.5.</span> <span class="nav-text">参考代码2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行结果2"><span class="nav-number">2.6.</span> <span class="nav-text">运行结果2</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈建虎</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  |本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz',
+        appKey: 'FTmW5pj1DN6mdeaKvW8ajsIo',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!\n填写正确的邮箱，这样如果有人回复您就会有邮件提醒哦~ \n此回复框MarkDown全语法支持',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz",
+                'X-LC-Key': "FTmW5pj1DN6mdeaKvW8ajsIo",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

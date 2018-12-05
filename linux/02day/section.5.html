@@ -1,0 +1,494 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Linux常用服务器构建-ssh和scp | 课程介绍</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../02day/section.7.html" />
+    
+    
+    <link rel="prev" href="../02day/section.4.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="2.6"
+        data-chapter-title="Linux常用服务器构建-ssh和scp"
+        data-filepath="02day/section.5.md"
+        data-basepath=".."
+        data-revision="Tue Dec 20 2016 08:32:15 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        课程介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="01day/index.html">
+            
+                
+                    <a href="../01day/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Linux、命令
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="01day/section.1.html">
+            
+                
+                    <a href="../01day/section.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        认识Linux
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="01day/section.1.1.html">
+            
+                
+                    <a href="../01day/section.1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Linux的不同版本以及应用领域
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01day/section.2.html">
+            
+                
+                    <a href="../01day/section.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        文件和目录
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="01day/section.3.html">
+            
+                
+                    <a href="../01day/section.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        Linux命令概述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="01day/section.3.1.html">
+            
+                
+                    <a href="../01day/section.3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        Linux命令-文件、磁盘管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="01day/section.3.2.html">
+            
+                
+                    <a href="../01day/section.3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        Linux命令-用户、权限管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="01day/section.3.3.html">
+            
+                
+                    <a href="../01day/section.3.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        Linux命令-系统管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="01day/section.3.4.html">
+            
+                
+                    <a href="../01day/section.3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                        Linux命令-练习
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="02day/index.html">
+            
+                
+                    <a href="../02day/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        编辑器、服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="02day/section.1.html">
+            
+                
+                    <a href="../02day/section.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        gedit编辑器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="02day/section.1.1.html">
+            
+                
+                    <a href="../02day/section.1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        sublime编辑器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="02day/section.2.html">
+            
+                
+                    <a href="../02day/section.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        编辑器之神-vim
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="02day/section.3.html">
+            
+                
+                    <a href="../02day/section.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        ubuntu软件安装与卸载方法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="02day/section.4.html">
+            
+                
+                    <a href="../02day/section.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        Linux常用服务器构建-ftp服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.6" data-path="02day/section.5.html">
+            
+                
+                    <a href="../02day/section.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        Linux常用服务器构建-ssh和scp
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="02day/section.7.html">
+            
+                
+                    <a href="../02day/section.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        Linux常用服务器构建-samba
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="02day/section.6.html">
+            
+                
+                    <a href="../02day/section.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        附录-vim分屏操作
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >课程介绍</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="linux&#x5E38;&#x7528;&#x670D;&#x52A1;&#x5668;&#x6784;&#x5EFA;ssh&#x548C;scp">Linux&#x5E38;&#x7528;&#x670D;&#x52A1;&#x5668;&#x6784;&#x5EFA;-ssh&#x548C;scp</h1>
+<h2 id="1ssh">1.ssh</h2>
+<h3 id="ssh&#x4ECB;&#x7ECD;"><1>ssh&#x4ECB;&#x7ECD;</1></h3>
+<p>SSH&#x4E3A;Secure Shell&#x7684;&#x7F29;&#x5199;&#xFF0C;&#x7531; IETF &#x7684;&#x7F51;&#x7EDC;&#x5DE5;&#x4F5C;&#x5C0F;&#x7EC4;&#xFF08;Network Working Group&#xFF09;&#x6240;&#x5236;&#x5B9A;&#xFF1B;SSH &#x4E3A;&#x5EFA;&#x7ACB;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x548C;&#x4F20;&#x8F93;&#x5C42;&#x57FA;&#x7840;&#x4E0A;&#x7684;&#x5B89;&#x5168;&#x534F;&#x8BAE;&#x3002;</p>
+<p>SSH&#x662F;&#x76EE;&#x524D;&#x8F83;&#x53EF;&#x9760;&#xFF0C;&#x4E13;&#x4E3A;&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x4F1A;&#x8BDD;&#x548C;&#x5176;&#x4ED6;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x5B89;&#x5168;&#x6027;&#x7684;&#x534F;&#x8BAE;&#x3002;&#x5E38;&#x7528;&#x4E8E;&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#xFF0C;&#x4EE5;&#x53CA;&#x7528;&#x6237;&#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x8D44;&#x6599;&#x62F7;&#x8D1D;&#x3002;</p>
+<p>&#x5229;&#x7528;SSH&#x534F;&#x8BAE;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x9632;&#x6B62;&#x8FDC;&#x7A0B;&#x7BA1;&#x7406;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#x6CC4;&#x9732;&#x95EE;&#x9898;&#x3002;SSH&#x6700;&#x521D;&#x662F; UNIX &#x7CFB;&#x7EDF;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#xFF0C;&#x540E;&#x6765;&#x53C8;&#x8FC5;&#x901F;&#x6269;&#x5C55;&#x5230;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;&#x5E73;&#x53F0;&#x3002;SSH &#x5728;&#x6B63;&#x786E;&#x4F7F;&#x7528;&#x65F6;&#x53EF;&#x5F25;&#x8865;&#x7F51;&#x7EDC;&#x4E2D;&#x7684;&#x6F0F;&#x6D1E;&#x3002;SSH &#x5BA2;&#x6237;&#x7AEF;&#x9002;&#x7528;&#x4E8E;&#x591A;&#x79CD;&#x5E73;&#x53F0;&#x3002;&#x51E0;&#x4E4E;&#x6240;&#x6709; UNIX &#x5E73;&#x53F0;&#x2014;&#x5305;&#x62EC; HP-UX&#x3001;Linux&#x3001;AIX&#x3001;Solaris&#x3001;Digital UNIX&#x3001;Irix&#xFF0C;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x5E73;&#x53F0;&#xFF0C;&#x90FD;&#x53EF;&#x8FD0;&#x884C;SSH&#x3002;</p>
+<p>&#x4F7F;&#x7528;SSH&#x670D;&#x52A1;&#xFF0C;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x76F8;&#x5E94;&#x7684;&#x670D;&#x52A1;&#x5668;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x5668;&#x7684;&#x5173;&#x7CFB;&#xFF1A;&#x5982;&#x679C;&#xFF0C;A&#x673A;&#x5668;&#x60F3;&#x88AB;B&#x673A;&#x5668;&#x8FDC;&#x7A0B;&#x63A7;&#x5236;&#xFF0C;&#x90A3;&#x4E48;&#xFF0C;A&#x673A;&#x5668;&#x9700;&#x8981;&#x5B89;&#x88C5;SSH&#x670D;&#x52A1;&#x5668;&#xFF0C;B&#x673A;&#x5668;&#x9700;&#x8981;&#x5B89;&#x88C5;SSH&#x5BA2;&#x6237;&#x7AEF;&#x3002;</p>
+<h3 id="&#x5B89;&#x88C5;ssh"><2>&#x5B89;&#x88C5;ssh</2></h3>
+<p>A.&#x5B89;&#x88C5;ssh&#x670D;&#x52A1;&#x5668;</p>
+<pre><code>sudo apt-get install openssh-server
+</code></pre><p>B.&#x8FDC;&#x7A0B;&#x767B;&#x9646;</p>
+<pre><code>ssh &#x7528;&#x6237;&#x540D;@IP
+</code></pre><p>&#x4F7F;&#x7528;ssh&#x8BBF;&#x95EE;&#xFF0C;&#x5982;&#x8BBF;&#x95EE;&#x51FA;&#x73B0;&#x9519;&#x8BEF;&#x3002;&#x53EF;&#x67E5;&#x770B;&#x662F;&#x5426;&#x6709;&#x8BE5;&#x6587;&#x4EF6; &#xFF5E;/.ssh/known_ssh &#x5C1D;&#x8BD5;&#x5220;&#x9664;&#x8BE5;&#x6587;&#x4EF6;&#x89E3;&#x51B3;&#x3002;</p>
+<h3 id="&#x4F7F;&#x7528;ssh&#x8FDE;&#x63A5;&#x670D;&#x52A1;&#x5668;"><3>&#x4F7F;&#x7528;ssh&#x8FDE;&#x63A5;&#x670D;&#x52A1;&#x5668;</3></h3>
+<p>SSH &#x544A;&#x77E5;&#x7528;&#x6237;&#xFF0C;&#x8FD9;&#x4E2A;&#x4E3B;&#x673A;&#x4E0D;&#x80FD;&#x8BC6;&#x522B;&#xFF0C;&#x8FD9;&#x65F6;&#x952E;&#x5165;&quot;yes&quot;&#xFF0C;SSH &#x5C31;&#x4F1A;&#x5C06;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x5199;&#x5165;&quot; ~/.ssh/know_hosts&quot; &#x4E2D;&#xFF0C;&#x518D;&#x6B21;&#x8BBF;&#x95EE;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x6709;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x4E86;&#x3002;&#x7136;&#x540E;&#x8F93;&#x5165;&#x5B8C;&#x53E3;&#x4EE4;,&#x5C31;&#x53EF;&#x4EE5;&#x767B;&#x5F55;&#x5230;&#x4E3B;&#x673A;&#x4E86;&#x3002;</p>
+<p><img src="../Images/Snip20161219_118.png" alt=""></p>
+<h2 id="2scp">2.scp</h2>
+<p>&#x8FDC;&#x7A0B;&#x62F7;&#x8D1D;&#x6587;&#x4EF6;,scp -r &#x7684;&#x5E38;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<p>1.&#x4F7F;&#x7528;&#x8BE5;&#x547D;&#x4EE4;&#x7684;&#x524D;&#x63D0;&#x6761;&#x4EF6;&#x8981;&#x6C42;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#x5DF2;&#x7ECF;&#x6210;&#x529F;&#x5B89;&#x88C5;openssh-server</p>
+<pre><code>&#x5982;&#x6CA1;&#x6709;&#x5B89;&#x88C5;&#x4F7F;&#x7528; sudo apt-get install openssh-server &#x6765;&#x5B89;&#x88C5;
+</code></pre><p>2.&#x4F7F;&#x7528;&#x683C;&#x5F0F;&#xFF1A;</p>
+<pre><code>scp -r &#x76EE;&#x6807;&#x7528;&#x6237;&#x540D;@&#x76EE;&#x6807;&#x4E3B;&#x673A;IP&#x5730;&#x5740;&#xFF1A;/&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x7684;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;  /&#x4FDD;&#x5B58;&#x5230;&#x672C;&#x673A;&#x7684;&#x7EDD;&#x5BF9;/&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;
+
+&#x4E3E;&#x4F8B;&#xFF1A;
+scp -r itcast@192.168.1.100:/home/itcast/QQ_dir/ ./mytest/lisi
+
+&#x5728;&#x540E;&#x7EED;&#x4F1A;&#x63D0;&#x793A;&#x8F93;&#x5165;&#x201C;yes&#x201D;&#x6B64;&#x65F6;&#xFF0C;&#x53EA;&#x80FD;&#x8F93;&#x201C;yes&#x201D;&#x800C;&#x4E0D;&#x80FD;&#x7B80;&#x5355;&#x8F93;&#x5165;&#x201C;Y&#x201D;
+</code></pre><p>&#x62F7;&#x8D1D;&#x5355;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x4E0D;&#x52A0; -r&#x53C2;&#x6570;&#xFF0C;&#x62F7;&#x8D1D;&#x76EE;&#x5F55;&#x5FC5;&#x987B;&#x8981;&#x52A0;&#x3002;</p>
+<p>&#x672C;&#x5730;&#x6587;&#x4EF6;&#x590D;&#x5236;&#x5230;&#x8FDC;&#x7A0B;&#xFF1A;</p>
+<pre><code>scp FileName RemoteUserName@RemoteHostIp:RemoteFile
+scp FileName RemoteHostIp:RemoteFolder
+scp FileName RemoteHostIp:RemoteFile
+</code></pre><p>&#x672C;&#x5730;&#x76EE;&#x5F55;&#x590D;&#x5236;&#x5230;&#x8FDC;&#x7A0B;&#xFF1A;</p>
+<pre><code>scp -r FolderName RemoteUserName@RemoteHostIp:RemoteFolder
+scp -r FolderName RemoteHostIp:RemoteFolder
+</code></pre><p>&#x8FDC;&#x7A0B;&#x6587;&#x4EF6;&#x590D;&#x5236;&#x5230;&#x672C;&#x5730;&#xFF1A;</p>
+<pre><code>scp RemoteUserName@RemoteHostIp:RemoteFile FileName
+scp RemoteHostIp:RemoteFolder FileName
+scp RemoteHostIp:RemoteFile FileName
+</code></pre><p>&#x8FDC;&#x7A0B;&#x76EE;&#x5F55;&#x590D;&#x5236;&#x5230;&#x672C;&#x5730;&#xFF1A;</p>
+<pre><code>scp -r RemoteUserName@RemoteHostIp:RemoteFolder FolderName
+scp -r RemoteHostIp:RemoteFolder FolderName
+</code></pre><p><img src="../Images/Snip20161219_120.png" alt=""></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../02day/section.4.html" class="navigation navigation-prev " aria-label="Previous page: Linux常用服务器构建-ftp服务器"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../02day/section.7.html" class="navigation navigation-next " aria-label="Next page: Linux常用服务器构建-samba"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

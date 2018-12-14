@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.gif?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.gif?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="仅做自己复习使用，如有错误，感谢告知！ 老师课件里的小猴子~到底该怎么更新参数？  绪论AI的四大主流流派 符号主义（Symbolism） 连接主义（Connectionism） 行为主义（Behaviourism） 统计主义（Statisticsism）   机器学习属于统计主义  AI , 机器学习，深度学习三者之间的异同和关联 包含关系  人工智能包含机器学习，机器学习包含深度学习  机器学">
+<meta name="keywords" content="科大,人工智能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="科大软院-人工智能期末总结">
+<meta property="og:url" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/index.html">
+<meta property="og:site_name" content="不想长大的石头">
+<meta property="og:description" content="仅做自己复习使用，如有错误，感谢告知！ 老师课件里的小猴子~到底该怎么更新参数？  绪论AI的四大主流流派 符号主义（Symbolism） 连接主义（Connectionism） 行为主义（Behaviourism） 统计主义（Statisticsism）   机器学习属于统计主义  AI , 机器学习，深度学习三者之间的异同和关联 包含关系  人工智能包含机器学习，机器学习包含深度学习  机器学">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://pic.pimg.tw/chico386/1406174980-1440682311_n.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544420404844.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544420824100.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544423669559.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544426668948.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544428395405.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544431873804.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544535372183.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/clip_image001.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544533564670.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544581789380.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544581958643.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544582218118.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544584038542.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544583978302.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544620071134.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544616480727.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544617223333.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544617793774.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544618843691.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544619422616.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544619688474.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544619858768.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544669757677.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544704562172.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544704861896.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544705183268.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544705683445.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544705496244.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544705949950.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544706817126.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544706691308.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544707391072.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544707967820.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544698003702.png">
+<meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544673331986.png">
+<meta property="og:updated_time" content="2018-12-14T02:20:56.723Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="科大软院-人工智能期末总结">
+<meta name="twitter:description" content="仅做自己复习使用，如有错误，感谢告知！ 老师课件里的小猴子~到底该怎么更新参数？  绪论AI的四大主流流派 符号主义（Symbolism） 连接主义（Connectionism） 行为主义（Behaviourism） 统计主义（Statisticsism）   机器学习属于统计主义  AI , 机器学习，深度学习三者之间的异同和关联 包含关系  人工智能包含机器学习，机器学习包含深度学习  机器学">
+<meta name="twitter:image" content="https://pic.pimg.tw/chico386/1406174980-1440682311_n.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>科大软院-人工智能期末总结 | 不想长大的石头</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不想长大的石头</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Give you my world.</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">8</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">29</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-guestbook">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/guestbook/" rel="section"><i class="menu-item-icon fa fa-fw fa-comments"></i> <br>留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-share_resource">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈建虎">
+      <meta itemprop="description" content="不想长大的石头">
+      <meta itemprop="image" content="/images/100x100.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不想长大的石头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">科大软院-人工智能期末总结
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-13 22:07:00" itemprop="dateCreated datePublished" datetime="2018-12-13T22:07:00+08:00">2018-12-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-14 10:20:56" itemprop="dateModified" datetime="2018-12-14T10:20:56+08:00">2018-12-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/13/科大软院-人工智能期末总结/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/13/科大软院-人工智能期末总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/13/科大软院-人工智能期末总结/" class="leancloud_visitors" data-flag-title="科大软院-人工智能期末总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>仅做自己复习使用，如有错误，感谢告知！</p>
+<p>老师课件里的小猴子~到底该怎么更新参数？</p>
+<p><img src="https://pic.pimg.tw/chico386/1406174980-1440682311_n.png" width="150px"></p>
+<h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><h3 id="AI的四大主流流派"><a href="#AI的四大主流流派" class="headerlink" title="AI的四大主流流派"></a>AI的四大主流流派</h3><ul>
+<li>符号主义（Symbolism）</li>
+<li>连接主义（Connectionism）</li>
+<li>行为主义（Behaviourism）</li>
+<li>统计主义（Statisticsism）</li>
+</ul>
+<blockquote>
+<p>机器学习属于统计主义</p>
+</blockquote>
+<h3 id="AI-机器学习，深度学习三者之间的异同和关联"><a href="#AI-机器学习，深度学习三者之间的异同和关联" class="headerlink" title="AI , 机器学习，深度学习三者之间的异同和关联"></a>AI , 机器学习，深度学习三者之间的异同和关联</h3><ul>
+<li><p><strong>包含关系</strong></p>
+<p><img src=".\1544420404844.png" width="500px"></p>
+<p>人工智能包含机器学习，机器学习包含深度学习</p>
+</li>
+<li><p><strong>机器学习与深度学习之间的异同和关联</strong></p>
+<ul>
+<li>机器学习需要人工作特征筛选</li>
+<li>深度学习因为它的“Deep”，所以不需要过多的人工干预，深度神经网络会自动学习特征</li>
+</ul>
+</li>
+</ul>
+<h3 id="机器学习分为两个阶段"><a href="#机器学习分为两个阶段" class="headerlink" title="机器学习分为两个阶段"></a>机器学习分为两个阶段</h3><ul>
+<li><strong>训练：</strong>“三步曲”  on training set<ul>
+<li>定义Model</li>
+<li>定义Loss/cost/error/objective function</li>
+<li>如何找到Model中的最佳function：利用梯度下降来迭代调整参数，以使得损失函数达到最小值<ul>
+<li>反向传播</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>预测：</strong>on Dev set and testing set<ul>
+<li>前向传播：预测输出，计算Loss</li>
+</ul>
+</li>
+</ul>
+<h3 id="机器学习的分类"><a href="#机器学习的分类" class="headerlink" title="机器学习的分类"></a>机器学习的分类</h3><ul>
+<li><p><strong>监督学习（Supervised Learning）</strong></p>
+<p>Data = Labelled data</p>
+</li>
+<li><p><strong>半监督学习（Semi-supervised Learning）</strong></p>
+<p>Hard to collect a large amount of labelled data</p>
+<p>Data = Labelled data + Unlabeled data</p>
+</li>
+<li><p><strong>无监督学习（Unsupervised Learning）</strong></p>
+<p>data = Unlabeled data</p>
+</li>
+<li><p><strong>强化学习（Reinforcement Learning）</strong></p>
+<p>强化学习是智能体（Agent）以“试错”的方式进行学习，通过与环境进行交互获得的奖赏指导行为，目标是使智能体获得最大的奖赏</p>
+</li>
+<li><p><strong>迁移学习（Transfer Learning）</strong></p>
+<p>Data not directly related to the task considered(can be either labeled or unlabeled)</p>
+<ul>
+<li>Similar domain, different tasks，如：都是动物领域，但是一个模型识别猫，另一个迁移模型识别老虎 </li>
+<li>Different domains, same task，如：都是识别猫，但是一个模型是现实中的猫，另一个迁移模型是识别漫画里的猫</li>
+</ul>
+</li>
+</ul>
+<p><img src=".\1544420824100.png" width="500px"></p>
+<h2 id="线性回归（Linear-Regression）"><a href="#线性回归（Linear-Regression）" class="headerlink" title="线性回归（Linear Regression）"></a>线性回归（Linear Regression）</h2><h3 id="什么是机器学习？"><a href="#什么是机器学习？" class="headerlink" title="什么是机器学习？"></a>什么是机器学习？</h3><p>对于某类任务T和性能度量P，一个计算机程序被认为可以从经验E中学习是指，通过经验E改进后，它在任务T上由性能度量P衡量的性能有所提升</p>
+<p>其中：</p>
+<ul>
+<li><p><strong>任务T：</strong>新闻分类、文本翻译等</p>
+</li>
+<li><p><strong>性能度量P：</strong>Loss/cost/error/objective function</p>
+</li>
+<li><p><strong>经验E：</strong>训练集</p>
+</li>
+</ul>
+<h3 id="线性回归model"><a href="#线性回归model" class="headerlink" title="线性回归model"></a>线性回归model</h3><p>例如：$Y = W^T X + b$</p>
+<h3 id="机器学习训练模型“三步曲”"><a href="#机器学习训练模型“三步曲”" class="headerlink" title="机器学习训练模型“三步曲”"></a>机器学习训练模型“三步曲”</h3><ul>
+<li><strong>Step 1: define a set of function</strong></li>
+<li><strong>Step 2: goodness of function</strong></li>
+<li><strong>Step 3: pick the best function</strong></li>
+</ul>
+<p>训练好后，得到能拟合数据的最佳function$ f^*$</p>
+<h3 id="机器学习中的过拟合与欠拟合（Overfitting-amp-Underfitting）"><a href="#机器学习中的过拟合与欠拟合（Overfitting-amp-Underfitting）" class="headerlink" title="机器学习中的过拟合与欠拟合（Overfitting &amp; Underfitting）"></a>机器学习中的过拟合与欠拟合（Overfitting &amp; Underfitting）</h3><ul>
+<li><p><strong>过拟合：</strong>指模型对于训练数据拟合呈过当的情况，反映到评估指标上，就是模型在训练集上的表现很好，但在测试集和新数据上的表现较差</p>
+<p><strong>解决方法：</strong></p>
+<ul>
+<li><strong>获得更多的训练数据</strong></li>
+<li><strong>正则化方法</strong></li>
+<li><strong>降低模型复杂度</strong></li>
+<li><strong>集成学习方法：</strong>集成学习是把多个模型集成在一起，来降低单一模型的过拟合风险</li>
+</ul>
+</li>
+<li><p><strong>欠拟合：</strong>指模型在训练和预测时表现都不好的情况</p>
+<p><strong>解决方法：</strong></p>
+<ul>
+<li><strong>添加新特征：</strong>当特征不足或者现有特征与样本标签的相关性不强时，模型容易出现欠拟合</li>
+<li><strong>减小正则化系数</strong> $\lambda$</li>
+<li><strong>增加模型复杂度：</strong>简单模型的学习能力较差，通过增加模型的复杂度可以使模型拥有更强的拟合能力</li>
+</ul>
+</li>
+</ul>
+<p><img src=".\1544423669559.png" width="600px"></p>
+<p>图（a）是<strong>欠拟合</strong>的情况，拟合的黄线没有很好地捕捉到数据的特征，不能够很好地拟合数据。图（c）则是<strong>过拟合</strong>的情况，模型过于复杂，把噪声数据的特征也学习到模型中，导致模型泛化能力下降，在后期应用过程中很容易输出错误的预测结果。</p>
+<h3 id="误差来源分析：偏差、方差"><a href="#误差来源分析：偏差、方差" class="headerlink" title="误差来源分析：偏差、方差"></a>误差来源分析：偏差、方差</h3><p>在有监督学习中，模型的泛化误差来源于两个方面——偏差和方差，具体来<br>讲偏差和方差的定义如下：</p>
+<ul>
+<li><p><strong>偏差：</strong>指的是由所有采样得到的大小为m的训练数据集训练出的<strong>所有模型</strong>的输出的平均值和真实模型输出之间的偏差</p>
+<p>偏差通常是由于我们对学习算法做了错误的假设所导致的，比如真实模型是某个二次函数，但我们假设模型是一次函数。<br>由偏差带来的误差通常在训练误差上就能体现出来。</p>
+</li>
+<li><p><strong>方差：</strong>指的是由所有采样得到的大小为m的训练数据集训练出的所有模型的输出的方差</p>
+<p>方差通常是由于模型的复杂度相对于训练样本数m过高导致的，比如一共有100个训练样本，而我们假设模型是阶数不大于200的多项式函数。<strong>由方差带来的误差通常体现在测试误差相对于训练误差的增量上。</strong></p>
+</li>
+</ul>
+<p>上面的定义很准确，但不够直观，为了更清晰的理解<strong>偏差</strong>和<strong>方差</strong>，我们用一个射击的例子来进一步描述这二者的区别和联系。假设一次射击就是一个机器学习模型对一个样本进行预测。射中靶心位置代表预测准确，偏离靶心越远代表预测误差越大。</p>
+<p>我们通过n次采样得到n个大小为m的训练样本集合，训练出n个模型，对同一个样本做预测，相当于我们做了n次射击，射击结果如图12.4所示。我们最期望的结果就是左上角的结果，射击结果又准确又集中，说明模型的偏差和<br>方差都很小；右上图虽然射击结果的中心在靶心周围，但分布比较分散，说明模型的偏差较小但方差较大；同理，左下图说明模型方差较小，偏差较大；右下图说明模型方差较大，偏差也较大。</p>
+<p><img src=".\1544426668948.png" width="350px"></p>
+<ul>
+<li><strong>误差计算</strong></li>
+</ul>
+<script type="math/tex; mode=display">
+Testing Error = Bias Error + Variance Error</script><p>其中：</p>
+<script type="math/tex; mode=display">
+Bias Error ≈ 训练集上的错误率\\
+训练集上的错误率 = Avoidable Error + Unavoidable Error</script><script type="math/tex; mode=display">
+Variance Errror ≈ 测试（开发/验证）误差 - 训练误差</script><ul>
+<li><strong>偏差、方差与过拟合、欠拟合之间的关系</strong><ul>
+<li>欠拟合：<strong>高bias error</strong>, 低 variance error</li>
+<li>过拟合：低bias error, <strong>高variance error</strong>（低bias表示未欠拟合，过拟合是在未欠拟合的基础之上谈的）</li>
+<li>Good：低bias error, 低variance error</li>
+</ul>
+</li>
+</ul>
+<h3 id="三类数据集"><a href="#三类数据集" class="headerlink" title="三类数据集"></a>三类数据集</h3><ul>
+<li>训练集（Training set）：用于学习参数</li>
+<li>开发/验证集（validation set）：用于挑选超参数</li>
+<li>测试集（Testing set）：用于估计泛化误差</li>
+</ul>
+<h3 id="交叉验证（Cross-Validation）"><a href="#交叉验证（Cross-Validation）" class="headerlink" title="交叉验证（Cross Validation）"></a>交叉验证（Cross Validation）</h3><ul>
+<li><p><strong>k-fold交叉验证：</strong>首先将全部的训练样本划分成k个大小相等的样本子集；依次遍历这k个子集，每次把当前子集作为验证集，其余所有子集作为训练集，进行模型的训练和评估；最后把k次评估指标的平均值作为最终的评估指标。</p>
+<ul>
+<li><p>举例：当k=3时：</p>
+<p><img src=".\1544428395405.png" width="500px/"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="模型参数-v-s-超参数"><a href="#模型参数-v-s-超参数" class="headerlink" title="模型参数 v.s. 超参数"></a>模型参数 v.s. 超参数</h3><ul>
+<li><p><strong>模型参数：</strong>模型内部的配置变量，可以使用数据（训练集）训练模型来不断优化的变量</p>
+<ul>
+<li>举例：线性回归模型 $Y = W^T X + b$ 中的 $W$ 和 $b$</li>
+</ul>
+</li>
+<li><p><strong>超参数：</strong>模型外部的配置变量，必须手动设置值的变量</p>
+<ul>
+<li>举例：模型的阶数、学习率 $\eta$ 、正则化系数 $\lambda$ 、CNN网络中的卷积核尺寸、步长等</li>
+</ul>
+</li>
+</ul>
+<p><strong>Tips：</strong>两者的本质区别是<strong>是否人为设定</strong></p>
+<p><i id="Regularization"></i></p>
+<h3 id="正则化（Regularization）"><a href="#正则化（Regularization）" class="headerlink" title="正则化（Regularization）"></a>正则化（Regularization）</h3><ul>
+<li><p><strong>L1范数（L1-norm）</strong></p>
+<script type="math/tex; mode=display">
+L'(\theta) = L(\theta) + \lambda\cdot\parallel\theta\parallel_1</script><p>其中：</p>
+<script type="math/tex; mode=display">
+L(\theta) = Original loss</script><script type="math/tex; mode=display">
+\parallel\theta\parallel_1 = \mid w_1\mid + \mid w_2\mid + \mid w_3\mid + ...</script><p>参数更新时：</p>
+<script type="math/tex; mode=display">
+w^{t+1} = w^t - \eta\cfrac{\partial L}{\partial w} - \eta\lambda sgn(w^t)</script><blockquote>
+<p>经过L1范数的正则化之后，每次参数更新时，总是比原来多减去一个定值$\eta\lambda sgn(w)$（如果 $\eta $固定）</p>
+</blockquote>
+</li>
+<li><p><strong>L1范数（L2-norm）</strong></p>
+<script type="math/tex; mode=display">
+L'(\theta) = L(\theta) + \lambda\cdot\parallel\theta\parallel_2</script><p>其中：</p>
+<script type="math/tex; mode=display">
+\parallel\theta\parallel_2 = (w_1)^2 + (w_2)^2 + (w_3)^2 + ...</script><p>参数更新时：</p>
+<script type="math/tex; mode=display">
+w^{t+1} = (1-\eta\lambda)w^t - \eta\cfrac{\partial L}{\partial w}</script><blockquote>
+<p>经过L2范数的正则化之后，每次参数更新时，总是比原来<strong>多减去$w$的小一部分</strong>，值为$\eta\lambda w$</p>
+<p><strong>对比L1与L2：</strong></p>
+<p>L2对比较大的参数 $w$ 惩罚会较强，对比较小的参数 $w$ 惩罚会较弱，L1每次只多减去一个定值，与参数 $w$ 无关</p>
+</blockquote>
+</li>
+<li><p><strong>Elastic Net (L1 + L2)</strong></p>
+<script type="math/tex; mode=display">
+L'(\theta) = L(\theta) + \lambda\cdot[\rho \parallel\theta\parallel_1 + (1-\rho)\cdot\parallel\theta\parallel_2]</script></li>
+<li><p><strong>正则化的好处</strong></p>
+<p>正则化能是模型中的一些不比较的参数值减小甚至降为0，使得参数具有稀疏性，说白了就是模型的很多参数是0。这相当于对模型进行了一次特征选择，只留下一些比较重要的特<br>征，提高模型的泛化能力，降低过拟合的可能。</p>
+</li>
+</ul>
+<h3 id="如何加快模型的训练？"><a href="#如何加快模型的训练？" class="headerlink" title="如何加快模型的训练？"></a>如何加快模型的训练？</h3><ul>
+<li><p><strong>Tip 1: 特征缩放/归一化（Feature Scaling/Normalization）</strong></p>
+<p>对数值类型的特征做归一化可以将所有的特征都统一到一个大致相同的数值区间内。最常用的方法主要有以下两种:</p>
+<ul>
+<li><p>线性函数归一化（Min-Max Scaling）：对原始数据进行线性变换，使<br>结果映射到[0, 1]的范围</p>
+<script type="math/tex; mode=display">
+X_{norm} = \cfrac{X - X_{min}}{X_{max} - X_{min}}</script><p>其中 $X$ 为原始数据，$X_{max}$ 、$X_{min}$  分别为数据的最大值和最小值</p>
+</li>
+<li><p>零均值归一化（Z-Score Normalization）：将原始数据映射到均值为<br>0，标准差为1的分布上</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+Z = \cfrac{x-\mu}{\sigma}</script><p><strong>特征归一化的好处：</strong>在学习速率相同的情况下，归一化后的更新速度会大于归一化前 ，需要更少的迭代就能找到最优解。</p>
+<p><img src=".\1544431873804.png" width="400/"></p>
+</li>
+<li><p><strong>Tip 2: Gradient Descent算法的变体（Variants of Gradient Descent）</strong></p>
+<ul>
+<li><p><strong>SGD（Stochastic Gradient Descent）</strong></p>
+<p>每次只随机从训练集中选一个样例 $X^{<i>}$ 来更新模型参数，此方法参数更新速度最快，但是loss曲线的抖动很大</i></p>
+</li>
+<li><p><strong>BGD（ Batch Gradient Descent）</strong></p>
+<p>每次使用训练集中的所有样例来更新模型参数，此方法更新速度最慢，但是loss曲线一般会较稳定地下降</p>
+</li>
+<li><p><strong>MBGD（Mini-batch Gradient Descent）</strong></p>
+<p>每次使用一个batch（样例数量=Batch_size）来更新模型参数，此方法相当于是SGD和BGD这两种极端方法的折中，更新速度较快，loss曲线抖动也较小</p>
+<p>BatchSize = 1 ~ #(training data)</p>
+<p>BatchSize =1时MBGD变为SGD</p>
+</li>
+</ul>
+<p>以上三种算法在更新参数时都按照如下公式更新：</p>
+<script type="math/tex; mode=display">
+w^{t+1} = w^t - \eta g^{<t>}</script><p>其中</p>
+<script type="math/tex; mode=display">
+g^{<t>} = \cfrac{\partial L(\theta)}{\partial\theta}</script><ul>
+<li><p><strong>Adagrad算法</strong></p>
+<p>参数更新公式：</p>
+<script type="math/tex; mode=display">
+w^{t+1} = w^t - \cfrac{\eta}{\sqrt{\sum_{i=0}^t(g^{<i>})^2}}g^{<t>}</script></li>
+<li><p><strong>RMSProp算法</strong></p>
+<p>参数更新公式：</p>
+<script type="math/tex; mode=display">
+w^{t+1} = w^t - \cfrac{\eta}{\sigma^{<t>}}g^{<t>}</script><p>其中：</p>
+<script type="math/tex; mode=display">
+\sigma^{<0>} = g^{<0>}</script><script type="math/tex; mode=display">
+\sigma^{<t>} = \sqrt{\alpha(g^{<t-1>})^2+（1-\alpha）(g^{<t>})^2}</script><p>后面的算法知道名字就行了…</p>
+</li>
+<li><p><strong>SGDM算法（SGD with Momentum）</strong></p>
+</li>
+<li><p><strong>NAG算法（SGD with Nesterov）</strong></p>
+</li>
+<li><p><strong>Adam算法（RMSProp + Momentum）</strong></p>
+</li>
+<li><p><strong>Nadam算法（Nesterov+Adam）</strong></p>
+</li>
+</ul>
+</li>
+<li><p><strong>Tip 3: 调节学习率（learning rates）</strong></p>
+</li>
+</ul>
+<h3 id="几个易混的名词：-Epoch、-Iteration、Batch-size、-Batch-num"><a href="#几个易混的名词：-Epoch、-Iteration、Batch-size、-Batch-num" class="headerlink" title="几个易混的名词： Epoch、 Iteration、Batch_size、 Batch_num"></a>几个易混的名词： Epoch、 Iteration、Batch_size、 Batch_num</h3><ul>
+<li><p><strong>Epoch：</strong>一个Epoch意味着会使用一次训练集中的所有样例</p>
+</li>
+<li><p><strong>Iteration：</strong>表示迭代次数，即参数更新的次数</p>
+</li>
+<li><p><strong>Batch_size：</strong>表示一个Batch中的样例数量，一般使用MBGD算法更新参数时会涉及到此超参数</p>
+</li>
+<li><p><strong>Batch_num：</strong>表示训练集一共被划分成了多少个Batch，即Batch的数量</p>
+<script type="math/tex; mode=display">
+Batch\_num = \cfrac{训练集样例数}{Batch\_size}</script></li>
+</ul>
+<h2 id="分类（Classification）"><a href="#分类（Classification）" class="headerlink" title="分类（Classification）"></a>分类（Classification）</h2><h3 id="为什么不用线性回归来做分类？"><a href="#为什么不用线性回归来做分类？" class="headerlink" title="为什么不用线性回归来做分类？"></a>为什么不用线性回归来做分类？</h3><ul>
+<li><p><strong>原因1：强行用线性回归做分类，有时候模型会被一些正常数据误导</strong></p>
+<p>比如下图中的例子，左图中的模型（绿线）能很好地将两个类别分开，但是如果Class1引入了一些正常数据，他们仅仅只是偏离Class1中的大多数数据有些远，此时模型为了更好地拟合数据，会变成紫色的那条线，但是我们明显能感觉到紫色的线性模型其实没有原来那条绿色的线性模型好</p>
+<p><img src=".\1544535372183.png" width="500/"></p>
+</li>
+<li><p><strong>原因2：当在做多分类任务的时候，会给模型引入一些实际上不存在的类别之间的关联</strong></p>
+<p>比如：一个类别数为3的分类任务，设定模型输出值0-3为Class1，3-6为Class2，6-9为Class3，此时我们已经默认地认为Class1与Class2中的样例比较相似，Class2与Class3中的样例比较相似，而Class1与Class3中的样例相差比较大，但是实际上可能Class1-Class3他们之间并没有这种关联</p>
+</li>
+</ul>
+<h3 id="逻辑回归与线性回归（Logistic-Regression-amp-Linear-Regression）对比"><a href="#逻辑回归与线性回归（Logistic-Regression-amp-Linear-Regression）对比" class="headerlink" title="逻辑回归与线性回归（Logistic Regression &amp; Linear Regression）对比"></a>逻辑回归与线性回归（Logistic Regression &amp; Linear Regression）对比</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Step</th>
+<th style="text-align:center">Logistic Regression</th>
+<th style="text-align:center">Linear Regression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Step 1</td>
+<td style="text-align:center">$f_{w,b}(x)=\sigma(\sum_iw_ix_i+b)$ Output: between 0 and 1</td>
+<td style="text-align:center">$f_{w,b}(x)=\sum_iw_ix_i+b$ Output: any value</td>
+</tr>
+<tr>
+<td style="text-align:center">Step 2</td>
+<td style="text-align:center">Training data: （$x^{(n)}, \hat{y}^{(n)}$  其中 $\hat{y}^{(n)}$:1 for class 1, 0 for class 2 $L(f)=\sum_n-[\hat{y}^{(n)}lnf(x^{(n)})+(1-\hat{y}^{(n)})ln(1-f(x^{(n)}))]$</td>
+<td style="text-align:center">Training data: （$x^{(n)}, \hat{y}^{(n)}$） 其中 $\hat{y}^{(n)}$: a real number $L(f)=\cfrac{1}{2}\sum_n(f(x^{(n)})-\hat{y}^{(n)})^2$</td>
+</tr>
+<tr>
+<td style="text-align:center">Step 3</td>
+<td style="text-align:center">$w_i=w_i-\eta\sum_n-(\hat{y}^{(n)}-f_{w,b}(x^{(n)}))x_i^{(n)}$</td>
+<td style="text-align:center">$w_i=w_i-\eta\sum_n-(\hat{y}^{(n)}-f_{w,b}(x^{(n)}))x_i^{(n)}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？"><a href="#为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？" class="headerlink" title="为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？"></a>为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？</h3><p>一般来说，平方损失函数更适合输出为连续，并且最后一层不含Sigmoid或<br>Softmax激活函数的神经网络；交叉熵损失则更适合二分类或多分类的场景。</p>
+<p>如果使用均方差做损失函数，那么“三步曲”会变成下面的样子：</p>
+<ul>
+<li><p><strong>Step 1：</strong>$f_{w,b}(x)=\sigma(\sum_iw_ix_i+b)$</p>
+</li>
+<li><p><strong>Step 2：</strong>Training data: （$x^{(n)}, \hat{y}^{(n)}$） 其中 $\hat{y}^{(n)}$：1 for class 1, 0 for class 2</p>
+<script type="math/tex; mode=display">
+L(f)=\cfrac{1}{2}\sum_n(f_{w,b}(x^{(n)})-\hat{y}^{(n)})^2</script></li>
+</ul>
+<ul>
+<li><strong>Step 3：</strong>取某一个样例 $x $ 来看</li>
+</ul>
+<script type="math/tex; mode=display">
+\cfrac{\partial(f_{w,b}(x)-\hat{y})^2)}{\partial w_i}=2(f_{w,b}(x)-\hat{y})\cfrac{\partial f_{w,b}(x)}{\partial z}\cfrac{\partial z}{\partial w^i}\\=2(f_{w,b}(x)-\hat{y})f_{w,b}(x)(1-f_{w,b}(x))x^i</script><p>此时，设某个样例的标签是$\hat{y}=1$，那么</p>
+<ul>
+<li>IF  $f_{w,b}(x)=1$，此时预测准确， $\cfrac{\partial L}{\partial w_i}=0$，参数不更新，合理</li>
+<li>IF  $f_{w,b}(x)=0$，此时预测完全错误，此时参数需要大更新，但是$\cfrac{\partial L}{\partial w_i}=0$，<strong>非常不合理</strong></li>
+</ul>
+<blockquote>
+<p>（以下说明中， $a$ 为输出层的输出值，$y$ 为样例的真实标签，$z$ 为输出层神经元加权求和后还没有经过激活函数运算的值）</p>
+<p>其实说白了就是如果使用均方误差，那么对 $w$ 和 $b$ 分别计算偏微分之后得到的梯度 $\nabla L=[(a-y)\sigma’(z)x, (a-y)\sigma’(z)]$，此时两者的梯度都与激活函数 $\sigma$ 的一阶导数成正比，但是我们观察 $sigmoid$函数的图像会发现它的一阶导数最大的时候在 $z=0.5$ 时，此时也才等于1，而且绝大多数时候都是小于1的，更新时前面还要乘以一个学习率 $\eta $ ，所以会导致更新的很慢。</p>
+<p><img src=".\clip_image001.png" width="300px/"></p>
+<p>但是如果采用Cross-Entropy来做损失函数，对 $w$ 和 $b$ 分别做平偏微分之后得到的梯度 $\nabla L=[(a-y)x, a-y]$，此时的两者的梯度与激活函数无关，与预测值 $a$ 和真实值 $z$之间的差值成正比，这也正是我们所希望的，即预测值与真实值差距越大，我们希望参数更新越快，预测值与真实值差距越小，我们希望参数更新越慢</p>
+</blockquote>
+<p>下面这张图形象的表示了Cross-Entropy和MSE的梯度差距，其中黑色是Cross-Entropy的梯度，红色是MSE的梯度</p>
+<p><img src="1544533564670.png" width="400px"></p>
+<p>（图片来源：<a href="http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf" target="_blank" rel="noopener">Proceedings of Machine Learning Research</a>）</p>
+<blockquote>
+<p>Tips：均方差与均方误差的区别</p>
+<ul>
+<li>标准差（Standard Deviation） ，中文环境中又常称<strong>均方差</strong></li>
+</ul>
+<script type="math/tex; mode=display">
+\sigma=\sqrt{\cfrac{1}{N}\sum_{i=1}^{N}(x_i-\mu)^2}</script><ul>
+<li>均方误差（mean squared error），各数据偏离真实值的距离平方和的平均数，即误差平方和的平均数</li>
+</ul>
+<script type="math/tex; mode=display">
+MSE=\cfrac{\sum_{i=1}^{n}\epsilon_i^2}{n}</script></blockquote>
+<h3 id="多分类任务的输出层为什么要使用Softmax"><a href="#多分类任务的输出层为什么要使用Softmax" class="headerlink" title="多分类任务的输出层为什么要使用Softmax"></a>多分类任务的输出层为什么要使用Softmax</h3><p>Softmax公式，模型预测当前样例为第 $i<br>$ 个类别的概率为：</p>
+<script type="math/tex; mode=display">
+y_i=\cfrac{e^{z_i}}{\sum_ie^{z_i}}</script><p>Softmax能将输出层的值转换为总和为1概率分布，这样方便我们在做分类时选择概率值最大的那个类别作为模型的预测类别</p>
+<h3 id="Softmax与sigmoid"><a href="#Softmax与sigmoid" class="headerlink" title="Softmax与sigmoid"></a>Softmax与sigmoid</h3><p>其实可以将sigmoid看成是Softmax的特殊情况，当分类任务变成二分类时，Softmax也就变成了sigmoid</p>
+<p>推导如下：</p>
+<script type="math/tex; mode=display">
+y_1=\cfrac{e^{z_1}}{e^{z_1}+e^{z_2}}=\cfrac{1}{1+e^{z_2-z_1}}=\sigma(z_1-z_2)</script><script type="math/tex; mode=display">
+y_2=</script><script type="math/tex; mode=display">
+y_2=\cfrac{e^{z_2}}{e^{z_1}+e^{z_2}}=\cfrac{1}{1+e^{z_1-z_2}}=\sigma(z_2-z_1)</script><p>其中：</p>
+<script type="math/tex; mode=display">
+\sigma(z)=\cfrac{1}{1+exp(-z)}</script><p>将 $\sigma(z_1-z_2) $ 和 $\sigma(z_2-z_1)$带入上式相加后得：</p>
+<script type="math/tex; mode=display">
+\sigma(z_1-z_2)+\sigma(z_2-z_1)=1</script><h3 id="逻辑回归（Logistic-Regression）的局限性"><a href="#逻辑回归（Logistic-Regression）的局限性" class="headerlink" title="逻辑回归（Logistic Regression）的局限性"></a>逻辑回归（Logistic Regression）的局限性</h3><ul>
+<li><p><strong>逻辑回归不能解决线性不可分问题</strong></p>
+<blockquote>
+<p>例如：异或（XOR）问题，下图中的四个点两个类很直观地表示了异或逻辑，我们不能找到一条线将两个类很好地区分开</p>
+<p>解决异或问题测方案是使用两层级联的逻辑回归网络</p>
+<p><img src="1544581789380.png" width="250px/"></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>特征变换（Feature transformation）</strong></p>
+<p>上面提到的使用两层级联的逻辑回归网络能解决异或问题，实质上是将上图中的4个点做了特征变换。</p>
+<blockquote>
+<p> 原来的点都有两个属性 $(x_1,x_2)$，现在分别计算这4个点与点 $(0,0)$, $(1,1)$ 的距离（相当于是第一层逻辑回归），得到的结果记作 $(x’_1, x’_2)$ ，计算结果如下：</p>
+<p>$(0, 0)——&gt;(0, \sqrt{2})$</p>
+<p>$(0, 1)——&gt;(0, 1)$</p>
+<p>$(1, 0)——&gt;(0, 1)$</p>
+<p>$(1, 1)——&gt;(\sqrt{2}, 0)$</p>
+<p>此时把 $(x’_1, x’_2)$ 作为第二层逻辑回归的输入，再进行分类就变得容易了</p>
+<p><img src="1544581958643.png" width="250px/"></p>
+<p>总体的网络图如下：</p>
+<p><img src="1544582218118.png" width="550px/"></p>
+</blockquote>
+<p>但是并不是所有的线性不可分问题都能这样简单地解决，因为这需要我们有这个领域的知识做基础，但事实上我们并不能把所有专业领域的知识都学习一遍，所以就有深度神经网络出来了，也就是说，上面这种级联的两层逻辑回归网络实际上是深度神经网络的雏形</p>
+</li>
+</ul>
+<h2 id="深度学习（Deep-learning）"><a href="#深度学习（Deep-learning）" class="headerlink" title="深度学习（Deep learning）"></a>深度学习（Deep learning）</h2><h3 id="为什么需要深度神经网络？"><a href="#为什么需要深度神经网络？" class="headerlink" title="为什么需要深度神经网络？"></a>为什么需要深度神经网络？</h3><p>自动筛选特征，能学到更抽象的特征。（没那么简单T^T，后面再更新）</p>
+<h3 id="比较训练过程中，机器学习与深度学习的“三步曲”的异同"><a href="#比较训练过程中，机器学习与深度学习的“三步曲”的异同" class="headerlink" title="比较训练过程中，机器学习与深度学习的“三步曲”的异同"></a>比较训练过程中，机器学习与深度学习的“三步曲”的异同</h3><ul>
+<li><p><strong>不同点：</strong>在训练阶段，机器学习与深度学习的“三步曲”中的第一步有细微差别，两者虽然都是定义一个模型，但是深度学习中的模型（Function Set）是一个<strong>神经网络结构</strong>，神经元之间不同的连接会导致不同的网络结构，从而导致不同的函数集合，即Given network structure, define a function set</p>
+</li>
+<li><p><strong>相同点：</strong>“三步曲”中的后两步，也就是<strong>定义损失函数</strong>和<strong>优化参数找到最佳模型</strong>是相同的</p>
+</li>
+</ul>
+<h3 id="前向传播算法（Forward-propagation）"><a href="#前向传播算法（Forward-propagation）" class="headerlink" title="前向传播算法（Forward propagation）"></a>前向传播算法（Forward propagation）</h3><ul>
+<li><p><strong>作用：用于预测输出，计算Loss</strong></p>
+</li>
+<li><p><strong>举例：</strong></p>
+<p>前向传播公式（以$sigmoid$函数为例）：</p>
+<script type="math/tex; mode=display">
+\sigma(z)=\cfrac{1}{1+e^{-z}}，z=wx+b</script><p><img src="1544584038542.png" width="500px"></p>
+<p><img src="1544583978302.png" width="500px"></p>
+<p>上面两个例子的结果：</p>
+<script type="math/tex; mode=display">
+f(\begin{bmatrix} 1 \\ -1 \\ \end{bmatrix})=\begin{bmatrix} 0.62 \\ 0.83 \\ \end{bmatrix}，f(\begin{bmatrix} 0 \\ 0 \\ \end{bmatrix})=\begin{bmatrix} 0.51 \\ 0.85 \\ \end{bmatrix}</script></li>
+</ul>
+<h3 id="反向传播算法（Back-propagation）"><a href="#反向传播算法（Back-propagation）" class="headerlink" title="反向传播算法（Back propagation）"></a>反向传播算法（Back propagation）</h3><ul>
+<li><p><strong>作用：</strong>用于更新模型参数</p>
+</li>
+<li><p><strong>预备知识</strong>：链式求导法则（Chain Rule）</p>
+<ul>
+<li><p><strong>Case 1：</strong>$z=h(y), y= g(x)$</p>
+<p>$\Delta x\to\Delta y\to\Delta z$，此时$\cfrac{dz}{dx}=\cfrac{dz}{dy}\cfrac{dy}{dx}$</p>
+</li>
+<li><p><strong>Case2：</strong>$z=k(x,y),x=g(s),y=h(s)$</p>
+<p>$\Delta s\to\Delta x\to\Delta z$</p>
+<p>$\Delta s\to\Delta y\to\Delta z$，此时$\cfrac{dz}{ds}=\cfrac{\partial z}{\partial x}\cfrac{dx}{ds}+\cfrac{\partial z}{\partial y}\cfrac{dy}{ds}$</p>
+</li>
+</ul>
+</li>
+<li><p><strong>反向传播算法（Back propagation）</strong></p>
+<p>损失函数：</p>
+<script type="math/tex; mode=display">
+L(\theta)=\sum_{n=1}^{N}l^{(n)}(\theta) \Rightarrow \cfrac{\partial L(\theta)}{\partial w}=\sum_{n=1}^N\cfrac{\partial l^{(n)}(\theta)}{\partial w}</script><blockquote>
+<p>其中</p>
+<ul>
+<li>n：表示每个样例</li>
+<li>N：表示样例的总数</li>
+<li>$l^{(n)}(\theta)$ ：表示第$n$个样例的损失值</li>
+<li><p>$L(\theta)=\sum_{n=1}^{N}l^{(n)}(\theta) $：表示N个样例的总损失值</p>
+</li>
+<li><p>$\theta=\{w1,w2,w3,w4,…,b1,b2,…\}$：为深度神经网络的参数</p>
+</li>
+</ul>
+<p>这个例子的意思是通过Batch_size=N的一个batch来更新一次所有参数 $\theta$</p>
+</blockquote>
+<p>为了问题简单化，抽取其中的一个样本来计算 $\cfrac{\partial l(\theta)}{\partial w}$，会计算这个，其他样本同理也可以计算，最后加起来就可以得到  $\cfrac{\partial L(\theta)}{\partial w}$ ，从而去更新参数 $w$ 。</p>
+<p>根据链式求导法则， $\cfrac{\partial l}{\partial w}=\cfrac{\partial l}{\partial z}\cfrac{\partial z}{\partial w}$</p>
+<p><strong>我们可以通过下图整体性的理解一下反向传播算法</strong></p>
+<p><img src="1544620071134.png" width="450px"></p>
+<p>反向传播算法虽然名为“反向传播”，但是实际上是正着需要计算一遍，反着也需要计算一遍</p>
+<p>正向计算时，我们能得到所有的 $\cfrac{\partial z}{\partial w}$，都等于当前层的输入值，反向计算时，计算的是$\cfrac{\partial l}{\partial z}$，然后将他们两个相乘就能得到$\cfrac{\partial l}{\partial w}$，这就是总体的思想，至于怎么正向计算求$\cfrac{\partial z}{\partial w}$和反向计算求$\cfrac{\partial l}{\partial z}$，往下看~</p>
+<p><strong>其中反向计算部分 $\cfrac{\partial l}{\partial z}$待会儿再讨论，因为它比较麻烦，我们先计算正向计算部分$\cfrac{\partial z}{\partial w}$ </strong></p>
+<ul>
+<li><p><strong>正向计算部分：</strong></p>
+<p>看下面这个网络，我们能轻易地计算出 $\cfrac{\partial z}{\partial w_1}=x_1 ，\cfrac{\partial z}{\partial w_2}=x_2$</p>
+<p><img src="1544616480727.png" width="450px"></p>
+<p>而且我们还能发现，其实$\cfrac{\partial z}{\partial w}$的值就是该层神经元的输入值，因此如果带入一些数据进去计算，可以得到下图</p>
+<p><img src="1544617223333.png" width="450px"></p>
+<p>可以看到，每一层的$\cfrac{\partial z}{\partial w}$都等于该层的输入值</p>
+<blockquote>
+<p>上图在计算时，激活函数采用 $sigmoid$函数</p>
+</blockquote>
+</li>
+<li><p><strong>反向计算部分：</strong></p>
+<p>计算完了$\cfrac{\partial z}{\partial w}$，再来计算$\cfrac{\partial l}{\partial z}$，同样根据链式求导法则， $\cfrac{\partial l}{\partial z}=\cfrac{\partial l}{\partial a}\cfrac{\partial a}{\partial z}$，其中$a=\sigma(z)$</p>
+<p>上式中，$\cfrac{\partial a}{\partial z}=\sigma’(z)=\sigma(z)(1-\sigma(z))$ 是一个可以算出来的数值，而$\cfrac{\partial l}{\partial a}$ 怎么来计算呢？我们先来看看下面这张图</p>
+<p><img src="1544617793774.png" width="500px"></p>
+<blockquote>
+<p>这张图中，第二层的两个神经元加权求和后的值分别为 $z’$ 和 $z’’$ </p>
+</blockquote>
+<p>通过这张图，根据链式求导法则我们能计算出$\cfrac{\partial l}{\partial a}=\cfrac{\partial l}{\partial z’}\cfrac{\partial z’}{\partial a}+\cfrac{\partial l}{\partial z’’}\cfrac{\partial z’’}{\partial a}$，而其中的 $ \cfrac{\partial z’}{\partial a}=w_3,\cfrac{\partial z’’}{\partial a}=w_4$ ，现在假设$\cfrac{\partial l}{\partial z’},\cfrac{\partial l}{\partial z’’}$已知，那么$\cfrac{\partial l}{\partial z}$也就计算出来了</p>
+<script type="math/tex; mode=display">
+\cfrac{\partial l}{\partial z}=\sigma'(z)\begin{bmatrix} w_3\cfrac{\partial l}{\partial z'}+w_4\cfrac{\partial l}{\partial z''} \end{bmatrix}</script><p><strong>(算法精华部分)</strong>可以将上式理解成一个线性的反向传播的网络（此算法因此得名），如下图所示</p>
+<p><img src="1544618843691.png" width="300px"></p>
+<blockquote>
+<p>为什么这个网络是线性的呢？</p>
+<ul>
+<li>因为$\sigma’(z)$是一个常数，在前向传播时 $z$ 的值已经被确定了，因此$\sigma’(z)=\sigma(z)(1-\sigma(z))$也是一个常数值，所以$\cfrac{\partial l}{\partial z}$相当于 $\cfrac{\partial l}{\partial z’},\cfrac{\partial l}{\partial z’’}$加权求和后乘了一个常数，也就是线性变换啦</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>回头看看我们的目标，此时$\cfrac{\partial l}{\partial w}=\cfrac{\partial l}{\partial z}\cfrac{\partial z}{\partial w}$已经可以计算出来了，结束！那是不可能的。。。前面是假设$\cfrac{\partial l}{\partial z’}，\cfrac{\partial l}{\partial z’’}$ 已知，但实际未知，现在就要来求他们了，可以分为以下两种情况</p>
+<ul>
+<li><p><strong>Case1：刚才那张图的第二层就是输出层，也就是下图的情况</strong></p>
+<p><img src="1544619422616.png" width="500px"></p>
+<p>此时， $\cfrac{\partial l}{\partial z’}=\cfrac{\partial l}{\partial y_1}\cfrac{\partial y_1}{\partial z’}，\cfrac{\partial l}{\partial z’’}=\cfrac{\partial l}{\partial y_2}\cfrac{\partial y_2}{\partial z’’}$，其中 $\cfrac{\partial l}{\partial y_1}, \cfrac{\partial l}{\partial y_2}$很好求，$\cfrac{\partial y_1}{\partial z’}=\sigma’(z’)$，搞定收工！</p>
+</li>
+<li><p><strong>Case2：刚才那张图的第二层不是输出层（此时是一个深度网络），也就是下图的情况</strong></p>
+<p><img src="1544619688474.png" width="450px"></p>
+<p>此时</p>
+<script type="math/tex; mode=display">
+\cfrac{\partial l}{\partial z'}=\cfrac{\partial l}{\partial a'}\cfrac{\partial a'}{\partial z'}, 其中\cfrac{\partial a'}{\partial z'}=\sigma'(z'),
+\cfrac{\partial l}{\partial a'}=\cfrac{\partial l}{\partial z_a}\cfrac{\partial z_a}{\partial a'}+\cfrac{\partial l}{\partial z_b}\cfrac{\partial z_b}{\partial a'}
+
+\\ \cfrac{\partial l}{\partial z''}=\cfrac{\partial l}{\partial a''}\cfrac{\partial a''}{\partial z'}
+其中\cfrac{\partial a'}{\partial z''}=\sigma'(z''),
+\cfrac{\partial l}{\partial a''}=\cfrac{\partial l}{\partial z_a}\cfrac{\partial z_a}{\partial a''}+\cfrac{\partial l}{\partial z_b}\cfrac{\partial z_b}{\partial a''}</script><p>把上式转换成反向传播的形式</p>
+<script type="math/tex; mode=display">
+\cfrac{\partial l}{\partial z'}=\sigma'(z')\begin{bmatrix} w_5\cfrac{\partial l}{\partial z_a}+w_6\cfrac{\partial l}{\partial z_b} \end{bmatrix}\\
+\cfrac{\partial l}{\partial z''}=\sigma'(z'')\begin{bmatrix} w_7\cfrac{\partial l}{\partial z_a}+w_8\cfrac{\partial l}{\partial z_b} \end{bmatrix}</script><p><strong>（精华啊）</strong>也就是说，跟刚才一样，将上面的图看成一个线性的反向传播的网络，如下图所示</p>
+<p><img src="1544619858768.png" width="450px"></p>
+<p>我们可以重复上面的步骤，直到到达输出层，就转换成了Case1的情况</p>
+<blockquote>
+<p><strong>（精华中的精华啊）</strong>事实上没必要向刚才推导的那样，<strong>从前往后</strong>计算$\cfrac{\partial l}{\partial z}$，我们可以<strong>从后往前</strong>计算，就像下面这张图一样</p>
+<p><img src="1544669757677.png" width="500px"></p>
+<script type="math/tex; mode=display">
+最后一层：\cfrac{\partial l}{\partial z_5}=\cfrac{\partial l}{\partial y_1}\cfrac{\partial y_1}{\partial z_5},\cfrac{\partial l}{\partial z_6}=\cfrac{\partial l}{\partial y_2}\cfrac{\partial y_2}{\partial z_6}
+\\倒数第二层：\cfrac{\partial l}{\partial z_3}=\sigma'(z_3)\begin{bmatrix} w_9\cfrac{\partial l}{\partial z_5}+w_{10}\cfrac{\partial l}{\partial z_6} \end{bmatrix} 
+,\cfrac{\partial l}{\partial z_4}=\sigma'(z_4)\begin{bmatrix} w_{11}\cfrac{\partial l}{\partial z_5}+w_{12}\cfrac{\partial l}{\partial z_6} \end{bmatrix} 
+\\倒数第三层：\cfrac{\partial l}{\partial z_1}=\sigma'(z_1)\begin{bmatrix} w_5\cfrac{\partial l}{\partial z_3}+w_6\cfrac{\partial l}{\partial z_4} \end{bmatrix} 
+,\cfrac{\partial l}{\partial z_2}=\sigma'(z_2)\begin{bmatrix} w_7\cfrac{\partial l}{\partial z_3}+w_8\cfrac{\partial l}{\partial z_4} \end{bmatrix}
+\\......</script></blockquote>
+</li>
+</ul>
+<p>综上，通过前面的<strong>正向计算</strong>和<strong>反向计算</strong>分别得到所有的 $\cfrac{\partial z}{\partial w}$和$\cfrac{\partial l}{\partial z}$，再将他们相乘就得到了$\cfrac{\partial l}{\partial w}$</p>
+<blockquote>
+<p>bias的更新同理，只是有一点小区别是$\cfrac{\partial z}{\partial w}$每次都是等于该层神经元的输入，而$\cfrac{\partial z}{\partial b}$每次都是等于1的（这个求导很简单，看下面的公式），也就是说，只用计算$\cfrac{\partial l}{\partial z}$就能知道bias的所有梯度值了，从而去更新它</p>
+<script type="math/tex; mode=display">
+z=\sum_i^nw_ix+b_i</script></blockquote>
+</li>
+</ul>
+<h3 id="深度学习中的过拟合与欠拟合（Overfitting-amp-Underfitting）"><a href="#深度学习中的过拟合与欠拟合（Overfitting-amp-Underfitting）" class="headerlink" title="深度学习中的过拟合与欠拟合（Overfitting &amp; Underfitting）"></a>深度学习中的过拟合与欠拟合（Overfitting &amp; Underfitting）</h3><p>前面有提到深度学习中的过拟合与欠拟合的<strong>定义</strong>和<strong>解决方法</strong>，其实深度学习与之类似，因为深度学习就是机器学习的一个分支，但是深度学习有它自己的特殊性，所以其过拟合与欠拟合的解决方法与传统的机器学习相比也有它的特殊方法</p>
+<ul>
+<li><p><strong>过拟合解决方法</strong></p>
+<p>首先，一个老生常谈的事情，只有在训练集是能够表现得好（即没有欠拟合）的模型才有可能是过拟合的。所以，训练好模型之后的第一件事情是测试模型在训练集上的准确率，如果表现得很好，但是拿到测试集（验证集）上做测试时表现糟糕，那这就是过拟合的表现了，可以使用下面的方法来解决</p>
+<ul>
+<li><strong>提前停止训练（Early Stopping）</strong></li>
+<li><strong><a href="#Regularization">正则化（Regularization）</a></strong></li>
+<li><p><strong><a href="#Dropout">随机失活（Dropout）</a></strong></p>
+</li>
+<li><p><strong>获取更多数据（万能药）</strong></p>
+<p>有时候不能获得更多数据，但是我们可以人为“造”数据，比如MNIST手写数字集中的每张图片，我们可以将其中的内容顺时针、逆时针旋转15°，这样数据集一下就是原来的3倍了，并且这样做是符合现实情况的，因为在日常生活中有人写字喜欢向左倾斜，有人喜欢向右倾斜</p>
+</li>
+</ul>
+</li>
+<li><p><strong>欠拟合解决方法</strong></p>
+<p>传统的机器学习方法（比如：决策树，SVM等）在训练集上训练好模型后，在训练集上的正确率可能会非常高，但是深度学习中，训练好模型后，并不一定会在训练集上表现得很好，因为很可能 $loss$ 很可能停在了局部最小值（local minimum）或者鞍点（saddle point）处，此时可以采用下方的方法来尝试解决</p>
+<ul>
+<li><p><strong>选择合适的损失函数（Choosing proper loss）</strong></p>
+<p>做分类任务时选择Cross-Entropy而不是MSE</p>
+</li>
+<li><p><strong>选择合适的Batch_size大小 &amp; 批标准化（Batch Normalization）</strong></p>
+</li>
+<li><p><strong>选择合适的激活函数（New activation function）</strong></p>
+<p>使用sigmoid函数作为激活函数时，可能会导致梯度消失（Vanishing Gradient）问题</p>
+<p>为避免梯度消失和梯度爆炸可以选择ReLU函数（Rectified Linear Unit ）作为激活函数</p>
+</li>
+<li><p><strong>自适应学习率（Adaptive Learning Rate）</strong></p>
+</li>
+<li><p><strong>采用动量优化方法（Momentum）</strong></p>
+<p>例如：Adam算法（RMSProp + Momentum）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ReLU函数与Maxout函数"><a href="#ReLU函数与Maxout函数" class="headerlink" title="ReLU函数与Maxout函数"></a>ReLU函数与Maxout函数</h3><ul>
+<li><p><strong>ReLU函数</strong></p>
+<p>全称：Rectified Linear Unit，线性整流函数，如下图所示：</p>
+<p><img src="1544704562172.png" width="200px"></p>
+<blockquote>
+<p>我的理解是，使用这个激活函数之后，如果某些神经元加权求和后的值小于0，根据上图，激活值就等于0，此时就相当于dropout掉了这一部分神经元，这样能使得网络变得更加简单（更苗条），同时 $z$ 经过ReLU函数之后也不会出现梯度减小的问题，如下图所示，右图是将左图看成dropout之后的样子</p>
+<p><img src="1544704861896.png" width="700px"></p>
+</blockquote>
+<p><strong>ReLU函数还有很多变体：</strong></p>
+<ul>
+<li><p><strong>Leaky ReLU</strong></p>
+<p>如下图所示</p>
+<p><img src="1544705183268.png" width="400/"></p>
+</li>
+<li><p><strong>Parametric ReLU</strong></p>
+<p>如上图所示，其中的 $\alpha$ 也可以当做参数通过梯度下降去调整和学习</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Maxout函数</strong></p>
+<blockquote>
+<p>说实话这部分内容不太好写清楚，如果觉得迷糊可以看李宏毅老师在b站的机器学习视频</p>
+</blockquote>
+<p>Maxout可以理解成是一种激活函数，但它与一般的激活函数（比如阈值函数、S函数等）不同，它是一种可以学习的激活函数，什么意思呢？贴一张神图（来自李宏毅老师/余老师PPT）</p>
+<p><img src="1544705683445.png" width="600/"></p>
+<p>上图中的激活函数可以理解成红框框出来的neuron，里面有两个elements（也可以设置为多个），它会选择前面两个 $z$ 中的<strong>较大值</strong>输出作为下一层的输入。</p>
+<p>再看下面这张图：</p>
+<p><img src="1544705496244.png" width="600/"></p>
+<p><strong>上图中</strong>的左图是ReLU函数作为激活函数时的情况，如果把Relu函数画出来就像<strong>下图中</strong>的左图一样，而<strong>上图中</strong>的右图是使用Maxout作为激活函数时的情况，并且连接此神经元的权值为 $w,b,0,0$，此时如果把Maxout函数画出来就像<strong>下图中</strong>的右图一样。</p>
+<p><img src="1544705949950.png" width="500/"></p>
+<p>观察上图我们发现：</p>
+<ul>
+<li>当后两个权值都为0时，$z_1=wx+b,z_2=0$，所以到Maxout函数这儿的时候，总是会选择输出$z_1$，除非$z_1$的值小于0</li>
+<li>当后两个权值都为0时，Maxout也就变成了ReLU，<strong>所以说ReLU是一种特殊的Maxout</strong></li>
+<li><p>当我们改变连接神经元的权值时，相当于就改变了Maxout这个激活函数，但通常权值是通过GD算法来自动更新的，<strong>所以Maxout可以理解成是一种可以学习的激活函数</strong></p>
+</li>
+<li><p>当连接神经元的权值发生改变时，Maxout函数可以变成很多形式，举例：</p>
+<p><img src="1544706817126.png" width="600/"></p>
+</li>
+<li><p>改变elements的个数时，可以得到多段折线的Maxout函数，如下图所示</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="1544706691308.png" width="500/"></p>
+<p><i id="Dropout"></i></p>
+<h3 id="随机失活（Dropout）做法"><a href="#随机失活（Dropout）做法" class="headerlink" title="随机失活（Dropout）做法"></a>随机失活（Dropout）做法</h3><ul>
+<li><p><strong>dropout原理</strong></p>
+<p>dropout的做法是随机失活神经网络中的一部分神经元，所以每次失活一部分神经元之后，网络结构就发生了改变，相当于一个“新的网络结构”，假设使用N个miniBatch来训练N次dropout之后的神经网络，那么就得到了N个（可能小于N个）不同的神经网络，此时再将所有网络结合起来，放到验证集/测试集上做测试，能达到较好的结果</p>
+</li>
+</ul>
+<p>  <img src="1544707391072.png" width="550/"></p>
+<blockquote>
+<p><strong>问题1：</strong>为什么每次dropout掉一部分神经元，最后再结合起来效果会更好呢？</p>
+<p><strong>答：</strong>我在一门视频课里看到的解释是，每次随机dropout掉一部分神经元，能减小神经元之间的相互依赖性，最终整体地提高神经网络的健壮性</p>
+<p><strong>问题2：</strong>使用一个miniBatch来训练一个“新的网络结构”，会不会训练集太少而导致欠拟合呢？</p>
+<p><strong>答：</strong>不会，因为虽然好像dropout之后训练的是一个新的网络结构，但实际上这N个dropout之后的神经网络是共享参数的，所以相当于所有的miniBatch数据都作用到了这个网络中，不会因为训练数据少而导致欠拟合。</p>
+</blockquote>
+<ul>
+<li><p><strong>训练阶段</strong></p>
+<p>在训练时，假设每个神经元有 $p\%$ 的概率被dropout掉</p>
+<blockquote>
+<p>在Tensorflow中使用dropout时，需要调用tf.nn.dropout()函数，其中有一个参数时<code>keep_prob</code>，它与</p>
+<p>上边的 $p\% $刚好相反，<code>keep_prob</code>表示神经元的保留概率（The probability that each element is kept.）。</p>
+</blockquote>
+<p><img src="1544707967820.png" width="700/"></p>
+</li>
+<li><p><strong>测试阶段</strong></p>
+<p>测试阶段是不用dropou的，但是有一点需要注意，在训练好的网络里，所有的参数都要乘以 $(1-p\%)$。</p>
+<blockquote>
+<p> 举例：训练阶段的dropout rate = $20\%$，训练结束之后，某一权值$w=1$，那么在做测试时，要将 $w*0.8=0.8 $</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="梯度消失（Vanishing-Gradient）与梯度爆炸（Exploding-Gradient）问题"><a href="#梯度消失（Vanishing-Gradient）与梯度爆炸（Exploding-Gradient）问题" class="headerlink" title="梯度消失（Vanishing Gradient）与梯度爆炸（Exploding Gradient）问题"></a>梯度消失（Vanishing Gradient）与梯度爆炸（Exploding Gradient）问题</h3><ul>
+<li><p><strong>梯度消失问题</strong></p>
+<p>靠近输出层的那几层梯度大，靠近输入层的梯度很小，<strong>因此靠近输入层的参数更新的很慢，最终会导致靠近输出层的那几层参数很快就收敛了（但是收敛的值是个错值，因为网络的前面就不对），而靠近输入层的参数几乎不更新</strong></p>
+</li>
+<li><p><strong>梯度爆炸问题</strong></p>
+<p>与梯度消失问题相反，靠近输出层的那几层梯度小，靠近输入层的梯度很大</p>
+</li>
+<li><p><strong>问题来源：</strong>不合适的激活函数</p>
+<p>例如：sigmoid函数会使输入衰减（如下图所示）</p>
+<p><img src="1544698003702.png" width="500px"></p>
+</li>
+<li><p><strong>问题解决方法：</strong></p>
+<p>使用其他的激活函数，比如：ReLU</p>
+</li>
+</ul>
+<h2 id="卷积神经网络（-Convolutional-Neural-Network）"><a href="#卷积神经网络（-Convolutional-Neural-Network）" class="headerlink" title="卷积神经网络（ Convolutional Neural Network）"></a>卷积神经网络（ Convolutional Neural Network）</h2><h3 id="什么样的场景适合使用CNN模型？"><a href="#什么样的场景适合使用CNN模型？" class="headerlink" title="什么样的场景适合使用CNN模型？"></a>什么样的场景适合使用CNN模型？</h3><ul>
+<li>主要用于图像处理</li>
+</ul>
+<h3 id="CNN网络结构组成"><a href="#CNN网络结构组成" class="headerlink" title="CNN网络结构组成"></a>CNN网络结构组成</h3><ul>
+<li><p><strong>输入层</strong></p>
+<p>输入层是整个神经网络的输入，在处理图像的卷积神经网络中，它一般代表了一张图片的像素矩阵。</p>
+</li>
+<li><p><strong>卷积层</strong></p>
+<p>卷积层时卷积神经网络中最重要的部分，和传统的全连接层不同，卷积层中每一个节点的输入只是上一层神经网络的一小块，这个小块常用的大小有3x3或者5x5。<strong>卷积层试图将神经网络中的每一小块进行更加深入的分析从而得到抽象程度更高的特征。</strong></p>
+</li>
+<li><p><strong>池化层</strong></p>
+<p>池化层可以认为是将一张分辨率较高的图片转化为分辨率较低的图片。通过池化层可以进一步缩小最后全连接层中结点的个数，从而达到减少整个神经网络中参数的目的。</p>
+</li>
+<li><p><strong>全连接层</strong></p>
+<p>在卷积神经网络的最后，一般会是由1到2个全连接层来给出最后的分类结果。经过几轮卷积层he池化层的处理之后，可以认为图像中的信息已经被抽象成了信息含量更高的特征。我们可以将卷积层和池化层看成自动提取图像特征的过程，在特征提取完成之后，仍然需要使用全连接层来完成分类任务。</p>
+</li>
+<li><p><strong>Softmax层</strong></p>
+<p>跟上文提到的<strong>多分类任务的输出层为什么要使用Softmax</strong>原因一样，softmax层主要用于分类问题，通过它，可以得到当前样例属于不同种类的概率分布情况。</p>
+</li>
+</ul>
+<h3 id="为什么选择使用CNN做图像处理？"><a href="#为什么选择使用CNN做图像处理？" class="headerlink" title="为什么选择使用CNN做图像处理？"></a>为什么选择使用CNN做图像处理？</h3><ul>
+<li><p>一张图片上的某些重要特征（例如：鸟嘴）相对于整张图片来说非常小，而CNN中的一个神经元只关注图像中的某一局部的特征，正因为只关注了某一个局部的特征，所以能够大大减小网络的参数（所有神经元共享卷积核中的参数）</p>
+<blockquote>
+<p>附上一张神图，下图中6x6的image在做卷积时，第一个Neural总是只关注左上角的3x3的局部区域（[0:2][0:2]），而第二个Neural总是只关注[0:2][1:3]的区域，以此类推……</p>
+<p><img src="1544673331986.png" width="500px" id="CNN神图"></p>
+</blockquote>
+</li>
+<li><p>某些重要特征可能出现图片的不同位置，CNN的中的神经元以卷积核的尺寸大小去扫描整张图片，所以能找到图片上不同位置上的同一特征，例如：在图片左上角的鸟嘴和右下角的鸟嘴</p>
+</li>
+<li><p>CNN中的池化操作（非必需）能减小图片的尺寸但保留对象的特征</p>
+</li>
+</ul>
+<h3 id="CNN模型的一些其他细节"><a href="#CNN模型的一些其他细节" class="headerlink" title="CNN模型的一些其他细节"></a>CNN模型的一些其他细节</h3><ul>
+<li><p><strong>网络的非全连接</strong></p>
+<p>跟传统的全连接神经网络不同，CNN中的神经元只做部分链接，可以参考<a href="#CNN神图"><strong>刚才上面那张神图</strong></a></p>
+<p>第一个神经元只跟${1, 2, 3, 7, 8, 9,13,14,15}​$号输入层神经元相连接，第二个神经元只跟${ 2, 3, 4, 8, 9,10,14,15,16}​$号输入层神经元相连接，前面也提到了，这样做的主要目的是让一个神经元只关注图像中的某一局部的特征，而不用关注整张图片，这样子做能带来很多好处：<strong>能使得参数相对于全连接神经网络大幅度减少，从而加快了计算速度，降低了模型过拟合的可能性</strong></p>
+</li>
+<li><p><strong>卷积核（Kernel）/过滤器（Filter）</strong></p>
+<p>过滤器可以将当前层神经网络上的一个子节点矩阵转化为下一层神经网络上的一个单位节点矩阵。</p>
+<blockquote>
+<p>单位节点矩阵：指的是长和宽都是1但是深度不限的节点矩阵</p>
+</blockquote>
+<p>过滤器的常用尺寸有3x3、5x5。因为过滤器处理的矩阵深度和当前层神经网络节点矩阵的深度是一致的，所以虽然节点矩阵是三维的，但是过滤器的尺寸只需要指定两个维度。过滤器中另一个需要人工指定的设置是处理得到的单位节点矩阵的深度，这个设置称为过滤器的深度。</p>
+<blockquote>
+<p>上面这句话的意思是：你需要设置这个卷积层有多少个[长x宽x深度] 的Filter，可以理解为，一个Filter就代表图像中的一个局部特征</p>
+<p>注意：过滤器的尺寸指的是一个过滤器输入节点矩阵的大小，而深度指的是输出单位节点矩阵的深度。</p>
+</blockquote>
+</li>
+<li><p><strong>步长（Stride）与填充（Padding）</strong></p>
+<p>这一部分主要是要会计算输出层矩阵的长度和宽度，公式如下：</p>
+<script type="math/tex; mode=display">
+out_{length}=\lfloor \frac{in_{length}+2pad-filter_{length}}{stride_{length}}+1\rfloor\\
+out_{width}=\lfloor\frac{in_{width}+2pad-filter_{width}}{stride_{width}}+1\rfloor</script><p>其中 $out_{length}$ 表示输出层矩阵的长度，它等于输入层矩阵长度加上2倍的填充值减去Filter的长度再除以长度方向上的步长+1的向下取整值。</p>
+<p>类似的， $out_{width}$ 表示输出层矩阵的宽度，它等于输入层矩阵的宽度加上2倍的填充值减去Filter的长度再除以宽度方向的步长+1的向下取整值。</p>
+</li>
+</ul>
+<h2 id="循环神经网络（Recurrent-Neural-Network-RNN-）"><a href="#循环神经网络（Recurrent-Neural-Network-RNN-）" class="headerlink" title="循环神经网络（Recurrent Neural Network (RNN)）"></a>循环神经网络（Recurrent Neural Network (RNN)）</h2><h3 id="什么样的场景适合使用RNN模型？"><a href="#什么样的场景适合使用RNN模型？" class="headerlink" title="什么样的场景适合使用RNN模型？"></a>什么样的场景适合使用RNN模型？</h3><h3 id="什么是序列数据？"><a href="#什么是序列数据？" class="headerlink" title="什么是序列数据？"></a>什么是序列数据？</h3><h3 id="即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？"><a href="#即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？" class="headerlink" title="即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？"></a>即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？</h3><h3 id="LSTM与一般的RNN相比，优势在哪？"><a href="#LSTM与一般的RNN相比，优势在哪？" class="headerlink" title="LSTM与一般的RNN相比，优势在哪？"></a>LSTM与一般的RNN相比，优势在哪？</h3><p>参考资料：</p>
+<p><a href="http://speech.ee.ntu.edu.tw/~tlkagk/" target="_blank" rel="noopener">台大李宏毅 (Hung-yi Lee)老师 《机器学习入门》课程PPT</a></p>
+<p>科大余艳玮老师《人工智能》课程PPT</p>
+<p>《百面机器学习 算法工程师带你去面试》人名邮电出版社</p>
+<p>《TensorFlow 实战Google深度学习框架》电子工业出版社</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果你觉得此页面对你有帮助，或者想资瓷我一下，欢迎点击下面打赏哦，谢谢~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChatQR.png" alt="陈建虎 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPayQR.png" alt="陈建虎 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/科大/" rel="tag"># 科大</a>
+          
+            <a href="/tags/人工智能/" rel="tag"># 人工智能</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/11/第9课:图像直方图(histogram)-计算机视觉基础:python+opencv学习笔记/" rel="next" title="第9课:图像直方图(histogram)-计算机视觉基础:python+opencv学习笔记">
+                <i class="fa fa-chevron-left"></i> 第9课:图像直方图(histogram)-计算机视觉基础:python+opencv学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/100x100.gif" alt="陈建虎">
+            
+              <p class="site-author-name" itemprop="name">陈建虎</p>
+              <p class="site-description motion-element" itemprop="description">不想长大的石头</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/jianhuchen" title="GitHub &rarr; https://github.com/jianhuchen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cjh18@mail.ustc.edu.cn" title="E-Mail &rarr; mailto:cjh18@mail.ustc.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/cjh2018" title="Weibo &rarr; https://weibo.com/cjh2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://keyanjie.net" title="http://keyanjie.net" rel="noopener" target="_blank">柯延杰</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#绪论"><span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AI的四大主流流派"><span class="nav-text">AI的四大主流流派</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AI-机器学习，深度学习三者之间的异同和关联"><span class="nav-text">AI , 机器学习，深度学习三者之间的异同和关联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习分为两个阶段"><span class="nav-text">机器学习分为两个阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习的分类"><span class="nav-text">机器学习的分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归（Linear-Regression）"><span class="nav-text">线性回归（Linear Regression）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是机器学习？"><span class="nav-text">什么是机器学习？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性回归model"><span class="nav-text">线性回归model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习训练模型“三步曲”"><span class="nav-text">机器学习训练模型“三步曲”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习中的过拟合与欠拟合（Overfitting-amp-Underfitting）"><span class="nav-text">机器学习中的过拟合与欠拟合（Overfitting &amp; Underfitting）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差来源分析：偏差、方差"><span class="nav-text">误差来源分析：偏差、方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三类数据集"><span class="nav-text">三类数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉验证（Cross-Validation）"><span class="nav-text">交叉验证（Cross Validation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型参数-v-s-超参数"><span class="nav-text">模型参数 v.s. 超参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则化（Regularization）"><span class="nav-text">正则化（Regularization）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何加快模型的训练？"><span class="nav-text">如何加快模型的训练？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几个易混的名词：-Epoch、-Iteration、Batch-size、-Batch-num"><span class="nav-text">几个易混的名词： Epoch、 Iteration、Batch_size、 Batch_num</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类（Classification）"><span class="nav-text">分类（Classification）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么不用线性回归来做分类？"><span class="nav-text">为什么不用线性回归来做分类？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归与线性回归（Logistic-Regression-amp-Linear-Regression）对比"><span class="nav-text">逻辑回归与线性回归（Logistic Regression &amp; Linear Regression）对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？"><span class="nav-text">为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分类任务的输出层为什么要使用Softmax"><span class="nav-text">多分类任务的输出层为什么要使用Softmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Softmax与sigmoid"><span class="nav-text">Softmax与sigmoid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归（Logistic-Regression）的局限性"><span class="nav-text">逻辑回归（Logistic Regression）的局限性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度学习（Deep-learning）"><span class="nav-text">深度学习（Deep learning）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要深度神经网络？"><span class="nav-text">为什么需要深度神经网络？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较训练过程中，机器学习与深度学习的“三步曲”的异同"><span class="nav-text">比较训练过程中，机器学习与深度学习的“三步曲”的异同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前向传播算法（Forward-propagation）"><span class="nav-text">前向传播算法（Forward propagation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反向传播算法（Back-propagation）"><span class="nav-text">反向传播算法（Back propagation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习中的过拟合与欠拟合（Overfitting-amp-Underfitting）"><span class="nav-text">深度学习中的过拟合与欠拟合（Overfitting &amp; Underfitting）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReLU函数与Maxout函数"><span class="nav-text">ReLU函数与Maxout函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机失活（Dropout）做法"><span class="nav-text">随机失活（Dropout）做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度消失（Vanishing-Gradient）与梯度爆炸（Exploding-Gradient）问题"><span class="nav-text">梯度消失（Vanishing Gradient）与梯度爆炸（Exploding Gradient）问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积神经网络（-Convolutional-Neural-Network）"><span class="nav-text">卷积神经网络（ Convolutional Neural Network）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么样的场景适合使用CNN模型？"><span class="nav-text">什么样的场景适合使用CNN模型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN网络结构组成"><span class="nav-text">CNN网络结构组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么选择使用CNN做图像处理？"><span class="nav-text">为什么选择使用CNN做图像处理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN模型的一些其他细节"><span class="nav-text">CNN模型的一些其他细节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环神经网络（Recurrent-Neural-Network-RNN-）"><span class="nav-text">循环神经网络（Recurrent Neural Network (RNN)）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么样的场景适合使用RNN模型？"><span class="nav-text">什么样的场景适合使用RNN模型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是序列数据？"><span class="nav-text">什么是序列数据？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？"><span class="nav-text">即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSTM与一般的RNN相比，优势在哪？"><span class="nav-text">LSTM与一般的RNN相比，优势在哪？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈建虎</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  |本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz',
+        appKey: 'FTmW5pj1DN6mdeaKvW8ajsIo',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!\n填写正确的邮箱，这样如果有人回复您就会有邮件提醒哦~ \n此回复框MarkDown全语法支持',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz",
+                'X-LC-Key': "FTmW5pj1DN6mdeaKvW8ajsIo",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

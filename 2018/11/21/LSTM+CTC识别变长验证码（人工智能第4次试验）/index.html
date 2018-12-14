@@ -260,7 +260,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">13</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span></a>
 
   </li>
         
@@ -642,6 +642,7 @@
 <p>拿上面产生的三张验证码的字符串’196’、‘76924’和‘58407’来举例，他们的<code>dense tensor</code>形式如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; [[<span class="number">1</span>,<span class="number">9</span>,<span class="number">6</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">&gt;  [<span class="number">7</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">4</span>]</span><br><span class="line">&gt;  [<span class="number">5</span>,<span class="number">8</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">7</span>]]</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
+<p>&gt;</p>
 <blockquote>
 <p>把他们转换成系数矩阵的形式就像这样：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; indecs = [[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">0</span>],[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">4</span>],[<span class="number">2</span>,<span class="number">0</span>],[<span class="number">2</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">4</span>]]</span><br><span class="line">&gt; values = [<span class="number">1</span>,<span class="number">9</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">7</span>]</span><br><span class="line">&gt; dense_shape = [<span class="number">3</span>,<span class="number">5</span>]</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
@@ -678,12 +679,12 @@
 <p>这个函数的第9行将验证码的颜色变成了单通道，原因也是我希望训练速度能快一些</p>
 <p>函数里面涉及到了很多数据格式的转换，在本实验中的总体的数据流如下：</p>
 <blockquote>
-<p>gen_verification_code()—&gt;[batch_size, seq_len, num_features]</p>
-<p>—&gt;LSTM—&gt;[batch_size, seq_len, cell.output_size]—&gt;reshape</p>
-<p>—&gt;[batch_size*seq_len, num_hidden]—&gt;affine projection A*W+b</p>
-<p>—&gt;[batch_size*seq_len, num_classes]—&gt;reshape</p>
-<p>—&gt;[batch_size, seq_len, num_classes]—&gt;transpose</p>
-<p>—&gt;[seq_len, batch_size, num_classes]</p>
+<p>gen_verification_code()—-&gt;[batch_size, seq_len, num_features]</p>
+<p>—-&gt;LSTM—-&gt;[batch_size, seq_len, cell.output_size]—-&gt;reshape</p>
+<p>—-&gt;[batch_size*seq_len, num_hidden]—-&gt;affine projection A*W+b</p>
+<p>—-&gt;[batch_size*seq_len, num_classes]—-&gt;reshape</p>
+<p>—-&gt;[batch_size, seq_len, num_classes]—-&gt;transpose</p>
+<p>—-&gt;[seq_len, batch_size, num_classes]</p>
 </blockquote>
 <p>至于为什么要做这么繁琐的数据转换，下面马上要提到啦</p>
 <h3 id="2-2-4-定义LSTM网络模型"><a href="#2-2-4-定义LSTM网络模型" class="headerlink" title="2.2.4 定义LSTM网络模型"></a>2.2.4 定义LSTM网络模型</h3><p>整体的网络结构是：输入单元—&gt;64个隐藏单元（循环体）—&gt;12个输出单元</p>
@@ -909,7 +910,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1386,6 +1387,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
   

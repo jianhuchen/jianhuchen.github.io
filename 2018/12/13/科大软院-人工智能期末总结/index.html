@@ -150,7 +150,7 @@
 <meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544707967820.png">
 <meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544698003702.png">
 <meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544673331986.png">
-<meta property="og:updated_time" content="2018-12-14T02:20:56.723Z">
+<meta property="og:updated_time" content="2018-12-14T04:50:24.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="科大软院-人工智能期末总结">
 <meta name="twitter:description" content="仅做自己复习使用，如有错误，感谢告知！ 老师课件里的小猴子~到底该怎么更新参数？  绪论AI的四大主流流派 符号主义（Symbolism） 连接主义（Connectionism） 行为主义（Behaviourism） 统计主义（Statisticsism）   机器学习属于统计主义  AI , 机器学习，深度学习三者之间的异同和关联 包含关系  人工智能包含机器学习，机器学习包含深度学习  机器学">
@@ -517,7 +517,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-14 10:20:56" itemprop="dateModified" datetime="2018-12-14T10:20:56+08:00">2018-12-14</time>
+                <time title="修改时间：2018-12-14 12:50:24" itemprop="dateModified" datetime="2018-12-14T12:50:24+08:00">2018-12-14</time>
               
             
           </span>
@@ -903,7 +903,7 @@ L(f)=\cfrac{1}{2}\sum_n(f_{w,b}(x^{(n)})-\hat{y}^{(n)})^2</script></li>
 </ul>
 <blockquote>
 <p>（以下说明中， $a$ 为输出层的输出值，$y$ 为样例的真实标签，$z$ 为输出层神经元加权求和后还没有经过激活函数运算的值）</p>
-<p>其实说白了就是如果使用均方误差，那么对 $w$ 和 $b$ 分别计算偏微分之后得到的梯度 $\nabla L=[(a-y)\sigma’(z)x, (a-y)\sigma’(z)]$，此时两者的梯度都与激活函数 $\sigma$ 的一阶导数成正比，但是我们观察 $sigmoid$函数的图像会发现它的一阶导数最大的时候在 $z=0.5$ 时，此时也才等于1，而且绝大多数时候都是小于1的，更新时前面还要乘以一个学习率 $\eta $ ，所以会导致更新的很慢。</p>
+<p>其实说白了就是如果使用均方误差，那么对 $w$ 和 $b$ 分别计算偏微分之后得到的梯度 $\nabla L=[(a-y)\sigma’(z)x, (a-y)\sigma’(z)]$，此时两者的梯度都与激活函数 $\sigma$ 的一阶导数成正比，但是我们观察 $sigmoid$函数的图像会发现它的一阶导数最大的时候在 $z=0.5$ 时，此时也才等于0.25，而且绝大多数时候都是小于0.25的，更新时前面还要乘以一个学习率 $\eta $ ，所以会导致更新的很慢。</p>
 <p><img src=".\clip_image001.png" width="300px/"></p>
 <p>但是如果采用Cross-Entropy来做损失函数，对 $w$ 和 $b$ 分别做平偏微分之后得到的梯度 $\nabla L=[(a-y)x, a-y]$，此时的两者的梯度与激活函数无关，与预测值 $a$ 和真实值 $z$之间的差值成正比，这也正是我们所希望的，即预测值与真实值差距越大，我们希望参数更新越快，预测值与真实值差距越小，我们希望参数更新越慢</p>
 </blockquote>
@@ -1168,16 +1168,14 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
 <h3 id="随机失活（Dropout）做法"><a href="#随机失活（Dropout）做法" class="headerlink" title="随机失活（Dropout）做法"></a>随机失活（Dropout）做法</h3><ul>
 <li><p><strong>dropout原理</strong></p>
 <p>dropout的做法是随机失活神经网络中的一部分神经元，所以每次失活一部分神经元之后，网络结构就发生了改变，相当于一个“新的网络结构”，假设使用N个miniBatch来训练N次dropout之后的神经网络，那么就得到了N个（可能小于N个）不同的神经网络，此时再将所有网络结合起来，放到验证集/测试集上做测试，能达到较好的结果</p>
-</li>
-</ul>
 <p>  <img src="1544707391072.png" width="550/"></p>
 <blockquote>
 <p><strong>问题1：</strong>为什么每次dropout掉一部分神经元，最后再结合起来效果会更好呢？</p>
-<p><strong>答：</strong>我在一门视频课里看到的解释是，每次随机dropout掉一部分神经元，能减小神经元之间的相互依赖性，最终整体地提高神经网络的健壮性</p>
+<p> <strong>答：</strong>我在一门视频课里看到的解释是，每次随机dropout掉一部分神经元，能减小神经元之间的相互依赖性，最终整体地提高神经网络的健壮性</p>
 <p><strong>问题2：</strong>使用一个miniBatch来训练一个“新的网络结构”，会不会训练集太少而导致欠拟合呢？</p>
 <p><strong>答：</strong>不会，因为虽然好像dropout之后训练的是一个新的网络结构，但实际上这N个dropout之后的神经网络是共享参数的，所以相当于所有的miniBatch数据都作用到了这个网络中，不会因为训练数据少而导致欠拟合。</p>
 </blockquote>
-<ul>
+</li>
 <li><p><strong>训练阶段</strong></p>
 <p>在训练时，假设每个神经元有 $p\%$ 的概率被dropout掉</p>
 <blockquote>
@@ -1264,7 +1262,7 @@ out_{width}=\lfloor\frac{in_{width}+2pad-filter_{width}}{stride_{width}}+1\rfloo
 <p>类似的， $out_{width}$ 表示输出层矩阵的宽度，它等于输入层矩阵的宽度加上2倍的填充值减去Filter的长度再除以宽度方向的步长+1的向下取整值。</p>
 </li>
 </ul>
-<h2 id="循环神经网络（Recurrent-Neural-Network-RNN-）"><a href="#循环神经网络（Recurrent-Neural-Network-RNN-）" class="headerlink" title="循环神经网络（Recurrent Neural Network (RNN)）"></a>循环神经网络（Recurrent Neural Network (RNN)）</h2><h3 id="什么样的场景适合使用RNN模型？"><a href="#什么样的场景适合使用RNN模型？" class="headerlink" title="什么样的场景适合使用RNN模型？"></a>什么样的场景适合使用RNN模型？</h3><h3 id="什么是序列数据？"><a href="#什么是序列数据？" class="headerlink" title="什么是序列数据？"></a>什么是序列数据？</h3><h3 id="即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？"><a href="#即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？" class="headerlink" title="即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？"></a>即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？</h3><h3 id="LSTM与一般的RNN相比，优势在哪？"><a href="#LSTM与一般的RNN相比，优势在哪？" class="headerlink" title="LSTM与一般的RNN相比，优势在哪？"></a>LSTM与一般的RNN相比，优势在哪？</h3><p>参考资料：</p>
+<h2 id="循环神经网络（Recurrent-Neural-Network-RNN-）"><a href="#循环神经网络（Recurrent-Neural-Network-RNN-）" class="headerlink" title="循环神经网络（Recurrent Neural Network (RNN)）"></a>循环神经网络（Recurrent Neural Network (RNN)）</h2><h3 id="什么样的场景适合使用RNN模型？"><a href="#什么样的场景适合使用RNN模型？" class="headerlink" title="什么样的场景适合使用RNN模型？"></a>什么样的场景适合使用RNN模型？</h3><h3 id="什么是序列数据？"><a href="#什么是序列数据？" class="headerlink" title="什么是序列数据？"></a>什么是序列数据？</h3><h3 id="即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？"><a href="#即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？" class="headerlink" title="即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？"></a>即使只有一层的RNN模型，仍可能出现梯度消失和梯度爆炸，为什么？</h3><h3 id="LSTM与一般的RNN相比，优势在哪？"><a href="#LSTM与一般的RNN相比，优势在哪？" class="headerlink" title="LSTM与一般的RNN相比，优势在哪？"></a>LSTM与一般的RNN相比，优势在哪？</h3><p><strong>参考资料：</strong></p>
 <p><a href="http://speech.ee.ntu.edu.tw/~tlkagk/" target="_blank" rel="noopener">台大李宏毅 (Hung-yi Lee)老师 《机器学习入门》课程PPT</a></p>
 <p>科大余艳玮老师《人工智能》课程PPT</p>
 <p>《百面机器学习 算法工程师带你去面试》人名邮电出版社</p>

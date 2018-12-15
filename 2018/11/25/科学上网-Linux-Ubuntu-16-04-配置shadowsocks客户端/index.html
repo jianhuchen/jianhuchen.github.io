@@ -123,7 +123,7 @@
 <meta property="og:image" content="http://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/shadowsocks-qt5-search.png">
 <meta property="og:image" content="http://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/ss-qt5-setting.png">
 <meta property="og:image" content="http://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/shadowsocks-qt5.png">
-<meta property="og:updated_time" content="2018-12-11T09:53:11.634Z">
+<meta property="og:updated_time" content="2018-12-15T03:27:43.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="科学上网-Linux(Ubuntu 16.04)配置shadowsocks客户端">
 <meta name="twitter:description" content="ubuntu16.04系统装好之后，第一件事就是要配置科学上网啦~ Linux下的Shadowsocks的客户端（下文简称为ss）有两种版本，一种是GUI的，这种有图形界面，比较适合新手使用，另一种是命令行形式的。接下来详细介绍下这两种形式的安装方法： 配置Shadowsocks命令行程序命令行版本我分了4个步骤，稍微有点繁琐，其实还好啦～ 安装ss打开终端，如果你没有安装pip那么先输入下面这个">
@@ -303,7 +303,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">29</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">30</span></a>
 
   </li>
         
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-11 17:53:11" itemprop="dateModified" datetime="2018-12-11T17:53:11+08:00">2018-12-11</time>
+                <time title="修改时间：2018-12-15 11:27:43" itemprop="dateModified" datetime="2018-12-15T11:27:43+08:00">2018-12-15</time>
               
             
           </span>
@@ -565,21 +565,26 @@
         <p>ubuntu16.04系统装好之后，第一件事就是要配置科学上网啦~</p>
 <p>Linux下的Shadowsocks的客户端（下文简称为ss）有两种版本，一种是GUI的，这种有图形界面，比较适合新手使用，另一种是命令行形式的。接下来详细介绍下这两种形式的安装方法：</p>
 <h2 id="配置Shadowsocks命令行程序"><a href="#配置Shadowsocks命令行程序" class="headerlink" title="配置Shadowsocks命令行程序"></a>配置Shadowsocks命令行程序</h2><p>命令行版本我分了4个步骤，稍微有点繁琐，其实还好啦～</p>
-<h3 id="安装ss"><a href="#安装ss" class="headerlink" title="安装ss"></a>安装ss</h3><p>打开终端，如果你没有安装pip那么先输入下面这个命令安装<code>pip</code><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get update</span><br><span class="line"><span class="meta">$</span> sudo apt-get install python-pip</span><br></pre></td></tr></table></figure></p>
-<p>输入以下命令安装ss<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo pip install shadowsocks</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装ss"><a href="#安装ss" class="headerlink" title="安装ss"></a>安装ss</h3><p>打开终端，如果你没有安装pip那么先输入下面这个命令安装<code>pip</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get update</span><br><span class="line"><span class="meta">$</span> sudo apt-get install python-pip</span><br></pre></td></tr></table></figure>
+<p>输入以下命令安装ss</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo pip install shadowsocks</span><br></pre></td></tr></table></figure>
 <p><img src=".\shadowsocksInstall.png" alt="shadowsocksInstall"></p>
 <p>安装完成之后，你可以在终端中输入<code>sslocal -help</code>来看看帮助文档</p>
 <h3 id="运行ss"><a href="#运行ss" class="headerlink" title="运行ss"></a>运行ss</h3><p>安装完成后，就可以按照下面的方式启动啦～</p>
 <p>我这里写了两种启动方式，第一种需要自己写一个ss的<code>.json</code>配置文件，第二种直接在命令中写你所连接的vps的信息，个人推荐第一种。</p>
-<h4 id="配置文件运行"><a href="#配置文件运行" class="headerlink" title="配置文件运行"></a>配置文件运行</h4><p>首先，在你的本地新建一个文本文档，文档路径随意，推荐放在你的家目录，例如<code>/home/你的用户名/ss_config</code>，文档里面填上如下配置信息，然后保存时把后缀改为<code>.json</code><br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"server"</span>:<span class="string">"207.148.***.***"</span>,</span><br><span class="line">	<span class="attr">"server_port"</span>:<span class="number">666</span>,</span><br><span class="line">	<span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">	<span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">	<span class="attr">"password"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">	<span class="attr">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line">	<span class="attr">"method"</span>:<span class="string">"加密方式"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>其中<code>server</code>为你的vps服务器地址，<code>server_port</code>为端口号，<code>password</code>为连接密码，<code>method</code>为加密方式，其他的选项一般可以不用修改，接下来就可以去终端运行了，输入以下命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sslocal -c /home/jhchen/ss_config/ss.json</span><br></pre></td></tr></table></figure></p>
+<h4 id="配置文件运行"><a href="#配置文件运行" class="headerlink" title="配置文件运行"></a>配置文件运行</h4><p>首先，在你的本地新建一个文本文档，文档路径随意，推荐放在你的家目录，例如<code>/home/你的用户名/ss_config</code>，文档里面填上如下配置信息，然后保存时把后缀改为<code>.json</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"server"</span>:<span class="string">"207.148.***.***"</span>,</span><br><span class="line">	<span class="attr">"server_port"</span>:<span class="number">666</span>,</span><br><span class="line">	<span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">	<span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">	<span class="attr">"password"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">	<span class="attr">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line">	<span class="attr">"method"</span>:<span class="string">"加密方式"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>server</code>为你的vps服务器地址，<code>server_port</code>为端口号，<code>password</code>为连接密码，<code>method</code>为加密方式，其他的选项一般可以不用修改，接下来就可以去终端运行了，输入以下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sslocal -c /home/jhchen/ss_config/ss.json</span><br></pre></td></tr></table></figure>
 <p>其中<code>/home/jhchen/ss_config/ss.json</code>是我的配置文件的保存路径，看到类似如下效果就表示连接成功了</p>
 <p><img src=".\ssRun.png" alt="ssRun.png"></p>
 <blockquote>
 <p>如果你跟我一样使用的是<code>chacha20</code>的加密方式，那么你也可能会报这样的错误：<strong>缺少libsodium</strong>，解决方法参考<a href="https://blog.csdn.net/lengconglin/article/details/77655845" target="_blank" rel="noopener">这篇文章</a>吧</p>
 <p><img src=".\libsodium.png" alt="libsodium"></p>
 </blockquote>
-<h4 id="直接输入命令运行"><a href="#直接输入命令运行" class="headerlink" title="直接输入命令运行"></a>直接输入命令运行</h4><p>第二种方式直接打开终端，输入以下命令运行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sslocal -s 207.148.1.1 -p 666 -k “your_passwd” -b 127.0.0.1 -l 1080</span><br></pre></td></tr></table></figure></p>
+<h4 id="直接输入命令运行"><a href="#直接输入命令运行" class="headerlink" title="直接输入命令运行"></a>直接输入命令运行</h4><p>第二种方式直接打开终端，输入以下命令运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sslocal -s 207.148.1.1 -p 666 -k “your_passwd” -b 127.0.0.1 -l 1080</span><br></pre></td></tr></table></figure>
 <p>其中<code>207.148.1.1</code>为你vps的IP地址，<code>666</code>为端口号，<code>your_passwd</code>为连接密码（别忘记加双引号），后面的一般不用改了</p>
 <h3 id="设置开机自启动"><a href="#设置开机自启动" class="headerlink" title="设置开机自启动"></a>设置开机自启动</h3><p>每次开机都要输入一遍命令太麻烦了吧～所以设置ss开机自启还是很有必要的</p>
 <p>首先，打开图形化开机启动项管理界面</p>
@@ -591,8 +596,10 @@
 <p><img src=".\all.png" alt="all"></p>
 <h4 id="PAC模式"><a href="#PAC模式" class="headerlink" title="PAC模式"></a>PAC模式</h4><p>要想使用PAC模式，必须要有PAC文件，一共两种途径获得，一种是网络，一种是本地。</p>
 <p>我这里用的是本地，所以只介绍本地PAC的方法，网络PAC大家自行搜索吧～</p>
-<p>首先，我们需要安装<code>genpac</code><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get update </span><br><span class="line"><span class="meta">$</span> sudo pip install genpac</span><br></pre></td></tr></table></figure></p>
-<p>然后，利用<code>genpac</code>生成pac文件，<strong>输入前确保ss处于打开状态</strong>（点击<a href="https://github.com/JinnLynn/genpac" target="_blank" rel="noopener">这里</a>可以查看<code>genpac</code>更多命令）<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genpac -p "SOCKS5 127.0.0.1:1080" --output="autoproxy.pac"</span><br></pre></td></tr></table></figure></p>
+<p>首先，我们需要安装<code>genpac</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get update </span><br><span class="line"><span class="meta">$</span> sudo pip install genpac</span><br></pre></td></tr></table></figure>
+<p>然后，利用<code>genpac</code>生成pac文件，<strong>输入前确保ss处于打开状态</strong>（点击<a href="https://github.com/JinnLynn/genpac" target="_blank" rel="noopener">这里</a>可以查看<code>genpac</code>更多命令）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genpac -p "SOCKS5 127.0.0.1:1080" --output="autoproxy.pac"</span><br></pre></td></tr></table></figure>
 <p>执行完上面的命令之后会在你的当前目录产生一个名字为<code>autoproxy.pac</code>的文件，我把它跟前面的配置文件<code>ss.json</code>放在了一起（<code>/home/jhchen/ss_config/autoproxy.pac</code>）</p>
 <p>最后，打开<code>系统设置</code>-&gt;<code>网络</code>-&gt;<code>网络代理</code>，在<code>方法</code>这一栏选择<code>自动</code>，把<code>URL</code>改为你的PAC文件所在的目录，点击<code>应用到整个系统</code>，就像下面这张图一样</p>
 <p><img src=".\select.png" alt="select"></p>
@@ -871,7 +878,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

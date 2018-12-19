@@ -265,7 +265,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">19</span></a>
 
   </li>
         
@@ -303,7 +303,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">30</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">34</span></a>
 
   </li>
         
@@ -547,9 +547,9 @@
 <p>Linux下的Shadowsocks的客户端（下文简称为ss）有两种版本，一种是GUI的，这种有图形界面，比较适合新手使用，另一种是命令行形式的。接下来详细介绍下这两种形式的安装方法：</p>
 <h2 id="配置Shadowsocks命令行程序"><a href="#配置Shadowsocks命令行程序" class="headerlink" title="配置Shadowsocks命令行程序"></a>配置Shadowsocks命令行程序</h2><p>命令行版本我分了4个步骤，稍微有点繁琐，其实还好啦～</p>
 <h3 id="安装ss"><a href="#安装ss" class="headerlink" title="安装ss"></a>安装ss</h3><p>打开终端，如果你没有安装pip那么先输入下面这个命令安装<code>pip</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get update</span><br><span class="line"><span class="meta">$</span> sudo apt-get install python-pip</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get update</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install python-pip</span></span><br></pre></td></tr></table></figure>
 <p>输入以下命令安装ss</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo pip install shadowsocks</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo pip install shadowsocks</span></span><br></pre></td></tr></table></figure>
 <p><img src=".\shadowsocksInstall.png" alt="shadowsocksInstall"></p>
 <p>安装完成之后，你可以在终端中输入<code>sslocal -help</code>来看看帮助文档</p>
 <h3 id="运行ss"><a href="#运行ss" class="headerlink" title="运行ss"></a>运行ss</h3><p>安装完成后，就可以按照下面的方式启动啦～</p>
@@ -557,7 +557,7 @@
 <h4 id="配置文件运行"><a href="#配置文件运行" class="headerlink" title="配置文件运行"></a>配置文件运行</h4><p>首先，在你的本地新建一个文本文档，文档路径随意，推荐放在你的家目录，例如<code>/home/你的用户名/ss_config</code>，文档里面填上如下配置信息，然后保存时把后缀改为<code>.json</code></p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"server"</span>:<span class="string">"207.148.***.***"</span>,</span><br><span class="line">	<span class="attr">"server_port"</span>:<span class="number">666</span>,</span><br><span class="line">	<span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">	<span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">	<span class="attr">"password"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">	<span class="attr">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line">	<span class="attr">"method"</span>:<span class="string">"加密方式"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中<code>server</code>为你的vps服务器地址，<code>server_port</code>为端口号，<code>password</code>为连接密码，<code>method</code>为加密方式，其他的选项一般可以不用修改，接下来就可以去终端运行了，输入以下命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sslocal -c /home/jhchen/ss_config/ss.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sslocal -c /home/jhchen/ss_config/ss.json</span></span><br></pre></td></tr></table></figure>
 <p>其中<code>/home/jhchen/ss_config/ss.json</code>是我的配置文件的保存路径，看到类似如下效果就表示连接成功了</p>
 <p><img src=".\ssRun.png" alt="ssRun.png"></p>
 <blockquote>
@@ -565,11 +565,11 @@
 <p><img src=".\libsodium.png" alt="libsodium"></p>
 </blockquote>
 <h4 id="直接输入命令运行"><a href="#直接输入命令运行" class="headerlink" title="直接输入命令运行"></a>直接输入命令运行</h4><p>第二种方式直接打开终端，输入以下命令运行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sslocal -s 207.148.1.1 -p 666 -k “your_passwd” -b 127.0.0.1 -l 1080</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sslocal -s 207.148.1.1 -p 666 -k “your_passwd” -b 127.0.0.1 -l 1080</span></span><br></pre></td></tr></table></figure>
 <p>其中<code>207.148.1.1</code>为你vps的IP地址，<code>666</code>为端口号，<code>your_passwd</code>为连接密码（别忘记加双引号），后面的一般不用改了</p>
 <h3 id="设置开机自启动"><a href="#设置开机自启动" class="headerlink" title="设置开机自启动"></a>设置开机自启动</h3><p>每次开机都要输入一遍命令太麻烦了吧～所以设置ss开机自启还是很有必要的</p>
 <p>首先，打开图形化开机启动项管理界面</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> gnome-session-properties</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> gnome-session-properties</span></span><br></pre></td></tr></table></figure>
 <p>然后点击<code>添加（Add）</code>，在弹出的框框里，<code>名称</code>随便填，<code>注释</code>随便填，<code>命令</code>填上面启动ss时你在终端输入的命令，比如我的是<code>sslocal -c /home/jhchen/ss_config/ss.json</code></p>
 <p><img src=".\addStart.png" alt="addStart"></p>
 <h3 id="配置代理"><a href="#配置代理" class="headerlink" title="配置代理"></a><span id="proxy">配置代理</span></h3><p>ss正常运行之后，你会发现还是上不了网，原因是还需要作代理配置<br>这里有两种代理模式，分别是<code>全局模式</code>和<code>PAC模式</code>，用过ss的人都知道这是啥意思，我就不解释了</p>
@@ -578,14 +578,14 @@
 <h4 id="PAC模式"><a href="#PAC模式" class="headerlink" title="PAC模式"></a>PAC模式</h4><p>要想使用PAC模式，必须要有PAC文件，一共两种途径获得，一种是网络，一种是本地。</p>
 <p>我这里用的是本地，所以只介绍本地PAC的方法，网络PAC大家自行搜索吧～</p>
 <p>首先，我们需要安装<code>genpac</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get update </span><br><span class="line"><span class="meta">$</span> sudo pip install genpac</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get update </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo pip install genpac</span></span><br></pre></td></tr></table></figure>
 <p>然后，利用<code>genpac</code>生成pac文件，<strong>输入前确保ss处于打开状态</strong>（点击<a href="https://github.com/JinnLynn/genpac" target="_blank" rel="noopener">这里</a>可以查看<code>genpac</code>更多命令）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genpac -p "SOCKS5 127.0.0.1:1080" --output="autoproxy.pac"</span><br></pre></td></tr></table></figure>
 <p>执行完上面的命令之后会在你的当前目录产生一个名字为<code>autoproxy.pac</code>的文件，我把它跟前面的配置文件<code>ss.json</code>放在了一起（<code>/home/jhchen/ss_config/autoproxy.pac</code>）</p>
 <p>最后，打开<code>系统设置</code>-&gt;<code>网络</code>-&gt;<code>网络代理</code>，在<code>方法</code>这一栏选择<code>自动</code>，把<code>URL</code>改为你的PAC文件所在的目录，点击<code>应用到整个系统</code>，就像下面这张图一样</p>
 <p><img src=".\select.png" alt="select"></p>
 <h2 id="配置Shadowsocks-qt5（图形界面版）"><a href="#配置Shadowsocks-qt5（图形界面版）" class="headerlink" title="配置Shadowsocks-qt5（图形界面版）"></a>配置Shadowsocks-qt5（图形界面版）</h2><p>打开terminal，输入以下命令安装Shadowsocks-qt5</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo add-apt-repository ppa:hzwhuang/ss-qt5</span><br><span class="line"><span class="meta">$</span> sudo apt-get update</span><br><span class="line"><span class="meta">$</span> sudo apt-get install shadowsocks-qt5</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo add-apt-repository ppa:hzwhuang/ss-qt5</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get update</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install shadowsocks-qt5</span></span><br></pre></td></tr></table></figure>
 <p>安装好之后，按下<code>super</code>按键（也就是Windows键啦～！），输入<code>shadowsocks</code>就能看到软件图标了，点击启动它，为了方便你可以把它固定到<code>启动器</code>，这样以后不用每次启动都要去搜索一遍</p>
 <p><img src=".\shadowsocks-qt5-search.png" alt="启动shadowsocks-qt5"></p>
 <p>打开之后，在空白处右击鼠标，选择<code>添加</code>-&gt;<code>手动</code>，然后在弹出的框框里天上你的vps信息</p>
@@ -773,7 +773,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -875,7 +875,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

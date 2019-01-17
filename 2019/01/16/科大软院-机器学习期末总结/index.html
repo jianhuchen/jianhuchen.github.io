@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.gif?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.gif?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="贝叶斯分类器 单属性情况  离散多属性情况  朴素贝叶斯分类算法  问题1：对于条件概率 $P(X|c_j )$，由于涉及到关于 $x$ 的所有属性的联合概率，尽管我们假设属性之间是相互独立的，但直接根据样本出现的频率来估算概率实际会遇到很大困难。 解决办法：平滑处理 常用拉普拉斯修正（$Laplacian\ correction$）  问题2：稀少事件的概率估算 用相对频率估算概率值的方法，只有">
+<meta name="keywords" content="机器学习,科大,人工智能,深度学习,总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="科大软院-机器学习期末总结">
+<meta property="og:url" content="http://cjh.zone/2019/01/16/科大软院-机器学习期末总结/index.html">
+<meta property="og:site_name" content="不想长大的石头">
+<meta property="og:description" content="贝叶斯分类器 单属性情况  离散多属性情况  朴素贝叶斯分类算法  问题1：对于条件概率 $P(X|c_j )$，由于涉及到关于 $x$ 的所有属性的联合概率，尽管我们假设属性之间是相互独立的，但直接根据样本出现的频率来估算概率实际会遇到很大困难。 解决办法：平滑处理 常用拉普拉斯修正（$Laplacian\ correction$）  问题2：稀少事件的概率估算 用相对频率估算概率值的方法，只有">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547534421369.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547464321719.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547538635281.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547539051364.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547539531400.png">
+<meta property="og:updated_time" content="2019-01-17T03:04:51.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="科大软院-机器学习期末总结">
+<meta name="twitter:description" content="贝叶斯分类器 单属性情况  离散多属性情况  朴素贝叶斯分类算法  问题1：对于条件概率 $P(X|c_j )$，由于涉及到关于 $x$ 的所有属性的联合概率，尽管我们假设属性之间是相互独立的，但直接根据样本出现的频率来估算概率实际会遇到很大困难。 解决办法：平滑处理 常用拉普拉斯修正（$Laplacian\ correction$）  问题2：稀少事件的概率估算 用相对频率估算概率值的方法，只有">
+<meta name="twitter:image" content="http://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547534421369.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://cjh.zone/2019/01/16/科大软院-机器学习期末总结/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>科大软院-机器学习期末总结 | 不想长大的石头</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不想长大的石头</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Give you my world.</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">8</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">34</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about_guestbook">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于 & 留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-share_resource">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjh.zone/2019/01/16/科大软院-机器学习期末总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JhChen">
+      <meta itemprop="description" content="不想长大的石头">
+      <meta itemprop="image" content="/images/100x100.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不想长大的石头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">科大软院-机器学习期末总结
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-16 22:07:00" itemprop="dateCreated datePublished" datetime="2019-01-16T22:07:00+08:00">2019-01-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-17 11:04:51" itemprop="dateModified" datetime="2019-01-17T11:04:51+08:00">2019-01-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/16/科大软院-机器学习期末总结/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/16/科大软院-机器学习期末总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/16/科大软院-机器学习期末总结/" class="leancloud_visitors" data-flag-title="科大软院-机器学习期末总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="贝叶斯分类器"><a href="#贝叶斯分类器" class="headerlink" title="贝叶斯分类器"></a>贝叶斯分类器</h2><ul>
+<li><p>单属性情况</p>
+</li>
+<li><p>离散多属性情况</p>
+</li>
+<li><p>朴素贝叶斯分类算法</p>
+<ul>
+<li><p><strong>问题1：</strong>对于条件概率 $P(X|c_j )$，由于涉及到关于 $x$ 的所有属性的联合概率，尽管我们假设属性之间是相互独立的，但直接根据样本出现的频率来估算概率实际会遇到很大困难。</p>
+<p><strong>解决办法：</strong>平滑处理</p>
+<p>常用拉普拉斯修正（$Laplacian\ correction$）</p>
+</li>
+<li><p><strong>问题2：</strong>稀少事件的概率估算</p>
+<p>用相对频率估算概率值的方法，只有在大量样本(实验)的支持下才可以被信任。</p>
+<p><strong>解决方法：</strong>使用m-估值</p>
+</li>
+</ul>
+</li>
+<li><p>连续属性情况</p>
+</li>
+<li><p>区间离散化</p>
+</li>
+<li>概率密度函数</li>
+</ul>
+<blockquote>
+<p>这部分不详细，主要是公式太过，考试临近，没时间敲公式，后面有时间再补起来</p>
+</blockquote>
+<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h3 id="线性模型的基本形式"><a href="#线性模型的基本形式" class="headerlink" title="线性模型的基本形式"></a>线性模型的基本形式</h3><script type="math/tex; mode=display">
+f(x)=\sum_{i=0}^d w_ix_i=w^Tx</script><p>其中$x=(x_0,x_1,x_2,…,x_d )$</p>
+<p>根据线性模型表达式，当权重向量 $w$ 确定后，线性模型也就得以确定，所以问题转化为如何求权重 $w$。</p>
+<h3 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h3><p>要确定 $w$ 和 $b$ 的值，关键是如何衡量 $f(x)$ 和 $y$ 之间的误差，方差是线性回归任务中最常用的性能度量方法。</p>
+<p>$d$ 个属性的情况：</p>
+<p>令</p>
+<script type="math/tex; mode=display">
+w=(w_0,w_1,w_2,…,w_d) \\
+x^{(i)}=(x_0^{(i)},x_1^{(i)},x_2^{(i)},…,x_d^{(i)})\\</script><p>要使：$f(x^{(i)})=w^Tx^{(i)}≈y^{(i)}$</p>
+<p>即</p>
+<script type="math/tex; mode=display">
+w^*=\underset{w}{\operatorname{argmin}}\sum_{i=1}^m(f(x^{(i)})-y^{(i)})^2</script><h3 id="极大似然估计-Likelihood-解释最小二乘法"><a href="#极大似然估计-Likelihood-解释最小二乘法" class="headerlink" title="极大似然估计$(Likelihood)$解释最小二乘法"></a>极大似然估计$(Likelihood)$解释最小二乘法</h3><p>对数似然函数（目标函数）：</p>
+<script type="math/tex; mode=display">
+J(w)=\frac{1}{2}\sum_{i=1}^m(f(x^{(i)})-y^{(i)})^2</script><h3 id="梯度下降算法-gradient-descent"><a href="#梯度下降算法-gradient-descent" class="headerlink" title="梯度下降算法 $(gradient\ descent)$"></a>梯度下降算法 $(gradient\ descent)$</h3><p>目标函数：见上式</p>
+<p>算法过程：</p>
+<ul>
+<li><p>初始化 $w$ （随机初始化）</p>
+</li>
+<li><p>沿着负梯度方向迭代，更新后的 $w$ 使 $J(w)$ 更小：$w=w-\eta\cfrac{\partial J(w)}{\partial w}$</p>
+<p>从而得到$w_j=w_j+\eta(y^{(i)}-f(x^{(i)}))x_j^{(i)}$</p>
+<blockquote>
+<p>此处是SGD（随机梯度下降）算法，使用一个随机的样本$x^{(i)}$ 来更新参数 $w_j$</p>
+<p>如果是BGD算法 ，$w_j=w_j-\eta\sum_{i=1}^m-(y^{(i)}-f(x^{(i)}))x_j^{(i)}$，使用全部的 $m$ 个样本更新参数 $w_j$</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>考虑一个二分类问题，其输出标记 $y\in{0,1}$。令学习率 $\eta=0.5$ （随机产生），初始权重：$w_0=0.1，w_1 =0.3，w_2 =0.4，x_0 =1$</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">样例</th>
+<th style="text-align:center">$ x_1$</th>
+<th style="text-align:center">$x_2$</th>
+<th style="text-align:center">$y$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$e_1$</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">$e_2$</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">$e_3$</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>线性分类器关于 $x$ 类别的假设为：</p>
+<script type="math/tex; mode=display">
+f(x) = \begin{cases} 1 & \text {if $\sum_{i=0}w_ix_i>0$} \\ 0 & \text{else} \end{cases}</script><p>模型在学习过程中，权重 $w$ 的调整情况如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">$ x_1$</th>
+<th style="text-align:center">$ x_2$</th>
+<th style="text-align:center">$ w_0$</th>
+<th style="text-align:center">$ w_1$</th>
+<th>$ x_2$</th>
+<th style="text-align:center">$ f(x)$</th>
+<th style="text-align:center">$y$</th>
+<th style="text-align:center">$y-f(x)$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">初始</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.1</td>
+<td style="text-align:center">0.3</td>
+<td>0.4</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">$e_1$</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td style="text-align:center">新分类器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">-0.4</td>
+<td style="text-align:center">-0.2</td>
+<td>0.4</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">$ e_2$</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">新分类器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.1</td>
+<td style="text-align:center">0.3</td>
+<td>0.9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">$e_3$</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td style="text-align:center">最终分类器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">-0.4</td>
+<td style="text-align:center">0.3</td>
+<td>0.9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>学习后的模型为：$f(x)=0.3x_1+0.9x_2-0.4$</p>
+<h3 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h3><p>参考这里：<a href="/2018/12/13/%E7%A7%91%E5%A4%A7%E8%BD%AF%E9%99%A2-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%93/#%E6%AD%A3%E5%88%99%E5%8C%96%EF%BC%88Regularization%EF%BC%89" title="点击打开" target="_blank">科大软院-人工智能期末总结-正则化</a></p>
+<blockquote>
+<p> 考试重点</p>
+<ul>
+<li><p>线性模型的基本形式</p>
+</li>
+<li><p>线性回归的目标函数</p>
+</li>
+<li><p>极大似然估计</p>
+</li>
+<li><p>梯度下降</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><h3 id="逻辑回归模型"><a href="#逻辑回归模型" class="headerlink" title="逻辑回归模型"></a>逻辑回归模型</h3><p>线性回归是对线性模型进行回归学习，即不断调整参数 $w$ 的过程，对于分类问题如何用线性模型来求解呢？</p>
+<p>线性回归模型产生的预测值 $z=wx$ 为实数值，通过将实数值z转换为 $0/1$ 值则解决了二分类问题。</p>
+<p>单位阶跃函数、S形函数等均可用于完成这样的转换，<strong>但单位阶跃函数不连续，而S形函数连续且单调可微</strong>，比单位阶跃函数更好。S形函数可以将z转换为一个接近0或1的y值(概率)。</p>
+<blockquote>
+<p>S型函数举例：$sigmoid$ 函数 $y =\cfrac{1}{1+e^{-z}}=\cfrac{1}{1+e^{-wx}}$</p>
+<p>几率$(odds)$: 若将y看成是样本x取正例的概率，则1-y为取反例的概率，二者的比值 $\cfrac{y}{1-y}$ 称为几率</p>
+</blockquote>
+<h3 id="似然函数"><a href="#似然函数" class="headerlink" title="似然函数"></a>似然函数</h3><script type="math/tex; mode=display">
+L(w)=\sum_{i=1}^m−[\hat{y}^{(i)}lnf(x^{(i)})+(1−\hat{y}^{(i)})ln(1-f(x^{(i)}))]</script><h3 id="学习规则"><a href="#学习规则" class="headerlink" title="学习规则"></a>学习规则</h3><script type="math/tex; mode=display">
+w_j=w_j+\eta(y^{(i)}-f(x^{(i)}))x_j^{(i)}</script><blockquote>
+<p>逻辑回归参数的学习规则与线性回归的学习规则从形式上看完全一样，不同点就在于 $f(x)$ 函数不一样</p>
+</blockquote>
+<h3 id="多分类问题"><a href="#多分类问题" class="headerlink" title="多分类问题"></a>多分类问题</h3><ul>
+<li><p>$softmax$ 回归（多分类回归）</p>
+<p>参考这里：<a href="/2018/12/13/%E7%A7%91%E5%A4%A7%E8%BD%AF%E9%99%A2-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%93/#%E5%A4%9A%E5%88%86%E7%B1%BB%E4%BB%BB%E5%8A%A1%E7%9A%84%E8%BE%93%E5%87%BA%E5%B1%82%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8Softmax" title="点击打开" target="_blank">科大软院-人工智能期末总结-Softmax</a></p>
+</li>
+<li><p>二分类器组(一对多，$OvRest$)</p>
+<p>通过多个二分类器的组合来完成多分类任务。</p>
+</li>
+<li><p>一对一 $(OvO)$</p>
+</li>
+</ul>
+<h3 id="多项式模型"><a href="#多项式模型" class="headerlink" title="多项式模型"></a>多项式模型</h3><p>我的理解是：<strong>特征变换$(Feature\ transformation)$</strong>，即将原空间里的属性映射到新空间，使原来线性不可分的数据变成线性可分，然后再用线性可分问题的求解方法来求解。</p>
+<p>参考这里：<a href="/2018/12/13/%E7%A7%91%E5%A4%A7%E8%BD%AF%E9%99%A2-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%93/#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%EF%BC%88Logistic-Regression%EF%BC%89%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7" title="点击打开" target="_blank">科大软院-人工智能期末总结-逻辑回归</a></p>
+<blockquote>
+<p>考试重点</p>
+<ul>
+<li><p>sigmoid函数    </p>
+</li>
+<li><p>似然函数</p>
+</li>
+<li><p>学习规则</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><blockquote>
+<p>参考李航《统计学习方法》P55</p>
+</blockquote>
+<h3 id="决策树模型与学习"><a href="#决策树模型与学习" class="headerlink" title="决策树模型与学习"></a>决策树模型与学习</h3><h4 id="决策树模型"><a href="#决策树模型" class="headerlink" title="决策树模型"></a>决策树模型</h4><ul>
+<li><p><strong>决策树：</strong>决策树是一种树型结构，其中每个结点表示在一个属性上的测试，每个分支代表一个测试输出，每个叶结点代表一种类别。决策树学习采用自顶向下的递归方法，其基本思想是以信息熵为度量，构造一棵熵值下降最快的树，到叶子结点处的熵值为0，此时每个叶结点中的样例均属于同一个类。</p>
+<blockquote>
+<p>决策树由结点（$node$）和有向边（$directed\ edge$）组成，其中结点有两种类型：内部节点和叶节点，内部节点表示一个特征或属性，叶节点表示一个类。</p>
+</blockquote>
+</li>
+<li><p><strong>优点：</strong>模型具有可读性，分类速度快</p>
+</li>
+<li><p><strong>决策树学习的3个步骤：</strong>特征选择、决策树的生成、决策树的修剪</p>
+</li>
+</ul>
+<h4 id="决策树与if-then规则"><a href="#决策树与if-then规则" class="headerlink" title="决策树与if-then规则"></a>决策树与if-then规则</h4><ul>
+<li><strong>if-then规则：</strong>由决策树的根节点到叶节点的每一条路径构建一条规则；路径上的内部节点的特征对应着规则的条件，而叶结点的类对应着规则的结论</li>
+<li><strong>if-then规则集合的重要性质：</strong>决策树的每条路径互斥且完备，即每个实例都被一条路径或一条规则所覆盖，而且只被一条路径或一条规则所覆盖</li>
+</ul>
+<h4 id="决策树与条件概率分布"><a href="#决策树与条件概率分布" class="headerlink" title="决策树与条件概率分布"></a>决策树与条件概率分布</h4><h4 id="决策树学习"><a href="#决策树学习" class="headerlink" title="决策树学习"></a>决策树学习</h4><p>决策树的学习本质上是从训练数据集中归纳出一组分类规则。与训练数据集不相矛盾的决策树可能有多个，可能一个也没有。我们需要的是一个与训练数据矛盾较小的决策树，同时具有很好的泛化能力。</p>
+<ul>
+<li><p><strong>学习过程：</strong></p>
+<ul>
+<li><p>开始，构建根节点，将所有训练数据都放在根节点。</p>
+</li>
+<li><p>选择一个最优特征，按照这一特征将训练数据集分割成子集，使得各个子集有一个在当前条件下最好的分类</p>
+<ul>
+<li><p>如果这些子集已经能够被基本正确分类，那么构建叶节点，并将这些子集分到所对应的叶节点中去</p>
+</li>
+<li><p>如果还有子集不能被基本正确分类，那么就对这些子集选择新的最优特征，继续对其进行分割，构建相应的节点</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>如此递归下去，直到所有训练数据子集被基本正确分类，或者没有合适的特征为止。最后每个子集都被分到叶节点上，即都有了明确的类。</p>
+</li>
+<li><p><strong>过拟合</strong></p>
+<p>以上方法生成决策树可能对训练数据有很好的分类能力，但对未知的测试数据未必有很好的分类能力，泛化能力差，即可能发生过拟合现象。</p>
+<p>解决方法：剪枝，使得树变得更简单，从而使它具有更好的泛化能力。具体地，就是去掉过于细分的叶节点。</p>
+</li>
+</ul>
+<h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><p>特征选择是决定用哪个特征来划分特征空间</p>
+<h4 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h4><ul>
+<li><p>信息量</p>
+<script type="math/tex; mode=display">
+I(x)=-\log p(x)</script></li>
+<li><p><strong>熵（$entropy$）：</strong>表示随机变量（系统）的不确定性的度量</p>
+<script type="math/tex; mode=display">
+H(p)=-\sum_{i=1}^np_i\log p_i</script><blockquote>
+<p>其中，$p_i$ 为随机变量 $X$ 的概率分布，熵只与它的概率分布有关而与它的取值无关，所以上式写成关于 $p$ 的函数</p>
+<p>单位：对数以2为底或以 $e$ 为底时，单位分别为比特（$bit$）或纳特（$nat$）</p>
+</blockquote>
+<p>熵是平均信息量，信息量代表了一个事件的不确定性，熵表示系统的混乱程度。系统中信息量总和越大，则表明这个系统的不确定性就越大。</p>
+</li>
+<li><p><strong>条件熵（$conditional\ entropy$）</strong>：$H(Y|X)$表示 $X$ 发生的前提下 $Y$ 熵</p>
+<script type="math/tex; mode=display">
+H(Y|X)=\sum_{i=1}^np_iH(Y|X=x_i)\\
+其中：p_i=P(X=x_i),i=1,2,...,n</script><p>当熵和条件熵中的概率由数据估计得到时，所对应的熵与条件熵分别称为<strong>经验熵</strong>（$empirical\ entropy$）和<strong>经验条件熵</strong>（$empirical\ conditional\ entropy$）</p>
+</li>
+<li><p><strong>信息增益（$information\ gain$）：</strong>表示得知特征 $X$ 的信息而使得类 $Y$ 的信息的不确定性减少的程度</p>
+<p>特征 $A$ 对训练数据集 $D$ 的信息增益 $g(D,A)$，定义为集合 $D$ 的经验熵 $H(D)$ 与特征 $A$ 给定条件下 $D$ 的经验条件熵 $H(D|A)$ 之差，即</p>
+<script type="math/tex; mode=display">
+g(D,A)=H(D)-H(D|A)</script><p>不同的特征往往具有不同的信息增益，信息增益越大的特征具有更强的分类能力。</p>
+<p>根据信息增益准则的<strong>特征选择</strong>方法是：对于训练集（或子集） $D$，计算其每个特征的信息增益，并比较它们的大小，选择信息增益最大的特征。</p>
+</li>
+<li><p><strong>信息增益的算法</strong></p>
+<p>设训练数据集为 $D$，$|D|$ 为其样本容量，即样本个数</p>
+<p>设有 $K$ 个类 $C_k$ ，$k=1,2,…,K$，$|C_k|$ 为属于类 $C_k$ 的样本个数，$\sum_{k=1}^K|C_k|=|D|$ </p>
+<p>设特征 $A$ 有 $n$ 个不同的取值$\{a_1,a_2,…,a_n\}$ ，根据特征 $A$ 的取值将 $D$ 划分为 $n$ 个子集 $D_1,D_2,…,D_n$，$|D_i|$ 为 $ D_i $ 的样本个数，$\sum_{i=1}^n|D_i|=|D|$</p>
+<p>记子集 $D_i$ 中属于类 $C_k$ 的样本的集合为 $D_{ik}$，即 $D_{ik}=D_i\bigcap C_k$， $|D_{ik}|$ 为 $D_{ik}$ 的样本个数</p>
+<p><strong>于是信息增益的算法如下：</strong></p>
+<p>输入：训练数据集为 $D$ 和特征 $A$</p>
+<p>输出：特征 $A$ 对训练数据集 $D$ 的信息增益 $g(d,a)$</p>
+<ul>
+<li><p>计算数据集 $D$ 的经验熵 $H(D)$</p>
+<script type="math/tex; mode=display">
+H(D)=-\sum_{i=1}^K\cfrac{|C_k|}{|D|}\log \cfrac{|C_k|}{|D|}</script></li>
+<li><p>计算特征 $A$ 对数据集 $D$ 的经验条件熵 $H(D|A)$</p>
+<script type="math/tex; mode=display">
+H(D|A)=\sum_{i=1}^n\cfrac{|D_i|}{|D|}H(D_i)=-\sum_{i=1}^n\cfrac{|D_i|}{|D|}\sum_{k=1}^K\cfrac{|D_{ik}|}{|D_i|}\log_2\cfrac{|D_{ik}|}{|D_i|}</script></li>
+<li><p>计算信息增益</p>
+<script type="math/tex; mode=display">
+g(D,A)=H(D)-H(D|A)</script></li>
+</ul>
+</li>
+</ul>
+<h4 id="信息增益比"><a href="#信息增益比" class="headerlink" title="信息增益比"></a>信息增益比</h4><p> 以信息增益作为划分训练数据的准则，存在偏向于选择取值较多的特征的问题。使用信息增益比可以对这一问题进行校正。</p>
+<ul>
+<li>信息增益比：特征 $A$ 对训练数据集 $D$ 的信息增益比$g_R(D,A)$ 定义为其信息增益 $g(D,A)$ 与训练数据 $D$ 关于特征 $A$ 的值的熵 $H_A(D)$ 之比，即<script type="math/tex; mode=display">
+g_R(D,A)=\cfrac{g(D,A)}{H_A(D)}\\
+其中H_A(D)=-\sum_{i=1}^n \cfrac{|D_i|}{|D|}\log_2\cfrac{|D_{i}|}{|D|}</script>$n$ 是特征 $A$ 取值的个数</li>
+</ul>
+<h3 id="决策树的生成"><a href="#决策树的生成" class="headerlink" title="决策树的生成"></a>决策树的生成</h3><h4 id="ID3-算法"><a href="#ID3-算法" class="headerlink" title="ID3 算法"></a>ID3 算法</h4><p>$ID3$ 算法的核心是在决策树各个节点上应用<strong>信息增益</strong>准则选择特征，递归的构建决策树。</p>
+<p><strong>具体方法是：</strong>从根节点开始，对结点计算所有可能的特征的信息增益，选择信息增益最大的特征作为结点的特征，由该特征的不同取值建立子结点；再对子结点递归地调用以上方法，构建决策树；直到所有特征的信息增益均很小或没有特征可以选择为止。最后得到一个决策树。</p>
+<h4 id="C4-5的生成算法"><a href="#C4-5的生成算法" class="headerlink" title="C4.5的生成算法"></a>C4.5的生成算法</h4><p>$C4.5$ 再生成的过程中，用<strong>信息增益比</strong>来选择划分特征。具体方法与ID3方法类似。</p>
+<h3 id="决策树的剪枝"><a href="#决策树的剪枝" class="headerlink" title="决策树的剪枝"></a>决策树的剪枝</h3><p>剪枝是决策树学习方法解决过拟合问题的重要手段。在决策树学习中，为了尽可能正确分类训练样本，结点划分过程将不断重复，这样有时会造成决策树分枝过多。这种因对训练样例学得过好，而把训练集自身的一些特点当作所有数据都具有的一般性质而导致过拟合。因此通过主动去掉一些分枝来降低过拟合的风险。</p>
+<p>剪枝的方法就是用叶结点替换子树，如下图所示。</p>
+<p><img src="1547534421369.png" width="300"></p>
+<p>剪枝后原决策树的规模将减小，引起一些训练样例错误分类，影响模型的精度或正确率。但这个问题并不严重，因为我们关心的是模型的泛化能力，而不是对已知训练样例100%的正确率。</p>
+<p>是否执行剪枝操作可以通过下面两个指标来判断。</p>
+<ul>
+<li><p><strong>误差估计</strong></p>
+<p>令 $n$ 是到达测试结点ti的训练样本数，当用叶结点替换 $t_i$ 为根的子树后，$n$ 个样例中将有一些样例被错分。用$e$ 来表示这些错误分类的样例数，用相对频率 $\cfrac{e}{n}$ 来估算一个样例在这个叶结点上被错误分类的概率：</p>
+<script type="math/tex; mode=display">
+E_{estimate}=\cfrac{e+1}{n+m}</script><p>修正项是为了避免n过小引起的问题，则整棵树的错误率可以通过所有剪枝后各子树的错误率的加权平均得到。</p>
+<p>上图中，令 $n_2，n_5$ 分别为到达 $t_2，t_5$的训练样例数，令$E_2，E_5$ 为两棵子树的错误率，则树的错误率为：</p>
+<script type="math/tex; mode=display">
+E_T=\cfrac{n_2}{m}E_2+\cfrac{n_5}{m}E_5</script><p>通过比较剪之前和剪枝后的错误率，决定是否执行剪枝操作。</p>
+</li>
+<li><p><strong>准确率</strong></p>
+<p>用测试集的样例来比较剪枝前后的分类准确率，剪枝后测试样例的分类准确率提高，则进行剪枝，反之则不进行剪枝。</p>
+</li>
+</ul>
+<h4 id="预剪枝-prepruning"><a href="#预剪枝-prepruning" class="headerlink" title="预剪枝($prepruning$)"></a>预剪枝($prepruning$)</h4><p>预剪枝是在决策树生成过程中，对每个结点在划分前先进行估算。若当前结点的划分不能带来决策树泛化能力的提升，则停止划分并将当前结点标记为叶结点。</p>
+<ul>
+<li><p><strong>预剪枝过程</strong></p>
+<p>如前图所示，首先基于信息增益率法则选择属性 $t_1$ 对训练集样例划分，并产生 $t_2$ 和 $t_5$ 子结点。若不需要划分则 $t_1$ 标记为叶结点，其类别为样例数最多的类别。</p>
+<p>接着用测试集的样本对决策树进行评估。评估用 $t_1$ 划分后测试集的准确率，若划分后的准确率高于划分前，则完成本次划分，反之则不划分。</p>
+</li>
+</ul>
+<h4 id="后剪枝-post-pruning"><a href="#后剪枝-post-pruning" class="headerlink" title="后剪枝($post-pruning$)"></a>后剪枝($post-pruning$)</h4><p>后剪枝先从训练集生成一棵完整的决策树，然后自底向上地对非叶结点考察，若将该结点对应的子树替换为叶结点能提升决策树的泛化能力，则完成剪枝。</p>
+<ul>
+<li><p><strong>后剪枝过程</strong></p>
+<p>首先用<strong>测试集</strong>计算决策树的准确率，然后从最底层非叶结点子树替换为叶结点，计算剪枝后的准确率，若剪枝后准确率提升，则完成剪枝，反之则不进行剪枝。这样的剪枝过程自底向上直到根结点为止。</p>
+</li>
+</ul>
+<h3 id="CART算法"><a href="#CART算法" class="headerlink" title="CART算法"></a>CART算法</h3><p>分类与回归树($classification and regression tree，CART$)，即可用于分类，也可用于回归。</p>
+<h4 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h4><blockquote>
+<p>采用启发式方法去找特征空间的最佳切分变量和切分点，有点类似于动态规划算法，不断递归下去，最终生成一棵回归树。</p>
+</blockquote>
+<h4 id="分类树"><a href="#分类树" class="headerlink" title="分类树"></a>分类树</h4><p>与ID3和C4.5算法类似，CART分类树算法用<strong>基尼指数（$Gini\  index$）</strong>来选择划分特征。</p>
+<ul>
+<li><strong>基尼指数：</strong>分类问题中，假设有 $K$ 个类，样本点属于第 $k$ 类的概率为 $p_k$，则概率分布的基尼指数定义为<script type="math/tex; mode=display">
+Gini(p)=\sum_{k=1}^Kp_k(1-p_k)=1-\sum_{k=1}^Kp_k^2</script></li>
+</ul>
+<p>  对于二分类问题，若样本点属于第1个类的概率是 $p$，则概率分布的基尼指数为</p>
+<script type="math/tex; mode=display">
+Gini(p)=2p(1-p)</script><p>  对于给定的样本集合 $D$，其基尼指数为</p>
+<script type="math/tex; mode=display">
+Gini(D)=1-\sum_{k=1}^K\left(\cfrac{|C_k|}{|D|}\right)^2</script><p>  这里，$C_k$ 是 $D$ 中属于第 $k$ 类的样本子集，$K$ 是类的个数</p>
+<p>  如果样本集合 $D$ 根据特征 $A$ 是否取某一可能值 $a$ 被分割成 $D_1$ 和 $D_2$ 两部分，即</p>
+<script type="math/tex; mode=display">
+  D_1=\{(x,y)\in D|A(x)=a\}，D_2=D-D_1</script><p>  则在特征 $A$ 的条件下，集合 $D$ 的基尼指数定义为</p>
+<script type="math/tex; mode=display">
+  Gini(D,A)=\cfrac{|D_1|}{|D|}Gini(D_1)+\cfrac{|D_2|}{|D|}Gini(D_2)</script><p>基尼指数 $Gini(D)$ 表示集合 $D$ 的不确定性，基尼指数 $Gini(D,A)$ 表示经 $A=a$ 分割后集合 $D$ 的不确定性。基尼指数值越大，样本集合的不确定性也就越大，这一点与熵类似。</p>
+<ul>
+<li><p><strong>CART生成算法</strong></p>
+<blockquote>
+<p>李航《统计学习方法》P70</p>
+</blockquote>
+<p>算法停止计算条件：节点中的样本数小于预定的阈值，或者样本集的基尼指数小于预定阈值（样本基本属于同一类），或者没有更多的特征继续往下划分。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>决策树算法例题汇总</strong>：李航《统计学习方法》</p>
+<p>P62 例5.2 根据信息增益准则选择最优划分特征</p>
+<p>P64 例5.3 利用ID3算法建立决策树</p>
+<p>P71 例5.4 利用CART算法生成决策树</p>
+<p><strong>考试重点</strong></p>
+<ol>
+<li><p>相关概念</p>
+<ul>
+<li><p>信息量</p>
+</li>
+<li><p>熵</p>
+</li>
+<li><p>经验熵（系统熵）</p>
+</li>
+<li><p>经验条件熵</p>
+</li>
+<li>信息增益</li>
+<li>信息增益率</li>
+<li>基尼指数</li>
+</ul>
+</li>
+<li>ID3算法</li>
+<li>C4.5算法</li>
+<li>CART算法</li>
+<li>剪枝方法</li>
+</ol>
+</blockquote>
+<h2 id="K近邻分类器-K-Nearest-Neighbor"><a href="#K近邻分类器-K-Nearest-Neighbor" class="headerlink" title="K近邻分类器$(K\ Nearest\ Neighbor)$"></a>K近邻分类器$(K\ Nearest\ Neighbor)$</h2><h3 id="k-近邻学习"><a href="#k-近邻学习" class="headerlink" title="$k$ 近邻学习"></a>$k$ 近邻学习</h3><p>$k$ 近邻是一种基本分类和回归方法，其工作机制非常简单：基于某种距离度量找出训练集中与其最靠近的 $k$ 个训练样例，然后基于这 $k$ 个邻居的信息进行预测或分类。通常在<strong>分类任务</strong>中使用<strong>投票法</strong>，在<strong>回归任务</strong>中使用<strong>平均法</strong>，也可根据距离远近进行加权平均或加权投票。</p>
+<p>$KNN$ 是一种称为懒惰学习方法，它没有明显的训练(学习)过程，在训练阶段仅仅是保存样本，因此训练开销为0。</p>
+<p>$KNN$ 实际上利用训练集对特征向量空间进行划分，并作为其分类的模型。</p>
+<p><strong>$KNN$ 的三要素：</strong></p>
+<ul>
+<li>$k$ 值选择</li>
+<li>距离度量方法</li>
+<li>分类决策规则</li>
+</ul>
+<h4 id="KNN模型"><a href="#KNN模型" class="headerlink" title="KNN模型"></a>KNN模型</h4><p>当训练集、$k$ 值、距离度量及分类决策规则确<br>定后，对于任何新的输入样例，它所属的类别将唯一确定。这相当于根据上述要素将特征空间划分为一些子空间，确定子空间里每个点所属的类。</p>
+<p>特征空间中，对每个训练样例 $x_i$ ，所有距离该点更近的点组成一个区域，称为单元<br>$(cell)$。最邻近法将样例 $x_i$的类别 $y_i$ 作为其单元内所有点的类标记，这样每个单元样例点的类别是确定的。</p>
+<p><img src="1547464321719.png" width="300"></p>
+<h4 id="距离度量"><a href="#距离度量" class="headerlink" title="距离度量"></a>距离度量</h4><p>特征空间中二个样例点的距离是二个样例相似程度的反映。$KNN$特征空间一般是 $d$ 维的实数空间 $R^d$ ，使用的距离为<strong>欧氏距离</strong>，但也可以是其他距离。</p>
+<blockquote>
+<p>欧氏距离计算方法：</p>
+<p>设特征空间 $Χ$ 是 $d$ 维实数向量空间 $R^d$</p>
+<p>$x_i,x_j\in X,x_i=(x_1^{(i)},x_2^{(i)},…,x_d^{(i)}),x_j=(x_1^{(j)},x_2^{(j)},…,x_d^{(j)})$</p>
+<p>则欧式距离为：</p>
+<script type="math/tex; mode=display">
+L(x_i,x_j)=\sqrt{\sum_{l=1}^d(x_l^{(i)}-x_l^{(j)})^2}</script></blockquote>
+<h4 id="k值的选择"><a href="#k值的选择" class="headerlink" title="k值的选择"></a>k值的选择</h4><p>$k$ 值选择对 $KNN$ 方法的结果产生重大影响。如果选择较小的 $k$ 值，相当于用较小范围内的训练样例进行预测，因此只有较近的训练样例才会对预测结果起作用。<strong>缺点</strong>是预测结果对近邻的训练样例非常敏感，如果恰巧是噪声，则预测将会出错。换句话说，<strong>$k$ 值的减少意味着整体模型变得复杂，容易引起过拟合。</strong></p>
+<p>如果选择较大的k值，相对于用较大范围内的训练样例进行预测。<strong>优点</strong>是可以减少学习误差，<strong>缺点</strong>是与输入样本较远的(不相似)的训练样例也会对预测起作用，使预测出错。</p>
+<p>$k$ 值增加意味着模型变得简单。特别地，如果 $k=m$ ，那么无论输入是什么，测试结果都取训练集中最多类的标记，显然不可取。<br>在实际应用中，$k$ 值一般取一个较小的数值，通常为奇数，或采用交叉验证法来选取最优的 $k$ 值。</p>
+<h4 id="分类决策规则"><a href="#分类决策规则" class="headerlink" title="分类决策规则"></a>分类决策规则</h4><p>$KNN$ 法中分类决策规则往往采用<strong>多数(投票)</strong><br><strong>表决</strong>，即由输入样例的 $k$ 个近邻类别多数所决定。</p>
+<h4 id="KNN的实现：kd树"><a href="#KNN的实现：kd树" class="headerlink" title="KNN的实现：kd树"></a>KNN的实现：kd树</h4><p>实现 $ KNN$ 时，主要考虑的问题是如何对训练数据进行快速 $k$ 近邻搜索，这对于特征空间的维数及训练集很大时尤为重要。</p>
+<p>$KNN$ 法最简单的实现方式为线性扫描，这时要计算预测样例与每一个训练样例之间的距离，当训练集很大时，计算非常耗时，<br>实际不可行。</p>
+<p>应用 $kd$ 树结构可以减少计算距离的次数，从而提高 $k$ 近邻搜索的效率。</p>
+<blockquote>
+<p>算法和例题参考《统计学习方法》李航P42</p>
+</blockquote>
+<p>例题：$D=\{(2,3),(5,4),(9,6),(4,7),(8,1),(7,2)\}$，构造平衡的kd树。</p>
+<h4 id="加权最近邻"><a href="#加权最近邻" class="headerlink" title="加权最近邻"></a>加权最近邻</h4><p>令$w_1 ,w_2 ,…,w_k$ 为 $k$ 个近邻的权重，加权 $k$ 近邻分类器把正类近邻的权重和负类近邻的权重比较，输出相应的结果。</p>
+<p>假设 $k$ 个近邻点按照距离大小排序为：$d_1, d_2, …, d_k$，其中 $d_1$ 最小，$d_k$ 最大，则一个简单计算第 $i$ 个近邻点权重公式为： </p>
+<script type="math/tex; mode=display">
+w_i = \begin{cases} \cfrac{d_k-d_i}{d_k-d_1} & \text {if $d_k\neq d_1$} \\ 1 & \text{if $d_k=d_1$} \end{cases}</script><p>$w_i$ 的取值范围在0-1之间</p>
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><ol>
+<li><p>不相关属性的影响</p>
+</li>
+<li><p>属性值的尺度影响</p>
+<p>解决办法：标准化属性尺度</p>
+<script type="math/tex; mode=display">
+x=\cfrac{x-min}{max-min}</script></li>
+<li><p>危险样例</p>
+<p>由于在训练集中存在一些噪声或影响分类性能的样例，所以在使用训练集之前需要进行预处理，删除那些被认为是无效或有害的样例。其他分类器也有类似的问题。</p>
+<p>需要预处理的二种情况：</p>
+<ul>
+<li>某个样例被其他类别的样例所包围</li>
+<li>二个类边界区域的样例</li>
+</ul>
+<p><strong>去除危险样例方法：托梅克 $(Tomck)$ 连接技术</strong></p>
+<p>在移除危险样例前，首先要能检测到这些危险的样例。可以使用托梅克连接技术。具体为：</p>
+<p>一个样例对 $ x_1$ 和 $x_2$，如果同时满足3个条件，<br>则它们形成了一个托梅克连接。</p>
+<ul>
+<li><p>$ x_1$ 是 $x_2$ 的最近邻</p>
+</li>
+<li><p>$x_2$ 是 $x_1$ 的最近邻</p>
+</li>
+<li><p>$x_1$ 和 $x_2$ 的类别不同</p>
+</li>
+</ul>
+<p>需要注意的是移除一个托梅克连接可能会生成新的托梅克连接，所以需重复执行多次。</p>
+<p><strong>删除托梅克连接存在的问题</strong></p>
+<ul>
+<li>并不能检测到所有导致错误的样例，相反可能使一些无辜的样例被删除</li>
+<li>训练集样例比较少时</li>
+<li>当一类样例数明显少于另一类样例数时</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>考试重点：</p>
+<ul>
+<li><p>KNN三要素</p>
+</li>
+<li><p>kd树</p>
+</li>
+<li><p>加权最近邻</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="人工神经网络"><a href="#人工神经网络" class="headerlink" title="人工神经网络"></a>人工神经网络</h2><h3 id="神经元-neuron-模型"><a href="#神经元-neuron-模型" class="headerlink" title="神经元($neuron$)模型"></a>神经元($neuron$)模型</h3><p><img src="1547538635281.png" width="400"></p>
+<p>上图所示的模型中，神经元接收到来自 $n$ 个其他神经元传递过来的信号，这些输入信号通过带权重的连接进行传递，神经元接收到的总输入值将与神经元的阈值进行比较，然后通“激活函数”（$activation\ function$）处理以产生神经元的输出。</p>
+<blockquote>
+<p>常见的激活函数：</p>
+<ul>
+<li>阶跃函数：$sgn(x)= \begin{cases}  1&amp; \text {if $x\geq 0$} \\ 0 &amp; \text{if $x&lt;0$} \end{cases}$</li>
+<li>Sigmoid函数：$sigmoid(x)=\cfrac{1}{1+e^{-x}}$</li>
+<li>双曲正切函数：$tanh(x)=\cfrac{e^x-e^{-x}}{e^x+e^{-x}}$</li>
+<li>线性整流单元函数：$ReLU(x)=\max (0,x)$</li>
+</ul>
+</blockquote>
+<h3 id="感知机与多层网络"><a href="#感知机与多层网络" class="headerlink" title="感知机与多层网络"></a>感知机与多层网络</h3><h4 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h4><p>感知机（$perceptron$）是人工神经网络中最典型的结构，它由两层神经元组成：输入层和输出层。输入层接受外界输入信号后传递给输出层，输出层为M-P神经元。</p>
+<p><img src="1547539051364.png" width="200"></p>
+<p>感知机可以处理与、或、非这种线性可分问题，但不能处理非线性可分问题，如异或等。这是因为单层感知机的学习能力太弱，所以要解决非线性可分问题需要考虑使用多层的功能神经元。如简单的二层感知机可方便地解决异或问题。</p>
+<h4 id="多层神经网络"><a href="#多层神经网络" class="headerlink" title="多层神经网络"></a>多层神经网络</h4><p>参考这里：<a href="/2018/12/13/%E7%A7%91%E5%A4%A7%E8%BD%AF%E9%99%A2-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%93/#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%88Deep-learning%EF%BC%89" title="点击打开" target="_blank">科大软院-人工智能期末总结-深度学习</a></p>
+<h3 id="误差反向传播算法"><a href="#误差反向传播算法" class="headerlink" title="误差反向传播算法"></a>误差反向传播算法</h3><p>参考这里：<a href="/2018/12/13/%E7%A7%91%E5%A4%A7%E8%BD%AF%E9%99%A2-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%93/#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%EF%BC%88Back-propagation%EF%BC%89" title="点击打开" target="_blank">科大软院-人工智能期末总结-反向传播算法</a></p>
+<h3 id="全局最小与局部最小"><a href="#全局最小与局部最小" class="headerlink" title="全局最小与局部最小"></a>全局最小与局部最小</h3><p>神经网络的训练过程是一个参数寻优过程，即在参数空间中寻找一组最优参数，使误差E最小。</p>
+<p>最小分为局部最小和全局最小二种情况：</p>
+<p><img src="1547539531400.png" width="350"></p>
+<p>基于梯度下降的搜索是最为广泛使用的参数寻优方法。在这种方法中，首先从初始解出发，迭代寻找最优参数解。在迭代过程中，若误差函数在当前点的梯度为0，说明已到达<strong>局部最小</strong>，此时更新量为0，因此迭代将终止。而此时的局部最小不一定是全局最小，如何跳出局部最小找到全局最小的策略有：</p>
+<ul>
+<li><p>以多组不同参数值初始化，训练后取误差最小的解为最终参数</p>
+</li>
+<li><p>使用“模拟退火”（$simulated\ annealing$），即在每一步都以一定概率接受比当前解更差的结果</p>
+</li>
+<li><p>随机梯度下降，即随机选取一个或部分样例的梯度作为更新梯度值</p>
+</li>
+</ul>
+<h3 id="其他常见神经网络"><a href="#其他常见神经网络" class="headerlink" title="其他常见神经网络"></a>其他常见神经网络</h3><ul>
+<li><p>RBF网络</p>
+<p>径向基函数（$Radial\ Basis\ Function$）网络</p>
+</li>
+<li><p>ART网络</p>
+<p>自适应谐振理论（$Adaptive\ Resonance\ Theory$）网络</p>
+</li>
+<li><p>SOM网络</p>
+<p>自组织映射（$Self\text{-}Organizing\ Map$）网络</p>
+</li>
+<li><p>级联相关网络</p>
+</li>
+<li><p>Elman网络</p>
+</li>
+<li><p>布尔兹曼机（$Boltzmann$）网络</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>考试重点</strong></p>
+<ol>
+<li>M-P神经元结构</li>
+<li>激活函数（传递函数）</li>
+<li>前向传播网络</li>
+<li>BP算法</li>
+</ol>
+</blockquote>
+<h2 id="SVM模型"><a href="#SVM模型" class="headerlink" title="SVM模型"></a>SVM模型</h2><blockquote>
+<p>先挖个坑，后期更新</p>
+</blockquote>
+<h2 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h2><h3 id="个体与集成"><a href="#个体与集成" class="headerlink" title="个体与集成"></a>个体与集成</h3><p>集成学习通过构建并结合多个学习器来完成任务。</p>
+<p>集成学习的一般结构为：一系列个体学习器采用某种策略结合在一起产生最终的输出。</p>
+<p><strong>同质：</strong>集成中个体学习器是同类型的，这种个体学习器又称为基学习器</p>
+<p><strong>异质：</strong>集成中个体学习器是不同类型的</p>
+<p><strong>弱学习器（$weak\ learner$）：</strong>泛化能力略优于随机猜测的学习器</p>
+<p>目前集成学习方法大致分为两大类，即<strong>个体学习器之间存在强依赖关系</strong>，必须<strong>串行</strong>生成的序列化方法，如$Boosting$，提升树等；以及<strong>个体学习器之间不存在强依赖关系</strong>，如 $Bagging$ 和随机森林等。</p>
+<h3 id="Bagging方法"><a href="#Bagging方法" class="headerlink" title="Bagging方法"></a>Bagging方法</h3><p><strong>要得到泛化能力强的集成，个体学习器应尽可能相互独立。</strong>虽然在现实任务中很难做到，但可以设法<strong>使个体学习器尽可能具有较大的差异性</strong>。一个可能的做法是<strong>对训练样本采样，产生出若干个不同的子集，再从每个子集中训练出基学习器。</strong></p>
+<p>$Bagging$采用<strong>自助采样方法</strong>训练<strong>基学习器</strong>。每个基学习器将针对学习问题的不同方面进行训练。</p>
+<ul>
+<li><p>Bagging算法</p>
+<p>当采样生成了 $T$ 个训练子集 $D_i$ 后，为每个训练子集 $D_i$ 分配一个基学习器 $h_i$，再将这些基学习器结合，按照某种策略产生最终的输出。一般情况下，<strong>分类任务输出时采用简单投票法，回归任务时采用简单平均法。</strong>若分类预测出现票数相同时，可随机选取一个类，或使用基学习器的置信度来确定。</p>
+</li>
+<li><p>Bagging算法的时间复杂度</p>
+<p>假设基学习器的计算复杂度为 $O(n)$ ，采样和投票的时间复杂度为 $O(m)$，则 $Bagging$ 算法的时间复杂度为$ T(O(m)+O(n))$。相比较采样和投票的时间 $O(m)$ 远小于 $ O(n)$，并且 $T$ 通常是一个不太大的常数，所以训练一个 $Bagging$ 集成与直接使用基学习算法训练一个学习器的复杂度同阶。这就表明Bagging是一个很高效的集成学习算法。</p>
+<p><strong>优点：</strong>泛化能力较强</p>
+<p><strong>缺点：</strong>训练误差较大</p>
+</li>
+</ul>
+<h3 id="随机森林（-Random-Forest-）"><a href="#随机森林（-Random-Forest-）" class="headerlink" title="随机森林（$Random\ Forest$）"></a>随机森林（$Random\ Forest$）</h3><p>随机森林是Bagging的一个改进版本，也是一种比较新的机器学习模型，它<strong>以决策树为基学习器</strong>，模型的预测结果等于各决策树预测结果的某种加权平均。</p>
+<ul>
+<li>对于分类问题，最终结果等于在决策树预测结果中出现次数最多的类别</li>
+<li>对于回归问题，最终结果等于决策树预测结果的平均值</li>
+</ul>
+<p>随机森林建模的依据是：一棵树犯错的概率比较大，但很多棵树同时犯错的概率就比较小。</p>
+<p><strong>例如</strong>针对某个分类问题，有3棵相互独立的决策树，它们独立预测的错误率为 $20％$，当把它们组成一个随机森林，那么预测的错误率将下降到 $10.4％$ 。由此看出，<strong>随机森林预测效果最重要的保证是森林中的决策树应相互独立</strong>。</p>
+<p>那么该如何随机产生对于使用同一个训练集样例训练的决策树呢？可以从以下三个层面<strong>引入决策树的随机性</strong>。</p>
+<ul>
+<li><p>对于每棵决策树采用<strong>自助法</strong>从训练集中随机选取训练子集</p>
+</li>
+<li><p>在确定划分属性时，并不遍历全部属性，而是随机挑选部分属性构成一个侯选属性子集，然后再在这个侯选属性子集中产生最优的划分属性</p>
+<p>令 $k$ 为随机挑选属性的数目，则参数 $k$ 控制了随机性的引入程度。若 $k=d$，则与传统决策树相同；若 $k=1$，则是随机选择一个属性进行划分，一般情况下，推荐 $k=\log_2d$。</p>
+</li>
+<li><p>在选择属性划分阈值时，并不求得最优的解，而是随机构成一个候选阈值集合，再选取此集合中最优的划分阈值。</p>
+<blockquote>
+<p>此处的阈值指的是，产生决策树时，当结点的信息增益（或其他指标）低于该阈值时就停止划分，将此节点设为叶节点。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="提升（-Boosting-）方法"><a href="#提升（-Boosting-）方法" class="headerlink" title="提升（$Boosting$）方法"></a>提升（$Boosting$）方法</h3><h4 id="夏皮尔（-Schapire-）提升"><a href="#夏皮尔（-Schapire-）提升" class="headerlink" title="夏皮尔（$Schapire$）提升"></a>夏皮尔（$Schapire$）提升</h4><p>尽管 $Bagging$ 方法有很好的结果，但也存在一个严重的缺陷，即参与投票的基学习器之间是相互独立的，使用的训练数据都是随机选择的，所以各基学习器之间关联性较弱。为此可以设计一个更聪明也更加有效的机制，<strong>使学习器之间呈现互补状态</strong>，如每个学习器都选择不易被其他学习器感知的样例进行训练，这也是 $Schapire\  Boosting$方法的主要思想。</p>
+<blockquote>
+<p>简单的来说，夏皮尔提升的思想是让不同的基学习器之间有些关联（互补），它们各自对不同的属性敏感。</p>
+</blockquote>
+<p><strong>算法过程：</strong></p>
+<ul>
+<li><p>假设有一个随机子集 $D_i\in D$，用它训练出第一个学习器 $h_1$，当在整个训练集 $D$ 上测试这个分类器时，会出现一些错分类的样本。</p>
+</li>
+<li><p>接着创建另一个训练子集 $D_2\in D$，其 $50\%$ 的样例来自被 $h_1$ 正确分类的样例，另 $50 \%$ 的样例来自被 $h_1$ 错误分类的样例。这意味着用 $h_1$ 分类 $D_2$ 中的样本效果不佳，如同随机分类的结果。用 $D_2$ 训练出第二个学习器 $h_2$。</p>
+</li>
+<li><p>创建第三个训练子集 $D_3\in D$，$D_3$ 中样本选择用 $h_1$ 和 $h_2$ 分类结果不一致的样本训练得到学习器 $h_3$。</p>
+</li>
+</ul>
+<p>当一个新的样本输入时，集成分类器返回票数最多的结果。在夏皮尔提升方法中，三个分类器组成一个<strong>基本单元</strong>，递归应用此规则，可构建包含更多分类器的集成。</p>
+<p><strong>夏皮尔提升的问题：</strong></p>
+<ul>
+<li><p>假设每个基学习器的错误率 $&lt;ε$，则分类器三元组的错误率 $&lt;3ε^2-2ε^3&lt;ε$，即夏皮尔方法提升了单个分类器的性能。但当这个三元组的错误率很低时，其他分类器很难得到同样低的错误率。换言之，用一个三元组和其他两个基分类器组成新的<strong>三元组</strong>后，集成分类器的性能就不会有多大的提升。</p>
+<p>解决方法：三元组均由三个基分类器组成。</p>
+<blockquote>
+<p>三元组的错误率：$3ε^2(1-ε)+ε^3=3ε^2-2ε^3$</p>
+</blockquote>
+</li>
+<li><p>训练集问题：$h_1$ 到 $h_2$ 再到 $h_3$ ，训练样本数量越来越少</p>
+</li>
+</ul>
+<h4 id="Adaboost-算法"><a href="#Adaboost-算法" class="headerlink" title="$Adaboost$ 算法"></a>$Adaboost$ 算法</h4><p>目前最有可能实现的 $Boosting$ 算法是 $Adaboosting$ 方法，它<strong>根据样本的概率分布来挑选训练样本</strong>。</p>
+<p>与夏皮尔方法<strong>相同点</strong>：$Adaboostng$ 也是<strong>逐个创建分类器</strong>，每个分类器由不同的训练子集训练得到。</p>
+<p><strong>不同点</strong>：$Adaboosting$ 产生训练子集的方法不同，使用的基分类器更多且无需组成三元组，<strong>分类结果不是采用简单投票法而是使用基于权重多数投票机制。</strong></p>
+<p><strong>算法步骤：</strong></p>
+<ul>
+<li><p>训练子集 $D_1$时，每个样本被选取的概率相同，均为 $p=1/m$，并用此子集训练得到第一个分类器 $h_1$，然后训练样本被选择的概率将根据分类器 $h_1$ 的结果进行修改。</p>
+<p>具体做法为：减小被 $h_1$ 正确分类样本的选择概率(权重)，增加被 $h_1$ 错分样本的选择概率。</p>
+</li>
+<li><p>在基分类器集成时，采取<strong>加权多数表决机制</strong>，即加大分类误差小的分类器权重值，使其在表决中起较大的作用，减小分类误差大的分类器权重值，使其在表决中起较小的作用。</p>
+<p>概率(权重值)更新的过程：</p>
+<p>令：</p>
+<script type="math/tex; mode=display">
+H(x)=\sum_{i=1}^T\alpha_ih_i(x)</script><p>其中 $H(x)$ 为集成后的分类器，$h_i(x)$ 为基分类器，$\alpha_i$ 为 $h_i(x)$ 的系数，表示 $h_i(x)$ 在集成学习器中的重要性（权重）。显然 $H(x)$ 为一加法模型。</p>
+<p>决策规则：</p>
+<script type="math/tex; mode=display">
+H(x)=sign\left(\sum_{i=1}^T\alpha_ih_i(x)\right)</script></li>
+</ul>
+<h4 id="提升树-boosting-tree"><a href="#提升树-boosting-tree" class="headerlink" title="提升树($boosting\ tree$)"></a>提升树($boosting\ tree$)</h4><p>提升树是以决策树为基学习器的提升方法。提升树的提升方法采用<strong>加法模型与前向分步算法</strong>。对分类问题决策树是二叉分类树，对回归问题决策树是二叉回归树。</p>
+<p>提升树模型可以表示为决策树的加法模型：</p>
+<script type="math/tex; mode=display">
+f_k(x)=\sum_{i=1}^kT(x;\theta_i)\\
+其中：T(x;\theta)表示决策树，\theta_i为决策树的参数，k为树的个数</script><blockquote>
+<p>考试重点</p>
+<ul>
+<li>Bagging方法</li>
+<li>随机森林</li>
+<li>夏皮尔提升</li>
+<li>Adaboosting算法</li>
+</ul>
+</blockquote>
+<h2 id="聚类算法-Cluster"><a href="#聚类算法-Cluster" class="headerlink" title="聚类算法(Cluster)"></a>聚类算法(Cluster)</h2><ul>
+<li><p><strong>定义</strong></p>
+<p>聚类就是将大量无标注的数据集，按数据的内在相似性将数据集划分为多个类别，使类别内的数据相似度较大而类别间的数据相似度较小。</p>
+<p>聚类方法试图将数据集中的样本划分为若干个不相交的子集，每个子集成为一个簇(cluster)。通过划分，每个簇可能对应了一些潜在的概念(类别)。</p>
+</li>
+</ul>
+<h3 id="最短距离法"><a href="#最短距离法" class="headerlink" title="最短距离法"></a>最短距离法</h3><p>最短距离法通过计算样本之间的距离，然后将距离值最小的样本进行合并的过程。</p>
+<ul>
+<li>具体步骤如下<ul>
+<li>定义样本之间的距离计算方式</li>
+<li>计算初始样本两两之间的距离，构造距离矩阵</li>
+<li>根据距离矩阵，合并最小值对应的二个样本为一个新样本</li>
+<li>更新距离矩阵，重复2，3步骤，直至所有样本合并为一个样本</li>
+</ul>
+</li>
+<li>距离计算的方式<ul>
+<li>最短距离：两个簇中最近样本的距离</li>
+<li>最大距离：两个簇中最近样本的距离</li>
+<li>平均距离：两个簇中所有样本两两之间的距离求和后再求平均</li>
+</ul>
+</li>
+</ul>
+<h3 id="重心聚类法"><a href="#重心聚类法" class="headerlink" title="重心聚类法"></a>重心聚类法</h3><p>重心聚类法首先确定每个簇的重心（重心可取簇中所有样本的平均值），然后计算各个簇重心之间的距离，得到一个距离矩阵。后续步骤如同最短距离法。</p>
+<p>初始时，所有样本分别为一个簇，重心即为该样本自身，距离计算可采用欧氏距离。</p>
+<h3 id="动态聚类法"><a href="#动态聚类法" class="headerlink" title="动态聚类法"></a>动态聚类法</h3><p>首先按<strong>粗粒度</strong>方式将样本划分为若干个簇，然后再逐步调整样本所属聚簇，即计算所有样本到簇中心点的距离，取最小距离为该样本的所属簇，中心点通常取簇样本的平均值。通过不断的调整过程，直到所有样本所属的簇不再变化为止。</p>
+<h3 id="k-Means算法"><a href="#k-Means算法" class="headerlink" title="k-Means算法"></a>k-Means算法</h3><h4 id="K-Means"><a href="#K-Means" class="headerlink" title="K-Means"></a>K-Means</h4><ul>
+<li><p>定义</p>
+<p>对m个样本初始化选择k个点作为聚类中心点，然后分别计算所有样本到k个中心点的距离，并把该样本加入到最近中心点对应的聚类。所有样本加入到k个聚簇后，更新k个中心点，调整样本的聚簇，不断重复此过程直到中心点不再变化或到达事先设定的迭代次数为止。</p>
+</li>
+<li><p>算法</p>
+<p>设样本集 $D=\{ x_1,x_2,…,x_m\}$，由 $k$ 均值算法划分 $D$ 后得到 $k$ 个聚簇为：$C=\{C_1,C_2,…,C_k\}$。</p>
+<p>令 $\mu_i$ 为聚簇 $C_i$ 的中心点，即</p>
+<script type="math/tex; mode=display">
+\mu_i=\cfrac{1}{|C_i|}\sum_{x\in C_i}x</script><p>聚类的结果就是要使平方误差最小</p>
+<script type="math/tex; mode=display">
+E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
+</ul>
+<h4 id="如何选择k值"><a href="#如何选择k值" class="headerlink" title="如何选择k值"></a>如何选择k值</h4><p>对于非监督学习，训练数据是没有类别标注的，那么除了极少数情况，我们无法知道数据应该被分为几类。而且对于k-Means算法，给定一个聚类个数k，算法总能将数据分为k类。</p>
+<p>与线性回归模型类似，k-Means模型也是以平方损失来评估模型的，即每个类别中所有数据的预测值均为聚类中心，样本到聚类中心的距离之和最小化。但与线性回归模型不同的是k-Means模型的损失评估与具体聚类个数k相关，k值越大则损失越小。所以从某种角度来看，k值代表了聚类模型的复杂度，和其他机器学习模型类似，模型越复杂，对训练数据的预测效果越好，但也容易引起过拟合，因此需要平衡聚类个数k和模型损失之间的关系。</p>
+<p>在实际应用中，一种常采用的平衡方法称为elbow<br>method：当聚类个数k小于真实的类别个数时，随着k值的增加，模型的损失下降很快；当聚类个数k值超过真实值后，虽然模型的损失会继续下降，但下降的速度会明显减缓，而这个转折点就是最佳的k值。</p>
+<p>elbow method虽然非常直观，但很难用数学公式去量化，因此这种方法使用起来随意性较大。为了解决这个问题，学术界提出了一种数学上更为严谨的方法silhouette<br>analysis(轮廓分析)来确定聚类个数k值。</p>
+<h4 id="K-Means聚类算法总结"><a href="#K-Means聚类算法总结" class="headerlink" title="K-Means聚类算法总结"></a>K-Means聚类算法总结</h4><ul>
+<li>优点<ul>
+<li>是解决聚类问题的一种经典算法，简单、快捷</li>
+<li>对处理大数据集，算法保持可伸缩性和高效率</li>
+<li>当簇近似为高斯分布时效果较好</li>
+<li>可作为其他聚类方法的基础算法 </li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>在簇的平均值可被定义的情况下才能使用，可能不适用于某些应用</li>
+<li>用欧氏距离度量数据间的相似度，要求数据在各个维度上是均质的</li>
+<li>必须事先给出k值，且对初值敏感，对于不同的初始值，可能导致不同的结果(不稳定)</li>
+<li>不适合大小差别很大的簇</li>
+<li>对噪声和孤立点数据敏感</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>过拟合、欠拟合、错误率、正确率<br>正则化<br>训练集组织：留出法、交叉验证法、<br>自助法<br>多分类实现方式：softmax、一对多、<br>一对一方式。<br>距离公式、相似度公式等</p>
+<h2 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h2><p>感谢张曙老师辛勤授课！</p>
+<p>写这篇总结的主要目的是方便以后自己查看，可能会不定时更新，如有错误，感谢留言告知！</p>
+<p><a href="https://cjh.zone">陈建虎</a> 2019年1月15日 苏州</p>
+<p><br></p>
+<blockquote>
+<p>参考资料：</p>
+<p>科大张曙老师《机器学习》课件</p>
+<p>周志华《机器学习》清华大学出版社</p>
+<p>李航《统计学习方法》清华大学出版社</p>
+<p>$Miroslav\ Kubat$ （王勇等 译）《机器学习导论》 机械工业出版社</p>
+</blockquote>
+<h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
+      
+    </div>
+
+    
+    <div>    
+     
+     
+        <ul class="post-copyright">
+          <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+            <a href="/2019/01/16/科大软院-机器学习期末总结/" title="科大软院-机器学习期末总结">https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明： </strong>
+            本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
+          </li>
+        </ul>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果你觉得此页面对你有帮助，或者想资瓷我一下，欢迎点击下面打赏哦，谢谢~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChatQR.png" alt="JhChen 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPayQR.png" alt="JhChen 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/科大/" rel="tag"># 科大</a>
+          
+            <a href="/tags/人工智能/" rel="tag"># 人工智能</a>
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+            <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/13/科大软院-人工智能期末总结/" rel="next" title="科大软院-人工智能期末总结">
+                <i class="fa fa-chevron-left"></i> 科大软院-人工智能期末总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/100x100.gif" alt="JhChen">
+            
+              <p class="site-author-name" itemprop="name">JhChen</p>
+              <p class="site-description motion-element" itemprop="description">不想长大的石头</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/jianhuchen" title="GitHub &rarr; https://github.com/jianhuchen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cjh18@mail.ustc.edu.cn" title="E-Mail &rarr; mailto:cjh18@mail.ustc.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/cjh2018" title="Weibo &rarr; https://weibo.com/cjh2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://keyanjie.net" title="http://keyanjie.net" rel="noopener" target="_blank">柯延杰</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯分类器"><span class="nav-number">1.</span> <span class="nav-text">贝叶斯分类器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归"><span class="nav-number">2.</span> <span class="nav-text">线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性模型的基本形式"><span class="nav-number">2.1.</span> <span class="nav-text">线性模型的基本形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小二乘法"><span class="nav-number">2.2.</span> <span class="nav-text">最小二乘法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极大似然估计-Likelihood-解释最小二乘法"><span class="nav-number">2.3.</span> <span class="nav-text">极大似然估计$(Likelihood)$解释最小二乘法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降算法-gradient-descent"><span class="nav-number">2.4.</span> <span class="nav-text">梯度下降算法 $(gradient\ descent)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题"><span class="nav-number">2.5.</span> <span class="nav-text">例题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则化"><span class="nav-number">2.6.</span> <span class="nav-text">正则化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑回归"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归模型"><span class="nav-number">3.1.</span> <span class="nav-text">逻辑回归模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#似然函数"><span class="nav-number">3.2.</span> <span class="nav-text">似然函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习规则"><span class="nav-number">3.3.</span> <span class="nav-text">学习规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分类问题"><span class="nav-number">3.4.</span> <span class="nav-text">多分类问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式模型"><span class="nav-number">3.5.</span> <span class="nav-text">多项式模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树"><span class="nav-number">4.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树模型与学习"><span class="nav-number">4.1.</span> <span class="nav-text">决策树模型与学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树模型"><span class="nav-number">4.1.1.</span> <span class="nav-text">决策树模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树与if-then规则"><span class="nav-number">4.1.2.</span> <span class="nav-text">决策树与if-then规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树与条件概率分布"><span class="nav-number">4.1.3.</span> <span class="nav-text">决策树与条件概率分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树学习"><span class="nav-number">4.1.4.</span> <span class="nav-text">决策树学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征选择"><span class="nav-number">4.2.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信息增益"><span class="nav-number">4.2.1.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信息增益比"><span class="nav-number">4.2.2.</span> <span class="nav-text">信息增益比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树的生成"><span class="nav-number">4.3.</span> <span class="nav-text">决策树的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ID3-算法"><span class="nav-number">4.3.1.</span> <span class="nav-text">ID3 算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C4-5的生成算法"><span class="nav-number">4.3.2.</span> <span class="nav-text">C4.5的生成算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树的剪枝"><span class="nav-number">4.4.</span> <span class="nav-text">决策树的剪枝</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预剪枝-prepruning"><span class="nav-number">4.4.1.</span> <span class="nav-text">预剪枝($prepruning$)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后剪枝-post-pruning"><span class="nav-number">4.4.2.</span> <span class="nav-text">后剪枝($post-pruning$)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CART算法"><span class="nav-number">4.5.</span> <span class="nav-text">CART算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回归树"><span class="nav-number">4.5.1.</span> <span class="nav-text">回归树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类树"><span class="nav-number">4.5.2.</span> <span class="nav-text">分类树</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K近邻分类器-K-Nearest-Neighbor"><span class="nav-number">5.</span> <span class="nav-text">K近邻分类器$(K\ Nearest\ Neighbor)$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#k-近邻学习"><span class="nav-number">5.1.</span> <span class="nav-text">$k$ 近邻学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#KNN模型"><span class="nav-number">5.1.1.</span> <span class="nav-text">KNN模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#距离度量"><span class="nav-number">5.1.2.</span> <span class="nav-text">距离度量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#k值的选择"><span class="nav-number">5.1.3.</span> <span class="nav-text">k值的选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类决策规则"><span class="nav-number">5.1.4.</span> <span class="nav-text">分类决策规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KNN的实现：kd树"><span class="nav-number">5.1.5.</span> <span class="nav-text">KNN的实现：kd树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加权最近邻"><span class="nav-number">5.1.6.</span> <span class="nav-text">加权最近邻</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他问题"><span class="nav-number">5.2.</span> <span class="nav-text">其他问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人工神经网络"><span class="nav-number">6.</span> <span class="nav-text">人工神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#神经元-neuron-模型"><span class="nav-number">6.1.</span> <span class="nav-text">神经元($neuron$)模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感知机与多层网络"><span class="nav-number">6.2.</span> <span class="nav-text">感知机与多层网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#感知机"><span class="nav-number">6.2.1.</span> <span class="nav-text">感知机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多层神经网络"><span class="nav-number">6.2.2.</span> <span class="nav-text">多层神经网络</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差反向传播算法"><span class="nav-number">6.3.</span> <span class="nav-text">误差反向传播算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局最小与局部最小"><span class="nav-number">6.4.</span> <span class="nav-text">全局最小与局部最小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他常见神经网络"><span class="nav-number">6.5.</span> <span class="nav-text">其他常见神经网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM模型"><span class="nav-number">7.</span> <span class="nav-text">SVM模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成学习"><span class="nav-number">8.</span> <span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#个体与集成"><span class="nav-number">8.1.</span> <span class="nav-text">个体与集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bagging方法"><span class="nav-number">8.2.</span> <span class="nav-text">Bagging方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机森林（-Random-Forest-）"><span class="nav-number">8.3.</span> <span class="nav-text">随机森林（$Random\ Forest$）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提升（-Boosting-）方法"><span class="nav-number">8.4.</span> <span class="nav-text">提升（$Boosting$）方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#夏皮尔（-Schapire-）提升"><span class="nav-number">8.4.1.</span> <span class="nav-text">夏皮尔（$Schapire$）提升</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adaboost-算法"><span class="nav-number">8.4.2.</span> <span class="nav-text">$Adaboost$ 算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提升树-boosting-tree"><span class="nav-number">8.4.3.</span> <span class="nav-text">提升树($boosting\ tree$)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类算法-Cluster"><span class="nav-number">9.</span> <span class="nav-text">聚类算法(Cluster)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最短距离法"><span class="nav-number">9.1.</span> <span class="nav-text">最短距离法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重心聚类法"><span class="nav-number">9.2.</span> <span class="nav-text">重心聚类法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态聚类法"><span class="nav-number">9.3.</span> <span class="nav-text">动态聚类法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-Means算法"><span class="nav-number">9.4.</span> <span class="nav-text">k-Means算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#K-Means"><span class="nav-number">9.4.1.</span> <span class="nav-text">K-Means</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何选择k值"><span class="nav-number">9.4.2.</span> <span class="nav-text">如何选择k值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-Means聚类算法总结"><span class="nav-number">9.4.3.</span> <span class="nav-text">K-Means聚类算法总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">10.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尾巴"><span class="nav-number">11.</span> <span class="nav-text">尾巴</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text"> </span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JhChen</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  |  总访客数<span id="busuanzi_value_site_uv"></span>人
+</span>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz',
+        appKey: 'FTmW5pj1DN6mdeaKvW8ajsIo',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!\n填写正确的邮箱，这样如果有人回复您就会有邮件提醒哦~ \n此回复框MarkDown全语法支持',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz",
+                'X-LC-Key': "FTmW5pj1DN6mdeaKvW8ajsIo",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.gif?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.gif?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="实验目的使用TensorFlow Object Detection API 进行实时目标检测（基于SSD模型） 任务列表：  行人识别 人脸识别 交通灯识别 实时检测（平均FPS&amp;gt;15） 使用tflite将模型移植到嵌入式设备  目录结构为了先对工程有个整体性的了解，故将此项目的目录结构列出如下： 12345678910111213141516171819202122232425262728">
+<meta name="keywords" content="科大,人工智能,tensorflow,实验,深度学习,对象检测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用TensorFlow对象检测API进行实时目标检测">
+<meta property="og:url" content="http://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/index.html">
+<meta property="og:site_name" content="不想长大的石头">
+<meta property="og:description" content="实验目的使用TensorFlow Object Detection API 进行实时目标检测（基于SSD模型） 任务列表：  行人识别 人脸识别 交通灯识别 实时检测（平均FPS&amp;gt;15） 使用tflite将模型移植到嵌入式设备  目录结构为了先对工程有个整体性的了解，故将此项目的目录结构列出如下： 12345678910111213141516171819202122232425262728">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/1547714372800.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/1547740463134.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/1547740839795.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/1547808115848.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/1547788940929.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/1547791962646.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/2019-01-18%2001-32-15屏幕截图.png">
+<meta property="og:updated_time" content="2019-01-20T12:15:06.957Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用TensorFlow对象检测API进行实时目标检测">
+<meta name="twitter:description" content="实验目的使用TensorFlow Object Detection API 进行实时目标检测（基于SSD模型） 任务列表：  行人识别 人脸识别 交通灯识别 实时检测（平均FPS&amp;gt;15） 使用tflite将模型移植到嵌入式设备  目录结构为了先对工程有个整体性的了解，故将此项目的目录结构列出如下： 12345678910111213141516171819202122232425262728">
+<meta name="twitter:image" content="http://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/1547714372800.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>使用TensorFlow对象检测API进行实时目标检测 | 不想长大的石头</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不想长大的石头</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Give you my world.</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">19</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">8</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">35</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about_guestbook">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于 & 留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-share_resource">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JhChen">
+      <meta itemprop="description" content="不想长大的石头">
+      <meta itemprop="image" content="/images/100x100.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不想长大的石头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">使用TensorFlow对象检测API进行实时目标检测
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-19 22:07:00" itemprop="dateCreated datePublished" datetime="2019-01-19T22:07:00+08:00">2019-01-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-20 20:15:06" itemprop="dateModified" datetime="2019-01-20T20:15:06+08:00">2019-01-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/" class="leancloud_visitors" data-flag-title="使用TensorFlow对象检测API进行实时目标检测">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>使用TensorFlow Object Detection API 进行实时目标检测（基于SSD模型）</p>
+<p>任务列表：</p>
+<ul>
+<li>行人识别</li>
+<li>人脸识别</li>
+<li>交通灯识别</li>
+<li>实时检测（平均FPS&gt;15）</li>
+<li>使用tflite将模型移植到嵌入式设备</li>
+</ul>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>为了先对工程有个整体性的了解，故将此项目的目录结构列出如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">Object-Detection-USTC</span><br><span class="line">├── object_detection</span><br><span class="line">│   ├── data <span class="comment"># 存放数据</span></span><br><span class="line">│   │   ├── mscoco_label_map.pbtxt <span class="comment"># 预训练模型（coco数据集）的Label Maps</span></span><br><span class="line">│   │   ├── pascal_label_map.pbtxt <span class="comment"># 数据集2的Label Maps</span></span><br><span class="line">│   │   ├── pascal_train.record <span class="comment"># 数据集2生成的tfrecord格式的训练集</span></span><br><span class="line">│   │   ├── pascal_val.record <span class="comment"># 数据集2生成的tfrecord格式的验证集</span></span><br><span class="line">│   │   ├── PennFudanPed <span class="comment"># 数据集1（Penn-Fudan Database）</span></span><br><span class="line">│   │   ├── PennFudanPed_label_map.pbtxt <span class="comment"># 数据集1的Label Maps</span></span><br><span class="line">│   │   ├── PennFudanPed_train.record <span class="comment"># 数据集1生成的tfrecord格式的训练集</span></span><br><span class="line">│   │   ├── PennFudanPed_val.record <span class="comment"># 数据集1生成的tfrecord格式的验证集</span></span><br><span class="line">│   │   └── VOC2007 <span class="comment"># 数据集2</span></span><br><span class="line">│   ├── dataset_tools <span class="comment"># 数据集格式转换工具</span></span><br><span class="line">│   │   ├── create_pascal_tf_record.py <span class="comment"># 用于将本实验中的数据集2转换成tfrecord格式的脚本</span></span><br><span class="line">│   │   └── ...<span class="comment"># 用于将其他数据集转换成tfrecord格式的脚本文件</span></span><br><span class="line">│   ├── legacy</span><br><span class="line">│   │   ├── train.py <span class="comment"># 用于训练我们自己的模型</span></span><br><span class="line">│   │   └── ...</span><br><span class="line">│   ├── ssd_mobilenet <span class="comment"># 模型相关</span></span><br><span class="line">│   │   ├── faster_rcnn_inception_v2_coco_2018_01_28 <span class="comment"># 预训练模型１</span></span><br><span class="line">│   │   ├── ssd_mobilenet_v1_coco_11_06_2017 <span class="comment"># 预训练模型2</span></span><br><span class="line">│   │   ├── ssd_mobilenet_v1_coco_2018_01_28 <span class="comment"># 预训练模型3</span></span><br><span class="line">│   │   ├── ssd_mobilenet_v2_coco_2018_03_29 <span class="comment"># 预训练模型4（最终选用）</span></span><br><span class="line">│   │   ├── output_inference_graph　<span class="comment"># 导出的我们自己训练的模型</span></span><br><span class="line">│   │   ├── pipeline_ssd_mobilenet_v2_coco_2018_03_29.config　<span class="comment"># 管道配置文件</span></span><br><span class="line">│   │   └── train_logs <span class="comment"># 训练过程中产生的记录</span></span><br><span class="line">│   │       ├── graph.pbtxt</span><br><span class="line">│   │       ├── model.ckpt-1000.data-00000-of-00001</span><br><span class="line">│   │       ├── model.ckpt-1000.index</span><br><span class="line">│   │       ├── model.ckpt-1000.meta</span><br><span class="line">│   │       └── ...</span><br><span class="line">│   ├── export_inference_graph.py <span class="comment"># 用于导出我们自己训练的模型的py脚本</span></span><br><span class="line">│   ├── export_tflite_ssd_graph.py <span class="comment"># 用于导出tflite压缩图的py脚本</span></span><br><span class="line">│   └── ... <span class="comment"># 其他文件略去</span></span><br><span class="line">├── object_detection_video.py <span class="comment"># 用于实时视频检测</span></span><br><span class="line">├── utils <span class="comment"># 实时视频检测时用到的两个库文件</span></span><br><span class="line">│   ├── app_utils.py</span><br><span class="line">│   └── test_app_utils.py</span><br><span class="line">├── slim <span class="comment"># 环境依赖</span></span><br><span class="line">├── tflite <span class="comment"># tflite产生的文件</span></span><br><span class="line">│   ├── tflite_graph.pb</span><br><span class="line">│   └── tflite_graph.pbtxt</span><br><span class="line">├── create_pascal_tfrecord.sh <span class="comment"># 用于将数据集2转换成tfrecord格式的shell脚本</span></span><br><span class="line">├── train.sh <span class="comment"># 用于执行训练命令的shell脚本</span></span><br><span class="line">├── export_model.sh <span class="comment"># 用于导出我们自己训练的模型的shell脚本</span></span><br><span class="line">├── create_PennFudanPed_tfrecord.py <span class="comment"># 将数据集1转换成tfrecord格式的py脚本</span></span><br><span class="line">├── export_tflite_ssd_graph.sh <span class="comment"># 用于导出tflite压缩图的shell脚本</span></span><br><span class="line">└── video <span class="comment"># 测试视频</span></span><br><span class="line">    └── 2.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="实验环境安装"><a href="#实验环境安装" class="headerlink" title="实验环境安装"></a>实验环境安装</h2><h3 id="下载Tensorflow对象检测API"><a href="#下载Tensorflow对象检测API" class="headerlink" title="下载Tensorflow对象检测API"></a>下载Tensorflow对象检测API</h3><p><code>Tensorflow/models</code>的github地址：<a href="https://github.com/tensorflow/models" target="_blank" rel="noopener">https://github.com/tensorflow/models</a></p>
+<p>对象检测API的目录：<code>tensorflow/models/research/object_detection</code></p>
+<p>通过以下命令将其克隆到本地工作目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/tensorflow/models.git</span><br></pre></td></tr></table></figure>
+<h3 id="安装依赖库"><a href="#安装依赖库" class="headerlink" title="安装依赖库"></a>安装依赖库</h3><p>本次实验使用的是<a herf="https://github.com/tensorflow/models/tree/master/research/object_detection">TensorFlow Object Detection API</a>，根据官方文档介绍，需要安装以下库：</p>
+<ul>
+<li>Protobuf 3.0.0</li>
+<li>Python-tk</li>
+<li>Pillow 1.0</li>
+<li>lxml</li>
+<li>tf Slim (which is included in the “tensorflow/models/research/“ checkout)</li>
+<li>Jupyter notebook</li>
+<li>Matplotlib</li>
+<li>Tensorflow (&gt;=1.9.0)</li>
+<li>Cython</li>
+<li>contextlib2</li>
+<li>cocoapi</li>
+</ul>
+<p>其中，关于Tensorflow的详细安装步骤，可以按照<a href="https://www.tensorflow.org/install/" target="_blank" rel="noopener">Tensorflow官方安装说明</a>进行操作。一般安装好python之后可以使用以下命令之一安装Tensorflow：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CPU版本</span></span><br><span class="line">pip install tensorflow</span><br><span class="line"><span class="comment"># GPU版本 </span></span><br><span class="line">pip install tensorflow-gpu</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装GPU版本的tensorflow可以参考<a href="http://cjh.zone/2018/11/28/ubuntu16-04%E5%AE%89%E8%A3%85TensorFlow-GPU/">这篇文章</a></p>
+</blockquote>
+<p>其余的库可以通过<code>apt-get</code>安装在<code>Ubuntu 16.04</code>上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install protobuf-compiler python-pil python-lxml python-tk</span><br><span class="line">pip install --user Cython</span><br><span class="line">pip install --user contextlib2</span><br><span class="line">pip install --user jupyter</span><br><span class="line">pip install --user matplotlib</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>pip默认将Python包安装到系统目录（例如 <code>/usr/local/lib/python3.6</code>），这需要root访问权限。</p>
+<p><code>--user</code> 选项的意思是：在你的主目录中创建pip安装包，而不需要任何特殊权限。</p>
+</blockquote>
+<p>或者，你也可以使用pip安装依赖项：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pip install --user Cython</span><br><span class="line">pip install --user contextlib2</span><br><span class="line">pip install --user pillow</span><br><span class="line">pip install --user lxml</span><br><span class="line">pip install --user jupyter</span><br><span class="line">pip install --user matplotlib</span><br></pre></td></tr></table></figure>
+<h3 id="Protobuf编译"><a href="#Protobuf编译" class="headerlink" title="Protobuf编译"></a>Protobuf编译</h3><p>Tensorflow对象检测API使用Protobufs配置模型和训练参数。在使用框架之前，必须编译Protobuf库，可以通过在目录<code>tensorflow/models/research/</code>运行以下命令来完成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># From tensorflow/models/research/</span></span><br><span class="line">protoc object_detection/protos/*.proto --python_out=.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果在编译时遇到错误，则可能使用的是不兼容的protobuf编译器。如果是这种情况，可以使用手动安装来解决。</p>
+</blockquote>
+<h3 id="手动protobuf编译器安装和使用"><a href="#手动protobuf编译器安装和使用" class="headerlink" title="手动protobuf编译器安装和使用"></a>手动protobuf编译器安装和使用</h3><p><strong>如果你使用的是linux：</strong></p>
+<p>下载并安装protoc的3.0版本，然后解压缩该文件。在目录<code>tensorflow/models/research/</code>运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># From tensorflow/models/research/</span></span><br><span class="line">wget -O protobuf.zip https://github.com/google/protobuf/releases/download/v3.0.0/protoc-3.0.0-linux-x86_64.zip</span><br><span class="line">unzip protobuf.zip</span><br></pre></td></tr></table></figure>
+<p>再次运行编译过程，但使用刚才我们自己下载的protoc版本，在目录<code>tensorflow/models/research/</code>运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># From tensorflow/models/research/</span></span><br><span class="line">./bin/protoc object_detection/protos/*.proto --python_out=.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>MacOS可以参考<a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md#manual-protobuf-compiler-installation-and-usage" target="_blank" rel="noopener">这个链接</a></p>
+</blockquote>
+<h3 id="将库添加到PYTHONPATH"><a href="#将库添加到PYTHONPATH" class="headerlink" title="将库添加到PYTHONPATH"></a>将库添加到PYTHONPATH</h3><p>在本地运行时，<code>tensorflow/models/research/</code>和<code>tensorflow/models/research/slim</code>目录需要添加到PYTHONPATH，可以通过在目录<code>tensorflow/models/research/</code>运行以下命令来完成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># From tensorflow/models/research/</span></span><br><span class="line"><span class="built_in">export</span> PYTHONPATH=<span class="variable">$PYTHONPATH</span>:`<span class="built_in">pwd</span>`:`<span class="built_in">pwd</span>`/slim</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>每次运行新终端时，都要重新输入此命令，如果希望避免繁琐的操作，可以将其作为新行追加到<code>~/ .bashrc</code>文件的末尾，将“pwd”替换此项目目录的绝对路径。</p>
+</blockquote>
+<h3 id="测试安装"><a href="#测试安装" class="headerlink" title="测试安装"></a>测试安装</h3><p>到现在所有的环境配置就完成了，可以通过运行以下命令来测试是否已正确安装Tensorflow Object Detection API：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python object_detection/builders/model_builder_test.py</span><br></pre></td></tr></table></figure>
+<p>如果出现下面的结果就表示安装成功：</p>
+<p><img src="1547714372800.png" width="700"></p>
+<h3 id="建立自己的工作空间"><a href="#建立自己的工作空间" class="headerlink" title="建立自己的工作空间"></a>建立自己的工作空间</h3><p>因为<code>tensorflow/models/*</code>里面有太多其他的模块了，我们这次实验只需要用到其中的<code>tensorflow/models/research/object_detection</code>，所以在环境搭建好之后我们建立一个自己的项目文件夹，让整个工程更简洁。</p>
+<p>首先新建文件夹<code>Object-Detection-USTC</code>，然后将刚才目录<code>tensorflow/models/research/</code>中的<code>object_detection</code>文件夹和<code>slim</code>文件夹分别复制一份到<code>Object-Detection-USTC</code>文件夹中。</p>
+<p>此时的工程目录结如下：</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object-Detection-USTC</span><br><span class="line">├── <span class="keyword">object</span><span class="number">_</span>detection</span><br><span class="line">└── slim</span><br></pre></td></tr></table></figure>
+<h2 id="数据集及数据预处理方案"><a href="#数据集及数据预处理方案" class="headerlink" title="数据集及数据预处理方案"></a>数据集及数据预处理方案</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><ul>
+<li><p><strong>数据集1：Penn-Fudan Database</strong></p>
+<p><strong>来源：</strong><a href="https://www.cis.upenn.edu/~jshi/ped_html/" target="_blank" rel="noopener">https://www.cis.upenn.edu/~jshi/ped_html/</a></p>
+<p><strong>内容：</strong>这是一个图像数据集，其中包含可以用于行人检测的图片。图片来自校园和城市街道周围的场景，我们对这些图片中感兴趣的对象是行人，每张图片中至少有一个行人。此数据集共有170张图片，345个行人标注，其中96张图像来自宾夕法尼亚大学，其余74张图片来自复旦大学。</p>
+<p><strong>目录结构：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">PennFudanPed</span><br><span class="line">├── added-object-list.txt</span><br><span class="line">├── Annotation <span class="comment"># 标注文件</span></span><br><span class="line">│   ├── FudanPed00001.txt</span><br><span class="line">│   ├── FudanPed00002.txt</span><br><span class="line">│   └── ...</span><br><span class="line">├── PedMasks <span class="comment"># 遮罩文件，用于做像素级别的图像分割，本次实验不涉及</span></span><br><span class="line">│   ├── FudanPed00001_mask.png</span><br><span class="line">│   ├── FudanPed00002_mask.png</span><br><span class="line">│   └── ...</span><br><span class="line">├── PNGImages <span class="comment"># 图片</span></span><br><span class="line">│   ├── FudanPed00001.png</span><br><span class="line">│   ├── FudanPed00002.png</span><br><span class="line">│   └── ...</span><br><span class="line">└── readme.txt</span><br></pre></td></tr></table></figure>
+<p><strong>缺点：</strong>不含红绿灯、不含人脸标注</p>
+</li>
+<li><p><strong>数据集2</strong></p>
+<p><strong>来源：</strong>监控视频2.mp4</p>
+<p><strong>内容：</strong>此数据集为我们将视频中的帧截取保存（每3帧截取一张）后，使用<a href="http://www.jinglingbiaozhu.com/" target="_blank" rel="noopener">标注精灵</a>工具人工标注而成，一共有大约600张标注有行人、人脸、红灯、绿灯的图片，最后标注的保存格式为<code>PascalVoc</code>，方便后面将其转换成tfrecord格式。</p>
+</li>
+</ul>
+<h3 id="转换数据集格式"><a href="#转换数据集格式" class="headerlink" title="转换数据集格式"></a>转换数据集格式</h3><p>根据<a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md" target="_blank" rel="noopener">官方文档</a>，要在Tensorflow Object Detection API中使用我们自己的数据集，必须将其转换为<a href="https://www.tensorflow.org/api_guides/python/python_io#tfrecords_format_details" target="_blank" rel="noopener">TFRecord文件格式</a>。</p>
+<ul>
+<li><p><strong>数据集1</strong></p>
+<ul>
+<li><p><strong>建立标签地图（Label Maps）</strong></p>
+<p>每个数据集都需要具有与之关联的标签映射，此标签映射定义了从字符串类名（如：‘person’）到整数类Ids（如：1）的映射，所以我们首先建立数据集的标签地图（Label Maps）。</p>
+<blockquote>
+<p>注意：标签地图的id号应该从 1开始，不能从0开始。</p>
+</blockquote>
+<p>在目录<code>Object-Detection-USTC/object_detection/data/</code>下新建文件<code>PennFudanPed_label_map.pbtxt</code>，并写入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">item &#123;</span><br><span class="line">  id: 1</span><br><span class="line">  name: &apos;person&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为数据集1中的标注只有行人，所以只用在Label Maps中写一个item。</p>
+</li>
+<li><p><strong>编写转换脚本</strong></p>
+<p>将数据集1（Penn-Fudan Database）下载解压后放入目录<code>Object-Detection-USTC/object_detection/data/</code>。</p>
+<p>因为此数据集的标注文档（如：<code>PennFudanPed/Annotation/FudanPed00001.txt</code>）不规则，所以我们需要自己写一个脚本来将这个数据集转换成tfrecord格式。</p>
+<p>在目录<code>Object-Detection-USTC/</code>下新建文件<code>create_PennFudanPed_tfrecord.py</code>，并写入以下内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @File 	: create_PennFudanPed_tfrecord.py</span></span><br><span class="line"><span class="comment"># @Author 	: jianhuChen</span></span><br><span class="line"><span class="comment"># @Date 	: 2018-12-23 16:53:11</span></span><br><span class="line"><span class="comment"># @License 	: Copyright(C), USTC</span></span><br><span class="line"><span class="comment"># @Last Modified by  : jianhuChen</span></span><br><span class="line"><span class="comment"># @Last Modified time: 2019-01-17 17:54:31</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> object_detection.utils <span class="keyword">import</span> dataset_util</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_pre_processing</span><span class="params">(annotation_path)</span>:</span></span><br><span class="line">	datas = [] <span class="comment"># 存储图片信息</span></span><br><span class="line">	files = os.listdir(annotation_path)</span><br><span class="line">	<span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">		sample = &#123;&#125;</span><br><span class="line">		xmins = []</span><br><span class="line">		xmaxs = []</span><br><span class="line">		ymins = []</span><br><span class="line">		ymaxs = []</span><br><span class="line">		classes_text = []</span><br><span class="line">		classes = []</span><br><span class="line">		<span class="keyword">with</span> open(annotation_path+<span class="string">'/'</span>+file, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">			lines = fp.readlines()</span><br><span class="line">			<span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">				<span class="keyword">if</span> line.startswith(<span class="string">'Image filename :'</span>):</span><br><span class="line">					filename = line.strip().split(<span class="string">'/'</span>)[<span class="number">-1</span>][:<span class="number">-1</span>] <span class="comment"># get image name</span></span><br><span class="line">					image_format = filename.split(<span class="string">'.'</span>)[<span class="number">-1</span>] <span class="comment"># get image format</span></span><br><span class="line">				<span class="keyword">elif</span> line.startswith(<span class="string">'Image size (X x Y x C) :'</span>):</span><br><span class="line">					width_height_channel = line.split(<span class="string">':'</span>)[<span class="number">-1</span>].split(<span class="string">'x'</span>)</span><br><span class="line">					width = eval(width_height_channel[<span class="number">0</span>].strip()) <span class="comment"># get image width</span></span><br><span class="line">					height = eval(width_height_channel[<span class="number">1</span>].strip()) <span class="comment"># get image height</span></span><br><span class="line">				<span class="keyword">elif</span> line.startswith(<span class="string">'Original label for object'</span>):</span><br><span class="line">					label = line.split(<span class="string">':'</span>)[<span class="number">-1</span>].strip()[<span class="number">1</span>:<span class="number">-1</span>]</span><br><span class="line">					<span class="keyword">if</span> label == <span class="string">'PennFudanPed'</span>: <span class="comment"># get the object id</span></span><br><span class="line">						classes.append(<span class="number">1</span>)</span><br><span class="line">						classes_text.append(<span class="string">'person'</span>.encode(<span class="string">'utf8'</span>)) <span class="comment"># get the object label</span></span><br><span class="line">				<span class="keyword">elif</span> line.startswith(<span class="string">'Bounding box for object'</span>):</span><br><span class="line">					Xmin_Ymin_Xmax_Ymax = line.split(<span class="string">':'</span>)[<span class="number">-1</span>].strip() <span class="comment"># like:(160, 182) - (302, 431)</span></span><br><span class="line">					xmin = eval(Xmin_Ymin_Xmax_Ymax.split(<span class="string">','</span>)[<span class="number">0</span>][<span class="number">1</span>:])</span><br><span class="line">					ymin = eval(Xmin_Ymin_Xmax_Ymax.split(<span class="string">','</span>)[<span class="number">1</span>].partition(<span class="string">') - ('</span>)[<span class="number">0</span>])</span><br><span class="line">					xmax = eval(Xmin_Ymin_Xmax_Ymax.split(<span class="string">','</span>)[<span class="number">1</span>].partition(<span class="string">') - ('</span>)[<span class="number">2</span>])</span><br><span class="line">					ymax = eval(Xmin_Ymin_Xmax_Ymax.split(<span class="string">','</span>)[<span class="number">2</span>][:<span class="number">-1</span>])</span><br><span class="line">					xmins.append(xmin)</span><br><span class="line">					xmaxs.append(xmax)</span><br><span class="line">					ymins.append(ymin)</span><br><span class="line">					ymaxs.append(ymax)</span><br><span class="line">			<span class="comment"># 将该图片所有属性添加到字典里   </span></span><br><span class="line">			sample[<span class="string">'filename'</span>] = filename</span><br><span class="line">			sample[<span class="string">'image_format'</span>] = image_format</span><br><span class="line">			sample[<span class="string">'width'</span>] = width</span><br><span class="line">			sample[<span class="string">'height'</span>] = height</span><br><span class="line">			sample[<span class="string">'classes_text'</span>] = classes_text</span><br><span class="line">			sample[<span class="string">'classes'</span>] = classes</span><br><span class="line">			sample[<span class="string">'xmins'</span>] = xmins</span><br><span class="line">			sample[<span class="string">'xmaxs'</span>] = xmaxs</span><br><span class="line">			sample[<span class="string">'ymins'</span>] = ymins</span><br><span class="line">			sample[<span class="string">'ymaxs'</span>] = ymaxs</span><br><span class="line">			<span class="comment"># 将该图片添加到数据集列表里</span></span><br><span class="line">			datas.append(sample)</span><br><span class="line">	<span class="keyword">return</span> datas</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_tf_example</span><span class="params">(sample, image_path)</span>:</span></span><br><span class="line">	height = sample[<span class="string">'height'</span>]</span><br><span class="line">	width = sample[<span class="string">'width'</span>]</span><br><span class="line">	filename = sample[<span class="string">'filename'</span>]</span><br><span class="line">	image_format = sample[<span class="string">'image_format'</span>]</span><br><span class="line">	<span class="comment"># 注意：坐标需要标准化</span></span><br><span class="line">	xmins = np.array(sample[<span class="string">'xmins'</span>])/width</span><br><span class="line">	xmaxs = np.array(sample[<span class="string">'xmaxs'</span>])/width</span><br><span class="line">	ymins = np.array(sample[<span class="string">'ymins'</span>])/height</span><br><span class="line">	ymaxs = np.array(sample[<span class="string">'ymaxs'</span>])/height</span><br><span class="line">	classes_text = sample[<span class="string">'classes_text'</span>]</span><br><span class="line">	classes = sample[<span class="string">'classes'</span>]</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 读取图片数据</span></span><br><span class="line">	encoded_img = tf.gfile.FastGFile(image_path+<span class="string">'/'</span>+sample[<span class="string">'filename'</span>],<span class="string">'rb'</span>).read()</span><br><span class="line">	</span><br><span class="line">	tf_example = tf.train.Example(features=tf.train.Features(feature=&#123;</span><br><span class="line">		<span class="string">'image/height'</span>: dataset_util.int64_feature(height),</span><br><span class="line">		<span class="string">'image/width'</span>: dataset_util.int64_feature(width),</span><br><span class="line">		<span class="string">'image/filename'</span>: dataset_util.bytes_feature(filename.encode(<span class="string">'utf8'</span>)),</span><br><span class="line">		<span class="string">'image/source_id'</span>: dataset_util.bytes_feature(filename.encode(<span class="string">'utf8'</span>)),</span><br><span class="line">		<span class="string">'image/encoded'</span>: dataset_util.bytes_feature(encoded_img),</span><br><span class="line">		<span class="string">'image/format'</span>: dataset_util.bytes_feature(image_format.encode(<span class="string">'utf8'</span>)),</span><br><span class="line">		<span class="string">'image/object/bbox/xmin'</span>: dataset_util.float_list_feature(xmins),</span><br><span class="line">		<span class="string">'image/object/bbox/xmax'</span>: dataset_util.float_list_feature(xmaxs),</span><br><span class="line">		<span class="string">'image/object/bbox/ymin'</span>: dataset_util.float_list_feature(ymins),</span><br><span class="line">		<span class="string">'image/object/bbox/ymax'</span>: dataset_util.float_list_feature(ymaxs),</span><br><span class="line">		<span class="string">'image/object/class/text'</span>: dataset_util.bytes_list_feature(classes_text),</span><br><span class="line">		<span class="string">'image/object/class/label'</span>: dataset_util.int64_list_feature(classes),</span><br><span class="line">	&#125;))</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> tf_example</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(_)</span>:</span></span><br><span class="line">	<span class="comment"># 标注文件路径</span></span><br><span class="line">	annotation_path = <span class="string">r'object_detection/data/PennFudanPed/Annotation'</span></span><br><span class="line">	<span class="comment"># 图片文件路径</span></span><br><span class="line">	image_path = <span class="string">r'object_detection/data/PennFudanPed/PNGImages'</span></span><br><span class="line">	<span class="comment"># tfrecord输出路径</span></span><br><span class="line">	output_path = <span class="string">r'object_detection/data'</span></span><br><span class="line"></span><br><span class="line">	train_writer = tf.python_io.TFRecordWriter(os.path.join(output_path, <span class="string">'PennFudanPed_train.record'</span>))</span><br><span class="line">	val_writer = tf.python_io.TFRecordWriter(os.path.join(output_path, <span class="string">'PennFudanPed_val.record'</span>))</span><br><span class="line"></span><br><span class="line">	annotation_datas = data_pre_processing(annotation_path)</span><br><span class="line">	<span class="keyword">for</span> sample <span class="keyword">in</span> tqdm(annotation_datas[:]):</span><br><span class="line">		tf_sample = create_tf_example(sample, image_path)</span><br><span class="line">		train_writer.write(tf_sample.SerializeToString())</span><br><span class="line">	print(<span class="string">'Successfully created the TFRecords(train).'</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> sample <span class="keyword">in</span> tqdm(annotation_datas[<span class="number">150</span>:]):</span><br><span class="line">		tf_sample = create_tf_example(sample, image_path)</span><br><span class="line">		val_writer.write(tf_sample.SerializeToString())</span><br><span class="line">	print(<span class="string">'Successfully created the TFRecords(val).'</span>)</span><br><span class="line"></span><br><span class="line">	train_writer.close()</span><br><span class="line">	val_writer.close()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	tf.app.run()</span><br></pre></td></tr></table></figure>
+<p>执行此脚本后，会在目录<code>Object-Detection-USTC/object_detection/data/</code>下生成两个tfrecord文件：<code>PennFudanPed_train.record</code>和<code>PennFudanPed_val.record</code> ，它们分别是数据集1对应的tfrecord格式的训练集和验证集。</p>
+<blockquote>
+<p>此脚本编写时参考此官方文档：<a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md" target="_blank" rel="noopener">点击查看</a></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>数据集2</strong></p>
+<ul>
+<li><p><strong>建立标签地图（Label Maps）</strong></p>
+<p>将数据集2（文件夹名字为：VOC2007）格式组织好后放入目录<code>Object-Detection-USTC/object_detection/data/</code>。</p>
+<p>接下来建立数据集2的标签地图（Label Maps），在目录<code>Object-Detection-USTC/object_detection/data/</code>下新建文件<code>pascal_label_map.pbtxt</code>，并写入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">item &#123;</span><br><span class="line">  name: &quot;person&quot;</span><br><span class="line">  id: 1</span><br><span class="line">  display_name: &quot;person&quot;</span><br><span class="line">&#125;</span><br><span class="line">item &#123;</span><br><span class="line">  name: &quot;face&quot;</span><br><span class="line">  id: 2</span><br><span class="line">  display_name: &quot;face&quot;</span><br><span class="line">&#125;</span><br><span class="line">item &#123;</span><br><span class="line">  name: &quot;red_light&quot;</span><br><span class="line">  id: 3</span><br><span class="line">  display_name: &quot;red_light&quot;</span><br><span class="line">&#125;</span><br><span class="line">item &#123;</span><br><span class="line">  name: &quot;green_light&quot;</span><br><span class="line">  id: 4</span><br><span class="line">  display_name: &quot;green_light&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为数据集2中标注了4类对象，所以只用在Label Maps中有4个item。</p>
+</li>
+<li><p><strong>运行转换脚本</strong></p>
+<p>此数据集为我们自己人工标注，保存格式为<code>PascalVoc</code>（与ImageNet采用的格式相同），而tensorflow提供了将<code>PascalVoc</code>格式的数据集转换成tfrecord格式的脚本，路径为<code>Object-Detection-USTC/object_detection/dataset_tools/create_pascal_tf_record.py</code>，所以我们不用自己写了。</p>
+<p>接下来写一个shell脚本来执行上述文件，在<code>Object-Detection-USTC/</code>目录下新建文件<code>create_pascal_tfrecord.sh</code>并写入如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">python object_detection/dataset_tools/create_pascal_tf_record.py \</span><br><span class="line">    --label_map_path=object_detection/data/pascal_label_map.pbtxt \</span><br><span class="line">    --data_dir=object_detection/data  --year=VOC2007 --<span class="built_in">set</span>=train \ <span class="comment"># 生成训练集</span></span><br><span class="line">    --output_path=object_detection/data/pascal_train.record <span class="comment"># 训练集输出路径</span></span><br><span class="line"></span><br><span class="line">python object_detection/dataset_tools/create_pascal_tf_record.py \</span><br><span class="line">    --label_map_path=object_detection/data/pascal_label_map.pbtxt \</span><br><span class="line">    --data_dir=object_detection/data  --year=VOC2007 --<span class="built_in">set</span>=val\ <span class="comment"># 生成验证集</span></span><br><span class="line">    --output_path=object_detection/data/pascal_val.record <span class="comment"># 验证集输出路径</span></span><br></pre></td></tr></table></figure>
+<p>PascalVoc格式的数据集2存放目录结构为:</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Object</span>-<span class="type">Detection</span>-<span class="type">USTC</span></span><br><span class="line">└── object_detection</span><br><span class="line">    └── <span class="class"><span class="keyword">data</span></span></span><br><span class="line">        └── <span class="type">VOC2007</span></span><br><span class="line">            ├── <span class="type">Annotations</span></span><br><span class="line">            ├── <span class="type">ImageSets</span></span><br><span class="line">            ├── <span class="type">JPEGImages</span></span><br><span class="line">            └── readme.txt</span><br></pre></td></tr></table></figure>
+<p>上面的shell脚本中，参数意义如下：</p>
+<ul>
+<li><p>参数<code>data_dir</code> 指定数据目录<code>object_detection/data</code>，目录里面有 VOC2007文件夹，VOC2007文件夹里面有存放图片的JPEGImages，存放标注分类坐标信息Annotations。</p>
+</li>
+<li><p>ImageSets/Main 目录下有四个文件:<code>test.txt</code>是测试集，<code>train.txt</code>是训练集，<code>val.txt</code>是验证集，<code>trainval.txt</code>是训练和验证集。</p>
+</li>
+<li><p>参数<code>set</code>指定要使用的数据集是那个，这里使用了train和val两个。</p>
+</li>
+</ul>
+<p>然后在<code>Object-Detection-USTC/</code>目录下行运行这个脚本就可以转换成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./create_pascal_tfrecord.sh</span><br></pre></td></tr></table></figure>
+<p>转换完成后会在目录<code>Object-Detection-USTC/object_detection/data/</code>下生成两个tfrecord文件：<code>pascal_train.record</code>和<code>pascal_val.record</code> ，它们分别是数据集2对应的tfrecord格式的训练集和验证集。</p>
+<blockquote>
+<p>此处之所以要写shell脚本的原因是：上面的命令太长了，每次执行都要在命令行敲一遍太麻烦，写shell脚本的好处是以后每次执行上面的命令的时候只用在命令行输入这个脚本的名字就行了</p>
+</blockquote>
+<p>转换数据集格式到此结束，总结一下，在<code>Object-Detection-USTC/object_detection/data</code>目录下有以下文件：</p>
+<ul>
+<li>pascal_label_map.pbtxt # 数据集2生成的tfrecord格式的训练集</li>
+<li>pascal_train.record # 数据集2生成的tfrecord格式的训练集</li>
+<li>pascal_val.record # 数据集2生成的tfrecord格式的验证集</li>
+<li>PennFudanPed # 数据集1（Penn-Fudan Database）</li>
+<li>PennFudanPed_label_map.pbtxt # 数据集1的Label Maps</li>
+<li>PennFudanPed_train.record # 数据集1生成的tfrecord格式的训练集</li>
+<li>PennFudanPed_val.record # 数据集1生成的tfrecord格式的验证集</li>
+<li>VOC2007 # 数据集2</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h2><h3 id="下载预训练模型"><a href="#下载预训练模型" class="headerlink" title="下载预训练模型"></a>下载预训练模型</h3><p>为了加快训练速度，我们需要基于谷歌提供的预训练模型来微调参数（即迁移学习），官方提供了不少预训练模型，<a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md" target="_blank" rel="noopener">点击查看</a>。</p>
+<p>我们对比尝试了以下训练模型：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模型</th>
+<th style="text-align:center">平均帧率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">faster_rcnn_inception_v2_coco</td>
+<td style="text-align:center">4.92</td>
+</tr>
+<tr>
+<td style="text-align:center">SSD-MobileNet-v1-2017</td>
+<td style="text-align:center">14.57</td>
+</tr>
+<tr>
+<td style="text-align:center">SSD-MobileNet-v1-2018</td>
+<td style="text-align:center">18.88</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>SSD-MobileNet-v2-2018</strong></td>
+<td style="text-align:center"><strong>14.33</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>上表的数据是在视频实时检测实现之后直接拿这些预训练模型测试所得</p>
+</blockquote>
+<p>最终选择了<strong>SSD-MobileNet-v2-2018预训练模型</strong>进行迁移学习训练，因为它能相对较好的兼顾实时性和准确性。</p>
+<p>在工程目录<code>Object-Detection-USTC/object_detection/</code>下新建文件夹<code>ssd_mobilenet</code>（此文件夹的用途是存放与模型相关的文件，包括待会儿我们自己训练出来的模型），将下载好的SSD-MobileNet-v2-2018压缩包解压后，放入目录<code>Object-Detection-USTC/object_detection/ssd_mobilenet/</code>，会得到如下目录结构：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Object-Detection-USTC</span><br><span class="line">└── object_detection</span><br><span class="line">	└── ssd_mobilenet</span><br><span class="line">        └── ssd_mobilenet_v2_coco_2018_03_29</span><br><span class="line">            ├── checkpoint</span><br><span class="line">            ├── frozen_inference_graph.pb　<span class="comment">#　冻结图</span></span><br><span class="line">            ├── model.ckpt.data-00000-of-00001 <span class="comment"># 检查点</span></span><br><span class="line">            ├── model.ckpt.index <span class="comment"># 检查点</span></span><br><span class="line">            ├── model.ckpt.meta <span class="comment"># 检查点</span></span><br><span class="line">            ├── pipeline.config <span class="comment">#　用于训练和生成模型的管道配置文件</span></span><br><span class="line">            └── saved_model</span><br></pre></td></tr></table></figure>
+<h3 id="修改管道配置文件"><a href="#修改管道配置文件" class="headerlink" title="修改管道配置文件"></a>修改管道配置文件</h3><p>将目录<code>Object-Detection-USTC/object_detection/ssd_mobilenet/ssd_mobilenet_v2_coco_2018_03_29</code>中的管道文件<code>pipeline.config</code>复制到上级目录（<code>ssd_mobilenet</code>目录）下，为了好辨别，将此文件更名为<code>pipeline_ssd_mobilenet_v2_coco_2018_03_29.config</code>，再修改如下几个位置：</p>
+<p>（以下配置以使用数据集2训练为例，使用数据集1训练同理也可做相应的配置）</p>
+<ul>
+<li><p>修改类别数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num_classes:<span class="number">5</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改预训练模型位置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fine_tune_checkpoint:  <span class="string">"/home/jhchen/Desktop/Object-Detection-USTC/object_detection/ssd_mobilenet/ssd_mobilenet_v2_coco_2018_03_29/model.ckpt"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为避免找不到文件的位置，此处使用绝对路径，下同</p>
+</blockquote>
+</li>
+<li><p>修改训练次数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num_steps: <span class="number">1000</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改训练数据位置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">train_input_reader &#123;</span><br><span class="line">  <span class="comment"># 标签地图（Label Maps）配置文件路径</span></span><br><span class="line">  label_map_path: <span class="string">"/home/jhchen/Desktop/Object-Detection-USTC/object_detection/data/pascal_label_map.pbtxt"</span></span><br><span class="line">  tf_record_input_reader &#123;</span><br><span class="line">    <span class="comment"># 训练集径</span></span><br><span class="line">    input_path: <span class="string">"/home/jhchen/Desktop/Object-Detection-USTC/object_detection/data/pascal_train.record"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改验证评估数据位置（可选）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">eval_input_reader &#123;</span><br><span class="line">  label_map_path: <span class="string">"/home/jhchen/Desktop/Object-Detection-USTC/object_detection/data/pascal_label_map.pbtxt"</span></span><br><span class="line">  shuffle: false</span><br><span class="line">  num_readers: <span class="number">1</span></span><br><span class="line">  tf_record_input_reader &#123;</span><br><span class="line">    input_path: <span class="string">"/home/jhchen/Desktop/Object-Detection-USTC/object_detection/data/pascal_val.record"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="开始训练"><a href="#开始训练" class="headerlink" title="开始训练"></a>开始训练</h3><p>Tensorflow官方提供了训练的脚本，路径为<code>Object-Detection-USTC/object_detection/legacy/train.py</code>，接下来，我们要调用它来开始我们的迁移学习训练。</p>
+<p>在工程目录<code>Object-Detection-USTC/</code>下新建一个训练的脚本文件<code>train.sh</code>，并写入以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果不存在这个路径，就递归地创建它</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">"object_detection/ssd_mobilenet/train_logs"</span> ]; <span class="keyword">then</span></span><br><span class="line">  mkdir -p object_detection/ssd_mobilenet/train_logs</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 设置管道配置文件的路径</span></span><br><span class="line">PIPELINE_CONFIG_PATH=object_detection/ssd_mobilenet/pipeline_ssd_mobilenet_v2_coco_2018_03_29.config</span><br><span class="line"><span class="comment"># 设置模型训练过程中产生的记录文件的存放位置</span></span><br><span class="line">TRAIN_LOGS=object_detection/ssd_mobilenet/train_logs</span><br><span class="line"><span class="comment"># 运行train.py文件</span></span><br><span class="line">python object_detection/legacy/train.py \</span><br><span class="line">    --logtostderr \</span><br><span class="line">    --train_dir=<span class="variable">$TRAIN_LOGS</span> \</span><br><span class="line">    --pipeline_config_path=<span class="variable">$PIPELINE_CONFIG_PATH</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>文件夹<code>Object-Detection-USTC/object_detection/ssd_mobilenet/train_logs</code>中存放模型训练过程中产生的记录文件，后面需要通过这个文件夹内的文件来导出我们可以使用的模型。</p>
+</blockquote>
+<p>然后在<code>Object-Detection-USTC/</code>目录下行运行这个脚本就可以开始训练：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./train.sh</span><br></pre></td></tr></table></figure>
+<p>看到如下的提示信息就表示开始训练了</p>
+<p><img src="1547740463134.png" width="700"></p>
+<h3 id="可视化训练过程"><a href="#可视化训练过程" class="headerlink" title="可视化训练过程"></a>可视化训练过程</h3><p>在训练的过程中，可以同时通过tensorboard来查看训练的情况。新开一个终端，在<code>Object-Detection-USTC/</code>目录下，运行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir=object_detection/ssd_mobilenet/train_logs</span><br></pre></td></tr></table></figure>
+<p>在浏览器打开<a href="http://localhost:6006/" target="_blank" rel="noopener">http://localhost:6006</a>，即可看到Loss等信息的实时变化情况。</p>
+<p><img src="1547740839795.png" width="400"></p>
+<h3 id="导出模型"><a href="#导出模型" class="headerlink" title="导出模型"></a>导出模型</h3><p>训练结束后，在<code>Object-Detection-USTC/object_detection/ssd_mobilenet/train_logs</code>路径下，可以看到一些<code>checkpoint</code>文件，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">train_logs</span><br><span class="line">├── graph.pbtxt</span><br><span class="line">├── model.ckpt-1000.data-00000-of-00001</span><br><span class="line">├── model.ckpt-1000.index</span><br><span class="line">└── model.ckpt-1000.meta</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>meta保存了graph和metadata，ckpt保存了网络的weights。</p>
+</blockquote>
+<p>进行预测时只需模型和权重，不需要metadata，故可使用tensorflow官方提供的脚本导出训练好的模型，此脚本路径为<code>Object-Detection-USTC/object_detection/export_inference_graph.py</code>。</p>
+<p>在<code>Object-Detection-USTC/</code>目录下新建一个导出模型图的shell脚本<code>export_model.sh</code>，并写入以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果不存在这个路径，就递归地创建它</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">"object_detection/ssd_mobilenet/output_inference_graph"</span> ]; <span class="keyword">then</span></span><br><span class="line">  mkdir -p object_detection/ssd_mobilenet/output_inference_graph</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 运行export_inference_graph.py文件</span></span><br><span class="line">python object_detection/export_inference_graph.py \</span><br><span class="line">    --input_type image_tensor \</span><br><span class="line">    --pipeline_config_path object_detection/ssd_mobilenet/pipeline_ssd_mobilenet_v2_coco_2018_03_29.config \</span><br><span class="line">    --trained_checkpoint_prefix object_detection/ssd_mobilenet/train_logs/model.ckpt-500 \</span><br><span class="line">    --output_directory object_detection/ssd_mobilenet/output_inference_graph</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>文件夹<code>Object-Detection-USTC/object_detection/ssd_mobilenet/output_inference_graph</code>用来存放我们导出的模型。</p>
+</blockquote>
+<p>然后在<code>Object-Detection-USTC/</code>目录下行运行这个脚本就可以开始导出我们刚才训练好的模型：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./export_model.sh</span><br></pre></td></tr></table></figure>
+<p>导出后文件夹<code>output_inference_graph</code>中的内容与我们下载的预训练模型的目录类似，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">output_inference_graph</span><br><span class="line">├── checkpoint</span><br><span class="line">├── frozen_inference_graph.pb</span><br><span class="line">├── model.ckpt.data-00000-of-00001</span><br><span class="line">├── model.ckpt.index</span><br><span class="line">├── model.ckpt.meta</span><br><span class="line">├── pipeline.config</span><br><span class="line">└── saved_model</span><br></pre></td></tr></table></figure>
+<p>至此，我们自己的模型已经训练完成，待会儿就可以用它来进行行人、人脸等对象的检测了。</p>
+<blockquote>
+<p>还可以通过官方提供的测试程序（<code>Object-Detection-USTC/object_detection/object_detection_tutorial.ipynb</code>）来看看模型的检测效果，需要用<a href="https://zhuanlan.zhihu.com/p/33105153" target="_blank" rel="noopener">Jupyter Notebook</a>打开，具体的测试方法打开上述文档就能看到，只需要将其中的模型替换为我们刚才训练得到的模型即可。（也可以<a href="https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb" target="_blank" rel="noopener">点击这里</a>在github上查看此文档。）</p>
+</blockquote>
+<h2 id="实时检测"><a href="#实时检测" class="headerlink" title="实时检测"></a>实时检测</h2><h3 id="实时检测方案"><a href="#实时检测方案" class="headerlink" title="实时检测方案"></a>实时检测方案</h3><p>实时检测的意思是：将视频中的每一帧图像送入刚才训练好的模型中进行对象检测，再将模型识别出的对象信息标注（画边界框，置信度等）到这一帧图像上并显示出来，速度非常快时就能达到像播放视频一样的效果。</p>
+<p>但是如果我们的程序真的向上述的过程一样，每读取一帧图像，再经过模型检测，再显示出来，这样效率显然很低，实时性极差，我们可以引入<strong>线程</strong>和<strong>队列</strong>来提升实时性：</p>
+<p>整个实时检测方案的流程如下图所示：</p>
+<p><img src="1547808115848.png" width="650"></p>
+<p>主进程做的事情图中用深绿色标出，线程1做的事情图中用黄色标出。</p>
+<p><strong>运行过程：</strong></p>
+<p>主程序读入视频并不断将这些帧按顺序塞入输入队列，线程1读入我们刚才训练好的模型，然后按顺序不断地从输入队列获取图片，将图片进行优化处理（调整对比度和亮度），再送入模型进行检测，如此，我们就能得到模型的检测结果，接下来线程1会将模型检测出的对象信息（bbox、置信度等）标注到图片上，然后将此标注好的图片塞入输出队列。主进程除了读入视频并将之入输入队列外，同时还会不断地从输出队列里面取图片并显示。</p>
+<blockquote>
+<p><strong>注意：</strong>上述过程中，主进程和线程1是并行执行的。</p>
+</blockquote>
+<p>总结一下上图的运行过程，其中包含以下几个对象：</p>
+<ul>
+<li><p><strong>输入队列：</strong>从主进程接收原视频帧，传给线程1</p>
+</li>
+<li><p><strong>输出队列：</strong>接收经线程1处理后的视频帧，回传给主进程，由主进程来显示</p>
+<p>输入队列和输出队列的作用是方便主进程和线程1之间进行通信</p>
+</li>
+<li><p><strong>主进程：</strong>负责以下任务</p>
+<ul>
+<li>读入视频帧</li>
+<li>将视频帧塞入输入队列</li>
+<li>显示识别后的视频帧</li>
+<li>检测按键</li>
+<li>计算系统运行信息（播放速度、已处理帧数、已花时间等信息）</li>
+</ul>
+<blockquote>
+<p>最后两项任务上图中未体现，下文会详细介绍</p>
+</blockquote>
+</li>
+<li><p><strong>线程1：</strong>负责以下任务</p>
+<ul>
+<li>读入训练好的模型</li>
+<li>从输入队列获取图片</li>
+<li>图片预处理</li>
+<li>送入模型检测</li>
+<li>得到检测结果</li>
+<li>标注bbox等信息</li>
+<li>将标注后的视频帧塞入输出队列</li>
+</ul>
+</li>
+</ul>
+<h3 id="改进实时检测效果"><a href="#改进实时检测效果" class="headerlink" title="改进实时检测效果"></a>改进实时检测效果</h3><p>使用上面的实时检测方案后，能达到较好的实时检测效果，但是我们还可以通过下面的方法来改进我们的检测准确率和实时性。</p>
+<h4 id="准确率改进方案"><a href="#准确率改进方案" class="headerlink" title="准确率改进方案"></a>准确率改进方案</h4><ul>
+<li><p><strong>改变图片的对比度和亮度</strong>（OpenCV基础知识）</p>
+<p>观察下面这张图片中的红框处，我们发现交通灯的颜色几乎快要与背景色融为一体了，所以我们可以在把图片送入模型检测之前，对其做适当的预处理，从而使得模型能更容易地检测出这些对象。</p>
+<p><img src="1547788940929.png" width="550"></p>
+<p>本次实验中，我们使用opencv中的基础知识改变了图片的<strong>对比度和亮度</strong>来达到上述效果。</p>
+</li>
+<li><p><strong>使用类似于集成学习的方案：模型1+模型2同时检测</strong></p>
+<p>在测试过程中我们发现，我们自己训练出的模型（模型1）对人脸（face）和行人（person）的识别效果很好，对交通灯（traffic_light）的识别效果欠佳，而模型2——预训练模型<code>SSD-MobileNet-v2-2018</code>（微软coco数据集训练过）对交通灯的识别效果很好，所以我们尝试将每帧图片都送入两个模型检测，最终识别结果取模型1的人脸、行人和模型2的交通灯综合的结果。</p>
+<blockquote>
+<p>模型1对交通灯识别效果欠佳的原因是：模型1经数据集2训练而得，而数据集2中交通灯的位置始终不变，相当于整个数据集只有一个交通灯对象，最终导致训练出的模型对交通灯不敏感。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="实时性改进方案"><a href="#实时性改进方案" class="headerlink" title="实时性改进方案"></a>实时性改进方案</h4><p>使用上述的两个模型同时检测的方案后，毋庸置疑的是检测时间会大幅增加，于是我们又尝试了下述的方案来提升系统的实时性。</p>
+<ul>
+<li><p><strong>改用检测时间更短的预训练模型</strong></p>
+<p>对比尝试了常用的对象识别的网络模型，最终选择了<strong>SSD-MobileNet</strong>这种网络进行迁移学习，因为它能相对较好地在实时性和准确性之间取得平衡。</p>
+</li>
+<li><p><strong>每两帧检测一次（奇数帧检测，偶数帧不检测）</strong></p>
+<p>我们此次的实验检测的目标对象为行人、人脸、交通灯，而观察视频发现这三者其实在较短的时间内位移量并不大，所以我们可以通过隔一帧检测一次对象的方法来成倍地提升系统实时性，具体做法是：我们对每一帧图像进行编号$（1,2,…）$，在将图像送入模型检测之前，先判断它的编号，如果编号为奇数，就送入模型检测，如果是偶数就不检测此帧，在标注时沿用上一帧检测出来的信息。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<ol>
+<li>如果是奇数帧检测，偶数帧不检测，那么编号一定要从1开始而不能从0开始，因为如果从0开始编号，那么在判断第0帧是否检测时结果为不检测，标注信息沿用上次的检测结果，但是没有上一帧。同理，如果是偶数帧检测，奇数帧不检测，那么编号应该从偶数（如：0或2）开始。</li>
+<li>如果检测的目标对象包含类似于车（car）这种短时间内有较大位移的物体，那么此方法会失效。</li>
+</ol>
+</blockquote>
+</li>
+<li><p><strong>使用多线程+多队列</strong></p>
+<p>上述的方案中，使用线程+队列的方式能大幅提升系统的实施性，于是我们设想，使用多线程+多队列会不会能继续提升系统的实时性呢？</p>
+<p>使用多线程+多队列的系统运行过程如下图所示：</p>
+<p><img src="1547791962646.png" width="600"></p>
+<p>运行过程与之前分析的线程+队列方案类似，只是现在有多个线程来同时跑模型处理图像了。</p>
+<blockquote>
+<p>测试结果显示，多线程+多队列的方法似乎不能很好地提高实时性了，分析其原因，有以下两点：</p>
+<ul>
+<li><p>线程的工作原理是通过操作系统来分时间片轮转调度他们，类似于通信中的“时分复用”，所以实际上这么多线程还是运行在这几颗核心上，简言之就是受物理硬件条件的限制</p>
+</li>
+<li><p>开启多个线程会增加操作系统调度和切换线程时的开销，占用计算机资源</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="代码详解"><a href="#代码详解" class="headerlink" title="代码详解"></a>代码详解</h3><p>（下文中的代码都有详细的中文注释）</p>
+<p>在目录<code>Object-Detection-USTC/</code>下新建文件<code>object_detection_video.py</code>用于对视频进行实时检测。</p>
+<p>首先导入相关的库：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="comment"># opencv库</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> Queue <span class="comment">#　队列</span></span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread　<span class="comment"># 线程</span></span><br><span class="line"><span class="keyword">from</span> object_detection.utils <span class="keyword">import</span> label_map_util <span class="comment"># tf官方api，用于读取label maps</span></span><br><span class="line"><span class="keyword">from</span> utils.app_utils <span class="keyword">import</span> draw_boxes_and_labels, FPS <span class="comment"># 用于解析图片识别结果，记录FPS</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>Object-Detection-USTC/utils</code>中的库借鉴于此项目：<a href="https://github.com/datitran/object_detector_app" target="_blank" rel="noopener">https://github.com/datitran/object_detector_app</a></p>
+<p>作用是解析图片识别结果和记录FPS</p>
+</blockquote>
+<p>设置视频的尺寸：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 视频尺寸，不用做更改，后面会有代码自动获取并更新此值</span></span><br><span class="line">width = <span class="number">640</span></span><br><span class="line">height = <span class="number">480</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>之所以需要设置尺寸，是因为模型在检测时，会将图片归一化到[0,1]，最后返回的对象边界信息也是[0,1]之间的数字，最后需要乘以这两个尺寸才能得到正确的坐标信息</p>
+</blockquote>
+<p>设置模型1和模型2是否启用，并获取当前工程目录：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MODEL1_FLAG = <span class="keyword">True</span></span><br><span class="line">MODEL2_FLAG = <span class="keyword">True</span></span><br><span class="line">CWD_PATH = os.getcwd()</span><br></pre></td></tr></table></figure>
+<p>用一些变量来存放模型相关信息：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> MODEL1_FLAG:</span><br><span class="line">	<span class="comment"># 模型名字</span></span><br><span class="line">	MODEL_NAME = <span class="string">'output_inference_graph-1000'</span></span><br><span class="line">	<span class="comment"># 模型的checkpoint文件路径</span></span><br><span class="line">	PATH_TO_CKPT = os.path.join(CWD_PATH, <span class="string">'object_detection'</span>, <span class="string">'ssd_mobilenet'</span>, MODEL_NAME, <span class="string">'frozen_inference_graph.pb'</span>)</span><br><span class="line">	<span class="comment"># 模型的label map路径</span></span><br><span class="line">	PATH_TO_LABELS = os.path.join(CWD_PATH, <span class="string">'object_detection'</span>, <span class="string">'data'</span>, <span class="string">'pascal_label_map.pbtxt'</span>)</span><br><span class="line">	<span class="comment">#　模型能检测的对象类别数</span></span><br><span class="line">	NUM_CLASSES = <span class="number">4</span></span><br><span class="line">	<span class="comment"># 调用官方库加载label map, 用于识别出物品后展示类别名</span></span><br><span class="line">	label_map = label_map_util.load_labelmap(PATH_TO_LABELS)</span><br><span class="line">	<span class="comment"># 将读入的map文件转换成字典的列表,如：[&#123;'name': 'person', 'id': 1&#125;, ...]</span></span><br><span class="line">	categories = label_map_util.convert_label_map_to_categories(label_map, max_num_classes=NUM_CLASSES, use_display_name=<span class="keyword">True</span>)</span><br><span class="line">	<span class="comment"># 得到每个类别的id和name，字典，&#123;1: &#123;'id': 1, 'name': 'person'&#125;, 2: &#123;'id': 2, 'name': 'bicycle'&#125;&#125;</span></span><br><span class="line">	category_index = label_map_util.create_category_index(categories)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> MODEL2_FLAG:</span><br><span class="line">	MODEL_NAME2 = <span class="string">'ssd_mobilenet_v1_coco_2018_01_28'</span>  <span class="comment"># fps: 18.88</span></span><br><span class="line">	<span class="comment"># MODEL_NAME2 = 'ssd_mobilenet_v2_coco_2018_03_29' # 14.33</span></span><br><span class="line">	<span class="comment"># MODEL_NAME2 = 'ssd_mobilenet_v1_coco_11_06_2017' # 14.57</span></span><br><span class="line">	<span class="comment"># MODEL_NAME2 = 'faster_rcnn_inception_v2_coco_2018_01_28' # 4.92	PATH_TO_CKPT2 = os.path.join(CWD_PATH, 'object_detection', 'ssd_mobilenet', MODEL_NAME2, 'frozen_inference_graph.pb')</span></span><br><span class="line">	PATH_TO_LABELS2 = os.path.join(CWD_PATH, <span class="string">'object_detection'</span>, <span class="string">'data'</span>, <span class="string">'mscoco_label_map.pbtxt'</span>)</span><br><span class="line">	NUM_CLASSES2 = <span class="number">90</span></span><br><span class="line">	label_map2 = label_map_util.load_labelmap(PATH_TO_LABELS2)</span><br><span class="line">	categories2 = label_map_util.convert_label_map_to_categories(label_map2, max_num_classes=NUM_CLASSES2, use_display_name=<span class="keyword">True</span>)</span><br><span class="line">	category_index2 = label_map_util.create_category_index(categories2)</span><br></pre></td></tr></table></figure>
+<p>定义对象函数<code>detect_objects(image_np, sess, detection_graph, category_index)</code>：</p>
+<blockquote>
+<p>参数解释：</p>
+<ul>
+<li>image_np：需要检测的图片，np.array格式</li>
+<li>sess：tf会话</li>
+<li>detection_graph：用于检测的模型图</li>
+<li>category_index：分类索引，通过它能完成模型识别出的对象的id号与str类型的label之间相关转换</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detect_objects</span><span class="params">(image_np, sess, detection_graph, category_index)</span>:</span></span><br><span class="line">	<span class="comment"># 扩展图像的尺寸, 因为模型要求图像具有形状: [1, None, None, 3]</span></span><br><span class="line">	image_np_expanded = np.expand_dims(image_np, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">	image_tensor = detection_graph.get_tensor_by_name(<span class="string">'image_tensor:0'</span>)</span><br><span class="line">	<span class="comment"># 检测结果，每个框表示检测到特定对象的图像的一部分</span></span><br><span class="line">	boxes = detection_graph.get_tensor_by_name(<span class="string">'detection_boxes:0'</span>)</span><br><span class="line">	<span class="comment"># scores表示识别出的物体的置信度 是一个概率值，他最后会与label一起显示在图像上</span></span><br><span class="line">	scores = detection_graph.get_tensor_by_name(<span class="string">'detection_scores:0'</span>)</span><br><span class="line">	classes = detection_graph.get_tensor_by_name(<span class="string">'detection_classes:0'</span>)</span><br><span class="line">	num_detections = detection_graph.get_tensor_by_name(<span class="string">'num_detections:0'</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 运行会话开始检测并返回结果，feed为传入的图像张量</span></span><br><span class="line">	(boxes, scores, classes, num_detections) = sess.run(</span><br><span class="line">		[boxes, scores, classes, num_detections],</span><br><span class="line">		feed_dict=&#123;image_tensor: image_np_expanded&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 检测结果的可视化，也就是将返回的框框画在图像上</span></span><br><span class="line">	<span class="comment"># 返回框坐标、类名和颜色</span></span><br><span class="line">	rect_points, class_names, class_colors = draw_boxes_and_labels(</span><br><span class="line">		boxes=np.squeeze(boxes),</span><br><span class="line">		classes=np.squeeze(classes).astype(np.int32),</span><br><span class="line">		scores=np.squeeze(scores),</span><br><span class="line">		category_index=category_index,</span><br><span class="line">		min_score_thresh=<span class="number">.3</span>  <span class="comment"># 可视化的最低分数阈值</span></span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> dict(rect_points=rect_points, class_names=class_names, class_colors=class_colors)</span><br></pre></td></tr></table></figure>
+<p>为了提高测试图像的对比度和亮度，定义图像预处理的函数<code>contrast_brightness_image(img, c, b)</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 调整亮度和对比度</span></span><br><span class="line"><span class="comment"># c:对比度, b:亮度</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">contrast_brightness_image</span><span class="params">(img, c, b)</span>:</span></span><br><span class="line">	h, w, ch = img.shape  <span class="comment"># 获取shape的数值，height/width/channel</span></span><br><span class="line">	<span class="comment"># 新建全零图片数组blank,将height和width，类型设置为原图片的通道类型(色素全为零，输出为全黑图片)</span></span><br><span class="line">	blank = np.zeros([h, w, ch], img.dtype)</span><br><span class="line">	dst = cv2.addWeighted(img, c, blank, <span class="number">1</span>-c, b) <span class="comment"># 计算两个图像阵列的加权和 dst=src1*alpha+src2*beta+gamma</span></span><br><span class="line">	<span class="keyword">return</span> dst</span><br></pre></td></tr></table></figure>
+<p>定义线程1的处理函数<code>thread_worker(input_q, output_q)</code>：</p>
+<blockquote>
+<p><strong>参数解释：</strong></p>
+<ul>
+<li>input_q：输入队列</li>
+<li>output_q：输出队列</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用于对象检测的线程</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">thread_worker</span><span class="params">(input_q, output_q)</span>:</span></span><br><span class="line">	<span class="comment"># Load a (frozen) Tensorflow model into memory.</span></span><br><span class="line">	<span class="keyword">if</span> MODEL1_FLAG:</span><br><span class="line">		detection_graph = tf.Graph()</span><br><span class="line">		<span class="keyword">with</span> detection_graph.as_default():</span><br><span class="line">			od_graph_def = tf.GraphDef()</span><br><span class="line">			<span class="keyword">with</span> tf.gfile.GFile(PATH_TO_CKPT, <span class="string">'rb'</span>) <span class="keyword">as</span> fid:</span><br><span class="line">				serialized_graph = fid.read()</span><br><span class="line">				od_graph_def.ParseFromString(serialized_graph)</span><br><span class="line">				tf.import_graph_def(od_graph_def, name=<span class="string">''</span>)</span><br><span class="line">				sess = tf.Session(graph=detection_graph)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> MODEL2_FLAG:</span><br><span class="line">		detection_graph2 = tf.Graph()</span><br><span class="line">		<span class="keyword">with</span> detection_graph2.as_default():</span><br><span class="line">			od_graph_def2 = tf.GraphDef()</span><br><span class="line">			<span class="keyword">with</span> tf.gfile.GFile(PATH_TO_CKPT2, <span class="string">'rb'</span>) <span class="keyword">as</span> fid2:</span><br><span class="line">				serialized_graph2 = fid2.read()</span><br><span class="line">				od_graph_def2.ParseFromString(serialized_graph2)</span><br><span class="line">				tf.import_graph_def(od_graph_def2, name=<span class="string">''</span>)</span><br><span class="line">				sess2 = tf.Session(graph=detection_graph2)</span><br><span class="line">	<span class="comment"># 设置奇数检测，偶数不检测，第一帧一定要检测，所以设置初始值为True</span></span><br><span class="line">	detect_flag = <span class="keyword">True</span></span><br><span class="line">	<span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">		<span class="comment"># 从输入队列里取出待检测的图片</span></span><br><span class="line">		frame = input_q.get()</span><br><span class="line">		<span class="comment"># 由于使用opencv读入的图片是BGR色彩模式，我们需要将其转换成RGB模式</span></span><br><span class="line">		frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)</span><br><span class="line">		<span class="comment"># 图像预处理，增强对比度和亮度</span></span><br><span class="line">		con_bri_frame = contrast_brightness_image(frame, <span class="number">1.3</span>, <span class="number">0</span>)</span><br><span class="line">		<span class="comment"># 设置在图片上标注label时的字体</span></span><br><span class="line">		font = cv2.FONT_HERSHEY_SIMPLEX</span><br><span class="line">		<span class="keyword">if</span> MODEL1_FLAG:</span><br><span class="line">			<span class="keyword">if</span> detect_flag: <span class="comment"># 判断是否需要检测，如果为False，后面的代码会使用上一次检测出的data来标注</span></span><br><span class="line">				<span class="comment"># 调用目标检测函数，需要传入预处理后的图像，tf会话，图，</span></span><br><span class="line">				<span class="comment"># 返回的是一个字典，其中包含的信息有：对象边界的两个点（左上角和右下角）,对象的类名, 标注此对象时的框框颜色</span></span><br><span class="line">				data1 = detect_objects(con_bri_frame, sess, detection_graph, category_index)</span><br><span class="line">			rec_points = data1[<span class="string">'rect_points'</span>]  <span class="comment"># 获取BBOX的坐标</span></span><br><span class="line">			class_names = data1[<span class="string">'class_names'</span>]  <span class="comment"># 获取类名</span></span><br><span class="line">			<span class="comment"># print(class_names)</span></span><br><span class="line">			class_colors = data1[<span class="string">'class_colors'</span>]</span><br><span class="line">			<span class="keyword">for</span> point, name, color <span class="keyword">in</span> zip(rec_points, class_names, class_colors):</span><br><span class="line">				<span class="comment"># 获得检测出的对象信息：左上角顶点和右下角顶点的坐标 类名 颜色</span></span><br><span class="line">				<span class="comment"># 在图片上标注这些检测出来的对象</span></span><br><span class="line">				<span class="keyword">if</span> name[<span class="number">0</span>].startswith(<span class="string">'face'</span>) <span class="keyword">or</span> name[<span class="number">0</span>].startswith(<span class="string">'person'</span>):</span><br><span class="line">					cv2.rectangle(frame, (int(point[<span class="string">'xmin'</span>] * width), int(point[<span class="string">'ymin'</span>] * height)), (int(point[<span class="string">'xmax'</span>] * width), int(point[<span class="string">'ymax'</span>] * height)), color, <span class="number">2</span>)</span><br><span class="line">					cv2.rectangle(frame, (int(point[<span class="string">'xmin'</span>] * width), int(point[<span class="string">'ymin'</span>] * height)), (int(point[<span class="string">'xmin'</span>] * width) + len(name[<span class="number">0</span>]) * <span class="number">6</span>, int(point[<span class="string">'ymin'</span>] * height) - <span class="number">10</span>), color, <span class="number">-1</span>, cv2.LINE_AA)</span><br><span class="line">					cv2.putText(frame, name[<span class="number">0</span>], (int(point[<span class="string">'xmin'</span>] * width), int(point[<span class="string">'ymin'</span>] * height)), font, <span class="number">0.3</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> MODEL2_FLAG:</span><br><span class="line">			<span class="keyword">if</span> detect_flag:</span><br><span class="line">				data2 = detect_objects(con_bri_frame, sess2, detection_graph2, category_index2)</span><br><span class="line">			rec_points = data2[<span class="string">'rect_points'</span>]</span><br><span class="line">			class_names = data2[<span class="string">'class_names'</span>]</span><br><span class="line">			class_colors = data2[<span class="string">'class_colors'</span>]</span><br><span class="line">			<span class="keyword">for</span> point, name, color <span class="keyword">in</span> zip(rec_points, class_names, class_colors):</span><br><span class="line">				<span class="keyword">if</span> name[<span class="number">0</span>].startswith(<span class="string">'traffic light'</span>) <span class="keyword">or</span> (MODEL1_FLAG==<span class="keyword">False</span> <span class="keyword">and</span> (name[<span class="number">0</span>].startswith(<span class="string">'person'</span>))):</span><br><span class="line">					cv2.rectangle(frame, (int(point[<span class="string">'xmin'</span>] * width), int(point[<span class="string">'ymin'</span>] * height)), (int(point[<span class="string">'xmax'</span>] * width), int(point[<span class="string">'ymax'</span>] * height)), color, <span class="number">2</span>)</span><br><span class="line">					cv2.rectangle(frame, (int(point[<span class="string">'xmin'</span>] * width), int(point[<span class="string">'ymin'</span>] * height)), (int(point[<span class="string">'xmin'</span>] * width) + len(name[<span class="number">0</span>]) * <span class="number">6</span>, int(point[<span class="string">'ymin'</span>] * height) - <span class="number">10</span>), color, <span class="number">-1</span>, cv2.LINE_AA)</span><br><span class="line">					cv2.putText(frame, name[<span class="number">0</span>], (int(point[<span class="string">'xmin'</span>] * width), int(point[<span class="string">'ymin'</span>] * height)), font, <span class="number">0.3</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">		<span class="comment"># 交替检测</span></span><br><span class="line">		detect_flag = <span class="keyword">not</span> detect_flag</span><br><span class="line">		<span class="comment"># 将检测完并标注好对象信息的图片塞入输出队列</span></span><br><span class="line">		output_q.put(frame)</span><br><span class="line">	<span class="keyword">if</span> MODEL1_FLAG:</span><br><span class="line">		sess.close() <span class="comment"># 关闭会话</span></span><br><span class="line">	<span class="keyword">if</span> MODEL2_FLAG:</span><br><span class="line">		sess2.close()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意：</strong></p>
+<ul>
+<li>使用opencv读入的图片是BGR色彩模式，我们需要将其转换成RGB模式，再送入模型进行检测，否则会使色彩信息丢失，甚至对检测造成误导</li>
+</ul>
+</blockquote>
+<p>接下来定义主函数（主进程）<code>main()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">	speed = <span class="number">20</span> <span class="comment"># 视频速度控制</span></span><br><span class="line">	thread_num = <span class="number">1</span> <span class="comment"># 线程数量</span></span><br><span class="line">	get_frame_num = <span class="number">1</span> <span class="comment">#　已经显示图片的数量</span></span><br><span class="line">	video_path = <span class="string">"video/2.mp4"</span> <span class="comment"># 待检测的视频路径</span></span><br><span class="line">	input_q = [Queue(<span class="number">400</span>), <span class="comment"># 输入队列列表，容量为400</span></span><br><span class="line">				<span class="comment"># Queue(400),</span></span><br><span class="line">				<span class="comment"># Queue(400),</span></span><br><span class="line">				] </span><br><span class="line">	output_q = [Queue(), <span class="comment"># 输出队列列表，无限大容量</span></span><br><span class="line">				<span class="comment"># Queue(),</span></span><br><span class="line">				<span class="comment"># Queue(),</span></span><br><span class="line">				]</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(thread_num): <span class="comment"># 进程的个数</span></span><br><span class="line">		t = Thread(target=thread_worker, args=(input_q[i], output_q[i]))</span><br><span class="line">		t.daemon = <span class="keyword">True</span> <span class="comment"># 这个线程是不重要的，在进程退出的时候，不用等待这个线程退出</span></span><br><span class="line">		t.start()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 开始读取视频</span></span><br><span class="line">	video_capture = cv2.VideoCapture(video_path)  <span class="comment"># 导入视频</span></span><br><span class="line">	<span class="keyword">global</span> width, height <span class="comment"># 通过opencv获取视频的尺寸</span></span><br><span class="line">	width, height = int(video_capture.get(<span class="number">3</span>)), int(video_capture.get(<span class="number">4</span>))</span><br><span class="line">	print(<span class="string">'video width-height:'</span>, width, <span class="string">'-'</span>,height)</span><br><span class="line">	fps = FPS().start() <span class="comment"># 开始计算FPS，这句话的作用是打开计时器开始计时</span></span><br><span class="line">	<span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">		ret, frame = video_capture.read() <span class="comment"># 读取视频帧</span></span><br><span class="line">		<span class="keyword">if</span> ret == <span class="keyword">False</span>: <span class="comment"># 读完图片退出</span></span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		fps.update() <span class="comment"># 每读一帧，计数+1</span></span><br><span class="line">		<span class="comment"># if not input_q.full():</span></span><br><span class="line">		in_q_index = fps.getNumFrames()%thread_num <span class="comment"># 计算该帧图片应该入哪个输入队列</span></span><br><span class="line">		input_q[in_q_index].put(frame) <span class="comment"># 将该帧图片入输入队列</span></span><br><span class="line"></span><br><span class="line">		frame_start_time = time.time() <span class="comment"># 计录处理当前帧图片的起始时间</span></span><br><span class="line">		out_q_index = get_frame_num%thread_num <span class="comment"># 计算目前应该从哪个输出队列取图片显示</span></span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">not</span> output_q[out_q_index].empty():</span><br><span class="line">			get_frame_num += <span class="number">1</span> <span class="comment"># 已经显示的图片数量+1</span></span><br><span class="line">			<span class="comment"># 将从输出队列获取到的图片色彩模式转换回BGR，再显示</span></span><br><span class="line">			od_frame = cv2.cvtColor(output_q[out_q_index].get(), cv2.COLOR_RGB2BGR)</span><br><span class="line">			ch = cv2.waitKey(speed) <span class="comment"># 检测按键</span></span><br><span class="line">			<span class="keyword">if</span> ch &amp; <span class="number">0xFF</span> == ord(<span class="string">'q'</span>): <span class="comment"># q键：退出</span></span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			<span class="keyword">elif</span> ch &amp; <span class="number">0xFF</span> == ord(<span class="string">'w'</span>): <span class="comment"># w键：速度减慢</span></span><br><span class="line">				speed += <span class="number">10</span></span><br><span class="line">			<span class="keyword">elif</span> ch &amp; <span class="number">0xFF</span> == ord(<span class="string">'s'</span>): <span class="comment"># s键：速度加快</span></span><br><span class="line">				speed -= <span class="number">10</span></span><br><span class="line">			<span class="keyword">elif</span> ch &amp; <span class="number">0xFF</span> == ord(<span class="string">'r'</span>): <span class="comment"># r键：恢复初始速度</span></span><br><span class="line">				speed = <span class="number">50</span></span><br><span class="line">			<span class="comment"># 将速度放到图片左上角去</span></span><br><span class="line">			cv2.putText(od_frame, <span class="string">'SPEED:'</span> + str(speed), (<span class="number">20</span>, int(height/<span class="number">20</span>)), cv2.FONT_HERSHEY_SIMPLEX,</span><br><span class="line">						<span class="number">0.7</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line">			<span class="comment"># 将当前帧数、运行时间、平均帧率标注到图片左上角去</span></span><br><span class="line">			fps.stop()</span><br><span class="line">			cv2.putText(od_frame, <span class="string">'FRAME:&#123;:&#125;'</span>.format(fps._numFrames), (<span class="number">20</span>, int(height*<span class="number">2</span>/<span class="number">20</span>)), cv2.FONT_HERSHEY_SIMPLEX,</span><br><span class="line">						<span class="number">0.8</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line">			cv2.putText(od_frame, <span class="string">'TIME:&#123;:.3f&#125;'</span>.format(fps.elapsed()), (<span class="number">20</span>, int(height*<span class="number">3</span>/<span class="number">20</span>)), cv2.FONT_HERSHEY_SIMPLEX,</span><br><span class="line">						<span class="number">0.8</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line">			cv2.putText(od_frame, <span class="string">'AVE_FPS: &#123;:.3f&#125;'</span>.format(fps.fps()), (<span class="number">20</span>, int(height*<span class="number">4</span>/<span class="number">20</span>)), cv2.FONT_HERSHEY_SIMPLEX,</span><br><span class="line">						<span class="number">0.7</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br><span class="line">			cv2.imshow(<span class="string">'Video'</span>, od_frame)</span><br><span class="line">		<span class="comment"># 打印当前帧处理所花的时间</span></span><br><span class="line">		print(<span class="string">'[INFO] elapsed time: &#123;:.5f&#125;'</span>.format(time.time() - frame_start_time))</span><br><span class="line"></span><br><span class="line">	fps.stop()</span><br><span class="line">	<span class="comment"># 打印总时间</span></span><br><span class="line">	print(<span class="string">'[INFO] elapsed time (total): &#123;:.4f&#125;'</span>.format(fps.elapsed()))</span><br><span class="line">	<span class="comment">#　打印平均帧率</span></span><br><span class="line">	print(<span class="string">'[INFO] approx. FPS: &#123;:.2f&#125;'</span>.format(fps.fps()))</span><br><span class="line"></span><br><span class="line">	cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在主进程中，我们添加了通过按键来控制播放速度的功能，其中<code>speed</code>变量的作用就是用来存放播放速度的，它表示主程序每次运行到此处要延时<code>speed</code>这么长时间，也相当于是多长时间从输出队列读取一次图片显示，通过此方式间接控制了播放速度，<code>speed</code>的值越小表示播放速度越快，反之越慢：</p>
+<ul>
+<li>w键：speed加大，播放速度减慢</li>
+<li>s键：speed减小，播放速度加快</li>
+<li>r键：恢复初始速度</li>
+</ul>
+<p>主进程中的<code>FRAME</code>表示到目前为止已经识别的总帧数，<code>TIME</code>表示系统总运行时间，平均帧率<code>AVE_FPS</code>的计算公式如下：</p>
+<script type="math/tex; mode=display">
+AVE\_FPS=\cfrac{FRAME}{TIME}</script></blockquote>
+<p>最后调用<code>main()</code>函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure>
+<h2 id="测试运行效果"><a href="#测试运行效果" class="headerlink" title="测试运行效果"></a>测试运行效果</h2><p>运行效果如下图所示：</p>
+<p><img src="2019-01-18 01-32-15屏幕截图.png" width="650"></p>
+<ul>
+<li><p>测试结果显示，我们的模型能实时有效检测<code>person、face、traffic_light</code>对象</p>
+</li>
+<li><p>可通过键盘按键实时调节视频播放速度</p>
+</li>
+<li><p>增加了检测实时帧数、视频时长及帧率的显示功能</p>
+</li>
+<li><p>平均帧率如下表所示</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模型</th>
+<th style="text-align:center">平均帧率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">模型1</td>
+<td style="text-align:center">30+</td>
+</tr>
+<tr>
+<td style="text-align:center">模型2</td>
+<td style="text-align:center">30+</td>
+</tr>
+<tr>
+<td style="text-align:center">模型1+模型2</td>
+<td style="text-align:center">20+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>模型1：通过迁移学习得到的模型</p>
+<p>模型2： SSD-MobileNet-v2-2018（coco数据集训练过）</p>
+<p>以上数据测试于NVIDIA GeForce GTX 850M平台</p>
+</blockquote>
+<h2 id="移植模型到手机"><a href="#移植模型到手机" class="headerlink" title="移植模型到手机"></a>移植模型到手机</h2><p>将模型移植到嵌入式设备的任务还未全部实现，但是做了一部分工作，所以写一下我们已完成的步骤：</p>
+<p>TensorFlow Lite是TensorFlow针对移动和嵌入式设备的轻量级解决方案，根据<a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_on_mobile_tensorflowlite.md" target="_blank" rel="noopener">官方文档</a>，我们可以使用<a href="https://www.tensorflow.org/mobile/tflite/" target="_blank" rel="noopener">TensorFlow Lite</a>获得更小的模型，并针对移动设备进行优化。</p>
+<p>目前TensorFlow Lite仅支持SSD型号，不支持类似faster_rcnn的模型。</p>
+<ul>
+<li><p>首先需要安装 <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android#bazel" target="_blank" rel="noopener">bazel构建工具</a></p>
+</li>
+<li><p>tensorflow官方提供了脚本将训练好的模型转换成tflite的冻结图，文件目录为<code>Object-Detection-USTC/object_detection/export_tflite_ssd_graph.py</code>，接下来使用此文件来完成转换。</p>
+<p>在目录<code>Object-Detection-USTC/</code>下新建shell脚本<code>export_tflite_ssd_graph.sh</code>并写入以下内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">"tflite"</span> ]; then</span><br><span class="line">  mkdir -p tflite</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">python object_detection/export_tflite_ssd_graph.py \</span><br><span class="line">        --pipeline_config_path=/home/jhchen/Desktop/Object-Detection-USTC/object_detection/ssd_mobilenet/ssd_mobilenet_v1_coco_2018_01_28/pipeline.config \</span><br><span class="line">        --trained_checkpoint_prefix=/home/jhchen/Desktop/Object-Detection-USTC/object_detection/ssd_mobilenet/ssd_mobilenet_v1_coco_2018_01_28/model.ckpt \</span><br><span class="line">        --output_directory=tflite \</span><br><span class="line">        --add_postprocessing_op=true</span><br></pre></td></tr></table></figure>
+<p>打开终端，在目录<code>Object-Detection-USTC/</code>下输入以下命令执行上面的脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./export_tflite_ssd_graph.sh</span><br></pre></td></tr></table></figure>
+<p>执行完后，会在目录<code>Object-Detection-USTC/</code>下新建一个文件夹<code>tflite</code>，里面应该看到两个文件：<code>tflite_graph.pb</code>和<code>tflite_graph.pbtxt</code></p>
+</li>
+<li><p>接下来，我们使用TensorFlow Lite优化转换器<a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/toco" target="_blank" rel="noopener">TOCO</a>来获得优化模型</p>
+</li>
+<li><p>……（后期有时间再填坑）</p>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="实验完成度"><a href="#实验完成度" class="headerlink" title="实验完成度"></a>实验完成度</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">级别</th>
+<th style="text-align:center">要求</th>
+<th style="text-align:center">完成度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">基本要求</td>
+<td style="text-align:center">可以运行，通过测试</td>
+<td style="text-align:center">100%</td>
+</tr>
+<tr>
+<td style="text-align:center">进阶要求</td>
+<td style="text-align:center">检测人脸、交通灯（红绿灯）</td>
+<td style="text-align:center">100%</td>
+</tr>
+<tr>
+<td style="text-align:center">性能挑战</td>
+<td style="text-align:center">平均FPS&gt;=15</td>
+<td style="text-align:center">100%</td>
+</tr>
+<tr>
+<td style="text-align:center">移植挑战</td>
+<td style="text-align:center">使用tensorflowLite进行模型压缩</td>
+<td style="text-align:center">20%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="实验创新点"><a href="#实验创新点" class="headerlink" title="实验创新点"></a>实验创新点</h3><ul>
+<li>使用<strong>队列</strong>的方式提升实时性</li>
+<li>改变图片的<strong>对比度和亮度</strong>（OpenCV基础知识）</li>
+<li>使用类似于<strong>集成学习</strong>的方案：模型1+模型2同时检测</li>
+<li>每<strong>两帧检测一次</strong>（奇数帧检测，偶数帧不检测）</li>
+<li>使用<strong>多线程+多队列</strong></li>
+</ul>
+<p>感谢杨峰老师和贾志刚老师近几个月的辛勤授课以及助教学长学姐们的辛苦付出！</p>
+<p>2019年1月18日 于苏州</p>
+<blockquote>
+<p><strong>参考资料（按行文顺序）：</strong></p>
+<p><a href="https://github.com/tensorflow/models/blob/master/research/object_detection/README.md" target="_blank" rel="noopener">https://github.com/tensorflow/models/blob/master/research/object_detection/README.md</a></p>
+<p><a href="https://blog.csdn.net/lhs960124/article/details/79840048" target="_blank" rel="noopener">https://blog.csdn.net/lhs960124/article/details/79840048</a></p>
+<p><a href="https://blog.csdn.net/Kalenee/article/details/80629262" target="_blank" rel="noopener">https://blog.csdn.net/Kalenee/article/details/80629262</a></p>
+<p><a href="https://blog.csdn.net/chenmaolin88/article/details/79357263" target="_blank" rel="noopener">https://blog.csdn.net/chenmaolin88/article/details/79357263</a></p>
+<p><a href="http://www.mashangxue123.com/TensorFlow/2679412609.html#1-mu-lu-jie-gou" target="_blank" rel="noopener">http://www.mashangxue123.com/TensorFlow/2679412609.html#1-mu-lu-jie-gou</a></p>
+<p><a href="https://github.com/datitran/object_detector_app" target="_blank" rel="noopener">https://github.com/datitran/object_detector_app</a></p>
+<p><a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_on_mobile_tensorflowlite.md" target="_blank" rel="noopener">https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_on_mobile_tensorflowlite.md</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    <div>    
+     
+     
+        <ul class="post-copyright">
+          <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+            <a href="/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/" title="使用TensorFlow对象检测API进行实时目标检测">https://cjh.zone/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明： </strong>
+            本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
+          </li>
+        </ul>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果你觉得此页面对你有帮助，或者想资瓷我一下，欢迎点击下面打赏哦，谢谢~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChatQR.png" alt="JhChen 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPayQR.png" alt="JhChen 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/科大/" rel="tag"># 科大</a>
+          
+            <a href="/tags/人工智能/" rel="tag"># 人工智能</a>
+          
+            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+          
+            <a href="/tags/实验/" rel="tag"># 实验</a>
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+            <a href="/tags/对象检测/" rel="tag"># 对象检测</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/16/科大软院-机器学习期末总结/" rel="next" title="科大软院-机器学习期末总结">
+                <i class="fa fa-chevron-left"></i> 科大软院-机器学习期末总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/100x100.gif" alt="JhChen">
+            
+              <p class="site-author-name" itemprop="name">JhChen</p>
+              <p class="site-description motion-element" itemprop="description">不想长大的石头</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/jianhuchen" title="GitHub &rarr; https://github.com/jianhuchen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cjh18@mail.ustc.edu.cn" title="E-Mail &rarr; mailto:cjh18@mail.ustc.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/cjh2018" title="Weibo &rarr; https://weibo.com/cjh2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://keyanjie.net" title="http://keyanjie.net" rel="noopener" target="_blank">柯延杰</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验目的"><span class="nav-number">1.</span> <span class="nav-text">实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构"><span class="nav-number">2.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验环境安装"><span class="nav-number">3.</span> <span class="nav-text">实验环境安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载Tensorflow对象检测API"><span class="nav-number">3.1.</span> <span class="nav-text">下载Tensorflow对象检测API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装依赖库"><span class="nav-number">3.2.</span> <span class="nav-text">安装依赖库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Protobuf编译"><span class="nav-number">3.3.</span> <span class="nav-text">Protobuf编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动protobuf编译器安装和使用"><span class="nav-number">3.4.</span> <span class="nav-text">手动protobuf编译器安装和使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将库添加到PYTHONPATH"><span class="nav-number">3.5.</span> <span class="nav-text">将库添加到PYTHONPATH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试安装"><span class="nav-number">3.6.</span> <span class="nav-text">测试安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立自己的工作空间"><span class="nav-number">3.7.</span> <span class="nav-text">建立自己的工作空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集及数据预处理方案"><span class="nav-number">4.</span> <span class="nav-text">数据集及数据预处理方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据集"><span class="nav-number">4.1.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换数据集格式"><span class="nav-number">4.2.</span> <span class="nav-text">转换数据集格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型训练"><span class="nav-number">5.</span> <span class="nav-text">模型训练</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载预训练模型"><span class="nav-number">5.1.</span> <span class="nav-text">下载预训练模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改管道配置文件"><span class="nav-number">5.2.</span> <span class="nav-text">修改管道配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始训练"><span class="nav-number">5.3.</span> <span class="nav-text">开始训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可视化训练过程"><span class="nav-number">5.4.</span> <span class="nav-text">可视化训练过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出模型"><span class="nav-number">5.5.</span> <span class="nav-text">导出模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实时检测"><span class="nav-number">6.</span> <span class="nav-text">实时检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实时检测方案"><span class="nav-number">6.1.</span> <span class="nav-text">实时检测方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改进实时检测效果"><span class="nav-number">6.2.</span> <span class="nav-text">改进实时检测效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#准确率改进方案"><span class="nav-number">6.2.1.</span> <span class="nav-text">准确率改进方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实时性改进方案"><span class="nav-number">6.2.2.</span> <span class="nav-text">实时性改进方案</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码详解"><span class="nav-number">6.3.</span> <span class="nav-text">代码详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试运行效果"><span class="nav-number">7.</span> <span class="nav-text">测试运行效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移植模型到手机"><span class="nav-number">8.</span> <span class="nav-text">移植模型到手机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">9.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验完成度"><span class="nav-number">9.1.</span> <span class="nav-text">实验完成度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验创新点"><span class="nav-number">9.2.</span> <span class="nav-text">实验创新点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JhChen</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  |  总访客数<span id="busuanzi_value_site_uv"></span>人
+</span>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz',
+        appKey: 'FTmW5pj1DN6mdeaKvW8ajsIo',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!\n填写正确的邮箱，这样如果有人回复您就会有邮件提醒哦~ \n此回复框MarkDown全语法支持,点击右下角Preview预览',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz",
+                'X-LC-Key': "FTmW5pj1DN6mdeaKvW8ajsIo",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

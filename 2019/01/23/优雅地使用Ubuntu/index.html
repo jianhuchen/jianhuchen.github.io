@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.gif?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.gif?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="第一部分：ubuntu的美化 第二部分：一些linux上常用的软件、小工具的安装和配置过程 （文章内容中的引用都已注明出处，写本文的主要目的是方便自己重装系统后看看） 外观美化装完Ubuntu之后的第一件事情就是美化啦，不然怎么用？ 这部分只列出了我自己比较喜欢的主题和图标，如果有其他需求可以自行搜索 安装unity-tweak-tool安装主题、图标等美化素材之前，需要先安装unity-twea">
+<meta name="keywords" content="Linux,Ubuntu,美化,插件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="优雅地使用Ubuntu">
+<meta property="og:url" content="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/index.html">
+<meta property="og:site_name" content="不想长大的石头">
+<meta property="og:description" content="第一部分：ubuntu的美化 第二部分：一些linux上常用的软件、小工具的安装和配置过程 （文章内容中的引用都已注明出处，写本文的主要目的是方便自己重装系统后看看） 外观美化装完Ubuntu之后的第一件事情就是美化啦，不然怎么用？ 这部分只列出了我自己比较喜欢的主题和图标，如果有其他需求可以自行搜索 安装unity-tweak-tool安装主题、图标等美化素材之前，需要先安装unity-twea">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/1547987832536.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/1547987344069.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/1547987414636.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/1547988280650.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/1547988506838.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/1547988916257.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/1548236985768.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/1548237642548.png">
+<meta property="og:image" content="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/1548238516171.png">
+<meta property="og:updated_time" content="2019-01-23T10:29:22.182Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="优雅地使用Ubuntu">
+<meta name="twitter:description" content="第一部分：ubuntu的美化 第二部分：一些linux上常用的软件、小工具的安装和配置过程 （文章内容中的引用都已注明出处，写本文的主要目的是方便自己重装系统后看看） 外观美化装完Ubuntu之后的第一件事情就是美化啦，不然怎么用？ 这部分只列出了我自己比较喜欢的主题和图标，如果有其他需求可以自行搜索 安装unity-tweak-tool安装主题、图标等美化素材之前，需要先安装unity-twea">
+<meta name="twitter:image" content="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/1547987832536.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>优雅地使用Ubuntu | 不想长大的石头</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不想长大的石头</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Give you my world.</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">20</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">8</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">37</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about_guestbook">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于 & 留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-share_resource">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjh.zone/2019/01/23/优雅地使用Ubuntu/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JhChen">
+      <meta itemprop="description" content="不想长大的石头">
+      <meta itemprop="image" content="/images/100x100.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不想长大的石头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">优雅地使用Ubuntu
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-23 18:25:00 / 修改时间：18:29:22" itemprop="dateCreated datePublished" datetime="2019-01-23T18:25:00+08:00">2019-01-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux相关/" itemprop="url" rel="index"><span itemprop="name">Linux相关</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/23/优雅地使用Ubuntu/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/23/优雅地使用Ubuntu/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/23/优雅地使用Ubuntu/" class="leancloud_visitors" data-flag-title="优雅地使用Ubuntu">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>第一部分：ubuntu的美化</strong></p>
+<p><strong>第二部分：一些linux上常用的软件、小工具的安装和配置过程</strong></p>
+<p>（文章内容中的引用都已注明出处，写本文的主要目的是方便自己重装系统后看看）</p>
+<h2 id="外观美化"><a href="#外观美化" class="headerlink" title="外观美化"></a>外观美化</h2><p>装完Ubuntu之后的第一件事情就是美化啦，不然怎么用？</p>
+<p>这部分只列出了我自己比较喜欢的主题和图标，如果有其他需求可以自行搜索</p>
+<h3 id="安装unity-tweak-tool"><a href="#安装unity-tweak-tool" class="headerlink" title="安装unity-tweak-tool"></a>安装unity-tweak-tool</h3><p>安装主题、图标等美化素材之前，需要先安装<code>unity-tweak-tool</code>工具</p>
+<ul>
+<li><p><strong>安装命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install unity-tweak-tool</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><ul>
+<li><p><strong>主题一：flatabulous-theme</strong></p>
+<p>久负盛名的扁平化主题</p>
+</li>
+<li><p><strong>安装命令：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:noobslab/themes</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install flatabulous-theme</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><ul>
+<li><p><strong>图标一：ultra-flat-icons</strong></p>
+</li>
+<li><p><strong>安装命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:noobslab/icons</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install ultra-flat-icons</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>接下来通过<code>unity-tweak-tool</code>这个工具来设置我们刚才安装好的主体和图标</p>
+<p>按下<code>super</code>键，搜索<code>unity-tweak-tool</code>，打开后即可设置</p>
+<p><img src="1547987832536.png" width="500"></p>
+<p><strong>以上主题和图标应用后的效果图如下：</strong></p>
+<p><img src="1547987344069.png" width="600"></p>
+<p><img src="1547987414636.png" width="600"></p>
+<h3 id="Dock工具栏"><a href="#Dock工具栏" class="headerlink" title="Dock工具栏"></a>Dock工具栏</h3><p>此部分推荐一个我觉得很好用的Dock工具栏，名字为：<strong>Docky</strong></p>
+<ul>
+<li><strong>安装命令</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install docky</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>配置</strong></p>
+<p>按下<code>super</code>键，搜索<code>Docky</code>，打开后即可配置，以下是我的配置：</p>
+</li>
+</ul>
+<p><img src="1547988280650.png" width="350"></p>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<p><a href="https://www.jianshu.com/p/4bd2d9b1af41" target="_blank" rel="noopener">https://www.jianshu.com/p/4bd2d9b1af41</a></p>
+<p><a href="https://www.jianshu.com/p/5445064c9ab0" target="_blank" rel="noopener">https://www.jianshu.com/p/5445064c9ab0</a></p>
+</blockquote>
+<h2 id="常用软件、工具"><a href="#常用软件、工具" class="headerlink" title="常用软件、工具"></a>常用软件、工具</h2><h3 id="indicator-sysmonitor-顶栏实时显示网速等系统信息"><a href="#indicator-sysmonitor-顶栏实时显示网速等系统信息" class="headerlink" title="indicator-sysmonitor-顶栏实时显示网速等系统信息"></a>indicator-sysmonitor-顶栏实时显示网速等系统信息</h3><p>有时感觉网络失去响应，就通过Ubuntu自带的系统监视器程序来查看当前网速，但是这样很不方便，于是打算让网速显示在顶栏，这样就随时直观的看到。</p>
+<ul>
+<li><p><strong>插件名称：</strong>indicator-sysmonitor</p>
+</li>
+<li><p><strong>安装命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor  </span><br><span class="line">sudo apt-get update </span><br><span class="line">sudo apt-get install indicator-sysmonitor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>启动软件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">indicator-sysmonitor &amp;</span><br></pre></td></tr></table></figure>
+<p>再按<code>Ctrl+c</code>就可以实现后台运行indicator-sysmonitor，下图为效果图：</p>
+</li>
+</ul>
+<p><img src="1547988506838.png" width="500"></p>
+<ul>
+<li><p><strong>设置开机自启动</strong></p>
+<p>为了方便还要为程序添加开机启动！鼠标右键点击标题栏上图标，弹出菜单，选择<code>首选项（preferences）</code>，然后将<code>Run on startup</code>的框框勾上</p>
+</li>
+<li><p><strong>自定义显示信息内容和格式</strong></p>
+<p>同样，鼠标右键点击标题栏上图标，弹出菜单，选择<code>首选项（preferences）</code>，切换到<code>高级（Advanced）</code>选项卡，就可以对要显示的信息的内容和格式进行设置，如下图所示：</p>
+<p><img src="1547988916257.png" width="500"></p>
+</li>
+</ul>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<p><a href="https://blog.csdn.net/bfboys/article/details/53031998" target="_blank" rel="noopener">https://blog.csdn.net/bfboys/article/details/53031998</a></p>
+</blockquote>
+<h3 id="WPS-for-Linux"><a href="#WPS-for-Linux" class="headerlink" title="WPS for Linux"></a>WPS for Linux</h3><p>ubuntu下想看看word文档或者ppt最方便的方式还是使用<code>WPS for Linux</code>，装虚拟机太麻烦！</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入官网：<a href="http://www.wps.cn/product/wpslinux，点击立即下载即可下载安装包，双击安装即可" target="_blank" rel="noopener">http://www.wps.cn/product/wpslinux，点击立即下载即可下载安装包，双击安装即可</a></p>
+<h4 id="解决”系统缺失字体”问题"><a href="#解决”系统缺失字体”问题" class="headerlink" title="解决”系统缺失字体”问题"></a>解决”系统缺失字体”问题</h4><p>启动<code>WPS for Linux</code>后，出现提示”系统缺失字体” ，出现提示的原因是因为<code>WPS for Linux</code>没有自带windows的字体，只要在Linux系统中加载字体即可。</p>
+<p><strong>具体操作步骤如下：</strong></p>
+<ul>
+<li><p>下载缺失的字体文件，然后复制到Linux系统中的<code>/usr/share/fonts</code>文件夹中，<a href="wps_symbol_fonts.zip">点击下载</a>。</p>
+</li>
+<li><p>下载完成后，解压并进入目录中，继续执行：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp * /usr/share/fonts</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行以下命令,生成字体的索引信息：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfontscale</span><br><span class="line">sudo mkfontdir</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行<code>fc-cache</code>命令更新字体缓存。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">fc</span>-cache</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重启wps即可，字体缺失的提示不再出现。</li>
+</ul>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<p><a href="https://my.oschina.net/renwofei423/blog/635798" target="_blank" rel="noopener">https://my.oschina.net/renwofei423/blog/635798</a></p>
+</blockquote>
+<h3 id="zsh终端"><a href="#zsh终端" class="headerlink" title="zsh终端"></a>zsh终端</h3><ul>
+<li><p><strong>安装命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y zsh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>美化</strong></p>
+<p>刚安装好的<code>zsh</code>可以通过在<code>terminal</code>里输入命令<code>zsh</code>来启动，启动后会发现默认情况下没有关键字高亮显示，所以我们需要对其进行美化</p>
+<p><strong>安装oh-my-zsh：</strong></p>
+<p><a href="https://ohmyz.sh/" target="_blank" rel="noopener">oh-my-zsh</a>中整理了常用的zsh扩展和主题，所以先安装oh-my-zsh</p>
+<ul>
+<li><p>使用<code>curl</code>安装 :</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>wget</code>安装 :</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>安装主题：</strong></p>
+<p>如果需要安装其他主题可以参考下方给出的参考资料</p>
+</li>
+<li><p><strong>将zsh设置为系统默认终端</strong></p>
+<p>执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s `<span class="built_in">which</span> zsh`</span><br></pre></td></tr></table></figure>
+<p>然后重新登录系统即可生效</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<p><a href="https://www.jianshu.com/p/27c8088dc8f7" target="_blank" rel="noopener">https://www.jianshu.com/p/27c8088dc8f7</a></p>
+</blockquote>
+<h3 id="MPV播放器"><a href="#MPV播放器" class="headerlink" title="MPV播放器"></a>MPV播放器</h3><p>MPV 是一个开源的，跨平台视频播放器，带有极简的 GUI 界面以及丰富的命令行控制。</p>
+<ul>
+<li><p><strong>安装命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mpv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>使用技巧</strong></p>
+<p>快捷键<code>[</code>：减慢播放速度</p>
+<p>快捷键<code>]</code>：加快播放速度</p>
+</li>
+</ul>
+<h3 id="Sublime-Text-3-相关"><a href="#Sublime-Text-3-相关" class="headerlink" title="Sublime Text 3 相关"></a>Sublime Text 3 相关</h3><p>程序员必备，有木有！！</p>
+<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><ul>
+<li><p>安装命令</p>
+<p>Install the GPG key:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO - http<span class="variable">s:</span>//download.sublimetext.<span class="keyword">com</span>/sublimehq-pub.gpg | sudo apt-key <span class="built_in">add</span> -</span><br></pre></td></tr></table></figure>
+<p>Ensure apt is set up to work with https sources:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install apt-transport-<span class="keyword">https</span></span><br></pre></td></tr></table></figure>
+<p>Select the channel to use:</p>
+<ul>
+<li><p>Stable</p>
+<p><code>echo &quot;deb https://download.sublimetext.com/ apt/stable/&quot; | sudo tee /etc/apt/sources.list.d/sublime-text.list</code></p>
+</li>
+<li><p>Dev</p>
+<p><code>echo &quot;deb https://download.sublimetext.com/ apt/dev/&quot; | sudo tee /etc/apt/sources.list.d/sublime-text.list</code></p>
+</li>
+</ul>
+<p>Update apt sources and install Sublime Text</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> update</span><br><span class="line">sudo apt-<span class="builtin-name">get</span> install sublime-text</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="插件的安装方法"><a href="#插件的安装方法" class="headerlink" title="插件的安装方法"></a>插件的安装方法</h4><p>要想在sublime text 3中安装插件，我们首先需要安装一下包管理器（packages control），在编辑器中使用快捷键 <strong>Ctrl+`</strong> 打开控制台，并输入如下代码，然后回车：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os,hashlib; h = <span class="string">'df21e130d211cfc94d9b0905775a7c0f'</span> + <span class="string">'1e3d39e33b79698005270310898eea76'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).read(); dh = hashlib.sha256(by).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> open(os.path.join( ipp, pf), <span class="string">'wb'</span> ).write(by)</span><br></pre></td></tr></table></figure>
+<p>完成上述安装之后，查看菜单栏<code>Preferences</code>下出现<code>Package Control</code>选项则表明安装成功。</p>
+<p>接下来，我们就可以使用Package Control来完成我们的插件安装了，具体操作如下：</p>
+<ul>
+<li><p>使用快捷键 <strong>Ctrl+Shift+P</strong> 打开Package Control</p>
+</li>
+<li><p>在打开的窗口中输入<strong>install</strong> 并选择<strong>Install Package</strong>选项，然后回车</p>
+<p><img src="1548236985768.png" width="500"></p>
+</li>
+<li><p>稍等片刻，就可以在弹出的搜索框内搜索你需要的插件了</p>
+</li>
+</ul>
+<h4 id="推荐插件"><a href="#推荐插件" class="headerlink" title="推荐插件"></a>推荐插件</h4><ul>
+<li><p><strong>ChineseLocalization</strong></p>
+<p>该插件提供了用于汉化编辑器的功能，安装完该插件以后，我们的编辑器就可以实现汉化</p>
+</li>
+<li><p><strong>File Header</strong></p>
+<p>自动添加文件头信息，效果如下：</p>
+<p><img src="1548237642548.png" width="500"></p>
+<p>上图的效果需要在安装好插件后做相应的配置，过程如下：</p>
+<p>打开python语言配置文件文件<code>～/.config/sublime-text-3/Packages/FileHeader/template/header/Python.tmpl</code>，写入以下内容（根据自己情况修改）：</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="meta"># @File 	: &#123;&#123;file_name&#125;&#125;</span></span><br><span class="line"><span class="meta"># @Author 	: jianhuChen</span></span><br><span class="line"><span class="meta"># @Date 	: &#123;&#123;create_time&#125;&#125;</span></span><br><span class="line"><span class="meta"># @License 	: Copyright(C), USTC</span></span><br><span class="line"><span class="meta"># @Last Modified by  : jianhuChen</span></span><br><span class="line"><span class="meta"># @Last Modified time: &#123;&#123;last_modified_time&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<p><a href="https://blog.csdn.net/Dong_Alex/article/details/79118352" target="_blank" rel="noopener">https://blog.csdn.net/Dong_Alex/article/details/79118352</a></p>
+</blockquote>
+</li>
+<li><h5 id="BracketHighlighter"><a href="#BracketHighlighter" class="headerlink" title="BracketHighlighter"></a>BracketHighlighter</h5><p>类似于代码匹配，可以匹配括号，引号等符号内的范围，效果图如下：</p>
+<p><img src="1548238516171.png" width="500"></p>
+<p>使用方法：系统默认为白色高亮，可以使用链接所述方法进行自定义配置</p>
+<p><a href="http://www.360doc.com/content/14/1111/15/15077656_424301780.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/14/1111/15/15077656_424301780.shtml</a></p>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<p><a href="https://blog.csdn.net/wxl1555/article/details/69941451" target="_blank" rel="noopener">https://blog.csdn.net/wxl1555/article/details/69941451</a></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Sublime-Text-3-不能输入汉字问题的解决方法"><a href="#Sublime-Text-3-不能输入汉字问题的解决方法" class="headerlink" title="Sublime Text 3 不能输入汉字问题的解决方法"></a>Sublime Text 3 不能输入汉字问题的解决方法</h4><ul>
+<li>下载我们需要的文件，打开终端，输入：</li>
+</ul>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/lyfeyaj/sublime-text-imfix.git</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>将<code>subl</code>移动到<code>/usr/bin/</code>，并且将<code>sublime-imfix.so</code>移动到<code>/opt/sublime_text/</code>（sublime的安装目录），终端输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/sublime-text-imfix</span><br><span class="line">sudo cp ./lib/libsublime-imfix.so /opt/sublime_text/</span><br><span class="line">sudo cp ./src/subl /usr/bin/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用<code>subl</code>命令试试能不能启动sublime，如果成功启动的话，应该就可以输入中文了。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<p><a href="https://www.cnblogs.com/nbalive2001/p/6530078.html" target="_blank" rel="noopener">https://www.cnblogs.com/nbalive2001/p/6530078.html</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    <div>    
+     
+     
+        <ul class="post-copyright">
+          <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+            <a href="/2019/01/23/优雅地使用Ubuntu/" title="优雅地使用Ubuntu">https://cjh.zone/2019/01/23/优雅地使用Ubuntu/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明： </strong>
+            本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
+          </li>
+        </ul>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果你觉得此页面对你有帮助，或者想资瓷我一下，欢迎点击下面打赏哦，谢谢~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChatQR.png" alt="JhChen 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPayQR.png" alt="JhChen 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          
+            <a href="/tags/美化/" rel="tag"># 美化</a>
+          
+            <a href="/tags/插件/" rel="tag"># 插件</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/" rel="next" title="使用TensorFlow对象检测API进行实时目标检测">
+                <i class="fa fa-chevron-left"></i> 使用TensorFlow对象检测API进行实时目标检测
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/100x100.gif" alt="JhChen">
+            
+              <p class="site-author-name" itemprop="name">JhChen</p>
+              <p class="site-description motion-element" itemprop="description">不想长大的石头</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/jianhuchen" title="GitHub &rarr; https://github.com/jianhuchen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cjh18@mail.ustc.edu.cn" title="E-Mail &rarr; mailto:cjh18@mail.ustc.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/cjh2018" title="Weibo &rarr; https://weibo.com/cjh2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://keyanjie.net" title="http://keyanjie.net" rel="noopener" target="_blank">柯延杰</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#外观美化"><span class="nav-number">1.</span> <span class="nav-text">外观美化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装unity-tweak-tool"><span class="nav-number">1.1.</span> <span class="nav-text">安装unity-tweak-tool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题"><span class="nav-number">1.2.</span> <span class="nav-text">主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图标"><span class="nav-number">1.3.</span> <span class="nav-text">图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dock工具栏"><span class="nav-number">1.4.</span> <span class="nav-text">Dock工具栏</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用软件、工具"><span class="nav-number">2.</span> <span class="nav-text">常用软件、工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#indicator-sysmonitor-顶栏实时显示网速等系统信息"><span class="nav-number">2.1.</span> <span class="nav-text">indicator-sysmonitor-顶栏实时显示网速等系统信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WPS-for-Linux"><span class="nav-number">2.2.</span> <span class="nav-text">WPS for Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">2.2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决”系统缺失字体”问题"><span class="nav-number">2.2.2.</span> <span class="nav-text">解决”系统缺失字体”问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh终端"><span class="nav-number">2.3.</span> <span class="nav-text">zsh终端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MPV播放器"><span class="nav-number">2.4.</span> <span class="nav-text">MPV播放器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sublime-Text-3-相关"><span class="nav-number">2.5.</span> <span class="nav-text">Sublime Text 3 相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-1"><span class="nav-number">2.5.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插件的安装方法"><span class="nav-number">2.5.2.</span> <span class="nav-text">插件的安装方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推荐插件"><span class="nav-number">2.5.3.</span> <span class="nav-text">推荐插件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BracketHighlighter"><span class="nav-number">2.5.3.1.</span> <span class="nav-text">BracketHighlighter</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sublime-Text-3-不能输入汉字问题的解决方法"><span class="nav-number">2.5.4.</span> <span class="nav-text">Sublime Text 3 不能输入汉字问题的解决方法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JhChen</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  |  总访客数<span id="busuanzi_value_site_uv"></span>人
+</span>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz',
+        appKey: 'FTmW5pj1DN6mdeaKvW8ajsIo',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!\n填写正确的邮箱，这样如果有人回复您就会有邮件提醒哦~ \n此回复框MarkDown全语法支持,点击右下角Preview预览',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz",
+                'X-LC-Key': "FTmW5pj1DN6mdeaKvW8ajsIo",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

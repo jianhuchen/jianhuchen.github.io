@@ -1,0 +1,627 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>$unwind | 简介</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../part2/3.html" />
+    
+    
+    <link rel="prev" href="../part2/2_5.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="2.1.6"
+        data-chapter-title="$unwind"
+        data-filepath="part2/2_6.md"
+        data-basepath=".."
+        data-revision="Thu Dec 15 2016 17:13:47 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="part1/1.html">
+            
+                
+                    <a href="../part1/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        基本操作
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="part1/2.html">
+            
+                
+                    <a href="../part1/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        环境安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="part1/3.html">
+            
+                
+                    <a href="../part1/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        数据库操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="part1/4.html">
+            
+                
+                    <a href="../part1/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        集合操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="part1/5.html">
+            
+                
+                    <a href="../part1/5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        数据类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="part1/6.html">
+            
+                
+                    <a href="../part1/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        数据操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="part1/7.html">
+            
+                
+                    <a href="../part1/7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        数据查询
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="part1/7_1.html">
+            
+                
+                    <a href="../part1/7_1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.1.</b>
+                        
+                        Limit与Skip
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="part1/7_2.html">
+            
+                
+                    <a href="../part1/7_2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.2.</b>
+                        
+                        投影
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="part1/7_3.html">
+            
+                
+                    <a href="../part1/7_3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.3.</b>
+                        
+                        排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="part1/7_4.html">
+            
+                
+                    <a href="../part1/7_4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.4.</b>
+                        
+                        统计个数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="part1/7_5.html">
+            
+                
+                    <a href="../part1/7_5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.5.</b>
+                        
+                        消除重复
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="part1/8.html">
+            
+                
+                    <a href="../part1/8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        总结与作业
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="part2/1.html">
+            
+                
+                    <a href="../part2/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        高级操作
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="part2/2.html">
+            
+                
+                    <a href="../part2/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        聚合 aggregate
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="part2/2_1.html">
+            
+                
+                    <a href="../part2/2_1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.1.</b>
+                        
+                        $group
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="part2/2_2.html">
+            
+                
+                    <a href="../part2/2_2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.2.</b>
+                        
+                        $match
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="part2/2_3.html">
+            
+                
+                    <a href="../part2/2_3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.3.</b>
+                        
+                        $project
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="part2/2_4.html">
+            
+                
+                    <a href="../part2/2_4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.4.</b>
+                        
+                        $sort
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="part2/2_5.html">
+            
+                
+                    <a href="../part2/2_5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.5.</b>
+                        
+                        $limit、$skip
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.1.6" data-path="part2/2_6.html">
+            
+                
+                    <a href="../part2/2_6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.6.</b>
+                        
+                        $unwind
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="part2/3.html">
+            
+                
+                    <a href="../part2/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        安全
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="part2/4.html">
+            
+                
+                    <a href="../part2/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        复制（副本集）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="part2/6.html">
+            
+                
+                    <a href="../part2/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        备份与恢复
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="part2/8.html">
+            
+                
+                    <a href="../part2/8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        与python交互
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="part2/9.html">
+            
+                
+                    <a href="../part2/9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        总结与作业
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >简介</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="unwind">$unwind</h1>
+<ul>
+<li>&#x5C06;&#x6587;&#x6863;&#x4E2D;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x5B57;&#x6BB5;&#x62C6;&#x5206;&#x6210;&#x591A;&#x6761;&#xFF0C;&#x6BCF;&#x6761;&#x5305;&#x542B;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x503C;</li>
+</ul>
+<h4 id="&#x8BED;&#x6CD5;1">&#x8BED;&#x6CD5;1</h4>
+<ul>
+<li>&#x5BF9;&#x67D0;&#x5B57;&#x6BB5;&#x503C;&#x8FDB;&#x884C;&#x62C6;&#x5206;</li>
+</ul>
+<pre><code>db.&#x96C6;&#x5408;&#x540D;&#x79F0;.aggregate([{$unwind:&apos;$&#x5B57;&#x6BB5;&#x540D;&#x79F0;&apos;}])
+</code></pre><ul>
+<li>&#x6784;&#x9020;&#x6570;&#x636E;</li>
+</ul>
+<pre><code>db.t2.insert({_id:1,item:&apos;t-shirt&apos;,size:[&apos;S&apos;,&apos;M&apos;,&apos;L&apos;]})
+</code></pre><ul>
+<li>&#x67E5;&#x8BE2;</li>
+</ul>
+<pre><code>db.t2.aggregate([{$unwind:&apos;$size&apos;}])
+</code></pre><h4 id="&#x8BED;&#x6CD5;2">&#x8BED;&#x6CD5;2</h4>
+<ul>
+<li>&#x5BF9;&#x67D0;&#x5B57;&#x6BB5;&#x503C;&#x8FDB;&#x884C;&#x62C6;&#x5206;</li>
+<li>&#x5904;&#x7406;&#x7A7A;&#x6570;&#x7EC4;&#x3001;&#x975E;&#x6570;&#x7EC4;&#x3001;&#x65E0;&#x5B57;&#x6BB5;&#x3001;null&#x60C5;&#x51B5;</li>
+</ul>
+<pre><code>db.inventory.aggregate([{
+    $unwind:{
+        path:&apos;$&#x5B57;&#x6BB5;&#x540D;&#x79F0;&apos;,
+        preserveNullAndEmptyArrays:&lt;boolean&gt;#&#x9632;&#x6B62;&#x6570;&#x636E;&#x4E22;&#x5931;
+    }
+}])
+</code></pre><ul>
+<li>&#x6784;&#x9020;&#x6570;&#x636E;</li>
+</ul>
+<pre><code>db.t3.insert([
+{ &quot;_id&quot; : 1, &quot;item&quot; : &quot;a&quot;, &quot;size&quot;: [ &quot;S&quot;, &quot;M&quot;, &quot;L&quot;] },
+{ &quot;_id&quot; : 2, &quot;item&quot; : &quot;b&quot;, &quot;size&quot; : [ ] },
+{ &quot;_id&quot; : 3, &quot;item&quot; : &quot;c&quot;, &quot;size&quot;: &quot;M&quot; },
+{ &quot;_id&quot; : 4, &quot;item&quot; : &quot;d&quot; },
+{ &quot;_id&quot; : 5, &quot;item&quot; : &quot;e&quot;, &quot;size&quot; : null }
+])
+</code></pre><ul>
+<li>&#x4F7F;&#x7528;&#x8BED;&#x6CD5;1&#x67E5;&#x8BE2;</li>
+</ul>
+<pre><code>db.t3.aggregate([{$unwind:&apos;$size&apos;}])
+</code></pre><ul>
+<li>&#x67E5;&#x770B;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#xFF0C;&#x53D1;&#x73B0;&#x5BF9;&#x4E8E;&#x7A7A;&#x6570;&#x7EC4;&#x3001;&#x65E0;&#x5B57;&#x6BB5;&#x3001;null&#x7684;&#x6587;&#x6863;&#xFF0C;&#x90FD;&#x88AB;&#x4E22;&#x5F03;&#x4E86;</li>
+<li>&#x95EE;&#xFF1A;&#x5982;&#x4F55;&#x80FD;&#x4E0D;&#x4E22;&#x5F03;&#x5462;&#xFF1F;</li>
+<li>&#x7B54;&#xFF1A;&#x4F7F;&#x7528;&#x8BED;&#x6CD5;2&#x67E5;&#x8BE2;</li>
+</ul>
+<pre><code>db.t3.aggregate([{$unwind:{path:&apos;$sizes&apos;,preserveNullAndEmptyArrays:true}}])
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../part2/2_5.html" class="navigation navigation-prev " aria-label="Previous page: $limit、$skip"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../part2/3.html" class="navigation navigation-next " aria-label="Next page: 安全"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

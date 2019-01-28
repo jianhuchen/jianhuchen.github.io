@@ -1,0 +1,433 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>zset | NoSQL简介</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./4.html" />
+    
+    
+    <link rel="prev" href="./3_4.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3.6"
+        data-chapter-title="zset"
+        data-filepath="3_5.md"
+        data-basepath="."
+        data-revision="Mon Dec 19 2016 13:53:35 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        NoSql简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        基本配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        数据操作
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="3_1.html">
+            
+                
+                    <a href="./3_1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        string
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="3_7.html">
+            
+                
+                    <a href="./3_7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        键命令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="3_2.html">
+            
+                
+                    <a href="./3_2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        hash
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="3_3.html">
+            
+                
+                    <a href="./3_3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        list
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="3_4.html">
+            
+                
+                    <a href="./3_4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        set
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.6" data-path="3_5.html">
+            
+                
+                    <a href="./3_5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        zset
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        高级
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="4_1.html">
+            
+                
+                    <a href="./4_1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        发布订阅
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="4_2.html">
+            
+                
+                    <a href="./4_2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        主从配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        与python交互
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        应用示例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        总结与作业
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >NoSQL简介</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="zset">zset</h1>
+<ul>
+<li>sorted set&#xFF0C;&#x6709;&#x5E8F;&#x96C6;&#x5408;</li>
+<li>&#x5143;&#x7D20;&#x4E3A;string&#x7C7B;&#x578B;</li>
+<li>&#x5143;&#x7D20;&#x5177;&#x6709;&#x552F;&#x4E00;&#x6027;&#xFF0C;&#x4E0D;&#x91CD;&#x590D;</li>
+<li>&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x90FD;&#x4F1A;&#x5173;&#x8054;&#x4E00;&#x4E2A;double&#x7C7B;&#x578B;&#x7684;score&#xFF0C;&#x8868;&#x793A;&#x6743;&#x91CD;&#xFF0C;&#x901A;&#x8FC7;&#x6743;&#x91CD;&#x5C06;&#x5143;&#x7D20;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x6392;&#x5E8F;</li>
+<li>&#x5143;&#x7D20;&#x7684;score&#x53EF;&#x4EE5;&#x76F8;&#x540C;</li>
+</ul>
+<h1 id="&#x547D;&#x4EE4;">&#x547D;&#x4EE4;</h1>
+<h4 id="&#x8BBE;&#x7F6E;">&#x8BBE;&#x7F6E;</h4>
+<ul>
+<li>&#x6DFB;&#x52A0;</li>
+</ul>
+<pre><code>ZADD key score member [score member ...]
+</code></pre><h4 id="&#x83B7;&#x53D6;">&#x83B7;&#x53D6;</h4>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x8303;&#x56F4;&#x5185;&#x7684;&#x5143;&#x7D20;</li>
+</ul>
+<pre><code>ZRANGE key start stop
+</code></pre><ul>
+<li>&#x8FD4;&#x56DE;&#x5143;&#x7D20;&#x4E2A;&#x6570;</li>
+</ul>
+<pre><code>ZCARD key
+</code></pre><ul>
+<li>&#x8FD4;&#x56DE;&#x6709;&#x5E8F;&#x96C6;key&#x4E2D;&#xFF0C;score&#x503C;&#x5728;min&#x548C;max&#x4E4B;&#x95F4;&#x7684;&#x6210;&#x5458;</li>
+</ul>
+<pre><code>ZCOUNT key min max
+</code></pre><ul>
+<li>&#x8FD4;&#x56DE;&#x6709;&#x5E8F;&#x96C6;key&#x4E2D;&#xFF0C;&#x6210;&#x5458;member&#x7684;score&#x503C;</li>
+</ul>
+<pre><code>ZSCORE key member
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./3_4.html" class="navigation navigation-prev " aria-label="Previous page: set"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./4.html" class="navigation navigation-next " aria-label="Next page: 高级"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

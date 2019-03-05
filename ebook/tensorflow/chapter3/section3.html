@@ -1,0 +1,888 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>图像操作 | Tensorflow课件</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../chapter4/index.html" />
+    
+    
+    <link rel="prev" href="../chapter3/section2.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3.3"
+        data-chapter-title="图像操作"
+        data-filepath="chapter3/section3.md"
+        data-basepath=".."
+        data-revision="Sat Sep 02 2017 22:26:16 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Tensorflow课件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
+            
+                
+                    <a href="../chapter1/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        认识Tensorflow
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="chapter1/section1.html">
+            
+                
+                    <a href="../chapter1/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        下载以及安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1/section2.html">
+            
+                
+                    <a href="../chapter1/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        初识tf
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2/index.html">
+            
+                
+                    <a href="../chapter2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Tensorflow进阶
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="chapter2/section1.html">
+            
+                
+                    <a href="../chapter2/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        张量的阶和数据类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="chapter2/section2.html">
+            
+                
+                    <a href="../chapter2/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        张量操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="chapter2/section3.html">
+            
+                
+                    <a href="../chapter2/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        变量的的创建、初始化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="chapter2/section4.html">
+            
+                
+                    <a href="../chapter2/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        名称域与共享变量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="chapter2/section5.html">
+            
+                
+                    <a href="../chapter2/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        图与会话
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="chapter2/section6.html">
+            
+                
+                    <a href="../chapter2/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        模型保存与恢复、自定义命令行参数
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter3/index.html">
+            
+                
+                    <a href="../chapter3/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        TensorflowIO操作
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="chapter3/section1.html">
+            
+                
+                    <a href="../chapter3/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        读取数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="chapter3/section2.html">
+            
+                
+                    <a href="../chapter3/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        线程和队列
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.3" data-path="chapter3/section3.html">
+            
+                
+                    <a href="../chapter3/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        图像操作
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter4/index.html">
+            
+                
+                    <a href="../chapter4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        可视化学习Tensorboard
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter5/index.html">
+            
+                
+                    <a href="../chapter5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        神经网络与深度学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="chapter5/section1.html">
+            
+                
+                    <a href="../chapter5/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        神经网络基础之人工神经网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="chapter5/section2.html">
+            
+                
+                    <a href="../chapter5/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        ANN网络分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="chapter5/section3.html">
+            
+                
+                    <a href="../chapter5/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        卷积神经网络与图像识别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="chapter5/section4.html">
+            
+                
+                    <a href="../chapter5/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        图像识别卷积网络实现案例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="chapter5/section5.html">
+            
+                
+                    <a href="../chapter5/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        网络优化改进
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6/index.html">
+            
+                
+                    <a href="../chapter6/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        多分类图像识别案例
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="chapter6/section1.html">
+            
+                
+                    <a href="../chapter6/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        图片信息的读取与写入
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="chapter6/section2.html">
+            
+                
+                    <a href="../chapter6/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        模型接口建立
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="chapter6/section3.html">
+            
+                
+                    <a href="../chapter6/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        训练以及高级会话函数
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="chapter7/index.html">
+            
+                
+                    <a href="../chapter7/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        分布式Tensorflow
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="chapter7/section1.html">
+            
+                
+                    <a href="../chapter7/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        分布式接口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="chapter7/section2.html">
+            
+                
+                    <a href="../chapter7/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        图片识别分布式案例改进
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Tensorflow课件</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x56FE;&#x50CF;&#x64CD;&#x4F5C;">&#x56FE;&#x50CF;&#x64CD;&#x4F5C;</h1>
+<h2 id="&#x56FE;&#x50CF;&#x57FA;&#x672C;&#x6982;&#x5FF5;">&#x56FE;&#x50CF;&#x57FA;&#x672C;&#x6982;&#x5FF5;</h2>
+<p>&#x5728;&#x56FE;&#x50CF;&#x6570;&#x5B57;&#x5316;&#x8868;&#x793A;&#x5F53;&#x4E2D;&#xFF0C;&#x5206;&#x4E3A;&#x9ED1;&#x767D;&#x548C;&#x5F69;&#x8272;&#x4E24;&#x79CD;&#x3002;&#x5728;&#x6570;&#x5B57;&#x5316;&#x8868;&#x793A;&#x56FE;&#x7247;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6709;&#x4E09;&#x4E2A;&#x56E0;&#x7D20;&#x3002;&#x5206;&#x522B;&#x662F;&#x56FE;&#x7247;&#x7684;&#x957F;&#x3001;&#x56FE;&#x7247;&#x7684;&#x5BBD;&#x3001;&#x56FE;&#x7247;&#x7684;&#x989C;&#x8272;&#x901A;&#x9053;&#x6570;&#x3002;&#x90A3;&#x4E48;&#x9ED1;&#x767D;&#x56FE;&#x7247;&#x7684;&#x989C;&#x8272;&#x901A;&#x9053;&#x6570;&#x4E3A;1&#xFF0C;&#x5B83;&#x53EA;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x5C31;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x50CF;&#x7D20;&#x4F4D;&#xFF1B;&#x800C;&#x5F69;&#x8272;&#x7167;&#x7247;&#x5C31;&#x4E0D;&#x4E00;&#x6837;&#x4E86;&#xFF0C;&#x5B83;&#x6709;&#x4E09;&#x4E2A;&#x989C;&#x8272;&#x901A;&#x9053;&#xFF0C;&#x5206;&#x522B;&#x4E3A;RGB&#xFF0C;&#x901A;&#x8FC7;&#x4E09;&#x4E2A;&#x6570;&#x5B57;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x50CF;&#x7D20;&#x4F4D;&#x3002;TensorFlow&#x652F;&#x6301;JPG&#x3001;PNG&#x56FE;&#x50CF;&#x683C;&#x5F0F;&#xFF0C;RGB&#x3001;RGBA&#x989C;&#x8272;&#x7A7A;&#x95F4;&#x3002;&#x56FE;&#x50CF;&#x7528;&#x4E0E;&#x56FE;&#x50CF;&#x5C3A;&#x5BF8;&#x76F8;&#x540C;(height<em>width</em>chnanel)&#x5F20;&#x91CF;&#x8868;&#x793A;&#x3002;&#x56FE;&#x50CF;&#x6240;&#x6709;&#x50CF;&#x7D20;&#x5B58;&#x5728;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#xFF0C;&#x9700;&#x8981;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x3002;</p>
+<h2 id="&#x56FE;&#x50CF;&#x5927;&#x5C0F;&#x538B;&#x7F29;">&#x56FE;&#x50CF;&#x5927;&#x5C0F;&#x538B;&#x7F29;</h2>
+<p>&#x5927;&#x5C3A;&#x5BF8;&#x56FE;&#x50CF;&#x8F93;&#x5165;&#x5360;&#x7528;&#x5927;&#x91CF;&#x7CFB;&#x7EDF;&#x5185;&#x5B58;&#x3002;&#x8BAD;&#x7EC3;CNN&#x9700;&#x8981;&#x5927;&#x91CF;&#x65F6;&#x95F4;&#xFF0C;&#x52A0;&#x8F7D;&#x5927;&#x6587;&#x4EF6;&#x589E;&#x52A0;&#x66F4;&#x591A;&#x8BAD;&#x7EC3;&#x65F6;&#x95F4;&#xFF0C;&#x4E5F;&#x96BE;&#x5B58;&#x653E;&#x591A;&#x6570;&#x7CFB;&#x7EDF;GPU&#x663E;&#x5B58;&#x3002;&#x5927;&#x5C3A;&#x5BF8;&#x56FE;&#x50CF;&#x5927;&#x91CF;&#x65E0;&#x5173;&#x672C;&#x5F81;&#x5C5E;&#x6027;&#x4FE1;&#x606F;&#xFF0C;&#x5F71;&#x54CD;&#x6A21;&#x578B;&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x3002;&#x6700;&#x597D;&#x5728;&#x9884;&#x5904;&#x7406;&#x9636;&#x6BB5;&#x5B8C;&#x6210;&#x56FE;&#x50CF;&#x64CD;&#x4F5C;&#xFF0C;&#x7F29;&#x5C0F;&#x3001;&#x88C1;&#x526A;&#x3001;&#x7F29;&#x653E;&#x3001;&#x7070;&#x5EA6;&#x8C03;&#x6574;&#x7B49;&#x3002;&#x56FE;&#x50CF;&#x52A0;&#x8F7D;&#x540E;&#xFF0C;&#x7FFB;&#x8F6C;&#x3001;&#x626D;&#x66F2;&#xFF0C;&#x4F7F;&#x8F93;&#x5165;&#x7F51;&#x7EDC;&#x8BAD;&#x7EC3;&#x4FE1;&#x606F;&#x591A;&#x6837;&#x5316;&#xFF0C;&#x7F13;&#x89E3;&#x8FC7;&#x62DF;&#x5408;&#x3002;Python&#x56FE;&#x50CF;&#x5904;&#x7406;&#x6846;&#x67B6;PIL&#x3001;OpenCV&#x3002;TensorFlow&#x63D0;&#x4F9B;&#x90E8;&#x5206;&#x56FE;&#x50CF;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x3002;</p>
+<ul>
+<li>tf.image.resize_images &#x538B;&#x7F29;&#x56FE;&#x7247;&#x5BFC;&#x81F4;&#x5B9A;&#x5927;&#x5C0F;</li>
+</ul>
+<h2 id="&#x56FE;&#x50CF;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x5B9E;&#x4F8B;">&#x56FE;&#x50CF;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x5B9E;&#x4F8B;</h2>
+<p>&#x540C;&#x6837;&#x56FE;&#x50CF;&#x52A0;&#x8F7D;&#x4E0E;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x76F8;&#x540C;&#x3002;&#x56FE;&#x50CF;&#x9700;&#x8981;&#x89E3;&#x7801;&#x3002;&#x8F93;&#x5165;&#x751F;&#x6210;&#x5668;(tf.train.string_input_producer)&#x627E;&#x5230;&#x6240;&#x9700;&#x6587;&#x4EF6;&#xFF0C;&#x52A0;&#x8F7D;&#x5230;&#x961F;&#x5217;&#x3002;<strong>tf.WholeFileReader</strong> &#x52A0;&#x8F7D;&#x5B8C;&#x6574;&#x56FE;&#x50CF;&#x6587;&#x4EF6;&#x5230;&#x5185;&#x5B58;&#xFF0C;<strong>WholeFileReader.read</strong> &#x8BFB;&#x53D6;&#x56FE;&#x50CF;&#xFF0C;<strong>tf.image.decode_jpeg</strong> &#x89E3;&#x7801;JPEG&#x683C;&#x5F0F;&#x56FE;&#x50CF;&#x3002;&#x56FE;&#x50CF;&#x662F;&#x4E09;&#x9636;&#x5F20;&#x91CF;&#x3002;RGB&#x503C;&#x662F;&#x4E00;&#x9636;&#x5F20;&#x91CF;&#x3002;&#x52A0;&#x8F7D;&#x56FE;&#x50CF;&#x683C;
+&#x5F0F;&#x4E3A;[batch_size,image_height,image_width,channels]&#x3002;&#x6279;&#x6570;&#x636E;&#x56FE;&#x50CF;&#x8FC7;&#x5927;&#x8FC7;&#x591A;&#xFF0C;&#x5360;&#x7528;&#x5185;&#x5B58;&#x8FC7;&#x9AD8;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x505C;&#x6B62;&#x54CD;&#x5E94;&#x3002;<strong>&#x76F4;&#x63A5;&#x52A0;&#x8F7D;TFRecord&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x8282;&#x7701;&#x8BAD;&#x7EC3;&#x65F6;&#x95F4;&#x3002;&#x652F;&#x6301;&#x5199;&#x5165;&#x591A;&#x4E2A;&#x6837;&#x672C;&#x3002;</strong></p>
+<h3 id="&#x8BFB;&#x53D6;&#x56FE;&#x7247;&#x6570;&#x636E;&#x5230;tensor">&#x8BFB;&#x53D6;&#x56FE;&#x7247;&#x6570;&#x636E;&#x5230;Tensor</h3>
+<h3 id="&#x7BA1;&#x9053;&#x8BFB;&#x7AEF;&#x591A;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x5904;&#x7406;">&#x7BA1;&#x9053;&#x8BFB;&#x7AEF;&#x591A;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x5904;&#x7406;</h3>
+<p>&#x4F46;&#x662F;&#x4F1A;&#x53D1;&#x73B0;read&#x53EA;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x56FE;&#x7247;&#x7684;&#x503C;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5728;&#x4E4B;&#x524D;&#x5904;&#x7406;&#x6587;&#x4EF6;&#x7684;&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#x4E2D;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x961F;&#x5217;&#x7684;&#x51FA;&#x961F;&#x5217;&#x9700;&#x8981;&#x7528;&#x7279;&#x5B9A;&#x51FD;&#x6570;&#x53BB;&#x83B7;&#x53D6;&#x3002;</p>
+<ul>
+<li><strong>tf.train.batch</strong> &#x8BFB;&#x53D6;&#x6307;&#x5B9A;&#x5927;&#x5C0F;&#xFF08;&#x4E2A;&#x6570;&#xFF09;&#x7684;&#x5F20;&#x91CF;</li>
+<li><strong>tf.train.shuffle_batch</strong> &#x4E71;&#x5E8F;&#x8BFB;&#x53D6;&#x6307;&#x5B9A;&#x5927;&#x5C0F;&#xFF08;&#x4E2A;&#x6570;&#xFF09;&#x7684;&#x5F20;&#x91CF;</li>
+</ul>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">readpic_decode</span><span class="hljs-params">(file_list)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x6279;&#x91CF;&#x8BFB;&#x53D6;&#x56FE;&#x7247;&#x5E76;&#x8F6C;&#x6362;&#x6210;&#x5F20;&#x91CF;&#x683C;&#x5F0F;
+    :param file_list: &#x6587;&#x4EF6;&#x540D;&#x76EE;&#x5F55;&#x5217;&#x8868;
+    :return: None
+    &quot;&quot;&quot;</span>
+
+    <span class="hljs-comment"># &#x6784;&#x9020;&#x6587;&#x4EF6;&#x961F;&#x5217;</span>
+    file_queue = tf.train.string_input_producer(file_list)
+
+    <span class="hljs-comment"># &#x56FE;&#x7247;&#x9605;&#x8BFB;&#x5668;&#x548C;&#x8BFB;&#x53D6;&#x6570;&#x636E;</span>
+    reader = tf.WholeFileReader()
+    key,value = reader.read(file_queue)
+
+    <span class="hljs-comment"># &#x89E3;&#x7801;&#x6210;&#x5F20;&#x91CF;&#x5F62;&#x5F0F;</span>
+
+    image_first = tf.image.decode_jpeg(value)
+
+    print(image_first)
+
+    <span class="hljs-comment"># &#x7F29;&#x5C0F;&#x56FE;&#x7247;&#x5230;&#x6307;&#x5B9A;&#x957F;&#x5BBD;&#xFF0C;&#x4E0D;&#x7528;&#x6307;&#x5B9A;&#x901A;&#x9053;&#x6570;</span>
+    image = tf.image.resize_images(image_first,[<span class="hljs-number">256</span>,<span class="hljs-number">256</span>])
+
+    <span class="hljs-comment"># &#x8BBE;&#x7F6E;&#x56FE;&#x7247;&#x7684;&#x9759;&#x6001;&#x5F62;&#x72B6;</span>
+    image.set_shape([<span class="hljs-number">256</span>,<span class="hljs-number">256</span>,<span class="hljs-number">3</span>])
+
+    print(image)
+
+    <span class="hljs-comment"># &#x6279;&#x5904;&#x7406;&#x56FE;&#x7247;&#x6570;&#x636E;&#xFF0C;tensors&#x662F;&#x9700;&#x8981;&#x5177;&#x4F53;&#x7684;&#x5F62;&#x72B6;&#x5927;&#x5C0F;</span>
+    image_batch = tf.train.batch([image],batch_size=<span class="hljs-number">100</span>,num_threads=<span class="hljs-number">1</span>,capacity=<span class="hljs-number">100</span>)
+
+    tf.summary.image(<span class="hljs-string">&quot;pic&quot;</span>,image_batch)
+
+    <span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:
+
+        merged = tf.summary.merge_all()
+
+        filewriter = tf.summary.FileWriter(<span class="hljs-string">&quot;/tmp/summary/dog/&quot;</span>,graph=sess.graph)
+
+        <span class="hljs-comment"># &#x7EBF;&#x7A0B;&#x534F;&#x8C03;&#x5668;</span>
+        coord = tf.train.Coordinator()
+
+        <span class="hljs-comment"># &#x5F00;&#x542F;&#x7EBF;&#x7A0B;</span>
+        threads = tf.train.start_queue_runners(sess=sess,coord=coord)
+
+        print(sess.run(image_batch))
+
+        summary = sess.run(merged)
+
+        filewriter.add_summary(summary)
+
+        <span class="hljs-comment"># &#x7B49;&#x5F85;&#x7EBF;&#x7A0B;&#x56DE;&#x6536;</span>
+        coord.request_stop()
+        coord.join(threads)
+
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span>
+
+
+<span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x6587;&#x4EF6;&#x5217;&#x8868;</span>
+    filename = os.listdir(<span class="hljs-string">&quot;./dog/&quot;</span>)
+
+    <span class="hljs-comment"># &#x7EC4;&#x5408;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x548C;&#x6587;&#x4EF6;&#x540D;</span>
+    file_list = [os.path.join(<span class="hljs-string">&quot;./dog/&quot;</span>,file) <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> filename]
+
+    <span class="hljs-comment"># &#x8C03;&#x7528;&#x8BFB;&#x53D6;&#x51FD;&#x6570;</span>
+    readpic_decode(file_list)
+</code></pre>
+<h2 id="&#x8BFB;&#x53D6;tfrecords&#x6587;&#x4EF6;&#x6570;&#x636E;">&#x8BFB;&#x53D6;TfRecords&#x6587;&#x4EF6;&#x6570;&#x636E;</h2>
+<pre><code class="lang-python"><span class="hljs-comment">#CIFAR-10&#x7684;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x4EE5;&#x53CA;&#x8F6C;&#x6362;&#x6210;TFRecordsg&#x683C;&#x5F0F;</span>
+
+<span class="hljs-comment">#1&#x3001;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x53D6;</span>
+
+FLAGS = tf.app.flags.FLAGS
+
+tf.app.flags.DEFINE_string(<span class="hljs-string">&quot;data_dir&quot;</span>,<span class="hljs-string">&quot;./cifar10/cifar-10-batches-bin/&quot;</span>,<span class="hljs-string">&quot;CIFAR&#x6570;&#x636E;&#x76EE;&#x5F55;&quot;</span>)
+tf.app.flags.DEFINE_integer(<span class="hljs-string">&quot;batch_size&quot;</span>,<span class="hljs-number">50000</span>,<span class="hljs-string">&quot;&#x6837;&#x672C;&#x4E2A;&#x6570;&quot;</span>)
+tf.app.flags.DEFINE_string(<span class="hljs-string">&quot;records_file&quot;</span>,<span class="hljs-string">&quot;./cifar10/cifar.tfrecords&quot;</span>,<span class="hljs-string">&quot;tfrecords&#x6587;&#x4EF6;&#x4F4D;&#x7F6E;&quot;</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CifarRead</span><span class="hljs-params">(object)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,filename)</span>:</span>
+        self.filelist = filename
+
+        <span class="hljs-comment"># &#x5B9A;&#x4E49;&#x56FE;&#x7247;&#x7684;&#x957F;&#x3001;&#x5BBD;&#x3001;&#x6DF1;&#x5EA6;&#xFF0C;&#x6807;&#x7B7E;&#x5B57;&#x8282;&#xFF0C;&#x56FE;&#x50CF;&#x5B57;&#x8282;&#xFF0C;&#x603B;&#x5B57;&#x8282;&#x6570;</span>
+        self.height = <span class="hljs-number">32</span>
+        self.width = <span class="hljs-number">32</span>
+        self.depth = <span class="hljs-number">3</span>
+        self.label_bytes = <span class="hljs-number">1</span>
+        self.image_bytes = self.height*self.width*self.depth
+        self.bytes = self.label_bytes + self.image_bytes
+
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">readcifar_decode</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;
+        &#x8BFB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x8FDB;&#x884C;&#x8F6C;&#x6362;
+        :return: &#x6279;&#x5904;&#x7406;&#x7684;&#x56FE;&#x7247;&#x548C;&#x6807;&#x7B7E;
+        &quot;&quot;&quot;</span>
+
+        <span class="hljs-comment"># 1&#x3001;&#x6784;&#x9020;&#x6587;&#x4EF6;&#x961F;&#x5217;</span>
+        file_queue = tf.train.string_input_producer(self.filelist)
+
+        <span class="hljs-comment"># 2&#x3001;&#x6784;&#x9020;&#x8BFB;&#x53D6;&#x5668;&#xFF0C;&#x8BFB;&#x53D6;&#x5185;&#x5BB9;</span>
+        reader = tf.FixedLengthRecordReader(self.bytes)
+
+        key,value = reader.read(file_queue)
+
+        <span class="hljs-comment"># 3&#x3001;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x89E3;&#x7801;</span>
+        image_label = tf.decode_raw(value,tf.uint8)
+
+        <span class="hljs-comment"># &#x5206;&#x5272;&#x6807;&#x7B7E;&#x4E0E;&#x56FE;&#x50CF;&#x5F20;&#x91CF;&#xFF0C;&#x8F6C;&#x6362;&#x6210;&#x76F8;&#x5E94;&#x7684;&#x683C;&#x5F0F;</span>
+
+        label = tf.cast(tf.slice(image_label,[<span class="hljs-number">0</span>],[self.label_bytes]),tf.int32)
+
+        image = tf.slice(image_label,[self.label_bytes],[self.image_bytes])
+
+        print(image)
+
+        <span class="hljs-comment"># &#x7ED9;image&#x8BBE;&#x7F6E;&#x5F62;&#x72B6;&#xFF0C;&#x9632;&#x6B62;&#x6279;&#x5904;&#x7406;&#x51FA;&#x9519;</span>
+        image_tensor = tf.reshape(image,[self.height,self.width,self.depth])
+
+        print(image_tensor.eval())
+        <span class="hljs-comment"># depth_major = tf.reshape(image, [self.depth,self.height, self.width])</span>
+        <span class="hljs-comment"># image_tensor = tf.transpose(depth_major, [1, 2, 0])</span>
+
+        <span class="hljs-comment"># 4&#x3001;&#x5904;&#x7406;&#x6D41;&#x7A0B;</span>
+        image_batch,label_batch = tf.train.batch([image_tensor,label],batch_size=<span class="hljs-number">10</span>,num_threads=<span class="hljs-number">1</span>,capacity=<span class="hljs-number">10</span>)
+
+
+        <span class="hljs-keyword">return</span> image_batch,label_batch
+
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">convert_to_tfrecords</span><span class="hljs-params">(self,image_batch,label_batch)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;
+        &#x8F6C;&#x6362;&#x6210;TFRecords&#x6587;&#x4EF6;
+        :param image_batch: &#x56FE;&#x7247;&#x6570;&#x636E;Tensor
+        :param label_batch: &#x6807;&#x7B7E;&#x6570;&#x636E;Tensor
+        :param sess: &#x4F1A;&#x8BDD;
+        :return: None
+        &quot;&quot;&quot;</span>
+
+        <span class="hljs-comment"># &#x521B;&#x5EFA;&#x4E00;&#x4E2A;TFRecord&#x5B58;&#x50A8;&#x5668;</span>
+        writer = tf.python_io.TFRecordWriter(FLAGS.records_file)
+
+        <span class="hljs-comment"># &#x6784;&#x9020;&#x6BCF;&#x4E2A;&#x6837;&#x672C;&#x7684;Example</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>):
+            print(<span class="hljs-string">&quot;---------&quot;</span>)
+            image = image_batch[i]
+            <span class="hljs-comment"># &#x5C06;&#x5355;&#x4E2A;&#x56FE;&#x7247;&#x5F20;&#x91CF;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4EE5;&#x53EF;&#x4EE5;&#x5B58;&#x8FDB;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;</span>
+            image_string = image.eval().tostring()
+
+            <span class="hljs-comment"># &#x4F7F;&#x7528;eval&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5FC5;&#x987B;&#x5B58;&#x5728;&#x4F1A;&#x8BDD;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;</span>
+            label = int(label_batch[i].eval()[<span class="hljs-number">0</span>])
+
+            <span class="hljs-comment"># &#x6784;&#x9020;&#x534F;&#x8BAE;&#x5757;</span>
+            example = tf.train.Example(features=tf.train.Features(feature={
+                <span class="hljs-string">&quot;image&quot;</span>: tf.train.Feature(bytes_list=tf.train.BytesList(value=[image_string])),
+                <span class="hljs-string">&quot;label&quot;</span>: tf.train.Feature(int64_list=tf.train.Int64List(value=[label]))
+            })
+            )
+
+            <span class="hljs-comment"># &#x5199;&#x8FDB;&#x6587;&#x4EF6;</span>
+            writer.write(example.SerializeToString())
+
+        writer.close()
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_from_tfrecords</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;
+        &#x8BFB;&#x53D6;tfrecords
+        :return: None
+        &quot;&quot;&quot;</span>
+        file_queue = tf.train.string_input_producer([<span class="hljs-string">&quot;./cifar10/cifar.tfrecords&quot;</span>])
+
+        reader = tf.TFRecordReader()
+
+        key, value = reader.read(file_queue)
+
+        features = tf.parse_single_example(value, features={
+            <span class="hljs-string">&quot;image&quot;</span>:tf.FixedLenFeature([], tf.string),
+            <span class="hljs-string">&quot;label&quot;</span>:tf.FixedLenFeature([], tf.int64),
+        })
+
+        image = tf.decode_raw(features[<span class="hljs-string">&quot;image&quot;</span>], tf.uint8)
+
+        <span class="hljs-comment"># &#x8BBE;&#x7F6E;&#x9759;&#x6001;&#x5F62;&#x72B6;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x8F6C;&#x6362;&#x52A8;&#x6001;&#x5F62;&#x72B6;</span>
+        image.set_shape([self.image_bytes])
+
+        print(image)
+
+        image_tensor = tf.reshape(image,[self.height,self.width,self.depth])
+
+        print(image_tensor)
+
+        label = tf.cast(features[<span class="hljs-string">&quot;label&quot;</span>], tf.int32)
+
+        print(label)
+
+        image_batch, label_batch = tf.train.batch([image_tensor, label],batch_size=<span class="hljs-number">10</span>,num_threads=<span class="hljs-number">1</span>,capacity=<span class="hljs-number">10</span>)
+        print(image_batch)
+        print(label_batch)
+
+        <span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:
+            coord = tf.train.Coordinator()
+
+            threads = tf.train.start_queue_runners(sess=sess,coord=coord)
+
+            print(sess.run([image_batch, label_batch]))
+
+            coord.request_stop()
+            coord.join(threads)
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span>
+
+
+<span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+    <span class="hljs-comment"># &#x6784;&#x9020;&#x6587;&#x4EF6;&#x540D;&#x5B57;&#x7684;&#x5217;&#x8868;</span>
+    filename = os.listdir(FLAGS.data_dir)
+    file_list = [os.path.join(FLAGS.data_dir, file) <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> filename <span class="hljs-keyword">if</span> file[-<span class="hljs-number">3</span>:] == <span class="hljs-string">&quot;bin&quot;</span>]
+
+    cfar = CifarRead(file_list)
+    <span class="hljs-comment"># image_batch,label_batch = cfar.readcifar_decode()</span>
+    cfar.read_from_tfrecords()
+
+    <span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:
+
+
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x7EBF;&#x7A0B;&#x534F;&#x8C03;&#x5668;</span>
+        coord = tf.train.Coordinator()
+
+        <span class="hljs-comment"># &#x5F00;&#x542F;&#x7EBF;&#x7A0B;</span>
+        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
+
+        <span class="hljs-comment"># print(sess.run(image_batch))</span>
+
+        <span class="hljs-comment"># &#x5B58;&#x8FDB;&#x6587;&#x4EF6;</span>
+        <span class="hljs-comment"># cfar.convert_to_tfrecords(image_batch, label_batch)</span>
+
+
+        coord.request_stop()
+        coord.join(threads)
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../chapter3/section2.html" class="navigation navigation-prev " aria-label="Previous page: 线程和队列"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../chapter4/index.html" class="navigation navigation-next " aria-label="Next page: 可视化学习Tensorboard"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"katex":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

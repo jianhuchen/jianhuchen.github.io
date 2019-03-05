@@ -1,0 +1,656 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>网络优化改进 | Tensorflow课件</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../chapter6/index.html" />
+    
+    
+    <link rel="prev" href="../chapter5/section4.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="5.5"
+        data-chapter-title="网络优化改进"
+        data-filepath="chapter5/section5.md"
+        data-basepath=".."
+        data-revision="Sat Sep 02 2017 22:26:16 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Tensorflow课件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
+            
+                
+                    <a href="../chapter1/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        认识Tensorflow
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="chapter1/section1.html">
+            
+                
+                    <a href="../chapter1/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        下载以及安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1/section2.html">
+            
+                
+                    <a href="../chapter1/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        初识tf
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2/index.html">
+            
+                
+                    <a href="../chapter2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Tensorflow进阶
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="chapter2/section1.html">
+            
+                
+                    <a href="../chapter2/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        张量的阶和数据类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="chapter2/section2.html">
+            
+                
+                    <a href="../chapter2/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        张量操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="chapter2/section3.html">
+            
+                
+                    <a href="../chapter2/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        变量的的创建、初始化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="chapter2/section4.html">
+            
+                
+                    <a href="../chapter2/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        名称域与共享变量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="chapter2/section5.html">
+            
+                
+                    <a href="../chapter2/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        图与会话
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="chapter2/section6.html">
+            
+                
+                    <a href="../chapter2/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        模型保存与恢复、自定义命令行参数
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter3/index.html">
+            
+                
+                    <a href="../chapter3/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        TensorflowIO操作
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="chapter3/section1.html">
+            
+                
+                    <a href="../chapter3/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        读取数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="chapter3/section2.html">
+            
+                
+                    <a href="../chapter3/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        线程和队列
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="chapter3/section3.html">
+            
+                
+                    <a href="../chapter3/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        图像操作
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter4/index.html">
+            
+                
+                    <a href="../chapter4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        可视化学习Tensorboard
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter5/index.html">
+            
+                
+                    <a href="../chapter5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        神经网络与深度学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="chapter5/section1.html">
+            
+                
+                    <a href="../chapter5/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        神经网络基础之人工神经网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="chapter5/section2.html">
+            
+                
+                    <a href="../chapter5/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        ANN网络分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="chapter5/section3.html">
+            
+                
+                    <a href="../chapter5/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        卷积神经网络与图像识别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="chapter5/section4.html">
+            
+                
+                    <a href="../chapter5/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        图像识别卷积网络实现案例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.5" data-path="chapter5/section5.html">
+            
+                
+                    <a href="../chapter5/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        网络优化改进
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6/index.html">
+            
+                
+                    <a href="../chapter6/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        多分类图像识别案例
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="chapter6/section1.html">
+            
+                
+                    <a href="../chapter6/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        图片信息的读取与写入
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="chapter6/section2.html">
+            
+                
+                    <a href="../chapter6/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        模型接口建立
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="chapter6/section3.html">
+            
+                
+                    <a href="../chapter6/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        训练以及高级会话函数
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="chapter7/index.html">
+            
+                
+                    <a href="../chapter7/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        分布式Tensorflow
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="chapter7/section1.html">
+            
+                
+                    <a href="../chapter7/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        分布式接口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="chapter7/section2.html">
+            
+                
+                    <a href="../chapter7/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        图片识别分布式案例改进
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Tensorflow课件</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x7F51;&#x7EDC;&#x4F18;&#x5316;&#x6539;&#x8FDB;">&#x7F51;&#x7EDC;&#x4F18;&#x5316;&#x6539;&#x8FDB;</h1>
+<p>&#x7F51;&#x7EDC;&#x4F18;&#x5316;&#x7684;&#x65B9;&#x6CD5;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x5176;&#x4E2D;&#x4E00;&#x79CD;&#x4F18;&#x5316;&#x65B9;&#x5F0F;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x56E0;&#x7D20;&#x9700;&#x8981;&#x8BBE;&#x5B9A;&#xFF0C;&#x5C31;&#x662F;&#x5B66;&#x4E60;&#x7387;&#x3002;&#x90A3;&#x4E48;&#x5728;&#x624B;&#x52A8;&#x8BBE;&#x5B9A;&#x5B66;&#x4E60;&#x7387;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x4E00;&#x5B9A;&#x51C6;&#x786E;&#x3002;
+&#x8FD9;&#x79CD;&#x4EBA;&#x4E3A;&#x7684;&#x8BBE;&#x5B9A;&#x5BF9;&#x4E8E;&#x6A21;&#x578B;&#x7684;&#x8F93;&#x51FA;&#x5F71;&#x54CD;&#x8F83;&#x5927;&#x3002;&#x6240;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x5F15;&#x5165;&#x4E86;&#x4E00;&#x79CD;&#x81EA;&#x52A8;&#x66F4;&#x65B0;&#x5B66;&#x4E60;&#x7387;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<h2 id="&#x6307;&#x6570;&#x8870;&#x51CF;&#x5B66;&#x4E60;&#x7387;exponentialdecay">&#x6307;&#x6570;&#x8870;&#x51CF;&#x5B66;&#x4E60;&#x7387;exponential_decay</h2>
+<pre><code class="lang-python">class tf.train.exponential_decay(learning_rate, global_step, decay_steps, decay_rate, staircase=False, name=None)
+  &quot;&quot;&quot;
+  &#x5B9E;&#x73B0;&#x5B66;&#x4E60;&#x7387;&#x6307;&#x6570;&#x8870;&#x51CF;
+
+  :param learning_rate:&#x521D;&#x59CB;&#x7684;&#x5B66;&#x4E60;&#x7387;
+
+  :param global_step:&#x5168;&#x5C40;&#x7684;&#x8BAD;&#x7EC3;&#x6B65;&#x6570;&#xFF08;&#x6837;&#x672C;&#x5B66;&#x4E60;&#x4E86;&#x591A;&#x5C11;&#x6B21;&#xFF09;
+
+  :param decay_steps:&#x8870;&#x51CF;&#x7CFB;&#x6570;&#xFF08;&#x6BCF;&#x591A;&#x5C11;&#x6B65;&#x8870;&#x51CF;decay_rate&#xFF09;
+
+  :param decay_rate:&#x8870;&#x51CF;&#x7684;&#x901F;&#x5EA6;
+
+  :param staircase:&#x9ED8;&#x8BA4;&#x4E3A;False,&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;True&#x65F6;,&#x5C06;(global_step / decay_ steps)&#x8F6C;&#x6362;&#x6210;&#x6574;&#x6570;
+  &quot;&quot;&quot;
+</code></pre>
+<p>&#x90A3;&#x4E48;&#x8870;&#x51CF;&#x7684;&#x516C;&#x5F0F;&#x4E3A;learning<em>rate * decay_rate ^ (global_step / decay</em> steps)</p>
+<h3 id="&#x4F7F;&#x7528;">&#x4F7F;&#x7528;</h3>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x8BA9;&#x5B66;&#x4E60;&#x7387;&#x6839;&#x636E;&#x6B65;&#x4F10;&#xFF0C;&#x81EA;&#x52A8;&#x53D8;&#x6362;&#x5B66;&#x4E60;&#x7387;&#xFF0C;&#x6307;&#x5B9A;&#x4E86;&#x6BCF;10&#x6B65;&#x8870;&#x51CF;&#x57FA;&#x6570;&#x4E3A;0.99&#xFF0C;0.001&#x4E3A;&#x521D;&#x59CB;&#x7684;&#x5B66;&#x4E60;&#x7387;</span>
+lr = tf.train.exponential_decay(<span class="hljs-number">0.001</span>,
+                                global_step,
+                                <span class="hljs-number">10</span>,
+                                <span class="hljs-number">0.99</span>,
+                                staircase=<span class="hljs-keyword">True</span>)
+
+<span class="hljs-comment"># &#x4F18;&#x5316;&#x5668;</span>
+train_op = tf.train.GradientDescentOptimizer(lr).minimize(loss, global_step=global_step)
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../chapter5/section4.html" class="navigation navigation-prev " aria-label="Previous page: 图像识别卷积网络实现案例"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../chapter6/index.html" class="navigation navigation-next " aria-label="Next page: 多分类图像识别案例"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"katex":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

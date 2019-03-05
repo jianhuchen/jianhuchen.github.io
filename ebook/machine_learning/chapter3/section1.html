@@ -1,0 +1,812 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>分类算法之k-近邻 | 机器学习课件</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../chapter3/section2.html" />
+    
+    
+    <link rel="prev" href="../chapter3/index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3.1"
+        data-chapter-title="分类算法之k-近邻"
+        data-filepath="chapter3/section1.md"
+        data-basepath=".."
+        data-revision="Sun Sep 03 2017 21:46:41 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        机器学习引言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
+            
+                
+                    <a href="../chapter1/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        sklearn与特征工程
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="chapter1/section1.html">
+            
+                
+                    <a href="../chapter1/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        数据的来源与类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1/section2.html">
+            
+                
+                    <a href="../chapter1/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        数据的特征抽取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapter1/section3.html">
+            
+                
+                    <a href="../chapter1/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        数据的特征预处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="chapter1/section4.html">
+            
+                
+                    <a href="../chapter1/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        数据的特征选择
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2/index.html">
+            
+                
+                    <a href="../chapter2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        sklearn数据集与机器学习组成
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="chapter2/section1.html">
+            
+                
+                    <a href="../chapter2/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Scikit-learn数据集
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="chapter2/section2.html">
+            
+                
+                    <a href="../chapter2/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        模型的选择
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="chapter2/section3.html">
+            
+                
+                    <a href="../chapter2/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        模型检验-交叉验证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="chapter2/section4.html">
+            
+                
+                    <a href="../chapter2/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        sklearn的estimator
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter3/index.html">
+            
+                
+                    <a href="../chapter3/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        sklearn的分类器算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="3.1" data-path="chapter3/section1.html">
+            
+                
+                    <a href="../chapter3/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        分类算法之k-近邻
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="chapter3/section2.html">
+            
+                
+                    <a href="../chapter3/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        k-近邻算法案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="chapter3/section3.html">
+            
+                
+                    <a href="../chapter3/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        朴素贝叶斯
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="chapter3/section4.html">
+            
+                
+                    <a href="../chapter3/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        分类算法之逻辑回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="chapter3/section5.html">
+            
+                
+                    <a href="../chapter3/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        逻辑回归算法案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="chapter3/section6.html">
+            
+                
+                    <a href="../chapter3/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        分类器性能评估
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="chapter3/section7.html">
+            
+                
+                    <a href="../chapter3/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        分类算法之决策树、随机森林
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter4/index.html">
+            
+                
+                    <a href="../chapter4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        回归算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="chapter4/section1.html">
+            
+                
+                    <a href="../chapter4/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        回归算法之线性回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="chapter4/section2.html">
+            
+                
+                    <a href="../chapter4/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        线性回归案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="chapter4/section3.html">
+            
+                
+                    <a href="../chapter4/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        回归性能评估与欠拟合、过拟合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="chapter4/section4.html">
+            
+                
+                    <a href="../chapter4/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        回归算法之岭回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="chapter4/section5.html">
+            
+                
+                    <a href="../chapter4/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        岭回归案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter5/index.html">
+            
+                
+                    <a href="../chapter5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        非监督学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="chapter5/section1.html">
+            
+                
+                    <a href="../chapter5/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        非监督学习之k-means
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="chapter5/section2.html">
+            
+                
+                    <a href="../chapter5/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        k-means案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6/index.html">
+            
+                
+                    <a href="../chapter6/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        推荐系统
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="chapter6/section1.html">
+            
+                
+                    <a href="../chapter6/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        推荐系统评测
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="chapter6/section2.html">
+            
+                
+                    <a href="../chapter6/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        基于协同过滤的推荐系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="chapter6/section3.html">
+            
+                
+                    <a href="../chapter6/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        代码案例
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >机器学习课件</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x5206;&#x7C7B;&#x7B97;&#x6CD5;&#x4E4B;k&#x8FD1;&#x90BB;">&#x5206;&#x7C7B;&#x7B97;&#x6CD5;&#x4E4B;k-&#x8FD1;&#x90BB;</h1>
+<p>k-&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;&#x91C7;&#x7528;&#x6D4B;&#x91CF;&#x4E0D;&#x540C;&#x7279;&#x5F81;&#x503C;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x6765;&#x8FDB;&#x884C;&#x5206;&#x7C7B;</p>
+<blockquote>
+<p>&#x4F18;&#x70B9;&#xFF1A;&#x7CBE;&#x5EA6;&#x9AD8;&#x3001;&#x5BF9;&#x5F02;&#x5E38;&#x503C;&#x4E0D;&#x654F;&#x611F;&#x3001;&#x65E0;&#x6570;&#x636E;&#x8F93;&#x5165;&#x5047;&#x5B9A;</p>
+<p>&#x7F3A;&#x70B9;&#xFF1A;&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#x9AD8;&#x3001;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x9AD8;</p>
+<p>&#x4F7F;&#x7528;&#x6570;&#x636E;&#x8303;&#x56F4;&#xFF1A;&#x6570;&#x503C;&#x578B;&#x548C;&#x6807;&#x79F0;&#x578B;</p>
+</blockquote>
+<h2 id="&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x5F04;&#x61C2;k&#x8FD1;&#x90BB;">&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x5F04;&#x61C2;k-&#x8FD1;&#x90BB;</h2>
+<p>&#x7535;&#x5F71;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x9898;&#x6750;&#x5206;&#x7C7B;&#xFF0C;&#x6BCF;&#x4E2A;&#x9898;&#x6750;&#x53C8;&#x662F;&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x7684;&#x5462;&#xFF1F;&#x90A3;&#x4E48;&#x5047;&#x5982;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x7535;&#x5F71;&#xFF0C;&#x52A8;&#x4F5C;&#x7247;&#x548C;&#x7231;&#x60C5;&#x7247;&#x3002;&#x52A8;&#x4F5C;&#x7247;&#x6709;&#x54EA;&#x4E9B;&#x516C;&#x5171;&#x7684;&#x7279;&#x5F81;&#xFF1F;&#x90A3;&#x4E48;&#x7231;&#x60C5;&#x7247;&#x53C8;&#x5B58;&#x5728;&#x54EA;&#x4E9B;&#x660E;&#x663E;&#x7684;&#x5DEE;&#x522B;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x52A8;&#x4F5C;&#x7247;&#x4E2D;&#x6253;&#x6597;&#x955C;&#x5934;&#x7684;&#x6B21;&#x6570;&#x8F83;&#x591A;&#xFF0C;&#x800C;&#x7231;&#x60C5;&#x7247;&#x4E2D;&#x63A5;&#x543B;&#x955C;&#x5934;&#x76F8;&#x5BF9;&#x66F4;&#x591A;&#x3002;&#x5F53;&#x7136;&#x52A8;&#x4F5C;&#x7247;&#x4E2D;&#x4E5F;&#x6709;&#x4E00;&#x4E9B;&#x63A5;&#x543B;&#x955C;&#x5934;&#xFF0C;&#x7231;&#x60C5;&#x7247;&#x4E2D;&#x4E5F;&#x4F1A;&#x6709;&#x4E00;&#x4E9B;&#x6253;&#x6597;&#x955C;&#x5934;&#x3002;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x5355;&#x7EAF;&#x901A;&#x8FC7;&#x662F;&#x5426;&#x5B58;&#x5728;&#x6253;&#x6597;&#x955C;&#x5934;&#x6216;&#x8005;&#x63A5;&#x543B;&#x955C;&#x5934;&#x6765;&#x5224;&#x65AD;&#x5F71;&#x7247;&#x7684;&#x7C7B;&#x522B;&#x3002;&#x90A3;&#x4E48;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6709;6&#x90E8;&#x5F71;&#x7247;&#x5DF2;&#x7ECF;&#x660E;&#x786E;&#x4E86;&#x7C7B;&#x522B;&#xFF0C;&#x4E5F;&#x6709;&#x6253;&#x6597;&#x955C;&#x5934;&#x548C;&#x63A5;&#x543B;&#x955C;&#x5934;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x90E8;&#x7535;&#x5F71;&#x7C7B;&#x578B;&#x672A;&#x77E5;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x7535;&#x5F71;&#x540D;&#x79F0;</th>
+<th style="text-align:center">&#x6253;&#x6597;&#x955C;&#x5934;</th>
+<th style="text-align:center">&#x63A5;&#x543B;&#x955C;&#x5934;</th>
+<th style="text-align:center">&#x7535;&#x5F71;&#x7C7B;&#x578B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">California Man</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">104</td>
+<td style="text-align:center">&#x7231;&#x60C5;&#x7247;</td>
+</tr>
+<tr>
+<td style="text-align:center">He&apos;s not Really into dues</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">&#x7231;&#x60C5;&#x7247;</td>
+</tr>
+<tr>
+<td style="text-align:center">Beautiful Woman</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">81</td>
+<td style="text-align:center">&#x7231;&#x60C5;&#x7247;</td>
+</tr>
+<tr>
+<td style="text-align:center">Kevin Longblade</td>
+<td style="text-align:center">101</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">&#x52A8;&#x4F5C;&#x7247;</td>
+</tr>
+<tr>
+<td style="text-align:center">Robo Slayer 3000</td>
+<td style="text-align:center">99</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">&#x52A8;&#x4F5C;&#x7247;</td>
+</tr>
+<tr>
+<td style="text-align:center">Amped II</td>
+<td style="text-align:center">98</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">&#x52A8;&#x4F5C;&#x7247;</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">&#x672A;&#x77E5;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4F7F;&#x7528;K-&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;&#x6765;&#x5206;&#x7C7B;&#x7231;&#x60C5;&#x7247;&#x548C;&#x52A8;&#x4F5C;&#x7247;&#xFF1A;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x6837;&#x672C;&#x6570;&#x636E;&#x96C6;&#x5408;&#xFF0C;&#x4E5F;&#x53EB;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x96C6;&#xFF0C;&#x6837;&#x672C;&#x4E2A;&#x6570;M&#x4E2A;&#xFF0C;&#x77E5;&#x9053;&#x6BCF;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x7279;&#x5F81;&#x4E0E;&#x7C7B;&#x522B;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#xFF0C;&#x7136;&#x540E;&#x5B58;&#x5728;&#x672A;&#x77E5;&#x7C7B;&#x578B;&#x6570;&#x636E;&#x96C6;&#x5408;1&#x4E2A;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x8981;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x6837;&#x672C;&#x6570;&#x636E;&#x4E2D;&#x4E0E;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x4E2D;M&#x4E2A;&#x7684;&#x8DDD;&#x79BB;&#xFF0C;&#x6392;&#x5E8F;&#x8FC7;&#x540E;&#x9009;&#x51FA;&#x6700;&#x8FD1;&#x7684;K&#x4E2A;&#xFF0C;&#x8FD9;&#x4E2A;&#x53D6;&#x503C;&#x4E00;&#x822C;&#x4E0D;&#x5927;&#x4E8E;20&#x4E2A;&#x3002;&#x9009;&#x62E9;K&#x4E2A;&#x6700;&#x76F8;&#x8FD1;&#x6570;&#x636E;&#x4E2D;&#x6B21;&#x6570;&#x6700;&#x591A;&#x7684;&#x5206;&#x7C7B;&#x3002;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x539F;&#x5219;&#x53BB;&#x5224;&#x65AD;&#x672A;&#x77E5;&#x7535;&#x5F71;&#x7684;&#x5206;&#x7C7B;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x7535;&#x5F71;&#x540D;&#x79F0;</th>
+<th style="text-align:center">&#x4E0E;&#x672A;&#x77E5;&#x7535;&#x5F71;&#x7684;&#x8DDD;&#x79BB;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">California Man</td>
+<td style="text-align:center">20.5</td>
+</tr>
+<tr>
+<td style="text-align:center">He&apos;s not Really into dues</td>
+<td style="text-align:center">18.7</td>
+</tr>
+<tr>
+<td style="text-align:center">Beautiful Woman</td>
+<td style="text-align:center">19.2</td>
+</tr>
+<tr>
+<td style="text-align:center">Kevin Longblade</td>
+<td style="text-align:center">115.3</td>
+</tr>
+<tr>
+<td style="text-align:center">Robo Slayer 3000</td>
+<td style="text-align:center">117.4</td>
+</tr>
+<tr>
+<td style="text-align:center">Amped II</td>
+<td style="text-align:center">118.9</td>
+</tr>
+</tbody>
+</table>
+<p>&#x6211;&#x4EEC;&#x5047;&#x8BBE;K&#x4E3A;3&#xFF0C;&#x90A3;&#x4E48;&#x6392;&#x540D;&#x524D;&#x4E09;&#x4E2A;&#x7535;&#x5F71;&#x7684;&#x7C7B;&#x578B;&#x90FD;&#x662F;&#x7231;&#x60C5;&#x7247;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5224;&#x5B9A;&#x8FD9;&#x4E2A;&#x672A;&#x77E5;&#x7535;&#x5F71;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x7231;&#x60C5;&#x7247;&#x3002;&#x90A3;&#x4E48;&#x8BA1;&#x7B97;&#x8DDD;&#x79BB;&#x662F;&#x600E;&#x6837;&#x8BA1;&#x7B97;&#x7684;&#x5462;&#xFF1F;</p>
+<p><strong>&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;</strong>
+&#x90A3;&#x4E48;&#x5BF9;&#x4E8E;&#x4E24;&#x4E2A;&#x5411;&#x91CF;&#x70B9;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mrow><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">a_{1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>&#x548C;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mrow><mn>2</mn></mrow></msub></mrow><annotation encoding="application/x-tex">a_{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;,&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BE5;&#x516C;&#x5F0F;&#x8868;&#x793A;&#xFF1A;</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mrow><msup><mrow><mo fence="true">(</mo><mrow><msub><mi>x</mi><mrow><mn>1</mn></mrow></msub><mo>&#x2212;</mo><msub><mi>x</mi><mrow><mn>2</mn></mrow></msub></mrow><mo fence="true">)</mo></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mo fence="true">(</mo><mrow><msub><mi>y</mi><mrow><mn>1</mn></mrow></msub><mo>&#x2212;</mo><msub><mi>y</mi><mrow><mn>2</mn></mrow></msub></mrow><mo fence="true">)</mo></mrow><mrow><mn>2</mn></mrow></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\left({x_{1}-x_{2}}\right)^{2}+\left({y_{1}-y_{2}}\right)^{2}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.9675590000000001em;"></span><span class="strut bottom" style="height:1.24001em;vertical-align:-0.27245099999999994em;"></span><span class="base textstyle uncramped"><span class="mord sqrt"><span class="sqrt-sign" style="top:-0.07755900000000004em;"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing size1">&#x221A;</span></span></span><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">&#x200B;</span></span><span class="mord textstyle cramped"><span class="minner"><span class="minner textstyle cramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;">(</span><span class="mord textstyle cramped"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">&#x2212;</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span><span class="mclose style-wrap reset-textstyle textstyle uncramped" style="top:0em;">)</span></span><span class="msupsub"><span class="vlist"><span style="top:-0.364em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">+</span><span class="minner"><span class="minner textstyle cramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;">(</span><span class="mord textstyle cramped"><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">&#x2212;</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span><span class="mclose style-wrap reset-textstyle textstyle uncramped" style="top:0em;">)</span></span><span class="msupsub"><span class="vlist"><span style="top:-0.364em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span><span style="top:-0.887559em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped sqrt-line"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></p>
+<p>&#x5982;&#x679C;&#x8BF4;&#x8F93;&#x5165;&#x53D8;&#x91CF;&#x6709;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#xFF0C;&#x4F8B;&#x5982;&#xFF08;1&#xFF0C;3&#xFF0C;5&#xFF0C;2&#xFF09;&#x548C;&#xFF08;7&#xFF0C;6&#xFF0C;9&#xFF0C;4&#xFF09;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x8BA1;&#x7B97;&#x4E3A;&#xFF1A;</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mrow><msup><mrow><mo fence="true">(</mo><mrow><mn>1</mn><mo>&#x2212;</mo><mn>7</mn></mrow><mo fence="true">)</mo></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mo fence="true">(</mo><mrow><mn>3</mn><mo>&#x2212;</mo><mn>6</mn></mrow><mo fence="true">)</mo></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mo fence="true">(</mo><mrow><mn>5</mn><mo>&#x2212;</mo><mn>9</mn></mrow><mo fence="true">)</mo></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mo fence="true">(</mo><mrow><mn>2</mn><mo>&#x2212;</mo><mn>4</mn></mrow><mo fence="true">)</mo></mrow><mrow><mn>2</mn></mrow></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\left({1-7}\right)^{2}+\left({3-6}\right)^{2}+\left({5-9}\right)^{2}+\left({2-4}\right)^{2}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.9675590000000001em;"></span><span class="strut bottom" style="height:1.24001em;vertical-align:-0.27245099999999994em;"></span><span class="base textstyle uncramped"><span class="mord sqrt"><span class="sqrt-sign" style="top:-0.07755900000000004em;"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing size1">&#x221A;</span></span></span><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">&#x200B;</span></span><span class="mord textstyle cramped"><span class="minner"><span class="minner textstyle cramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;">(</span><span class="mord textstyle cramped"><span class="mord mathrm">1</span><span class="mbin">&#x2212;</span><span class="mord mathrm">7</span></span><span class="mclose style-wrap reset-textstyle textstyle uncramped" style="top:0em;">)</span></span><span class="msupsub"><span class="vlist"><span style="top:-0.364em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">+</span><span class="minner"><span class="minner textstyle cramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;">(</span><span class="mord textstyle cramped"><span class="mord mathrm">3</span><span class="mbin">&#x2212;</span><span class="mord mathrm">6</span></span><span class="mclose style-wrap reset-textstyle textstyle uncramped" style="top:0em;">)</span></span><span class="msupsub"><span class="vlist"><span style="top:-0.364em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">+</span><span class="minner"><span class="minner textstyle cramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;">(</span><span class="mord textstyle cramped"><span class="mord mathrm">5</span><span class="mbin">&#x2212;</span><span class="mord mathrm">9</span></span><span class="mclose style-wrap reset-textstyle textstyle uncramped" style="top:0em;">)</span></span><span class="msupsub"><span class="vlist"><span style="top:-0.364em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">+</span><span class="minner"><span class="minner textstyle cramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;">(</span><span class="mord textstyle cramped"><span class="mord mathrm">2</span><span class="mbin">&#x2212;</span><span class="mord mathrm">4</span></span><span class="mclose style-wrap reset-textstyle textstyle uncramped" style="top:0em;">)</span></span><span class="msupsub"><span class="vlist"><span style="top:-0.364em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span><span style="top:-0.887559em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped sqrt-line"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></p>
+<h2 id="sklearnneighbors">sklearn.neighbors</h2>
+<p>sklearn.neighbors&#x63D0;&#x4F9B;&#x76D1;&#x7763;&#x7684;&#x57FA;&#x4E8E;&#x90BB;&#x5C45;&#x7684;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x7684;&#x529F;&#x80FD;&#xFF0C;sklearn.neighbors.KNeighborsClassifier&#x662F;&#x4E00;&#x4E2A;&#x6700;&#x8FD1;&#x90BB;&#x5C45;&#x5206;&#x7C7B;&#x5668;&#x3002;&#x90A3;&#x4E48;KNeighborsClassifier&#x662F;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E0B;&#x5B9E;&#x4F8B;&#x5316;&#x65F6;&#x5019;&#x7684;&#x53C2;&#x6570;</p>
+<pre><code class="lang-python">class sklearn.neighbors.KNeighborsClassifier(n_neighbors=5, weights=&apos;uniform&apos;, algorithm=&apos;auto&apos;, leaf_size=30, p=2, metric=&apos;minkowski&apos;, metric_params=None, n_jobs=1, **kwargs)**
+  &quot;&quot;&quot;
+  :param n_neighbors&#xFF1A;int&#xFF0C;&#x53EF;&#x9009;&#xFF08;&#x9ED8;&#x8BA4;= 5&#xFF09;&#xFF0C;k_neighbors&#x67E5;&#x8BE2;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x7684;&#x90BB;&#x5C45;&#x6570;
+
+  :param algorithm&#xFF1A;{&apos;auto&apos;&#xFF0C;&apos;ball_tree&apos;&#xFF0C;&apos;kd_tree&apos;&#xFF0C;&apos;brute&apos;}&#xFF0C;&#x53EF;&#x9009;&#x7528;&#x4E8E;&#x8BA1;&#x7B97;&#x6700;&#x8FD1;&#x90BB;&#x5C45;&#x7684;&#x7B97;&#x6CD5;&#xFF1A;&apos;ball_tree&apos;&#x5C06;&#x4F1A;&#x4F7F;&#x7528; BallTree&#xFF0C;&apos;kd_tree&apos;&#x5C06;&#x4F7F;&#x7528; KDTree&#xFF0C;&#x201C;&#x91CE;&#x517D;&#x201D;&#x5C06;&#x4F7F;&#x7528;&#x5F3A;&#x529B;&#x641C;&#x7D22;&#x3002;&apos;auto&apos;&#x5C06;&#x5C1D;&#x8BD5;&#x6839;&#x636E;&#x4F20;&#x9012;&#x7ED9;fit&#x65B9;&#x6CD5;&#x7684;&#x503C;&#x6765;&#x51B3;&#x5B9A;&#x6700;&#x5408;&#x9002;&#x7684;&#x7B97;&#x6CD5;&#x3002;
+
+  :param n_jobs&#xFF1A;int&#xFF0C;&#x53EF;&#x9009;&#xFF08;&#x9ED8;&#x8BA4;= 1),&#x7528;&#x4E8E;&#x90BB;&#x5C45;&#x641C;&#x7D22;&#x7684;&#x5E76;&#x884C;&#x4F5C;&#x4E1A;&#x6570;&#x3002;&#x5982;&#x679C;-1&#xFF0C;&#x5219;&#x5C06;&#x4F5C;&#x4E1A;&#x6570;&#x8BBE;&#x7F6E;&#x4E3A;CPU&#x5185;&#x6838;&#x6570;&#x3002;&#x4E0D;&#x5F71;&#x54CD;fit&#x65B9;&#x6CD5;&#x3002;
+
+  &quot;&quot;&quot;
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">from</span> sklearn.neighbors <span class="hljs-keyword">import</span> KNeighborsClassifier
+
+neigh = KNeighborsClassifier(n_neighbors=<span class="hljs-number">3</span>)
+</code></pre>
+<h3 id="method">Method</h3>
+<p><strong>fit(X, y)</strong></p>
+<p>&#x4F7F;&#x7528;X&#x4F5C;&#x4E3A;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x62DF;&#x5408;&#x6A21;&#x578B;&#xFF0C;y&#x4F5C;&#x4E3A;X&#x7684;&#x7C7B;&#x522B;&#x503C;&#x3002;X&#xFF0C;y&#x4E3A;&#x6570;&#x7EC4;&#x6216;&#x8005;&#x77E9;&#x9635;</p>
+<pre><code class="lang-python">X = np.array([[<span class="hljs-number">1</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">1</span>,<span class="hljs-number">1.1</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">0.1</span>]])
+y = np.array([<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>])
+neigh.fit(X,y)
+</code></pre>
+<p><strong>kneighbors(X=None, n_neighbors=None, return_distance=True)</strong></p>
+<p>&#x627E;&#x5230;&#x6307;&#x5B9A;&#x70B9;&#x96C6;X&#x7684;n_neighbors&#x4E2A;&#x90BB;&#x5C45;&#xFF0C;return_distance&#x4E3A;False&#x7684;&#x8BDD;&#xFF0C;&#x4E0D;&#x8FD4;&#x56DE;&#x8DDD;&#x79BB;</p>
+<pre><code class="lang-python">neigh.kneighbors(np.array([[<span class="hljs-number">1.1</span>,<span class="hljs-number">1.1</span>]]),return_distance= <span class="hljs-keyword">False</span>)
+
+neigh.kneighbors(np.array([[<span class="hljs-number">1.1</span>,<span class="hljs-number">1.1</span>]]),return_distance= <span class="hljs-keyword">False</span>,an_neighbors=<span class="hljs-number">2</span>)
+</code></pre>
+<p><strong>predict(X)</strong></p>
+<p>&#x9884;&#x6D4B;&#x63D0;&#x4F9B;&#x7684;&#x6570;&#x636E;&#x7684;&#x7C7B;&#x6807;&#x7B7E;</p>
+<pre><code class="lang-python">neigh.predict(np.array([[<span class="hljs-number">0.1</span>,<span class="hljs-number">0.1</span>],[<span class="hljs-number">1.1</span>,<span class="hljs-number">1.1</span>]]))
+</code></pre>
+<p><strong>predict_proba(X)</strong></p>
+<p>&#x8FD4;&#x56DE;&#x6D4B;&#x8BD5;&#x6570;&#x636E;X&#x5C5E;&#x4E8E;&#x67D0;&#x4E00;&#x7C7B;&#x522B;&#x7684;&#x6982;&#x7387;&#x4F30;&#x8BA1;</p>
+<pre><code class="lang-python">neigh.predict_proba(np.array([[<span class="hljs-number">1.1</span>,<span class="hljs-number">1.1</span>]]))
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../chapter3/index.html" class="navigation navigation-prev " aria-label="Previous page: sklearn的分类器算法"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../chapter3/section2.html" class="navigation navigation-next " aria-label="Next page: k-近邻算法案例分析"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"katex":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

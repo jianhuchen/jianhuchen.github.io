@@ -1,0 +1,689 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <!-- Start book Python数据分析课程讲义 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>三、数据分析工具Pandas | Python数据分析课程讲义</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="BigCat">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-tbfed-pagefooter/footer.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../file/part03/3.1.html" />
+    
+    
+    <link rel="prev" href="../../file/part02/2.4.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="3"
+        data-chapter-title="三、数据分析工具Pandas"
+        data-filepath="file/part03/3.md"
+        data-basepath="../.."
+        data-revision="Thu Apr 27 2017 00:50:19 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        传智播客Python学院数据分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="file/part01/1.html">
+            
+                
+                    <a href="../../file/part01/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        一、工作环境准备及数据分析建模理论基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="file/part01/1.1.html">
+            
+                
+                    <a href="../../file/part01/1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Python 3.x新特性和编码回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="file/part01/1.2.html">
+            
+                
+                    <a href="../../file/part01/1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        DIKW模型与数据工程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="file/part01/1.3.html">
+            
+                
+                    <a href="../../file/part01/1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        数据分析建模理论基础
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="file/part02/2.html">
+            
+                
+                    <a href="../../file/part02/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        二、科学计算工具NumPy
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="file/part02/2.1.html">
+            
+                
+                    <a href="../../file/part02/2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        ndarray的创建与数据类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="file/part02/2.2.html">
+            
+                
+                    <a href="../../file/part02/2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        ndarray的矩阵处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="file/part02/2.3.html">
+            
+                
+                    <a href="../../file/part02/2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        ndarray的元素处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="file/part02/2.4.html">
+            
+                
+                    <a href="../../file/part02/2.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        实战案例：2016美国总统大选民意调查统计
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="3" data-path="file/part03/3.html">
+            
+                
+                    <a href="../../file/part03/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        三、数据分析工具Pandas
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="file/part03/3.1.html">
+            
+                
+                    <a href="../../file/part03/3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Pandas的数据结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="file/part03/3.2.html">
+            
+                
+                    <a href="../../file/part03/3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Pandas的索引操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="file/part03/3.3.html">
+            
+                
+                    <a href="../../file/part03/3.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        Pandas的对齐运算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="file/part03/3.4.html">
+            
+                
+                    <a href="../../file/part03/3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        Pandas的函数应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="file/part03/3.5.html">
+            
+                
+                    <a href="../../file/part03/3.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        Pandas的层级索引
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="file/part03/3.6.html">
+            
+                
+                    <a href="../../file/part03/3.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        Pandas统计计算和描述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="file/part03/3.7.html">
+            
+                
+                    <a href="../../file/part03/3.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        Pandas分组与聚合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="file/part03/3.8.html">
+            
+                
+                    <a href="../../file/part03/3.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        数据清洗、合并、转化和重构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="file/part03/3.9.html">
+            
+                
+                    <a href="../../file/part03/3.9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        聚类模型 -- K-Means介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="file/part03/3.10.html">
+            
+                
+                    <a href="../../file/part03/3.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                        实战案例：全球食品数据分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="file/part04/4.html">
+            
+                
+                    <a href="../../file/part04/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        四、数据可视化工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="file/part04/4.1.html">
+            
+                
+                    <a href="../../file/part04/4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Matplotlib绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="file/part04/4.2.html">
+            
+                
+                    <a href="../../file/part04/4.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        Seaborn绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="file/part04/4.3.html">
+            
+                
+                    <a href="../../file/part04/4.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Bokeh绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="file/part04/4.4.html">
+            
+                
+                    <a href="../../file/part04/4.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        实战案例：世界高峰数据可视化
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="file/part06/6.html">
+            
+                
+                    <a href="../../file/part06/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        五、自然语言处理NLTK
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="file/part06/6.1.html">
+            
+                
+                    <a href="../../file/part06/6.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        NLTK与自然语言处理基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="file/part06/6.2.html">
+            
+                
+                    <a href="../../file/part06/6.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        jieba分词
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="file/part06/6.3.html">
+            
+                
+                    <a href="../../file/part06/6.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        情感分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="file/part06/6.4.html">
+            
+                
+                    <a href="../../file/part06/6.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        文本相似度和分类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="file/part06/6.6.html">
+            
+                
+                    <a href="../../file/part06/6.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        实战案例：微博情感分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >Python数据分析课程讲义</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <p><img src="../images/pandas_logo.png" alt=""></p>
+<h2 id="&#x4EC0;&#x4E48;&#x662F;pandas">&#x4EC0;&#x4E48;&#x662F;Pandas?</h2>
+<blockquote>
+<p>Pandas&#x7684;&#x540D;&#x79F0;&#x6765;&#x81EA;&#x4E8E;&#x9762;&#x677F;&#x6570;&#x636E;&#xFF08;panel data&#xFF09;&#x548C;Python&#x6570;&#x636E;&#x5206;&#x6790;&#xFF08;data analysis&#xFF09;&#x3002;</p>
+</blockquote>
+<p>Pandas&#x662F;&#x4E00;&#x4E2A;&#x5F3A;&#x5927;&#x7684;&#x5206;&#x6790;&#x7ED3;&#x6784;&#x5316;&#x6570;&#x636E;&#x7684;&#x5DE5;&#x5177;&#x96C6;&#xFF0C;&#x57FA;&#x4E8E;NumPy&#x6784;&#x5EFA;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86; <strong>&#x9AD8;&#x7EA7;&#x6570;&#x636E;&#x7ED3;&#x6784;</strong> &#x548C; <strong>&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x5DE5;&#x5177;</strong>&#xFF0C;&#x5B83;&#x662F;&#x4F7F;Python&#x6210;&#x4E3A;&#x5F3A;&#x5927;&#x800C;&#x9AD8;&#x6548;&#x7684;&#x6570;&#x636E;&#x5206;&#x6790;&#x73AF;&#x5883;&#x7684;&#x91CD;&#x8981;&#x56E0;&#x7D20;&#x4E4B;&#x4E00;&#x3002;</p>
+<ul>
+<li><p>&#x4E00;&#x4E2A;&#x5F3A;&#x5927;&#x7684;&#x5206;&#x6790;&#x548C;&#x64CD;&#x4F5C;&#x5927;&#x578B;&#x7ED3;&#x6784;&#x5316;&#x6570;&#x636E;&#x96C6;&#x6240;&#x9700;&#x7684;&#x5DE5;&#x5177;&#x96C6;</p>
+</li>
+<li><p>&#x57FA;&#x7840;&#x662F;NumPy&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x9AD8;&#x6027;&#x80FD;&#x77E9;&#x9635;&#x7684;&#x8FD0;&#x7B97;</p>
+</li>
+<li><p>&#x63D0;&#x4F9B;&#x4E86;&#x5927;&#x91CF;&#x80FD;&#x591F;&#x5FEB;&#x901F;&#x4FBF;&#x6377;&#x5730;&#x5904;&#x7406;&#x6570;&#x636E;&#x7684;&#x51FD;&#x6570;&#x548C;&#x65B9;&#x6CD5;</p>
+</li>
+<li><p>&#x5E94;&#x7528;&#x4E8E;&#x6570;&#x636E;&#x6316;&#x6398;&#xFF0C;&#x6570;&#x636E;&#x5206;&#x6790;</p>
+</li>
+<li><p>&#x63D0;&#x4F9B;&#x6570;&#x636E;&#x6E05;&#x6D17;&#x529F;&#x80FD;</p>
+</li>
+</ul>
+<p><a href="http://pandas.pydata.org" target="_blank">http://pandas.pydata.org</a></p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; BigCat all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x300C;Revision Time:
+2017-03-13 22:55:46&#x300D;
+</span></footer>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../file/part02/2.4.html" class="navigation navigation-prev " aria-label="Previous page: 实战案例：2016美国总统大选民意调查统计"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../file/part03/3.1.html" class="navigation navigation-next " aria-label="Next page: Pandas的数据结构"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/dododream"},"search-pro":{"cutWordLib":"nodejieba","defineWord":["gitbook-use"]},"sharing":{"weibo":true,"facebook":true,"twitter":true,"google":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"tbfed-pagefooter":{"copyright":"Copyright © BigCat","modify_label":"「Revision Time:","modify_format":"YYYY-MM-DD HH:mm:ss」"},"baidu":{"token":"ff100361cdce95dd4c8fb96b4009f7bc"},"sitemap":{"hostname":"http://www.treenewbee.top"},"donate":{"wechat":"http://weixin.png","alipay":"http://alipay.png","title":"","button":"赏","alipayText":"支付宝打赏","wechatText":"微信打赏"},"edit-link":{"base":"https://github.com/dododream/edit","label":"Edit This Page"},"splitter":{},"toggle-chapters":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book Python数据分析课程讲义 -->
+</html>

@@ -1,0 +1,963 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <!-- Start book Python数据分析课程讲义 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Pandas的索引操作 | Python数据分析课程讲义</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="BigCat">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-tbfed-pagefooter/footer.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../file/part03/3.3.html" />
+    
+    
+    <link rel="prev" href="../../file/part03/3.1.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="3.2"
+        data-chapter-title="Pandas的索引操作"
+        data-filepath="file/part03/3.2.md"
+        data-basepath="../.."
+        data-revision="Thu Apr 27 2017 00:50:19 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        传智播客Python学院数据分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="file/part01/1.html">
+            
+                
+                    <a href="../../file/part01/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        一、工作环境准备及数据分析建模理论基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="file/part01/1.1.html">
+            
+                
+                    <a href="../../file/part01/1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Python 3.x新特性和编码回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="file/part01/1.2.html">
+            
+                
+                    <a href="../../file/part01/1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        DIKW模型与数据工程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="file/part01/1.3.html">
+            
+                
+                    <a href="../../file/part01/1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        数据分析建模理论基础
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="file/part02/2.html">
+            
+                
+                    <a href="../../file/part02/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        二、科学计算工具NumPy
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="file/part02/2.1.html">
+            
+                
+                    <a href="../../file/part02/2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        ndarray的创建与数据类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="file/part02/2.2.html">
+            
+                
+                    <a href="../../file/part02/2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        ndarray的矩阵处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="file/part02/2.3.html">
+            
+                
+                    <a href="../../file/part02/2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        ndarray的元素处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="file/part02/2.4.html">
+            
+                
+                    <a href="../../file/part02/2.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        实战案例：2016美国总统大选民意调查统计
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="file/part03/3.html">
+            
+                
+                    <a href="../../file/part03/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        三、数据分析工具Pandas
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="file/part03/3.1.html">
+            
+                
+                    <a href="../../file/part03/3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Pandas的数据结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2" data-path="file/part03/3.2.html">
+            
+                
+                    <a href="../../file/part03/3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Pandas的索引操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="file/part03/3.3.html">
+            
+                
+                    <a href="../../file/part03/3.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        Pandas的对齐运算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="file/part03/3.4.html">
+            
+                
+                    <a href="../../file/part03/3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        Pandas的函数应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="file/part03/3.5.html">
+            
+                
+                    <a href="../../file/part03/3.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        Pandas的层级索引
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="file/part03/3.6.html">
+            
+                
+                    <a href="../../file/part03/3.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        Pandas统计计算和描述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="file/part03/3.7.html">
+            
+                
+                    <a href="../../file/part03/3.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        Pandas分组与聚合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="file/part03/3.8.html">
+            
+                
+                    <a href="../../file/part03/3.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        数据清洗、合并、转化和重构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="file/part03/3.9.html">
+            
+                
+                    <a href="../../file/part03/3.9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        聚类模型 -- K-Means介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="file/part03/3.10.html">
+            
+                
+                    <a href="../../file/part03/3.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                        实战案例：全球食品数据分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="file/part04/4.html">
+            
+                
+                    <a href="../../file/part04/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        四、数据可视化工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="file/part04/4.1.html">
+            
+                
+                    <a href="../../file/part04/4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Matplotlib绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="file/part04/4.2.html">
+            
+                
+                    <a href="../../file/part04/4.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        Seaborn绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="file/part04/4.3.html">
+            
+                
+                    <a href="../../file/part04/4.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Bokeh绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="file/part04/4.4.html">
+            
+                
+                    <a href="../../file/part04/4.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        实战案例：世界高峰数据可视化
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="file/part06/6.html">
+            
+                
+                    <a href="../../file/part06/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        五、自然语言处理NLTK
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="file/part06/6.1.html">
+            
+                
+                    <a href="../../file/part06/6.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        NLTK与自然语言处理基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="file/part06/6.2.html">
+            
+                
+                    <a href="../../file/part06/6.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        jieba分词
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="file/part06/6.3.html">
+            
+                
+                    <a href="../../file/part06/6.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        情感分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="file/part06/6.4.html">
+            
+                
+                    <a href="../../file/part06/6.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        文本相似度和分类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="file/part06/6.6.html">
+            
+                
+                    <a href="../../file/part06/6.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        实战案例：微博情感分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >Python数据分析课程讲义</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="pandas&#x7684;&#x7D22;&#x5F15;&#x64CD;&#x4F5C;">Pandas&#x7684;&#x7D22;&#x5F15;&#x64CD;&#x4F5C;</h1>
+<blockquote>
+<h2 id="&#x7D22;&#x5F15;&#x5BF9;&#x8C61;index">&#x7D22;&#x5F15;&#x5BF9;&#x8C61;Index</h2>
+</blockquote>
+<h4 id="1-series&#x548C;dataframe&#x4E2D;&#x7684;&#x7D22;&#x5F15;&#x90FD;&#x662F;index&#x5BF9;&#x8C61;">1. Series&#x548C;DataFrame&#x4E2D;&#x7684;&#x7D22;&#x5F15;&#x90FD;&#x662F;Index&#x5BF9;&#x8C61;</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python">print(type(ser_obj.index))
+print(type(df_obj2.index))
+
+print(df_obj2.index)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">&lt;class &apos;pandas.indexes.range.RangeIndex&apos;&gt;
+&lt;class &apos;pandas.indexes.numeric.Int64Index&apos;&gt;
+Int64Index([0, 1, 2, 3], dtype=&apos;int64&apos;)
+</code></pre>
+<h4 id="2-&#x7D22;&#x5F15;&#x5BF9;&#x8C61;&#x4E0D;&#x53EF;&#x53D8;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E86;&#x6570;&#x636E;&#x7684;&#x5B89;&#x5168;">2. &#x7D22;&#x5F15;&#x5BF9;&#x8C61;&#x4E0D;&#x53EF;&#x53D8;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E86;&#x6570;&#x636E;&#x7684;&#x5B89;&#x5168;</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x7D22;&#x5F15;&#x5BF9;&#x8C61;&#x4E0D;&#x53EF;&#x53D8;</span>
+df_obj2.index[<span class="hljs-number">0</span>] = <span class="hljs-number">2</span>
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-23-7f40a356d7d1&gt; in &lt;module&gt;()
+      1 # &#x7D22;&#x5F15;&#x5BF9;&#x8C61;&#x4E0D;&#x53EF;&#x53D8;
+----&gt; 2 df_obj2.index[0] = 2
+
+/Users/Power/anaconda/lib/python3.6/site-packages/pandas/indexes/base.py in __setitem__(self, key, value)
+   1402 
+   1403     def __setitem__(self, key, value):
+-&gt; 1404         raise TypeError(&quot;Index does not support mutable operations&quot;)
+   1405 
+   1406     def __getitem__(self, key):
+
+TypeError: Index does not support mutable operations
+</code></pre>
+<h4 id="&#x5E38;&#x89C1;&#x7684;index&#x79CD;&#x7C7B;">&#x5E38;&#x89C1;&#x7684;Index&#x79CD;&#x7C7B;</h4>
+<ul>
+<li>Index&#xFF0C;&#x7D22;&#x5F15;</li>
+<li>Int64Index&#xFF0C;&#x6574;&#x6570;&#x7D22;&#x5F15;</li>
+<li>MultiIndex&#xFF0C;&#x5C42;&#x7EA7;&#x7D22;&#x5F15;</li>
+<li>DatetimeIndex&#xFF0C;&#x65F6;&#x95F4;&#x6233;&#x7C7B;&#x578B;</li>
+</ul>
+<blockquote>
+<h2 id="series&#x7D22;&#x5F15;">Series&#x7D22;&#x5F15;</h2>
+</blockquote>
+<h4 id="1-index-&#x6307;&#x5B9A;&#x884C;&#x7D22;&#x5F15;&#x540D;">1. index &#x6307;&#x5B9A;&#x884C;&#x7D22;&#x5F15;&#x540D;</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python">ser_obj = pd.Series(range(<span class="hljs-number">5</span>), index = [<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;c&apos;</span>, <span class="hljs-string">&apos;d&apos;</span>, <span class="hljs-string">&apos;e&apos;</span>])
+print(ser_obj.head())
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">a    <span class="hljs-number">0</span>
+b    <span class="hljs-number">1</span>
+c    <span class="hljs-number">2</span>
+d    <span class="hljs-number">3</span>
+e    <span class="hljs-number">4</span>
+dtype: int64
+</code></pre>
+<h4 id="2-&#x884C;&#x7D22;&#x5F15;">2. &#x884C;&#x7D22;&#x5F15;</h4>
+<blockquote>
+<p>ser_obj[&#x2018;label&#x2019;], ser_obj[pos]</p>
+</blockquote>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x884C;&#x7D22;&#x5F15;</span>
+print(ser_obj[<span class="hljs-string">&apos;b&apos;</span>])
+print(ser_obj[<span class="hljs-number">2</span>])
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-number">1</span>
+<span class="hljs-number">2</span>
+</code></pre>
+<h4 id="3-&#x5207;&#x7247;&#x7D22;&#x5F15;">3. &#x5207;&#x7247;&#x7D22;&#x5F15;</h4>
+<blockquote>
+<p>ser_obj[2:4], ser_obj[&#x2018;label1&#x2019;: &#x2019;label3&#x2019;]</p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x6309;&#x7D22;&#x5F15;&#x540D;&#x5207;&#x7247;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x662F;&#x5305;&#x542B;&#x7EC8;&#x6B62;&#x7D22;&#x5F15;&#x7684;&#x3002;</p>
+</blockquote>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x5207;&#x7247;&#x7D22;&#x5F15;</span>
+print(ser_obj[<span class="hljs-number">1</span>:<span class="hljs-number">3</span>])
+print(ser_obj[<span class="hljs-string">&apos;b&apos;</span>:<span class="hljs-string">&apos;d&apos;</span>])
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">b    <span class="hljs-number">1</span>
+c    <span class="hljs-number">2</span>
+dtype: int64
+b    <span class="hljs-number">1</span>
+c    <span class="hljs-number">2</span>
+d    <span class="hljs-number">3</span>
+dtype: int64
+</code></pre>
+<h4 id="4-&#x4E0D;&#x8FDE;&#x7EED;&#x7D22;&#x5F15;">4. &#x4E0D;&#x8FDE;&#x7EED;&#x7D22;&#x5F15;</h4>
+<blockquote>
+<p>ser_obj[[&#x2018;label1&#x2019;, &#x2019;label2&#x2019;, &#x2018;label3&#x2019;]]</p>
+</blockquote>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x4E0D;&#x8FDE;&#x7EED;&#x7D22;&#x5F15;</span>
+print(ser_obj[[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>]])
+print(ser_obj[[<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;e&apos;</span>]])
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">a    <span class="hljs-number">0</span>
+c    <span class="hljs-number">2</span>
+e    <span class="hljs-number">4</span>
+dtype: int64
+a    <span class="hljs-number">0</span>
+e    <span class="hljs-number">4</span>
+dtype: int64
+</code></pre>
+<h4 id="5-&#x5E03;&#x5C14;&#x7D22;&#x5F15;">5. &#x5E03;&#x5C14;&#x7D22;&#x5F15;</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x5E03;&#x5C14;&#x7D22;&#x5F15;</span>
+ser_bool = ser_obj &gt; <span class="hljs-number">2</span>
+print(ser_bool)
+print(ser_obj[ser_bool])
+
+print(ser_obj[ser_obj &gt; <span class="hljs-number">2</span>])
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">a    <span class="hljs-keyword">False</span>
+b    <span class="hljs-keyword">False</span>
+c    <span class="hljs-keyword">False</span>
+d     <span class="hljs-keyword">True</span>
+e     <span class="hljs-keyword">True</span>
+dtype: bool
+d    <span class="hljs-number">3</span>
+e    <span class="hljs-number">4</span>
+dtype: int64
+d    <span class="hljs-number">3</span>
+e    <span class="hljs-number">4</span>
+dtype: int64
+</code></pre>
+<h2 id="dataframe&#x7D22;&#x5F15;">DataFrame&#x7D22;&#x5F15;</h2>
+<h4 id="1-columns-&#x6307;&#x5B9A;&#x5217;&#x7D22;&#x5F15;&#x540D;">1. columns &#x6307;&#x5B9A;&#x5217;&#x7D22;&#x5F15;&#x540D;</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+df_obj = pd.DataFrame(np.random.randn(<span class="hljs-number">5</span>,<span class="hljs-number">4</span>), columns = [<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;c&apos;</span>, <span class="hljs-string">&apos;d&apos;</span>])
+print(df_obj.head())
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">          a         b         c         d
+<span class="hljs-number">0</span> -<span class="hljs-number">0.241678</span>  <span class="hljs-number">0.621589</span>  <span class="hljs-number">0.843546</span> -<span class="hljs-number">0.383105</span>
+<span class="hljs-number">1</span> -<span class="hljs-number">0.526918</span> -<span class="hljs-number">0.485325</span>  <span class="hljs-number">1.124420</span> -<span class="hljs-number">0.653144</span>
+<span class="hljs-number">2</span> -<span class="hljs-number">1.074163</span>  <span class="hljs-number">0.939324</span> -<span class="hljs-number">0.309822</span> -<span class="hljs-number">0.209149</span>
+<span class="hljs-number">3</span> -<span class="hljs-number">0.716816</span>  <span class="hljs-number">1.844654</span> -<span class="hljs-number">2.123637</span> -<span class="hljs-number">1.323484</span>
+<span class="hljs-number">4</span>  <span class="hljs-number">0.368212</span> -<span class="hljs-number">0.910324</span>  <span class="hljs-number">0.064703</span>  <span class="hljs-number">0.486016</span>
+</code></pre>
+<p><img src="../images/DataFrameIndex.png" alt=""></p>
+<h4 id="2-&#x5217;&#x7D22;&#x5F15;">2. &#x5217;&#x7D22;&#x5F15;</h4>
+<blockquote>
+<p>df_obj[[&#x2018;label&#x2019;]]</p>
+</blockquote>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x5217;&#x7D22;&#x5F15;</span>
+print(df_obj[<span class="hljs-string">&apos;a&apos;</span>]) <span class="hljs-comment"># &#x8FD4;&#x56DE;Series&#x7C7B;&#x578B;</span>
+print(df_obj[[<span class="hljs-number">0</span>]]) <span class="hljs-comment"># &#x8FD4;&#x56DE;DataFrame&#x7C7B;&#x578B;</span>
+print(type(df_obj[[<span class="hljs-number">0</span>]])) <span class="hljs-comment"># &#x8FD4;&#x56DE;DataFrame&#x7C7B;&#x578B;</span>
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">0   -0.241678
+1   -0.526918
+2   -1.074163
+3   -0.716816
+4    0.368212
+Name: a, dtype: float64
+&lt;class &apos;pandas.core.frame.DataFrame&apos;&gt;
+</code></pre>
+<h4 id="3-&#x4E0D;&#x8FDE;&#x7EED;&#x7D22;&#x5F15;">3. &#x4E0D;&#x8FDE;&#x7EED;&#x7D22;&#x5F15;</h4>
+<blockquote>
+<p>df_obj[[&#x2018;label1&#x2019;, &#x2018;label2&#x2019;]]</p>
+</blockquote>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x4E0D;&#x8FDE;&#x7EED;&#x7D22;&#x5F15;</span>
+print(df_obj[[<span class="hljs-string">&apos;a&apos;</span>,<span class="hljs-string">&apos;c&apos;</span>]])
+print(df_obj[[<span class="hljs-number">1</span>, <span class="hljs-number">3</span>]])
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">          a         c
+<span class="hljs-number">0</span> -<span class="hljs-number">0.241678</span>  <span class="hljs-number">0.843546</span>
+<span class="hljs-number">1</span> -<span class="hljs-number">0.526918</span>  <span class="hljs-number">1.124420</span>
+<span class="hljs-number">2</span> -<span class="hljs-number">1.074163</span> -<span class="hljs-number">0.309822</span>
+<span class="hljs-number">3</span> -<span class="hljs-number">0.716816</span> -<span class="hljs-number">2.123637</span>
+<span class="hljs-number">4</span>  <span class="hljs-number">0.368212</span>  <span class="hljs-number">0.064703</span>
+          b         d
+<span class="hljs-number">0</span>  <span class="hljs-number">0.621589</span> -<span class="hljs-number">0.383105</span>
+<span class="hljs-number">1</span> -<span class="hljs-number">0.485325</span> -<span class="hljs-number">0.653144</span>
+<span class="hljs-number">2</span>  <span class="hljs-number">0.939324</span> -<span class="hljs-number">0.209149</span>
+<span class="hljs-number">3</span>  <span class="hljs-number">1.844654</span> -<span class="hljs-number">1.323484</span>
+<span class="hljs-number">4</span> -<span class="hljs-number">0.910324</span>  <span class="hljs-number">0.486016</span>
+</code></pre>
+<blockquote>
+<h2 id="&#x9AD8;&#x7EA7;&#x7D22;&#x5F15;&#xFF1A;&#x6807;&#x7B7E;&#x3001;&#x4F4D;&#x7F6E;&#x548C;&#x6DF7;&#x5408;">&#x9AD8;&#x7EA7;&#x7D22;&#x5F15;&#xFF1A;&#x6807;&#x7B7E;&#x3001;&#x4F4D;&#x7F6E;&#x548C;&#x6DF7;&#x5408;</h2>
+</blockquote>
+<p>Pandas&#x7684;&#x9AD8;&#x7EA7;&#x7D22;&#x5F15;&#x6709;3&#x79CD;</p>
+<h4 id="1-loc-&#x6807;&#x7B7E;&#x7D22;&#x5F15;">1. loc &#x6807;&#x7B7E;&#x7D22;&#x5F15;</h4>
+<blockquote>
+<p>DataFrame &#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5207;&#x7247;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;loc&#x6765;&#x505A;&#x5207;&#x7247;</p>
+<p>loc&#x662F;&#x57FA;&#x4E8E;&#x6807;&#x7B7E;&#x540D;&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x7D22;&#x5F15;&#x540D;</p>
+</blockquote>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x6807;&#x7B7E;&#x7D22;&#x5F15; loc</span>
+<span class="hljs-comment"># Series</span>
+print(ser_obj[<span class="hljs-string">&apos;b&apos;</span>:<span class="hljs-string">&apos;d&apos;</span>])
+print(ser_obj.loc[<span class="hljs-string">&apos;b&apos;</span>:<span class="hljs-string">&apos;d&apos;</span>])
+
+<span class="hljs-comment"># DataFrame</span>
+print(df_obj[<span class="hljs-string">&apos;a&apos;</span>])
+
+<span class="hljs-comment"># &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7D22;&#x5F15;&#x884C;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x5217;</span>
+print(df_obj.loc[<span class="hljs-number">0</span>:<span class="hljs-number">2</span>, <span class="hljs-string">&apos;a&apos;</span>])
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">b    <span class="hljs-number">1</span>
+c    <span class="hljs-number">2</span>
+d    <span class="hljs-number">3</span>
+dtype: int64
+b    <span class="hljs-number">1</span>
+c    <span class="hljs-number">2</span>
+d    <span class="hljs-number">3</span>
+dtype: int64
+
+<span class="hljs-number">0</span>   -<span class="hljs-number">0.241678</span>
+<span class="hljs-number">1</span>   -<span class="hljs-number">0.526918</span>
+<span class="hljs-number">2</span>   -<span class="hljs-number">1.074163</span>
+<span class="hljs-number">3</span>   -<span class="hljs-number">0.716816</span>
+<span class="hljs-number">4</span>    <span class="hljs-number">0.368212</span>
+Name: a, dtype: float64
+<span class="hljs-number">0</span>   -<span class="hljs-number">0.241678</span>
+<span class="hljs-number">1</span>   -<span class="hljs-number">0.526918</span>
+<span class="hljs-number">2</span>   -<span class="hljs-number">1.074163</span>
+Name: a, dtype: float64
+</code></pre>
+<h4 id="2-iloc-&#x4F4D;&#x7F6E;&#x7D22;&#x5F15;">2. iloc &#x4F4D;&#x7F6E;&#x7D22;&#x5F15;</h4>
+<blockquote>
+<p>&#x4F5C;&#x7528;&#x548C;loc&#x4E00;&#x6837;&#xFF0C;&#x4E0D;&#x8FC7;&#x662F;&#x57FA;&#x4E8E;&#x7D22;&#x5F15;&#x7F16;&#x53F7;&#x6765;&#x7D22;&#x5F15;</p>
+</blockquote>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python">
+<span class="hljs-comment"># &#x6574;&#x578B;&#x4F4D;&#x7F6E;&#x7D22;&#x5F15; iloc</span>
+<span class="hljs-comment"># Series</span>
+print(ser_obj[<span class="hljs-number">1</span>:<span class="hljs-number">3</span>])
+print(ser_obj.iloc[<span class="hljs-number">1</span>:<span class="hljs-number">3</span>])
+
+<span class="hljs-comment"># DataFrame</span>
+print(df_obj.iloc[<span class="hljs-number">0</span>:<span class="hljs-number">2</span>, <span class="hljs-number">0</span>]) <span class="hljs-comment"># &#x6CE8;&#x610F;&#x548C;df_obj.loc[0:2, &apos;a&apos;]&#x7684;&#x533A;&#x522B;</span>
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">b    <span class="hljs-number">1</span>
+c    <span class="hljs-number">2</span>
+dtype: int64
+b    <span class="hljs-number">1</span>
+c    <span class="hljs-number">2</span>
+dtype: int64
+
+<span class="hljs-number">0</span>   -<span class="hljs-number">0.241678</span>
+<span class="hljs-number">1</span>   -<span class="hljs-number">0.526918</span>
+Name: a, dtype: float64
+</code></pre>
+<h4 id="3-ix-&#x6807;&#x7B7E;&#x4E0E;&#x4F4D;&#x7F6E;&#x6DF7;&#x5408;&#x7D22;&#x5F15;">3. ix &#x6807;&#x7B7E;&#x4E0E;&#x4F4D;&#x7F6E;&#x6DF7;&#x5408;&#x7D22;&#x5F15;</h4>
+<blockquote>
+<p>ix&#x662F;&#x4EE5;&#x4E0A;&#x4E8C;&#x8005;&#x7684;&#x7EFC;&#x5408;&#xFF0C;&#x65E2;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7D22;&#x5F15;&#x7F16;&#x53F7;&#xFF0C;&#x53C8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x7D22;&#x5F15;&#xFF0C;&#x8981;&#x89C6;&#x60C5;&#x51B5;&#x4E0D;&#x540C;&#x6765;&#x4F7F;&#x7528;&#xFF0C;</p>
+<p>&#x5982;&#x679C;&#x7D22;&#x5F15;&#x65E2;&#x6709;&#x6570;&#x5B57;&#x53C8;&#x6709;&#x82F1;&#x6587;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x662F;&#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x5BB9;&#x6613;&#x5BFC;&#x81F4;&#x5B9A;&#x4F4D;&#x7684;&#x6DF7;&#x4E71;&#x3002;</p>
+</blockquote>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x6DF7;&#x5408;&#x7D22;&#x5F15; ix</span>
+<span class="hljs-comment"># Series</span>
+print(ser_obj.ix[<span class="hljs-number">1</span>:<span class="hljs-number">3</span>])
+print(ser_obj.ix[<span class="hljs-string">&apos;b&apos;</span>:<span class="hljs-string">&apos;c&apos;</span>])
+
+<span class="hljs-comment"># DataFrame</span>
+print(df_obj.loc[<span class="hljs-number">0</span>:<span class="hljs-number">2</span>, <span class="hljs-string">&apos;a&apos;</span>])
+print(df_obj.ix[<span class="hljs-number">0</span>:<span class="hljs-number">2</span>, <span class="hljs-number">0</span>])
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">b    <span class="hljs-number">1</span>
+c    <span class="hljs-number">2</span>
+dtype: int64
+b    <span class="hljs-number">1</span>
+c    <span class="hljs-number">2</span>
+dtype: int64
+
+<span class="hljs-number">0</span>   -<span class="hljs-number">0.241678</span>
+<span class="hljs-number">1</span>   -<span class="hljs-number">0.526918</span>
+<span class="hljs-number">2</span>   -<span class="hljs-number">1.074163</span>
+Name: a, dtype: float64
+</code></pre>
+<h4 id="&#x6CE8;&#x610F;">&#x6CE8;&#x610F;</h4>
+<blockquote>
+<p>DataFrame&#x7D22;&#x5F15;&#x64CD;&#x4F5C;&#xFF0C;&#x53EF;&#x5C06;&#x5176;&#x770B;&#x4F5C;ndarray&#x7684;&#x7D22;&#x5F15;&#x64CD;&#x4F5C;</p>
+<p>&#x6807;&#x7B7E;&#x7684;&#x5207;&#x7247;&#x7D22;&#x5F15;&#x662F;&#x5305;&#x542B;&#x672B;&#x5C3E;&#x4F4D;&#x7F6E;&#x7684;</p>
+</blockquote>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; BigCat all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x300C;Revision Time:
+2017-03-14 00:36:26&#x300D;
+</span></footer>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../file/part03/3.1.html" class="navigation navigation-prev " aria-label="Previous page: Pandas的数据结构"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../file/part03/3.3.html" class="navigation navigation-next " aria-label="Next page: Pandas的对齐运算"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/dododream"},"search-pro":{"cutWordLib":"nodejieba","defineWord":["gitbook-use"]},"sharing":{"weibo":true,"facebook":true,"twitter":true,"google":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"tbfed-pagefooter":{"copyright":"Copyright © BigCat","modify_label":"「Revision Time:","modify_format":"YYYY-MM-DD HH:mm:ss」"},"baidu":{"token":"ff100361cdce95dd4c8fb96b4009f7bc"},"sitemap":{"hostname":"http://www.treenewbee.top"},"donate":{"wechat":"http://weixin.png","alipay":"http://alipay.png","title":"","button":"赏","alipayText":"支付宝打赏","wechatText":"微信打赏"},"edit-link":{"base":"https://github.com/dododream/edit","label":"Edit This Page"},"splitter":{},"toggle-chapters":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book Python数据分析课程讲义 -->
+</html>

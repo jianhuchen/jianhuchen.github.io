@@ -1,0 +1,796 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>代码案例 | 机器学习课件</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    
+    <link rel="prev" href="../chapter6/section2.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="6.3"
+        data-chapter-title="代码案例"
+        data-filepath="chapter6/section3.md"
+        data-basepath=".."
+        data-revision="Sun Sep 03 2017 21:46:41 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        机器学习引言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
+            
+                
+                    <a href="../chapter1/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        sklearn与特征工程
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="chapter1/section1.html">
+            
+                
+                    <a href="../chapter1/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        数据的来源与类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1/section2.html">
+            
+                
+                    <a href="../chapter1/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        数据的特征抽取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapter1/section3.html">
+            
+                
+                    <a href="../chapter1/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        数据的特征预处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="chapter1/section4.html">
+            
+                
+                    <a href="../chapter1/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        数据的特征选择
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2/index.html">
+            
+                
+                    <a href="../chapter2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        sklearn数据集与机器学习组成
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="chapter2/section1.html">
+            
+                
+                    <a href="../chapter2/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Scikit-learn数据集
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="chapter2/section2.html">
+            
+                
+                    <a href="../chapter2/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        模型的选择
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="chapter2/section3.html">
+            
+                
+                    <a href="../chapter2/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        模型检验-交叉验证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="chapter2/section4.html">
+            
+                
+                    <a href="../chapter2/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        sklearn的estimator
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter3/index.html">
+            
+                
+                    <a href="../chapter3/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        sklearn的分类器算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="chapter3/section1.html">
+            
+                
+                    <a href="../chapter3/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        分类算法之k-近邻
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="chapter3/section2.html">
+            
+                
+                    <a href="../chapter3/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        k-近邻算法案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="chapter3/section3.html">
+            
+                
+                    <a href="../chapter3/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        朴素贝叶斯
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="chapter3/section4.html">
+            
+                
+                    <a href="../chapter3/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        分类算法之逻辑回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="chapter3/section5.html">
+            
+                
+                    <a href="../chapter3/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        逻辑回归算法案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="chapter3/section6.html">
+            
+                
+                    <a href="../chapter3/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        分类器性能评估
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="chapter3/section7.html">
+            
+                
+                    <a href="../chapter3/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        分类算法之决策树、随机森林
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter4/index.html">
+            
+                
+                    <a href="../chapter4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        回归算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="chapter4/section1.html">
+            
+                
+                    <a href="../chapter4/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        回归算法之线性回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="chapter4/section2.html">
+            
+                
+                    <a href="../chapter4/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        线性回归案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="chapter4/section3.html">
+            
+                
+                    <a href="../chapter4/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        回归性能评估与欠拟合、过拟合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="chapter4/section4.html">
+            
+                
+                    <a href="../chapter4/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        回归算法之岭回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="chapter4/section5.html">
+            
+                
+                    <a href="../chapter4/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        岭回归案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter5/index.html">
+            
+                
+                    <a href="../chapter5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        非监督学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="chapter5/section1.html">
+            
+                
+                    <a href="../chapter5/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        非监督学习之k-means
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="chapter5/section2.html">
+            
+                
+                    <a href="../chapter5/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        k-means案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6/index.html">
+            
+                
+                    <a href="../chapter6/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        推荐系统
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="chapter6/section1.html">
+            
+                
+                    <a href="../chapter6/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        推荐系统评测
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="chapter6/section2.html">
+            
+                
+                    <a href="../chapter6/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        基于协同过滤的推荐系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.3" data-path="chapter6/section3.html">
+            
+                
+                    <a href="../chapter6/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        代码案例
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >机器学习课件</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <pre><code class="lang-python"><span class="hljs-keyword">import</span> recsys.algorithm
+recsys.algorithm.VERBOSE = <span class="hljs-keyword">True</span>
+
+
+<span class="hljs-keyword">from</span> recsys.algorithm.factorize <span class="hljs-keyword">import</span> SVD
+<span class="hljs-keyword">from</span> recsys.datamodel.data <span class="hljs-keyword">import</span> Data
+<span class="hljs-keyword">from</span> recsys.evaluation.prediction <span class="hljs-keyword">import</span> RMSE
+<span class="hljs-keyword">import</span> os,sys
+
+tmpfile = <span class="hljs-string">&quot;/tmp/movielens.zip&quot;</span>
+moviefile = <span class="hljs-string">&quot;./ml-1m/movies.dat&quot;</span>
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RecommendSystem</span><span class="hljs-params">(object)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, filename, sep, **format)</span>:</span>
+        self.filename = filename
+        self.sep = sep
+        self.format = format
+
+        <span class="hljs-comment"># &#x8BAD;&#x7EC3;&#x53C2;&#x6570;</span>
+        self.k = <span class="hljs-number">100</span>
+        self.min_values = <span class="hljs-number">10</span>
+        self.post_normalize = <span class="hljs-keyword">True</span>
+
+        self.svd = SVD()
+
+        <span class="hljs-comment"># &#x5224;&#x65AD;&#x662F;&#x5426;&#x52A0;&#x8F7D;</span>
+        self.is_load = <span class="hljs-keyword">False</span>
+
+        <span class="hljs-comment"># &#x6DFB;&#x52A0;&#x6570;&#x636E;&#x5904;&#x7406;</span>
+        self.data = Data()
+
+        <span class="hljs-comment"># &#x6DFB;&#x52A0;&#x6A21;&#x578B;&#x8BC4;&#x4F30;</span>
+        self.rmse = RMSE()
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_data</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;
+        &#x83B7;&#x53D6;&#x6570;&#x636E;
+        :return: None
+        &quot;&quot;&quot;</span>
+        <span class="hljs-comment"># &#x5982;&#x679C;&#x6A21;&#x578B;&#x4E0D;&#x5B58;&#x5728;</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(tmpfile):
+            <span class="hljs-comment"># &#x5982;&#x679C;&#x6570;&#x636E;&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;</span>
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(self.filename):
+                sys.exit()
+            <span class="hljs-comment"># self.svd.load_data(filename=self.filename, sep=self.sep, format=self.format)</span>
+            <span class="hljs-comment"># &#x4F7F;&#x7528;Data()&#x6765;&#x83B7;&#x53D6;&#x6570;&#x636E;</span>
+            self.data.load(self.filename, sep=self.sep, format=self.format)
+            train, test = self.data.split_train_test(percent=<span class="hljs-number">80</span>)
+            <span class="hljs-keyword">return</span> train, test
+        <span class="hljs-keyword">else</span>:
+            self.svd.load_model(tmpfile)
+            self.is_load = <span class="hljs-keyword">True</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span>, <span class="hljs-keyword">None</span>
+
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train</span><span class="hljs-params">(self, train)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;
+        &#x8BAD;&#x7EC3;&#x6A21;&#x578B;
+        :param train: &#x8BAD;&#x7EC3;&#x6570;&#x636E;
+        :return: None
+        &quot;&quot;&quot;</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.is_load:
+            self.svd.set_data(train)
+            self.svd.compute(k=self.k, min_values=self.min_values, post_normalize=self.post_normalize, savefile=tmpfile[:-<span class="hljs-number">4</span>])
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rs_predict</span><span class="hljs-params">(self, itemid, userid)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;
+        &#x8BC4;&#x5206;&#x9884;&#x6D4B;
+        :param itemid: &#x7535;&#x5F71;id
+        :param userid: &#x7528;&#x6237;id
+        :return: None
+        &quot;&quot;&quot;</span>
+        score = self.svd.predict(itemid, userid)
+        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;&#x63A8;&#x8350;&#x7684;&#x5206;&#x6570;&#x4E3A;&#xFF1A;%f&quot;</span> % score
+        <span class="hljs-keyword">return</span> score
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">recommend_to_user</span><span class="hljs-params">(self, userid)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;
+        &#x63A8;&#x8350;&#x7ED9;&#x7528;&#x6237;
+        :param userid: &#x7528;&#x6237;id
+        :return: None
+        &quot;&quot;&quot;</span>
+        recommend_list = self.svd.recommend(userid, is_row=<span class="hljs-keyword">False</span>)
+
+        <span class="hljs-comment"># &#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x91CC;&#x7684;&#x7535;&#x5F71;&#x540D;&#x79F0;</span>
+        movie_list = []
+
+        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> open(moviefile, <span class="hljs-string">&quot;r&quot;</span>):
+            movie_list.append(<span class="hljs-string">&apos; &apos;</span>.join(line.split(<span class="hljs-string">&quot;::&quot;</span>)[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]))
+
+        <span class="hljs-comment"># &#x63A8;&#x8350;&#x5177;&#x4F53;&#x7535;&#x5F71;&#x540D;&#x5B57;&#x548C;&#x5206;&#x6570;</span>
+        <span class="hljs-keyword">for</span> itemid, rate <span class="hljs-keyword">in</span> recommend_list:
+            <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;&#x7ED9;&#x60A8;&#x63A8;&#x8350;&#x4E86;%s,&#x6211;&#x4EEC;&#x9884;&#x6D4B;&#x5206;&#x6570;&#x4E3A;%s&quot;</span> %(movie_list[itemid],rate)
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">evaluation</span><span class="hljs-params">(self, test)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;
+        &#x6A21;&#x578B;&#x7684;&#x8BC4;&#x4F30;
+        :param test: &#x6D4B;&#x8BD5;&#x96C6;
+        :return: None
+        &quot;&quot;&quot;</span>
+        <span class="hljs-comment"># &#x5982;&#x679C;&#x6A21;&#x578B;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x52A0;&#x8F7D;</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.is_load:
+
+            <span class="hljs-comment"># &#x5FAA;&#x73AF;&#x53D6;&#x51FA;&#x6D4B;&#x8BD5;&#x96C6;&#x91CC;&#x9762;&#x7684;&#x5143;&#x7EC4;&#x6570;&#x636E;&lt;&#x8BC4;&#x5206;&#xFF0C;&#x7535;&#x5F71;&#xFF0C;&#x7528;&#x6237;&gt;</span>
+            <span class="hljs-keyword">for</span> value, itemid, userid <span class="hljs-keyword">in</span> test.get():
+                <span class="hljs-keyword">try</span>:
+                    predict = self.rs_predict(itemid, userid)
+                    self.rmse.add(value, predict)
+                <span class="hljs-keyword">except</span> KeyError:
+                    <span class="hljs-keyword">continue</span>
+            <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x8FD4;&#x56DE;&#x8BEF;&#x5DEE;&#xFF08;&#x5747;&#x65B9;&#x8BEF;&#x5DEE;&#xFF09;</span>
+            error = self.rmse.compute()
+
+            <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;&#x6A21;&#x578B;&#x8BEF;&#x5DEE;&#x4E3A;%s:&quot;</span> % error
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span>
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    rs = RecommendSystem(<span class="hljs-string">&quot;./ml-1m/ratings.dat&quot;</span>, <span class="hljs-string">&quot;::&quot;</span>, row=<span class="hljs-number">1</span>, col=<span class="hljs-number">0</span>, value=<span class="hljs-number">2</span>, ids=int)
+    train, test = rs.get_data()
+    rs.train(train)
+    rs.evaluation(test)
+    <span class="hljs-comment"># rs.rs_predict(1,1)</span>
+    rs.recommend_to_user(<span class="hljs-number">1</span>)
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../chapter6/section2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 基于协同过滤的推荐系统"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"katex":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

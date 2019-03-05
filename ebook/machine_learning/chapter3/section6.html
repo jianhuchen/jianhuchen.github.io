@@ -1,0 +1,711 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>分类器性能评估 | 机器学习课件</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../chapter3/section7.html" />
+    
+    
+    <link rel="prev" href="../chapter3/section5.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3.6"
+        data-chapter-title="分类器性能评估"
+        data-filepath="chapter3/section6.md"
+        data-basepath=".."
+        data-revision="Sun Sep 03 2017 21:46:41 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        机器学习引言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
+            
+                
+                    <a href="../chapter1/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        sklearn与特征工程
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="chapter1/section1.html">
+            
+                
+                    <a href="../chapter1/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        数据的来源与类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1/section2.html">
+            
+                
+                    <a href="../chapter1/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        数据的特征抽取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapter1/section3.html">
+            
+                
+                    <a href="../chapter1/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        数据的特征预处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="chapter1/section4.html">
+            
+                
+                    <a href="../chapter1/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        数据的特征选择
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2/index.html">
+            
+                
+                    <a href="../chapter2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        sklearn数据集与机器学习组成
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="chapter2/section1.html">
+            
+                
+                    <a href="../chapter2/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Scikit-learn数据集
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="chapter2/section2.html">
+            
+                
+                    <a href="../chapter2/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        模型的选择
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="chapter2/section3.html">
+            
+                
+                    <a href="../chapter2/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        模型检验-交叉验证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="chapter2/section4.html">
+            
+                
+                    <a href="../chapter2/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        sklearn的estimator
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter3/index.html">
+            
+                
+                    <a href="../chapter3/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        sklearn的分类器算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="chapter3/section1.html">
+            
+                
+                    <a href="../chapter3/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        分类算法之k-近邻
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="chapter3/section2.html">
+            
+                
+                    <a href="../chapter3/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        k-近邻算法案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="chapter3/section3.html">
+            
+                
+                    <a href="../chapter3/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        朴素贝叶斯
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="chapter3/section4.html">
+            
+                
+                    <a href="../chapter3/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        分类算法之逻辑回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="chapter3/section5.html">
+            
+                
+                    <a href="../chapter3/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        逻辑回归算法案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.6" data-path="chapter3/section6.html">
+            
+                
+                    <a href="../chapter3/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        分类器性能评估
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="chapter3/section7.html">
+            
+                
+                    <a href="../chapter3/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        分类算法之决策树、随机森林
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter4/index.html">
+            
+                
+                    <a href="../chapter4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        回归算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="chapter4/section1.html">
+            
+                
+                    <a href="../chapter4/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        回归算法之线性回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="chapter4/section2.html">
+            
+                
+                    <a href="../chapter4/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        线性回归案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="chapter4/section3.html">
+            
+                
+                    <a href="../chapter4/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        回归性能评估与欠拟合、过拟合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="chapter4/section4.html">
+            
+                
+                    <a href="../chapter4/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        回归算法之岭回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="chapter4/section5.html">
+            
+                
+                    <a href="../chapter4/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        岭回归案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter5/index.html">
+            
+                
+                    <a href="../chapter5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        非监督学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="chapter5/section1.html">
+            
+                
+                    <a href="../chapter5/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        非监督学习之k-means
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="chapter5/section2.html">
+            
+                
+                    <a href="../chapter5/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        k-means案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6/index.html">
+            
+                
+                    <a href="../chapter6/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        推荐系统
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="chapter6/section1.html">
+            
+                
+                    <a href="../chapter6/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        推荐系统评测
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="chapter6/section2.html">
+            
+                
+                    <a href="../chapter6/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        基于协同过滤的推荐系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="chapter6/section3.html">
+            
+                
+                    <a href="../chapter6/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        代码案例
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >机器学习课件</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x5206;&#x7C7B;&#x5668;&#x6027;&#x80FD;&#x8BC4;&#x4F30;">&#x5206;&#x7C7B;&#x5668;&#x6027;&#x80FD;&#x8BC4;&#x4F30;</h1>
+<p>&#x5728;&#x8BB8;&#x591A;&#x5B9E;&#x9645;&#x95EE;&#x9898;&#x4E2D;&#xFF0C;&#x8861;&#x91CF;&#x5206;&#x7C7B;&#x5668;&#x4EFB;&#x52A1;&#x7684;&#x6210;&#x529F;&#x7A0B;&#x5EA6;&#x662F;&#x901A;&#x8FC7;&#x56FA;&#x5B9A;&#x7684;&#x6027;&#x80FD;&#x6307;&#x6807;&#x6765;&#x83B7;&#x53D6;&#x3002;&#x4E00;&#x822C;&#x6700;&#x5E38;&#x89C1;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x51C6;&#x786E;&#x7387;&#xFF0C;&#x5373;&#x9884;&#x6D4B;&#x7ED3;&#x679C;&#x6B63;&#x786E;&#x7684;&#x767E;&#x5206;&#x6BD4;&#x3002;&#x7136;&#x800C;&#x6709;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x5173;&#x6CE8;&#x7684;&#x662F;&#x8D1F;&#x6837;&#x672C;&#x662F;&#x5426;&#x88AB;&#x6B63;&#x786E;&#x8BCA;&#x65AD;&#x51FA;&#x6765;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5173;&#x4E8E;&#x80BF;&#x7624;&#x7684;&#x7684;&#x5224;&#x5B9A;&#xFF0C;&#x9700;&#x8981;&#x66F4;&#x52A0;&#x5173;&#x5FC3;&#x591A;&#x5C11;&#x6076;&#x6027;&#x80BF;&#x7624;&#x88AB;&#x6B63;&#x786E;&#x7684;&#x8BCA;&#x65AD;&#x51FA;&#x6765;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5728;&#x4E8C;&#x7C7B;&#x5206;&#x7C7B;&#x4EFB;&#x52A1;&#x4E0B;&#xFF0C;&#x9884;&#x6D4B;&#x7ED3;&#x679C;(Predicted Condition)&#x4E0E;&#x6B63;&#x786E;&#x6807;&#x8BB0;(True Condition)&#x4E4B;&#x95F4;&#x5B58;&#x5728;&#x56DB;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x7EC4;&#x5408;&#xFF0C;&#x6784;&#x6210;&#x6DF7;&#x6DC6;&#x77E9;&#x9635;&#x3002;</p>
+<p>&#x5728;&#x4E8C;&#x7C7B;&#x95EE;&#x9898;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x5C06;&#x4E00;&#x4E2A;&#x6B63;&#x4F8B;&#x5224;&#x4E3A;&#x6B63;&#x4F8B;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x4EA7;&#x751F;&#x4E86;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x4F8B;&#xFF08;True Positive&#xFF0C;TP&#xFF09;&#xFF1B;&#x5982;&#x679C;&#x5BF9;&#x4E00;&#x4E2A;&#x53CD;&#x4F8B;&#x6B63;&#x786E;&#x7684;&#x5224;&#x4E3A;&#x53CD;&#x4F8B;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x4EA7;&#x751F;&#x4E86;&#x4E00;&#x4E2A;&#x771F;&#x53CD;&#x4F8B;&#xFF08;True Negative&#xFF0C;TN&#xFF09;&#x3002;&#x76F8;&#x5E94;&#x5730;&#xFF0C;&#x4E24;&#x5916;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x5219;&#x5206;&#x522B;&#x79F0;&#x4E3A;&#x4F2A;&#x53CD;&#x4F8B;&#xFF08;False Negative&#xFF0C;FN&#xFF0C;&#x4E5F;&#x79F0;&#xFF09;&#x548C;&#x4F2A;&#x6B63;&#x4F8B;&#xFF08;False Positive&#xFF0C;TP&#xFF09;&#xFF0C;&#x56DB;&#x79CD;&#x60C5;&#x51B5;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="../images/&#x5206;&#x7C7B;&#x6027;&#x80FD;&#x6307;&#x6807;.png" alt="&#x5206;&#x7C7B;&#x6027;&#x80FD;&#x6307;&#x6807;"></p>
+<p>&#x5728;&#x5206;&#x7C7B;&#x4E2D;&#xFF0C;&#x5F53;&#x67D0;&#x4E2A;&#x7C7B;&#x522B;&#x7684;&#x91CD;&#x8981;&#x6027;&#x9AD8;&#x4E8E;&#x5176;&#x4ED6;&#x7C7B;&#x522B;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x4E0A;&#x8FF0;&#x5B9A;&#x4E49;&#x51FA;&#x591A;&#x4E2A;&#x903C;&#x9519;&#x8BEF;&#x7387;&#x66F4;&#x597D;&#x7684;&#x65B0;&#x6307;&#x6807;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x6307;&#x6807;&#x5C31;&#x662F;&#x6B63;&#x786E;&#x7387;&#xFF08;Precision&#xFF09;&#xFF0C;&#x5B83;&#x7B49;&#x4E8E;TP/(TP+FP)&#xFF0C;&#x7ED9;&#x51FA;&#x7684;&#x662F;&#x9884;&#x6D4B;&#x4E3A;&#x6B63;&#x4F8B;&#x7684;&#x6837;&#x672C;&#x4E2D;&#x5360;&#x771F;&#x5B9E;&#x7ED3;&#x679C;&#x603B;&#x6570;&#x7684;&#x6BD4;&#x4F8B;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x6307;&#x6807;&#x662F;&#x53EC;&#x56DE;&#x7387;&#xFF08;Recall&#xFF09;&#x3002;&#x5B83;&#x7B49;&#x4E8E;TP/(TP+FN)&#xFF0C;&#x7ED9;&#x51FA;&#x7684;&#x662F;&#x9884;&#x6D4B;&#x4E3A;&#x6B63;&#x4F8B;&#x7684;&#x771F;&#x5B9E;&#x6B63;&#x4F8B;&#x5360;&#x6240;&#x6709;&#x771F;&#x5B9E;&#x6B63;&#x4F8B;&#x7684;&#x6BD4;&#x4F8B;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x9664;&#x4E86;&#x6B63;&#x786E;&#x7387;&#x548C;&#x7CBE;&#x786E;&#x7387;&#x8FD9;&#x4E24;&#x4E2A;&#x6307;&#x6807;&#x4E4B;&#x5916;&#xFF0C;&#x4E3A;&#x4E86;&#x7EFC;&#x5408;&#x8003;&#x91CF;&#x53EC;&#x56DE;&#x7387;&#x548C;&#x7CBE;&#x786E;&#x7387;&#xFF0C;&#x6211;&#x4EEC;&#x8BA1;&#x7B97;&#x8FD9;&#x4E24;&#x4E2A;&#x6307;&#x6807;&#x7684;&#x8C03;&#x548C;&#x5E73;&#x5747;&#x6570;&#xFF0C;&#x5F97;&#x5230;F1&#x6307;&#x6807;&#xFF08;F1 measure&#xFF09;:</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi>F</mi><mn>1</mn></mrow><mo>=</mo><mrow><mfrac><mrow><mn>2</mn></mrow><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi></mrow></mfrac><mrow><mo>+</mo></mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mi>R</mi><mi>e</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi></mrow></mfrac></mrow></mfrac></mrow></mrow><annotation encoding="application/x-tex">{F1}={\frac{2}{\frac{1}{Precision}{+}\frac{1}{Recall}}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.845108em;"></span><span class="strut bottom" style="height:1.4869279999999998em;vertical-align:-0.64182em;"></span><span class="base textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mord mathrm">1</span></span><span class="mrel">=</span><span class="mord textstyle uncramped"><span class="mord reset-textstyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.40102em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord reset-scriptstyle scriptstyle cramped mtight"><span class="mopen sizing reset-size5 size5 reset-scriptstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.344em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord scriptscriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.13889em;">P</span><span class="mord mathit mtight" style="margin-right:0.02778em;">r</span><span class="mord mathit mtight">e</span><span class="mord mathit mtight">c</span><span class="mord mathit mtight">i</span><span class="mord mathit mtight">s</span><span class="mord mathit mtight">i</span><span class="mord mathit mtight">o</span><span class="mord mathit mtight">n</span></span></span></span><span style="top:-0.22142857142857142em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle textstyle uncramped frac-line"></span></span><span style="top:-0.384em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord scriptscriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mclose sizing reset-size5 size5 reset-scriptstyle textstyle uncramped nulldelimiter"></span></span><span class="mord scriptstyle cramped mtight"><span class="mord mtight">+</span></span><span class="mord reset-scriptstyle scriptstyle cramped mtight"><span class="mopen sizing reset-size5 size5 reset-scriptstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.344em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord scriptscriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.00773em;">R</span><span class="mord mathit mtight">e</span><span class="mord mathit mtight">c</span><span class="mord mathit mtight">a</span><span class="mord mathit mtight" style="margin-right:0.01968em;">l</span><span class="mord mathit mtight" style="margin-right:0.01968em;">l</span></span></span></span><span style="top:-0.22142857142857142em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle textstyle uncramped frac-line"></span></span><span style="top:-0.384em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord scriptscriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mclose sizing reset-size5 size5 reset-scriptstyle textstyle uncramped nulldelimiter"></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span></p>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x8C03;&#x548C;&#x5E73;&#x5747;&#x6570;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x5B83;&#x9664;&#x4E86;&#x5177;&#x5907;&#x5E73;&#x5747;&#x529F;&#x80FD;&#x5916;&#xFF0C;&#x8FD8;&#x4F1A;&#x5BF9;&#x90A3;&#x4E9B;&#x53EC;&#x56DE;&#x7387;&#x548C;&#x7CBE;&#x786E;&#x7387;&#x66F4;&#x52A0;&#x63A5;&#x8FD1;&#x7684;&#x6A21;&#x578B;&#x7ED9;&#x4E88;&#x66F4;&#x9AD8;&#x7684;&#x5206;&#x6570;&#xFF1B;&#x800C;&#x8FD9;&#x4E5F;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x5E0C;&#x671B;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x90A3;&#x4E9B;&#x53EC;&#x56DE;&#x7387;&#x548C;&#x7CBE;&#x786E;&#x7387;&#x5DEE;&#x8DDD;&#x8FC7;&#x5927;&#x7684;&#x5B66;&#x4E60;&#x6A21;&#x578B;&#xFF0C;&#x5F80;&#x5F80;&#x6CA1;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x4F7F;&#x7528;&#x4EF7;&#x503C;&#x3002;</p>
+<h2 id="sklearnmetricsclassificationreport">sklearn.metrics.classification_report</h2>
+<p>sklearn&#x4E2D;metrics&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x8BA1;&#x7B97;&#x56DB;&#x4E2A;&#x6307;&#x6807;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;classification_report&#x3002;</p>
+<pre><code class="lang-python">classification_report(y_true, y_pred, labels=<span class="hljs-keyword">None</span>, target_names=<span class="hljs-keyword">None</span>, digits=<span class="hljs-number">2</span>)
+  <span class="hljs-string">&quot;&quot;&quot;
+  &#x8BA1;&#x7B97;&#x5206;&#x7C7B;&#x6307;&#x6807;
+  :param y_true:&#x771F;&#x5B9E;&#x76EE;&#x6807;&#x503C;
+
+  :param y_pred:&#x5206;&#x7C7B;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x4F30;&#x8BA1;&#x503C;
+
+  :param target_names:&#x53EF;&#x9009;&#x7684;&#xFF0C;&#x8BA1;&#x7B97;&#x4E0E;&#x76EE;&#x6807;&#x7C7B;&#x522B;&#x5339;&#x914D;&#x7684;&#x7ED3;&#x679C;
+
+  :param digits:&#x683C;&#x5F0F;&#x5316;&#x8F93;&#x51FA;&#x6D6E;&#x70B9;&#x503C;&#x7684;&#x4F4D;&#x6570;
+
+  :return :&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4E09;&#x4E2A;&#x6307;&#x6807;&#x503C;
+
+  &quot;&quot;&quot;</span>
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x6765;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x6307;&#x6807;&#x7684;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">from sklearn.metrics import classification_report
+y_true = [0, 1, 2, 2, 2]
+y_pred = [0, 0, 2, 2, 1]
+target_names = [&apos;class 0&apos;, &apos;class 1&apos;, &apos;class 2&apos;]
+print(classification_report(y_true, y_pred, target_names=target_names))
+
+
+             precision    recall  f1-score   support
+
+    class 0       0.50      1.00      0.67         1
+    class 1       0.00      0.00      0.00         1
+    class 2       1.00      0.67      0.80         3
+
+avg / total       0.70      0.60      0.61         5
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../chapter3/section5.html" class="navigation navigation-prev " aria-label="Previous page: 逻辑回归算法案例分析"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../chapter3/section7.html" class="navigation navigation-next " aria-label="Next page: 分类算法之决策树、随机森林"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"katex":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

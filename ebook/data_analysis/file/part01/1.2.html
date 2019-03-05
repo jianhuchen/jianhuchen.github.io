@@ -1,0 +1,725 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <!-- Start book Python数据分析课程讲义 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>DIKW模型与数据工程 | Python数据分析课程讲义</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="BigCat">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-tbfed-pagefooter/footer.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../file/part01/1.3.html" />
+    
+    
+    <link rel="prev" href="../../file/part01/1.1.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="1.2"
+        data-chapter-title="DIKW模型与数据工程"
+        data-filepath="file/part01/1.2.md"
+        data-basepath="../.."
+        data-revision="Thu Apr 27 2017 00:50:19 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        传智播客Python学院数据分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="file/part01/1.html">
+            
+                
+                    <a href="../../file/part01/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        一、工作环境准备及数据分析建模理论基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="file/part01/1.1.html">
+            
+                
+                    <a href="../../file/part01/1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Python 3.x新特性和编码回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="file/part01/1.2.html">
+            
+                
+                    <a href="../../file/part01/1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        DIKW模型与数据工程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="file/part01/1.3.html">
+            
+                
+                    <a href="../../file/part01/1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        数据分析建模理论基础
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="file/part02/2.html">
+            
+                
+                    <a href="../../file/part02/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        二、科学计算工具NumPy
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="file/part02/2.1.html">
+            
+                
+                    <a href="../../file/part02/2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        ndarray的创建与数据类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="file/part02/2.2.html">
+            
+                
+                    <a href="../../file/part02/2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        ndarray的矩阵处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="file/part02/2.3.html">
+            
+                
+                    <a href="../../file/part02/2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        ndarray的元素处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="file/part02/2.4.html">
+            
+                
+                    <a href="../../file/part02/2.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        实战案例：2016美国总统大选民意调查统计
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="file/part03/3.html">
+            
+                
+                    <a href="../../file/part03/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        三、数据分析工具Pandas
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="file/part03/3.1.html">
+            
+                
+                    <a href="../../file/part03/3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Pandas的数据结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="file/part03/3.2.html">
+            
+                
+                    <a href="../../file/part03/3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Pandas的索引操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="file/part03/3.3.html">
+            
+                
+                    <a href="../../file/part03/3.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        Pandas的对齐运算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="file/part03/3.4.html">
+            
+                
+                    <a href="../../file/part03/3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        Pandas的函数应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="file/part03/3.5.html">
+            
+                
+                    <a href="../../file/part03/3.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        Pandas的层级索引
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="file/part03/3.6.html">
+            
+                
+                    <a href="../../file/part03/3.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        Pandas统计计算和描述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="file/part03/3.7.html">
+            
+                
+                    <a href="../../file/part03/3.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        Pandas分组与聚合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="file/part03/3.8.html">
+            
+                
+                    <a href="../../file/part03/3.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        数据清洗、合并、转化和重构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="file/part03/3.9.html">
+            
+                
+                    <a href="../../file/part03/3.9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        聚类模型 -- K-Means介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="file/part03/3.10.html">
+            
+                
+                    <a href="../../file/part03/3.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                        实战案例：全球食品数据分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="file/part04/4.html">
+            
+                
+                    <a href="../../file/part04/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        四、数据可视化工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="file/part04/4.1.html">
+            
+                
+                    <a href="../../file/part04/4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Matplotlib绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="file/part04/4.2.html">
+            
+                
+                    <a href="../../file/part04/4.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        Seaborn绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="file/part04/4.3.html">
+            
+                
+                    <a href="../../file/part04/4.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Bokeh绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="file/part04/4.4.html">
+            
+                
+                    <a href="../../file/part04/4.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        实战案例：世界高峰数据可视化
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="file/part06/6.html">
+            
+                
+                    <a href="../../file/part06/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        五、自然语言处理NLTK
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="file/part06/6.1.html">
+            
+                
+                    <a href="../../file/part06/6.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        NLTK与自然语言处理基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="file/part06/6.2.html">
+            
+                
+                    <a href="../../file/part06/6.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        jieba分词
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="file/part06/6.3.html">
+            
+                
+                    <a href="../../file/part06/6.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        情感分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="file/part06/6.4.html">
+            
+                
+                    <a href="../../file/part06/6.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        文本相似度和分类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="file/part06/6.6.html">
+            
+                
+                    <a href="../../file/part06/6.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        实战案例：微博情感分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >Python数据分析课程讲义</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="dikw-&#x4F53;&#x7CFB;">DIKW &#x4F53;&#x7CFB;</h2>
+<blockquote>
+<p>DIKW&#x4F53;&#x7CFB;&#x662F;&#x5173;&#x4E8E;&#x6570;&#x636E;&#x3001;&#x4FE1;&#x606F;&#x3001;&#x77E5;&#x8BC6;&#x53CA;&#x667A;&#x6167;&#x7684;&#x4F53;&#x7CFB;&#xFF0C;&#x53EF;&#x4EE5;&#x8FFD;&#x6EAF;&#x81F3;&#x6258;&#x9A6C;&#x65AF;&#xB7;&#x65AF;&#x7279;&#x5C14;&#x90A3;&#x65AF;&#xB7;&#x827E;&#x7565;&#x7279;&#x6240;&#x5199;&#x7684;&#x8BD7;--&#x300A;&#x5CA9;&#x77F3;&#x300B;&#x3002;&#x5728;&#x9996;&#x6BB5;&#xFF0C;&#x4ED6;&#x5199;&#x9053;&#xFF1A;&#x201C;&#x6211;&#x4EEC;&#x5728;&#x54EA;&#x91CC;&#x4E22;&#x5931;&#x4E86;&#x77E5;&#x8BC6;&#x4E2D;&#x7684;&#x667A;&#x6167;&#xFF1F;&#x53C8;&#x5728;&#x54EA;&#x91CC;&#x4E22;&#x5931;&#x4E86;&#x4FE1;&#x606F;&#x4E2D;&#x7684;&#x77E5;&#x8BC6;&#xFF1F;&#x201D;&#xFF08;Where is the wisdom we have lost in knowledge&#xFF1F; / Where is the knowledge we have lost in information&#xFF1F;&#xFF09;&#x3002;</p>
+<p>1982&#x5E74;12&#x6708;&#xFF0C;&#x7F8E;&#x56FD;&#x6559;&#x80B2;&#x5BB6;&#x54C8;&#x84DD;&#xB7;&#x514B;&#x5229;&#x592B;&#x5170;&#x5F15;&#x7528;&#x827E;&#x7565;&#x7279;&#x7684;&#x8FD9;&#x4E9B;&#x8BD7;&#x53E5;&#x5728;&#x5176;&#x51FA;&#x7248;&#x7684;&#x300A;&#x672A;&#x6765;&#x4E3B;&#x4E49;&#x8005;&#x300B;&#x4E00;&#x4E66;&#x63D0;&#x51FA;&#x4E86;&#x201C;&#x4FE1;&#x606F;&#x5373;&#x8D44;&#x6E90;&#x201D;&#xFF08;Information as a Resource&#xFF09;&#x7684;&#x4E3B;&#x5F20;&#x3002;</p>
+<p>&#x5176;&#x540E;&#xFF0C;&#x6559;&#x80B2;&#x5BB6;&#x7C73;&#x5170;&#xB7;&#x745F;&#x5170;&#x5C3C;&#x3001;&#x7BA1;&#x7406;&#x601D;&#x60F3;&#x5BB6;&#x7F57;&#x7D20;&#xB7;&#x827E;&#x53EF;&#x592B;&#x8FDB;&#x4E00;&#x6B65;&#x5BF9;&#x6B64;&#x7406;&#x8BBA;&#x53D1;&#x626C;&#x5149;&#x5927;&#xFF0C;&#x524D;&#x8005;&#x5728;1987&#x5E74;&#x64B0;&#x5199;&#x4E86;&#x300A;&#x7BA1;&#x7406;&#x652F;&#x63F4;&#x7CFB;&#x7EDF;&#xFF1A;&#x8FC8;&#x5411;&#x6574;&#x5408;&#x77E5;&#x8BC6;&#x7BA1;&#x7406;&#x300B;&#xFF08;Management Support Systems: Towards Integrated Knowledge Management &#xFF09;&#xFF0C;&#x540E;&#x8005;&#x5728;1989&#x5E74;&#x64B0;&#x5199;&#x4E86;&#x300A;&#x4ECE;&#x6570;&#x636E;&#x5230;&#x667A;&#x6167;&#x300B;&#xFF08;&#x201C;From Data to Wisdom&#x201D;&#xFF0C;Human Systems Management&#xFF09;&#x3002;</p>
+</blockquote>
+<p><img src="../images/DIKW.png" alt=""></p>
+<h2 id="&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x9886;&#x57DF;&#x4E2D;&#x7684;dikw&#x4F53;&#x7CFB;">&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x9886;&#x57DF;&#x4E2D;&#x7684;DIKW&#x4F53;&#x7CFB;</h2>
+<h6 id="d&#xFF1A;data-&#x6570;&#x636E;&#xFF0C;&#x662F;-dikw-&#x4F53;&#x7CFB;&#x4E2D;&#x6700;&#x4F4E;&#x7EA7;&#x7684;&#x6750;&#x6599;&#xFF0C;&#x4E00;&#x822C;&#x6307;&#x539F;&#x59CB;&#x6570;&#x636E;&#xFF0C;&#x5305;&#x542B;&#xFF08;&#x6216;&#x4E0D;&#x5305;&#x542B;&#xFF09;&#x6709;&#x7528;&#x7684;&#x4FE1;&#x606F;&#x3002;"><code>D</code>&#xFF1A;Data (&#x6570;&#x636E;)&#xFF0C;&#x662F; DIKW &#x4F53;&#x7CFB;&#x4E2D;&#x6700;&#x4F4E;&#x7EA7;&#x7684;&#x6750;&#x6599;&#xFF0C;&#x4E00;&#x822C;&#x6307;&#x539F;&#x59CB;&#x6570;&#x636E;&#xFF0C;&#x5305;&#x542B;&#xFF08;&#x6216;&#x4E0D;&#x5305;&#x542B;&#xFF09;&#x6709;&#x7528;&#x7684;&#x4FE1;&#x606F;&#x3002;</h6>
+<h6 id="i&#xFF1A;information-&#x4FE1;&#x606F;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#xFF0C;&#x4FE1;&#x606F;&#x6709;&#x7740;&#x591A;&#x79CD;&#x591A;&#x6837;&#x7684;&#x542B;&#x4E49;&#x3002;&#x5728;&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x91CC;&#xFF0C;&#x8868;&#x793A;&#x7531;&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x5E08;&#xFF08;&#x4F7F;&#x7528;&#x76F8;&#x5173;&#x5DE5;&#x5177;&#xFF09;&#x6216;&#x8005;-&#x6570;&#x636E;&#x79D1;&#x5B66;&#x5BB6;&#xFF08;&#x4F7F;&#x7528;&#x6570;&#x5B66;&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x6309;&#x7167;&#x67D0;&#x79CD;&#x7279;&#x5B9A;&#x89C4;&#x5219;&#xFF0C;&#x5BF9;&#x539F;&#x59CB;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6574;&#x5408;&#x63D0;&#x53D6;&#x540E;&#xFF0C;&#x627E;&#x51FA;&#x6765;&#x7684;&#x66F4;&#x9AD8;&#x5C42;&#x6570;&#x636E;&#xFF08;&#x5177;&#x4F53;&#x6570;&#x636E;&#xFF09;&#x3002;"><code>I</code>&#xFF1A;Information (&#x4FE1;&#x606F;)&#xFF0C;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#xFF0C;&#x4FE1;&#x606F;&#x6709;&#x7740;&#x591A;&#x79CD;&#x591A;&#x6837;&#x7684;&#x542B;&#x4E49;&#x3002;&#x5728;&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x91CC;&#xFF0C;&#x8868;&#x793A;&#x7531;&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x5E08;&#xFF08;&#x4F7F;&#x7528;&#x76F8;&#x5173;&#x5DE5;&#x5177;&#xFF09;&#x6216;&#x8005; &#x6570;&#x636E;&#x79D1;&#x5B66;&#x5BB6;&#xFF08;&#x4F7F;&#x7528;&#x6570;&#x5B66;&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x6309;&#x7167;&#x67D0;&#x79CD;&#x7279;&#x5B9A;&#x89C4;&#x5219;&#xFF0C;&#x5BF9;&#x539F;&#x59CB;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6574;&#x5408;&#x63D0;&#x53D6;&#x540E;&#xFF0C;&#x627E;&#x51FA;&#x6765;&#x7684;&#x66F4;&#x9AD8;&#x5C42;&#x6570;&#x636E;&#xFF08;&#x5177;&#x4F53;&#x6570;&#x636E;&#xFF09;&#x3002;</h6>
+<h6 id="k&#xFF1A;knowledge-&#x77E5;&#x8BC6;&#xFF0C;&#x662F;&#x5BF9;&#x67D0;&#x4E2A;&#x4E3B;&#x9898;&#x7684;&#x786E;&#x5B9A;&#x8BA4;&#x8BC6;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E9B;&#x8BA4;&#x8BC6;&#x62E5;&#x6709;&#x6F5C;&#x5728;&#x7684;&#x80FD;&#x529B;&#x4E3A;&#x7279;&#x5B9A;&#x76EE;&#x7684;&#x800C;&#x4F7F;&#x7528;&#x3002;&#x5728;&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x91CC;&#xFF0C;&#x8868;&#x793A;&#x5BF9;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x9488;&#x5BF9;&#x6027;&#x7684;&#x5B9E;&#x7528;&#x5316;&#xFF0C;&#x8BA9;&#x63D0;&#x53D6;&#x7684;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x5546;&#x4E1A;&#x5E94;&#x7528;&#x6216;&#x5B66;&#x672F;&#x7814;&#x7A76;&#x3002;"><code>K</code>&#xFF1A;Knowledge (&#x77E5;&#x8BC6;)&#xFF0C;&#x662F;&#x5BF9;&#x67D0;&#x4E2A;&#x4E3B;&#x9898;&#x7684;&#x786E;&#x5B9A;&#x8BA4;&#x8BC6;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E9B;&#x8BA4;&#x8BC6;&#x62E5;&#x6709;&#x6F5C;&#x5728;&#x7684;&#x80FD;&#x529B;&#x4E3A;&#x7279;&#x5B9A;&#x76EE;&#x7684;&#x800C;&#x4F7F;&#x7528;&#x3002;&#x5728;&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x91CC;&#xFF0C;&#x8868;&#x793A;&#x5BF9;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x9488;&#x5BF9;&#x6027;&#x7684;&#x5B9E;&#x7528;&#x5316;&#xFF0C;&#x8BA9;&#x63D0;&#x53D6;&#x7684;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x5546;&#x4E1A;&#x5E94;&#x7528;&#x6216;&#x5B66;&#x672F;&#x7814;&#x7A76;&#x3002;</h6>
+<h6 id="w&#xFF1A;wisdom-&#x667A;&#x6167;&#xFF0C;&#x8868;&#x793A;&#x5BF9;&#x77E5;&#x8BC6;&#x8FDB;&#x884C;&#x72EC;&#x7ACB;&#x7684;&#x601D;&#x8003;&#x5206;&#x6790;&#xFF0C;&#x5F97;&#x51FA;&#x7684;&#x67D0;&#x4E9B;&#x7ED3;&#x8BBA;&#x3002;&#x5728;&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x91CC;&#xFF0C;&#x5DE5;&#x7A0B;&#x5E08;&#x548C;&#x79D1;&#x5B66;&#x5BB6;&#x505A;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x5DE5;&#x4F5C;&#x7528;&#x8BA1;&#x7B97;&#x673A;&#x7A0B;&#x5E8F;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x5730;&#x63D0;&#x53D6;&#x4E86;&#x4EF7;&#x503C;&#xFF08;ik&#xFF09;&#xFF0C;&#x7136;&#x800C;&#x771F;&#x6B63;&#x8981;&#x4ECE;&#x6570;&#x636E;&#x4E2D;&#x6D1E;&#x5BDF;&#x51FA;&#x66F4;&#x9AD8;&#x7684;&#x4EF7;&#x503C;&#xFF0C;&#x751A;&#x81F3;&#x80FD;&#x591F;&#x5BF9;&#x672A;&#x6765;&#x7684;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x9884;&#x6D4B;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x6570;&#x636E;&#x5206;&#x6790;&#x5E08;&#x3002;"><code>W</code>&#xFF1A;Wisdom (&#x667A;&#x6167;)&#xFF0C;&#x8868;&#x793A;&#x5BF9;&#x77E5;&#x8BC6;&#x8FDB;&#x884C;&#x72EC;&#x7ACB;&#x7684;&#x601D;&#x8003;&#x5206;&#x6790;&#xFF0C;&#x5F97;&#x51FA;&#x7684;&#x67D0;&#x4E9B;&#x7ED3;&#x8BBA;&#x3002;&#x5728;&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x91CC;&#xFF0C;&#x5DE5;&#x7A0B;&#x5E08;&#x548C;&#x79D1;&#x5B66;&#x5BB6;&#x505A;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x5DE5;&#x4F5C;&#x7528;&#x8BA1;&#x7B97;&#x673A;&#x7A0B;&#x5E8F;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x5730;&#x63D0;&#x53D6;&#x4E86;&#x4EF7;&#x503C;&#xFF08;I/K&#xFF09;&#xFF0C;&#x7136;&#x800C;&#x771F;&#x6B63;&#x8981;&#x4ECE;&#x6570;&#x636E;&#x4E2D;&#x6D1E;&#x5BDF;&#x51FA;&#x66F4;&#x9AD8;&#x7684;&#x4EF7;&#x503C;&#xFF0C;&#x751A;&#x81F3;&#x80FD;&#x591F;&#x5BF9;&#x672A;&#x6765;&#x7684;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x9884;&#x6D4B;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x6570;&#x636E;&#x5206;&#x6790;&#x5E08;&#x3002;</h6>
+<h2 id="&#x6570;&#x636E;&#x5DE5;&#x7A0B;-&#x9886;&#x57DF;&#x804C;&#x4E1A;&#x5212;&#x5206;&#xFF1A;">&#x6570;&#x636E;&#x5DE5;&#x7A0B; &#x9886;&#x57DF;&#x804C;&#x4E1A;&#x5212;&#x5206;&#xFF1A;</h2>
+<blockquote>
+<p>&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x662F;&#x4E00;&#x6574;&#x5957;&#x5BF9;&#x6570;&#x636E;&#xFF08;D&#xFF09;&#x8FDB;&#x884C;&#x91C7;&#x96C6;&#x3001;&#x5904;&#x7406;&#x3001;&#x63D0;&#x53D6;&#x4EF7;&#x503C;&#xFF08;&#x53D8;&#x4E3A; I &#x6216; K&#xFF09;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+</blockquote>
+<p>&#x9996;&#x5148;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x76F8;&#x5173;&#x7684;&#x51E0;&#x79CD;&#x89D2;&#x8272;&#xFF1A; <strong>Data Engineer&#xFF08;&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x5E08;&#xFF09;, Data Scientist&#xFF08;&#x6570;&#x636E;&#x79D1;&#x5B66;&#x5BB6;&#xFF09;,  Data Analyst&#xFF08;&#x6570;&#x636E;&#x5206;&#x6790;&#x5E08;&#xFF09;</strong>&#x3002; &#x8FD9;&#x4E09;&#x4E2A;&#x89D2;&#x8272;&#x4EFB;&#x52A1;&#x91CD;&#x53E0;&#x6027;&#x9AD8;&#xFF0C;&#x8981;&#x6C42;&#x5408;&#x4F5C;&#x5BC6;&#x5207;&#xFF0C;&#x4F46;&#x5404;&#x8D1F;&#x8D23;&#x7684;&#x9886;&#x57DF;&#x7A0D;&#x6709;&#x4E0D;&#x540C;&#x3002;&#x5927;&#x90E8;&#x5206;&#x516C;&#x53F8;&#x91CC;&#x7684;&#x8FD9;&#x4E9B;&#x89D2;&#x8272;&#x90FD;&#x4F1A;&#x6839;&#x636E;&#x6BCF;&#x4E2A;&#x4EBA;&#x672C;&#x8EAB;&#x7684;&#x6280;&#x80FD;&#x957F;&#x77ED;&#x800C;&#x8EAB;&#x517C;&#x6570;&#x804C;&#xFF0C; &#x6240;&#x4EE5;&#x6709;&#x65F6;&#x5019;&#x6BD4;&#x8F83;&#x96BE;&#x4EE5;&#x533A;&#x5206;&#xFF1A;</p>
+<ul>
+<li><p><code>Data Engineer &#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x5E08;</code>&#xFF1A; &#x5206;&#x6790;&#x6570;&#x636E;&#x5C11;&#x4E0D;&#x4E86;&#x9700;&#x8981;&#x8FD0;&#x7528;&#x8BA1;&#x7B97;&#x673A;&#x548C;&#x5404;&#x79CD;&#x5DE5;&#x5177;&#x81EA;&#x52A8;&#x5316;&#x6570;&#x636E;&#x5904;&#x7406;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C; &#x5305;&#x62EC;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#xFF0C; &#x50A8;&#x5B58;&#xFF0C; &#x66F4;&#x65B0;&#xFF0C; &#x67E5;&#x8BE2;&#x3002; &#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x5E08;&#x7684;&#x5DE5;&#x4F5C;&#x5C31;&#x662F;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#x5B8C;&#x6210;&#x81EA;&#x52A8;&#x5316;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C; &#x5C5E;&#x4E8E; &#x57FA;&#x7840;&#x8BBE;&#x65BD;/&#x5DE5;&#x5177;&#xFF08;Infrastructure/Tools&#xFF09;&#x5C42;&#x3002; </p>
+<p>  <strong>&#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x89D2;&#x8272;&#x51FA;&#x73B0;&#x7684;&#x9891;&#x7387;&#x4E0D;&#x591A;</strong> &#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x73B0;&#x6210;&#x7684;MySQL, Oracle&#x7B49;&#x6570;&#x636E;&#x5E93;&#x6280;&#x672F;&#xFF0C; &#x5F88;&#x591A;&#x5927;&#x516C;&#x53F8;&#x53EA;&#x9700;&#x8981;DBA&#x5C31;&#x8DB3;&#x591F;&#x4E86;&#x3002;&#x800C; Hadoop, MongoDB &#x7B49; NoSQL &#x6280;&#x672F;&#x7684;&#x5F00;&#x6E90;&#xFF0C; &#x66F4;&#x662F;&#x4F7F;&#x5728;&#x5927;&#x6570;&#x636E;&#x7684;&#x573A;&#x666F;&#x4E0B;&#x90FD;&#x6CA1;&#x6709;&#x592A;&#x591A; &#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x5E08; &#x7684;&#x4E8B;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x4EA4;&#x7ED9; &#x6570;&#x636E;&#x79D1;&#x5B66;&#x5BB6; &#x3002;</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><code>Data Scientist &#x6570;&#x636E;&#x79D1;&#x5B66;&#x5BB6;</code>&#xFF1A; &#x6570;&#x636E;&#x79D1;&#x5B66;&#x5BB6;&#x662F;&#x4E0E;&#x6570;&#x5B66;&#x76F8;&#x7ED3;&#x5408;&#x7684;&#x4E2D;&#x95F4;&#x89D2;&#x8272;&#xFF0C; &#x9700;&#x8981;&#x7528;&#x6570;&#x5B66;&#x65B9;&#x6CD5;&#x5904;&#x7406;&#x539F;&#x59CB;&#x6570;&#x636E;&#x627E;&#x51FA;&#x8089;&#x773C;&#x770B;&#x4E0D;&#x5230;&#x7684;&#x66F4;&#x9AD8;&#x5C42;&#x6570;&#x636E;&#xFF0C; &#x4E00;&#x822C;&#x662F;&#x8FD0;&#x7528; &#x7EDF;&#x8BA1;&#x673A;&#x5668;&#x5B66;&#x4E60;&#xFF08;Statistical Machine Learning&#xFF09;&#x6216;&#x8005; &#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#xFF08;Deep Learning&#xFF09;&#x3002; </p>
+<p>  &#x6709;&#x4EBA;&#x79F0; Data Scientist &#x4E3A; <code>&#x7F16;&#x7A0B;&#x7EDF;&#x8BA1;&#x5B66;&#x5BB6;</code>&#xFF08;Programming Statistician&#xFF09;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x9700;&#x8981;&#x6709;&#x5F88;&#x597D;&#x7684;&#x7EDF;&#x8BA1;&#x5B66;&#x57FA;&#x7840;&#xFF0C;&#x4F46;&#x4E5F;&#x9700;&#x8981;&#x53C2;&#x4E0E;&#x7A0B;&#x5E8F;&#x7684;&#x5F00;&#x53D1;&#xFF08;&#x57FA;&#x4E8E; Infrastructure &#x4E4B;&#x4E0A;&#xFF09;&#xFF0C;&#x800C;&#x73B0;&#x5728;&#x5F88;&#x591A;&#x5F88;&#x591A;&#x7684;<code>&#x6570;&#x636E;&#x79D1;&#x5B66;&#x5BB6;</code> &#x804C;&#x4F4D;&#x90FD;&#x8981;&#x6C42;&#x8EAB;&#x517C;<code>&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x5E08;</code>&#x3002; <strong><code>&#x6570;&#x636E;&#x79D1;&#x5B66;&#x5BB6;</code> &#x662F;&#x628A; D &#x8F6C;&#x4E3A; I &#x6216; K &#x7684;&#x4E3B;&#x529B;&#x519B;</strong>&#x3002;</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><code>Data Analyst &#x6570;&#x636E;&#x5206;&#x6790;&#x5E08;</code>&#xFF1A; &#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x5E08;&#x548C;&#x6570;&#x636E;&#x79D1;&#x5B66;&#x5BB6;&#x505A;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x7528;&#x8BA1;&#x7B97;&#x673A;&#x7A0B;&#x5E8F;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x5730;&#x63D0;&#x53D6;&#x4E86;&#x4EF7;&#x503C;&#xFF08;I/K&#xFF09;&#xFF0C;&#x7136;&#x800C;&#x771F;&#x6B63;&#x8981;&#x4ECE;&#x6570;&#x636E;&#x4E2D;&#x6D1E;&#x5BDF;&#x51FA;&#x66F4;&#x9AD8;&#x7684;&#x4EF7;&#x503C;&#xFF0C; &#x5219;&#x9700;&#x8981;&#x4F9D;&#x9760;&#x4E30;&#x5BCC;&#x7684;&#x884C;&#x4E1A;&#x7ECF;&#x9A8C;&#x548C;&#x6D1E;&#x5BDF;&#x529B;&#xFF0C; &#x8FD9;&#x4E9B;&#x90FD;&#x9700;&#x8981;&#x4EBA;&#x529B;&#x7684;&#x5E72;&#x9884;&#x3002; </p>
+<p>  <strong>Data Analyst &#x9700;&#x8981;&#x7684;&#x662F;&#x5BF9;&#x6240;&#x5728;&#x4E1A;&#x52A1;&#x6709;&#x6DF1;&#x523B;&#x4E86;&#x89E3;&#xFF0C; &#x80FD;&#x719F;&#x7EC3;&#x8FD0;&#x7528;&#x624B;&#x4E0A;&#x7684;&#x5DE5;&#x5177;&#xFF08;&#x65E0;&#x8BBA;&#x662F; Excel&#xFF0C; SPSS&#x4E5F;&#x597D;&#xFF0C; Python/R&#x4E5F;&#x597D;&#xFF0C;&#x5DE5;&#x7A0B;&#x5E08;&#x7ED9;&#x4F60;&#x5F00;&#x53D1;&#x7684;&#x5DE5;&#x5177;&#x4E5F;&#x597D;&#xFF0C;&#x5FC5;&#x8981;&#x65F6;&#x8FD8;&#x8981;&#x80FD;&#x81EA;&#x5DF1;&#x5145;&#x5F53;&#x5DE5;&#x7A0B;&#x5E08;&#x548C;&#x79D1;&#x5B66;&#x5BB6;&#xFF0C;&#x529B;&#x5C3D;&#x6240;&#x80FD;&#x5F97;&#x5230;&#x81EA;&#x5DF1;&#x9700;&#x8981;&#x7684;&#x5DE5;&#x5177;&#xFF09;&#xFF0C;&#x6709;&#x9488;&#x5BF9;&#x6027;&#x5730;&#x5BF9;&#x6570;&#x636E;&#x4F5C;&#x5206;&#x6790;&#xFF0C;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x628A;&#x53D1;&#x73B0;&#x7684;&#x6210;&#x679C;&#x5411;&#x5176;&#x4ED6;&#x804C;&#x80FD;&#x90E8;&#x95E8;&#x5448;&#x73B0;&#x51FA;&#x6765;&#xFF0C;&#x6700;&#x7EC8;&#x53D8;&#x4E3A;&#x884C;&#x52A8;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x628A;&#x6570;&#x636E;&#x6700;&#x7EC8;&#x5F97;&#x51FA; Wisdom</strong>&#x3002;</p>
+</li>
+</ul>
+<h2 id="&#x4EC0;&#x4E48;&#x662F;&#x6570;&#x636E;&#x5206;&#x6790;&#xFF1A;">&#x4EC0;&#x4E48;&#x662F;&#x6570;&#x636E;&#x5206;&#x6790;&#xFF1A;</h2>
+<h6 id="&#x767E;&#x5EA6;&#x767E;&#x79D1;&#xFF1A;&#x6570;&#x636E;&#x5206;&#x6790;&#x662F;&#x6307;&#x7528;&#x9002;&#x5F53;&#x7684;&#x7EDF;&#x8BA1;&#x5206;&#x6790;&#x65B9;&#x6CD5;&#x5BF9;&#x6536;&#x96C6;&#x6765;&#x7684;&#x5927;&#x91CF;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C;&#x63D0;&#x53D6;&#x6709;&#x7528;&#x4FE1;&#x606F;&#x548C;&#x5F62;&#x6210;&#x7ED3;&#x8BBA;&#x800C;&#x5BF9;&#x6570;&#x636E;&#x52A0;&#x4EE5;&#x8BE6;&#x7EC6;&#x7814;&#x7A76;&#x548C;&#x6982;&#x62EC;&#x603B;&#x7ED3;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x8FD9;&#x4E00;&#x8FC7;&#x7A0B;&#x4E5F;&#x662F;&#x8D28;&#x91CF;&#x7BA1;&#x7406;&#x4F53;&#x7CFB;&#x7684;&#x652F;&#x6301;&#x8FC7;&#x7A0B;&#x3002;&#x5728;&#x5B9E;&#x7528;&#x4E2D;&#xFF0C;&#x6570;&#x636E;&#x5206;&#x6790;&#x53EF;&#x5E2E;&#x52A9;&#x4EBA;&#x4EEC;&#x4F5C;&#x51FA;&#x5224;&#x65AD;&#xFF0C;&#x4EE5;&#x4FBF;&#x91C7;&#x53D6;&#x9002;&#x5F53;&#x884C;&#x52A8;&#x3002;"><code>&#x767E;&#x5EA6;&#x767E;&#x79D1;</code>&#xFF1A;&#x6570;&#x636E;&#x5206;&#x6790;&#x662F;&#x6307;&#x7528;&#x9002;&#x5F53;&#x7684;&#x7EDF;&#x8BA1;&#x5206;&#x6790;&#x65B9;&#x6CD5;&#x5BF9;&#x6536;&#x96C6;&#x6765;&#x7684;&#x5927;&#x91CF;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C;&#x63D0;&#x53D6;&#x6709;&#x7528;&#x4FE1;&#x606F;&#x548C;&#x5F62;&#x6210;&#x7ED3;&#x8BBA;&#x800C;&#x5BF9;&#x6570;&#x636E;&#x52A0;&#x4EE5;&#x8BE6;&#x7EC6;&#x7814;&#x7A76;&#x548C;&#x6982;&#x62EC;&#x603B;&#x7ED3;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x8FD9;&#x4E00;&#x8FC7;&#x7A0B;&#x4E5F;&#x662F;&#x8D28;&#x91CF;&#x7BA1;&#x7406;&#x4F53;&#x7CFB;&#x7684;&#x652F;&#x6301;&#x8FC7;&#x7A0B;&#x3002;&#x5728;&#x5B9E;&#x7528;&#x4E2D;&#xFF0C;&#x6570;&#x636E;&#x5206;&#x6790;&#x53EF;&#x5E2E;&#x52A9;&#x4EBA;&#x4EEC;&#x4F5C;&#x51FA;&#x5224;&#x65AD;&#xFF0C;&#x4EE5;&#x4FBF;&#x91C7;&#x53D6;&#x9002;&#x5F53;&#x884C;&#x52A8;&#x3002;</h6>
+<h2 id="&#x6570;&#x636E;&#x5206;&#x6790;&#x7684;&#x8FC7;&#x7A0B;&#xFF1A;">&#x6570;&#x636E;&#x5206;&#x6790;&#x7684;&#x8FC7;&#x7A0B;&#xFF1A;</h2>
+<p><img src="../images/DataAnalysis.png" alt=""></p>
+<h5 id="1-&#x6570;&#x636E;&#x6536;&#x96C6;&#xFF1A;&#x672C;&#x5730;&#x6570;&#x636E;&#x6216;&#x8005;&#x7F51;&#x7EDC;&#x6570;&#x636E;&#x7684;&#x91C7;&#x96C6;&#x4E0E;&#x64CD;&#x4F5C;">1. &#x6570;&#x636E;&#x6536;&#x96C6;&#xFF1A;&#x672C;&#x5730;&#x6570;&#x636E;&#x6216;&#x8005;&#x7F51;&#x7EDC;&#x6570;&#x636E;&#x7684;&#x91C7;&#x96C6;&#x4E0E;&#x64CD;&#x4F5C;.</h5>
+<h5 id="2-&#x6570;&#x636E;&#x5904;&#x7406;&#xFF1A;&#x6570;&#x636E;&#x7684;&#x89C4;&#x6574;&#xFF0C;&#x6309;&#x7167;&#x67D0;&#x79CD;&#x683C;&#x5F0F;&#x8FDB;&#x884C;&#x6574;&#x5408;&#x5B58;&#x50A8;&#x3002;">2. &#x6570;&#x636E;&#x5904;&#x7406;&#xFF1A;&#x6570;&#x636E;&#x7684;&#x89C4;&#x6574;&#xFF0C;&#x6309;&#x7167;&#x67D0;&#x79CD;&#x683C;&#x5F0F;&#x8FDB;&#x884C;&#x6574;&#x5408;&#x5B58;&#x50A8;&#x3002;</h5>
+<h5 id="3-&#x6570;&#x636E;&#x5206;&#x6790;&#xFF1A;&#x6570;&#x636E;&#x7684;&#x79D1;&#x5B66;&#x8BA1;&#x7B97;&#xFF0C;&#x4F7F;&#x7528;&#x76F8;&#x5173;&#x6570;&#x636E;&#x5DE5;&#x5177;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;">3. &#x6570;&#x636E;&#x5206;&#x6790;&#xFF1A;&#x6570;&#x636E;&#x7684;&#x79D1;&#x5B66;&#x8BA1;&#x7B97;&#xFF0C;&#x4F7F;&#x7528;&#x76F8;&#x5173;&#x6570;&#x636E;&#x5DE5;&#x5177;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;</h5>
+<h5 id="4-&#x6570;&#x636E;&#x5C55;&#x73B0;&#xFF1A;&#x6570;&#x636E;&#x53EF;&#x89C6;&#x5316;&#xFF0C;&#x4F7F;&#x7528;&#x76F8;&#x5173;&#x5DE5;&#x5177;&#x5BF9;&#x5206;&#x6790;&#x51FA;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5C55;&#x793A;&#x3002;">4. &#x6570;&#x636E;&#x5C55;&#x73B0;&#xFF1A;&#x6570;&#x636E;&#x53EF;&#x89C6;&#x5316;&#xFF0C;&#x4F7F;&#x7528;&#x76F8;&#x5173;&#x5DE5;&#x5177;&#x5BF9;&#x5206;&#x6790;&#x51FA;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5C55;&#x793A;&#x3002;</h5>
+<h2 id="&#x6570;&#x636E;&#x5206;&#x6790;&#x7684;&#x5DE5;&#x5177;&#xFF1A;">&#x6570;&#x636E;&#x5206;&#x6790;&#x7684;&#x5DE5;&#x5177;&#xFF1A;</h2>
+<ul>
+<li><p><code>SAS</code>&#xFF1A;SAS&#xFF08;STATISTICAL ANALYSIS SYSTEM&#xFF0C;&#x7B80;&#x79F0;SAS&#xFF09;&#x516C;&#x53F8;&#x5F00;&#x53D1;&#x7684;&#x7EDF;&#x8BA1;&#x5206;&#x6790;&#x8F6F;&#x4EF6;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x5F3A;&#x5927;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6574;&#x5408;&#x5E73;&#x53F0;&#x3002;&#x4EF7;&#x683C;&#x6602;&#x8D35;&#xFF0C;&#x94F6;&#x884C;&#x6216;&#x8005;&#x5927;&#x4F01;&#x4E1A;&#x624D;&#x4E70;&#x7684;&#x8D77;&#xFF0C;&#x505A;&#x79BB;&#x7EBF;&#x7684;&#x5206;&#x6790;&#x6216;&#x8005;&#x6A21;&#x578B;&#x7528;&#x3002;</p>
+</li>
+<li><p><code>SPSS</code>&#xFF1A;SPSS&#xFF08;Statistical Product and Service Solutions&#xFF0C;&#x7EDF;&#x8BA1;&#x4EA7;&#x54C1;&#x4E0E;&#x670D;&#x52A1;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF09;&#x662F;IBM&#x516C;&#x53F8;&#x63A8;&#x51FA;&#x7684;&#x4E00;&#x7CFB;&#x5217;&#x7528;&#x4E8E;&#x7EDF;&#x8BA1;&#x5B66;&#x5206;&#x6790;&#x8FD0;&#x7B97;&#x3001;&#x6570;&#x636E;&#x6316;&#x6398;&#x3001;&#x9884;&#x6D4B;&#x5206;&#x6790;&#x548C;&#x51B3;&#x7B56;&#x652F;&#x6301;&#x4EFB;&#x52A1;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x8FC4;&#x4ECA;&#x5DF2;&#x6709;40&#x4F59;&#x5E74;&#x7684;&#x6210;&#x957F;&#x5386;&#x53F2;&#xFF0C;&#x4EF7;&#x683C;&#x6602;&#x8D35;&#x3002;</p>
+</li>
+<li><p><code>R/MATLAB</code>&#xFF1A;&#x9002;&#x5408;&#x505A;&#x5B66;&#x672F;&#x6027;&#x8D28;&#x7684;&#x6570;&#x636E;&#x5206;&#x6790;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E0A;&#x9700;&#x8981;&#x989D;&#x5916;&#x8F6C;&#x6362;&#x4E3A;Python&#x6216;Scala&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x4E14;MATLAB&#xFF08;MathWorks&#x516C;&#x53F8;&#x51FA;&#x54C1;&#x7684;&#x5546;&#x4E1A;&#x6570;&#x5B66;&#x8F6F;&#x4EF6;&#xFF09;&#x662F;&#x6536;&#x8D39;&#x7684;&#x3002;</p>
+</li>
+<li><p><code>Scala</code>&#xFF1A;&#x662F;&#x4E00;&#x95E8;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#xFF0C;&#x719F;&#x7EC3;&#x4F7F;&#x7528;&#x540E;&#x5F00;&#x53D1;&#x6548;&#x7387;&#x8F83;&#x9AD8;&#xFF0C;&#x914D;&#x5408;Spark&#x9002;&#x5408;&#x5927;&#x89C4;&#x6A21;&#x7684;&#x6570;&#x636E;&#x5206;&#x6790;&#x548C;&#x5904;&#x7406;&#xFF0C;Scala&#x7684;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x662F;JVM&#x3002;</p>
+</li>
+<li><p><strong><code>Python</code>&#xFF1A;Python&#x5728;&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x9886;&#x57DF;&#x548C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x9886;&#x57DF;&#x6709;&#x5F88;&#x591A;&#x6210;&#x719F;&#x7684;&#x6846;&#x67B6;&#x548C;&#x7B97;&#x6CD5;&#x5E93;&#xFF0C;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x53EA;&#x7528;Python&#x5C31;&#x53EF;&#x4EE5;&#x6784;&#x5EFA;&#x4EE5;&#x6570;&#x636E;&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x5728;&#x6570;&#x636E;&#x5DE5;&#x7A0B;&#x9886;&#x57DF;&#x548C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x9886;&#x57DF;&#xFF0C;Python&#x975E;&#x5E38;&#x975E;&#x5E38;&#x6D41;&#x884C;&#x3002;</strong></p>
+</li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; BigCat all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x300C;Revision Time:
+2017-03-11 15:07:10&#x300D;
+</span></footer>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../file/part01/1.1.html" class="navigation navigation-prev " aria-label="Previous page: Python 3.x新特性和编码回顾"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../file/part01/1.3.html" class="navigation navigation-next " aria-label="Next page: 数据分析建模理论基础"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/dododream"},"search-pro":{"cutWordLib":"nodejieba","defineWord":["gitbook-use"]},"sharing":{"weibo":true,"facebook":true,"twitter":true,"google":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"tbfed-pagefooter":{"copyright":"Copyright © BigCat","modify_label":"「Revision Time:","modify_format":"YYYY-MM-DD HH:mm:ss」"},"baidu":{"token":"ff100361cdce95dd4c8fb96b4009f7bc"},"sitemap":{"hostname":"http://www.treenewbee.top"},"donate":{"wechat":"http://weixin.png","alipay":"http://alipay.png","title":"","button":"赏","alipayText":"支付宝打赏","wechatText":"微信打赏"},"edit-link":{"base":"https://github.com/dododream/edit","label":"Edit This Page"},"splitter":{},"toggle-chapters":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book Python数据分析课程讲义 -->
+</html>

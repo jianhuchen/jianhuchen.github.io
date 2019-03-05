@@ -1,0 +1,925 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>模型接口建立 | Tensorflow课件</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../chapter6/section3.html" />
+    
+    
+    <link rel="prev" href="../chapter6/section1.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="6.2"
+        data-chapter-title="模型接口建立"
+        data-filepath="chapter6/section2.md"
+        data-basepath=".."
+        data-revision="Sat Sep 02 2017 22:26:16 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Tensorflow课件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
+            
+                
+                    <a href="../chapter1/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        认识Tensorflow
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="chapter1/section1.html">
+            
+                
+                    <a href="../chapter1/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        下载以及安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1/section2.html">
+            
+                
+                    <a href="../chapter1/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        初识tf
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2/index.html">
+            
+                
+                    <a href="../chapter2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Tensorflow进阶
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="chapter2/section1.html">
+            
+                
+                    <a href="../chapter2/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        张量的阶和数据类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="chapter2/section2.html">
+            
+                
+                    <a href="../chapter2/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        张量操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="chapter2/section3.html">
+            
+                
+                    <a href="../chapter2/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        变量的的创建、初始化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="chapter2/section4.html">
+            
+                
+                    <a href="../chapter2/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        名称域与共享变量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="chapter2/section5.html">
+            
+                
+                    <a href="../chapter2/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        图与会话
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="chapter2/section6.html">
+            
+                
+                    <a href="../chapter2/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        模型保存与恢复、自定义命令行参数
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter3/index.html">
+            
+                
+                    <a href="../chapter3/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        TensorflowIO操作
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="chapter3/section1.html">
+            
+                
+                    <a href="../chapter3/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        读取数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="chapter3/section2.html">
+            
+                
+                    <a href="../chapter3/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        线程和队列
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="chapter3/section3.html">
+            
+                
+                    <a href="../chapter3/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        图像操作
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter4/index.html">
+            
+                
+                    <a href="../chapter4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        可视化学习Tensorboard
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter5/index.html">
+            
+                
+                    <a href="../chapter5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        神经网络与深度学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="chapter5/section1.html">
+            
+                
+                    <a href="../chapter5/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        神经网络基础之人工神经网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="chapter5/section2.html">
+            
+                
+                    <a href="../chapter5/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        ANN网络分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="chapter5/section3.html">
+            
+                
+                    <a href="../chapter5/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        卷积神经网络与图像识别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="chapter5/section4.html">
+            
+                
+                    <a href="../chapter5/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        图像识别卷积网络实现案例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="chapter5/section5.html">
+            
+                
+                    <a href="../chapter5/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        网络优化改进
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6/index.html">
+            
+                
+                    <a href="../chapter6/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        多分类图像识别案例
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="chapter6/section1.html">
+            
+                
+                    <a href="../chapter6/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        图片信息的读取与写入
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.2" data-path="chapter6/section2.html">
+            
+                
+                    <a href="../chapter6/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        模型接口建立
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="chapter6/section3.html">
+            
+                
+                    <a href="../chapter6/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        训练以及高级会话函数
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="chapter7/index.html">
+            
+                
+                    <a href="../chapter7/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        分布式Tensorflow
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="chapter7/section1.html">
+            
+                
+                    <a href="../chapter7/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        分布式接口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="chapter7/section2.html">
+            
+                
+                    <a href="../chapter7/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        图片识别分布式案例改进
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Tensorflow课件</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x6A21;&#x578B;&#x63A5;&#x53E3;&#x5EFA;&#x7ACB;">&#x6A21;&#x578B;&#x63A5;&#x53E3;&#x5EFA;&#x7ACB;</h1>
+<h2 id="&#x6A21;&#x578B;&#x63A5;&#x53E3;&#x7684;&#x5EFA;&#x7ACB;">&#x6A21;&#x578B;&#x63A5;&#x53E3;&#x7684;&#x5EFA;&#x7ACB;</h2>
+<p>&#x6211;&#x4EEC;&#x5C06;&#x6A21;&#x578B;&#x63A5;&#x53E3;&#x90FD;&#x653E;&#x5728;cifar_omdel.py&#x6587;&#x4EF6;&#x5F53;&#x4E2D;&#xFF0C;&#x8BBE;&#x8BA1;&#x4E86;&#x56DB;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;input()&#x4F5C;&#x4E3A;&#x4ECE;cifar_data&#x6587;&#x4EF6;&#x4E2D;&#x6570;&#x636E;&#x7684;&#x83B7;&#x53D6;&#xFF0C;inference()&#x4F5C;&#x4E3A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x7684;&#x5EFA;&#x7ACB;&#xFF0C;total_loss()&#x8BA1;&#x7B97;&#x6A21;&#x578B;&#x7684;&#x635F;&#x5931;&#xFF0C;train()&#x6765;&#x901A;&#x8FC7;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x8BAD;&#x7EC3;&#x51CF;&#x5C11;&#x635F;&#x5931;</p>
+<h2 id="input&#x4EE3;&#x7801;">input&#x4EE3;&#x7801;</h2>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">input</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x83B7;&#x53D6;&#x8F93;&#x5165;&#x6570;&#x636E;
+    :return: image,label
+    &quot;&quot;&quot;</span>
+
+    <span class="hljs-comment"># &#x5B9E;&#x4F8B;&#x5316;</span>
+    cfr = cifar_data.CifarRead()
+
+    <span class="hljs-comment"># &#x751F;&#x6210;&#x5F20;&#x91CF;</span>
+    image_batch, lab_batch = cfr.read_tfrecords()
+
+    <span class="hljs-comment"># &#x5C06;&#x76EE;&#x6807;&#x503C;&#x8F6C;&#x6362;&#x4E3A;one-hot&#x7F16;&#x7801;&#x683C;&#x5F0F;</span>
+    label = tf.one_hot(label_batch, depth=<span class="hljs-number">10</span>, on_value=<span class="hljs-number">1.0</span>)
+
+    <span class="hljs-keyword">return</span> image_batch, label, label_batch
+</code></pre>
+<h2 id="inference&#x4EE3;&#x7801;">inference&#x4EE3;&#x7801;</h2>
+<p>&#x5728;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x7684;&#x5377;&#x79EF;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x4E0E;&#x524D;&#x9762;&#x4E00;&#x81F4;&#xFF0C;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x56FE;&#x50CF;&#x7684;&#x901A;&#x9053;&#x6570;&#x4EE5;&#x53CA;&#x7ECF;&#x8FC7;&#x4E24;&#x6B21;&#x5377;&#x79EF;&#x6C60;&#x5316;&#x53D8;&#x6362;&#x540E;&#x7684;&#x56FE;&#x50CF;&#x5927;&#x5C0F;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inference</span><span class="hljs-params">(image_batch)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x5F97;&#x5230;&#x6A21;&#x578B;&#x7684;&#x8F93;&#x51FA;
+    :return: &#x9884;&#x6D4B;&#x6982;&#x7387;&#x8F93;&#x51FA;&#x4EE5;&#x53CA;&#x5360;&#x4F4D;&#x7B26;
+    &quot;&quot;&quot;</span>
+    <span class="hljs-comment"># 1&#x3001;&#x6570;&#x636E;&#x5360;&#x4F4D;&#x7B26;&#x5EFA;&#x7ACB;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;data&quot;</span>):
+        <span class="hljs-comment"># &#x6837;&#x672C;&#x6807;&#x7B7E;&#x503C;</span>
+        <span class="hljs-comment"># y_label = tf.placeholder(tf.float32, [None, 10])</span>
+
+        <span class="hljs-comment"># &#x6837;&#x672C;&#x7279;&#x5F81;&#x503C;</span>
+        <span class="hljs-comment"># x = tf.placeholder(tf.float32, [None, IMAGE_HEIGHT * IMAGE_WIDTH * IMAGE_DEPTH])</span>
+
+        <span class="hljs-comment"># &#x6539;&#x53D8;&#x5F62;&#x72B6;&#xFF0C;&#x4EE5;&#x63D0;&#x4F9B;&#x7ED9;&#x5377;&#x79EF;&#x5C42;&#x4F7F;&#x7528;</span>
+        x_image = tf.reshape(image_batch, [-<span class="hljs-number">1</span>, <span class="hljs-number">32</span>, <span class="hljs-number">32</span>, <span class="hljs-number">3</span>])
+
+    <span class="hljs-comment"># 2&#x3001;&#x5377;&#x79EF;&#x6C60;&#x5316;&#x7B2C;&#x4E00;&#x5C42;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;conv1&quot;</span>):
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x6743;&#x91CD;&#xFF0C; 5*5&#xFF0C; 3&#x4E2A;&#x8F93;&#x5165;&#x901A;&#x9053;&#xFF0C;32&#x4E2A;&#x8F93;&#x51FA;&#x901A;&#x9053;</span>
+        w_conv1 = weight_variable([<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">32</span>])
+
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x504F;&#x7F6E;, &#x4E2A;&#x6570;&#x4F4D;&#x8F93;&#x51FA;&#x901A;&#x9053;&#x6570;</span>
+        b_conv1 = bias_variable([<span class="hljs-number">32</span>])
+
+        <span class="hljs-comment"># &#x8FDB;&#x884C;&#x5377;&#x79EF;&#xFF0C;&#x6FC0;&#x6D3B;,&#x6307;&#x5B9A;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x586B;&#x5145;&#x7C7B;&#x578B;</span>
+        y_relu1 = tf.nn.relu(tf.nn.conv2d(x_image, w_conv1, strides=[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>], padding=<span class="hljs-string">&quot;SAME&quot;</span>) + b_conv1)
+
+        y_conv1 = tf.nn.max_pool(y_relu1, ksize=[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>], strides=[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>], padding=<span class="hljs-string">&apos;SAME&apos;</span>)
+
+    <span class="hljs-comment"># 3&#x3001;&#x5377;&#x79EF;&#x6C60;&#x5316;&#x7B2C;&#x4E8C;&#x5C42;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;conv_pool2&quot;</span>):
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x6743;&#x91CD;&#xFF0C; 5*5&#xFF0C; &#x4E00;&#x4E2A;&#x8F93;&#x5165;&#x901A;&#x9053;&#xFF0C;32&#x4E2A;&#x8F93;&#x51FA;&#x901A;&#x9053;</span>
+        w_conv2 = weight_variable([<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">32</span>, <span class="hljs-number">64</span>])
+
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x504F;&#x7F6E;, &#x4E2A;&#x6570;&#x4F4D;&#x8F93;&#x51FA;&#x901A;&#x9053;&#x6570;</span>
+        b_conv2 = bias_variable([<span class="hljs-number">64</span>])
+
+        <span class="hljs-comment"># &#x8FDB;&#x884C;&#x5377;&#x79EF;&#xFF0C;&#x6FC0;&#x6D3B;,&#x6307;&#x5B9A;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x586B;&#x5145;&#x7C7B;&#x578B;</span>
+        y_relu2 = tf.nn.relu(tf.nn.conv2d(y_conv1, w_conv2, strides=[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>], padding=<span class="hljs-string">&quot;SAME&quot;</span>) + b_conv2)
+
+        y_conv2 = tf.nn.max_pool(y_relu2, ksize=[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>], strides=[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>], padding=<span class="hljs-string">&apos;SAME&apos;</span>)
+
+    <span class="hljs-comment"># 4&#x3001;&#x5168;&#x8FDE;&#x63A5;&#x7B2C;&#x4E00;&#x5C42;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;FC1&quot;</span>):
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x6743;&#x91CD;,[7*7*64, 1024],&#x6839;&#x636E;&#x524D;&#x9762;&#x7684;&#x5377;&#x79EF;&#x6C60;&#x5316;&#x540E;&#x4E00;&#x6B65;&#x6B65;&#x8BA1;&#x7B97;&#x7684;&#x5927;&#x5C0F;&#x53D8;&#x6362;&#x662F;32-&gt;16-&gt;8</span>
+        w_fc1 = weight_variable([<span class="hljs-number">8</span> * <span class="hljs-number">8</span> * <span class="hljs-number">64</span>, <span class="hljs-number">1024</span>])
+
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x504F;&#x7F6E;&#xFF0C;&#x4E2A;&#x6570;&#x4F4D;&#x7B2C;&#x4E00;&#x6B21;&#x5168;&#x8FDE;&#x63A5;&#x5C42;&#x8F93;&#x51FA;&#x4E2A;&#x6570;</span>
+        b_fc1 = bias_variable([<span class="hljs-number">1024</span>])
+
+        y_reshape = tf.reshape(y_conv2, [-<span class="hljs-number">1</span>, <span class="hljs-number">8</span> * <span class="hljs-number">8</span> * <span class="hljs-number">64</span>])
+
+        <span class="hljs-comment"># &#x5168;&#x8FDE;&#x63A5;&#x7ED3;&#x679C;&#x6FC0;&#x6D3B;</span>
+        y_fc1 = tf.nn.relu(tf.matmul(y_reshape, w_fc1) + b_fc1)
+
+    <span class="hljs-comment"># 5&#x3001;&#x5168;&#x8FDE;&#x63A5;&#x7B2C;&#x4E8C;&#x5C42;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;FC2&quot;</span>):
+
+        <span class="hljs-comment"># droupout&#x5C42;</span>
+        droup = tf.nn.dropout(y_fc1, <span class="hljs-number">1.0</span>)
+
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x6743;&#x91CD;,[1024, 10]</span>
+        w_fc2 = weight_variable([<span class="hljs-number">1024</span>, <span class="hljs-number">10</span>])
+
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x504F;&#x7F6E; [10]</span>
+        b_fc2 = bias_variable([<span class="hljs-number">10</span>])
+
+        <span class="hljs-comment"># &#x6700;&#x540E;&#x7684;&#x5168;&#x8FDE;&#x63A5;&#x5C42;</span>
+        y_logit = tf.matmul(droup, w_fc2) + b_fc2
+
+    <span class="hljs-keyword">return</span> y_logit
+</code></pre>
+<h2 id="totalloss&#x4EE3;&#x7801;">total_loss&#x4EE3;&#x7801;</h2>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">total_loss</span><span class="hljs-params">(y_label, y_logit)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x8BA1;&#x7B97;&#x8BAD;&#x7EC3;&#x635F;&#x5931;
+    :param y_label: &#x76EE;&#x6807;&#x503C;
+    :param y_logit: &#x8BA1;&#x7B97;&#x503C;
+    :return: &#x635F;&#x5931;
+    &quot;&quot;&quot;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;loss&quot;</span>):
+
+        <span class="hljs-comment"># softmax&#x56DE;&#x5F52;&#xFF0C;&#x4EE5;&#x53CA;&#x8BA1;&#x7B97;&#x4EA4;&#x53C9;&#x635F;&#x5931;&#x71B5;</span>
+        cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=y_label, logits=y_logit)
+
+        <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x635F;&#x5931;&#x5E73;&#x5747;&#x503C;</span>
+        loss = tf.reduce_mean(cross_entropy)
+
+    <span class="hljs-keyword">return</span> loss
+</code></pre>
+<h2 id="train&#x4EE3;&#x7801;">train&#x4EE3;&#x7801;</h2>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train</span><span class="hljs-params">(loss, y_label, y_logit, global_step)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x5F97;&#x51FA;&#x51C6;&#x786E;&#x7387;
+    :param loss: &#x635F;&#x5931;&#x5927;&#x5C0F;
+    :return:
+    &quot;&quot;&quot;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;train&quot;</span>):
+        <span class="hljs-comment"># &#x8BA9;&#x5B66;&#x4E60;&#x7387;&#x6839;&#x636E;&#x6B65;&#x4F10;&#xFF0C;&#x81EA;&#x52A8;&#x53D8;&#x6362;&#x5B66;&#x4E60;&#x7387;&#xFF0C;&#x6307;&#x5B9A;&#x4E86;&#x6BCF;10&#x6B65;&#x8870;&#x51CF;&#x57FA;&#x6570;&#x4E3A;0.99&#xFF0C;0.001&#x4E3A;&#x521D;&#x59CB;&#x7684;&#x5B66;&#x4E60;&#x7387;</span>
+        lr = tf.train.exponential_decay(<span class="hljs-number">0.001</span>,
+                                        global_step,
+                                        <span class="hljs-number">10</span>,
+                                        <span class="hljs-number">0.99</span>,
+                                        staircase=<span class="hljs-keyword">True</span>)
+
+        <span class="hljs-comment"># &#x4F18;&#x5316;&#x5668;</span>
+        train_op = tf.train.GradientDescentOptimizer(lr).minimize(loss, global_step=global_step)
+
+        <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x51C6;&#x786E;&#x7387;</span>
+        equal_list = tf.equal(tf.argmax(y_logit, <span class="hljs-number">1</span>), tf.argmax(y_label, <span class="hljs-number">1</span>))
+
+        accuracy = tf.reduce_mean(tf.cast(equal_list, tf.float32))
+
+    <span class="hljs-keyword">return</span> train_op, accuracy
+</code></pre>
+<h2 id="&#x5B8C;&#x6574;&#x4EE3;&#x7801;">&#x5B8C;&#x6574;&#x4EE3;&#x7801;</h2>
+<pre><code class="lang-python">
+<span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> cifar_data
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-keyword">from</span> tensorflow.examples.tutorials.mnist <span class="hljs-keyword">import</span> input_data
+
+IMAGE_HEIGHT = <span class="hljs-number">32</span>
+IMAGE_WIDTH = <span class="hljs-number">32</span>
+IMAGE_DEPTH = <span class="hljs-number">3</span>
+
+
+<span class="hljs-comment"># &#x6309;&#x7167;&#x6307;&#x5B9A;&#x5F62;&#x72B6;&#x6784;&#x5EFA;&#x6743;&#x91CD;&#x53D8;&#x91CF;</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">weight_variable</span><span class="hljs-params">(shape)</span>:</span>
+    init = tf.truncated_normal(shape=shape, mean=<span class="hljs-number">0.0</span>, stddev=<span class="hljs-number">1.0</span>, dtype=tf.float32)
+    weight = tf.Variable(init)
+    <span class="hljs-keyword">return</span> weight
+
+
+<span class="hljs-comment"># &#x6309;&#x7167;&#x5236;&#x5B9A;&#x5F62;&#x72B6;&#x6784;&#x5EFA;&#x504F;&#x7F6E;&#x53D8;&#x91CF;</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bias_variable</span><span class="hljs-params">(shape)</span>:</span>
+    bias = tf.constant([<span class="hljs-number">1.0</span>], shape=shape)
+    <span class="hljs-keyword">return</span> tf.Variable(bias)
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inference</span><span class="hljs-params">(image_batch)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x5F97;&#x5230;&#x6A21;&#x578B;&#x7684;&#x8F93;&#x51FA;
+    :return: &#x9884;&#x6D4B;&#x6982;&#x7387;&#x8F93;&#x51FA;&#x4EE5;&#x53CA;&#x5360;&#x4F4D;&#x7B26;
+    &quot;&quot;&quot;</span>
+    <span class="hljs-comment"># 1&#x3001;&#x6570;&#x636E;&#x5360;&#x4F4D;&#x7B26;&#x5EFA;&#x7ACB;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;data&quot;</span>):
+        <span class="hljs-comment"># &#x6837;&#x672C;&#x6807;&#x7B7E;&#x503C;</span>
+        <span class="hljs-comment"># y_label = tf.placeholder(tf.float32, [None, 10])</span>
+
+        <span class="hljs-comment"># &#x6837;&#x672C;&#x7279;&#x5F81;&#x503C;</span>
+        <span class="hljs-comment"># x = tf.placeholder(tf.float32, [None, IMAGE_HEIGHT * IMAGE_WIDTH * IMAGE_DEPTH])</span>
+
+        <span class="hljs-comment"># &#x6539;&#x53D8;&#x5F62;&#x72B6;&#xFF0C;&#x4EE5;&#x63D0;&#x4F9B;&#x7ED9;&#x5377;&#x79EF;&#x5C42;&#x4F7F;&#x7528;</span>
+        x_image = tf.reshape(image_batch, [-<span class="hljs-number">1</span>, <span class="hljs-number">32</span>, <span class="hljs-number">32</span>, <span class="hljs-number">3</span>])
+
+    <span class="hljs-comment"># 2&#x3001;&#x5377;&#x79EF;&#x6C60;&#x5316;&#x7B2C;&#x4E00;&#x5C42;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;conv1&quot;</span>):
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x6743;&#x91CD;&#xFF0C; 5*5&#xFF0C; 3&#x4E2A;&#x8F93;&#x5165;&#x901A;&#x9053;&#xFF0C;32&#x4E2A;&#x8F93;&#x51FA;&#x901A;&#x9053;</span>
+        w_conv1 = weight_variable([<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">32</span>])
+
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x504F;&#x7F6E;, &#x4E2A;&#x6570;&#x4F4D;&#x8F93;&#x51FA;&#x901A;&#x9053;&#x6570;</span>
+        b_conv1 = bias_variable([<span class="hljs-number">32</span>])
+
+        <span class="hljs-comment"># &#x8FDB;&#x884C;&#x5377;&#x79EF;&#xFF0C;&#x6FC0;&#x6D3B;,&#x6307;&#x5B9A;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x586B;&#x5145;&#x7C7B;&#x578B;</span>
+        y_relu1 = tf.nn.relu(tf.nn.conv2d(x_image, w_conv1, strides=[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>], padding=<span class="hljs-string">&quot;SAME&quot;</span>) + b_conv1)
+
+        y_conv1 = tf.nn.max_pool(y_relu1, ksize=[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>], strides=[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>], padding=<span class="hljs-string">&apos;SAME&apos;</span>)
+
+    <span class="hljs-comment"># 3&#x3001;&#x5377;&#x79EF;&#x6C60;&#x5316;&#x7B2C;&#x4E8C;&#x5C42;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;conv_pool2&quot;</span>):
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x6743;&#x91CD;&#xFF0C; 5*5&#xFF0C; &#x4E00;&#x4E2A;&#x8F93;&#x5165;&#x901A;&#x9053;&#xFF0C;32&#x4E2A;&#x8F93;&#x51FA;&#x901A;&#x9053;</span>
+        w_conv2 = weight_variable([<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">32</span>, <span class="hljs-number">64</span>])
+
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x504F;&#x7F6E;, &#x4E2A;&#x6570;&#x4F4D;&#x8F93;&#x51FA;&#x901A;&#x9053;&#x6570;</span>
+        b_conv2 = bias_variable([<span class="hljs-number">64</span>])
+
+        <span class="hljs-comment"># &#x8FDB;&#x884C;&#x5377;&#x79EF;&#xFF0C;&#x6FC0;&#x6D3B;,&#x6307;&#x5B9A;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x586B;&#x5145;&#x7C7B;&#x578B;</span>
+        y_relu2 = tf.nn.relu(tf.nn.conv2d(y_conv1, w_conv2, strides=[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>], padding=<span class="hljs-string">&quot;SAME&quot;</span>) + b_conv2)
+
+        y_conv2 = tf.nn.max_pool(y_relu2, ksize=[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>], strides=[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>], padding=<span class="hljs-string">&apos;SAME&apos;</span>)
+
+    <span class="hljs-comment"># 4&#x3001;&#x5168;&#x8FDE;&#x63A5;&#x7B2C;&#x4E00;&#x5C42;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;FC1&quot;</span>):
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x6743;&#x91CD;,[7*7*64, 1024],&#x6839;&#x636E;&#x524D;&#x9762;&#x7684;&#x5377;&#x79EF;&#x6C60;&#x5316;&#x540E;&#x4E00;&#x6B65;&#x6B65;&#x8BA1;&#x7B97;&#x7684;&#x5927;&#x5C0F;&#x53D8;&#x6362;&#x662F;32-&gt;16-&gt;8</span>
+        w_fc1 = weight_variable([<span class="hljs-number">8</span> * <span class="hljs-number">8</span> * <span class="hljs-number">64</span>, <span class="hljs-number">1024</span>])
+
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x504F;&#x7F6E;&#xFF0C;&#x4E2A;&#x6570;&#x4F4D;&#x7B2C;&#x4E00;&#x6B21;&#x5168;&#x8FDE;&#x63A5;&#x5C42;&#x8F93;&#x51FA;&#x4E2A;&#x6570;</span>
+        b_fc1 = bias_variable([<span class="hljs-number">1024</span>])
+
+        y_reshape = tf.reshape(y_conv2, [-<span class="hljs-number">1</span>, <span class="hljs-number">8</span> * <span class="hljs-number">8</span> * <span class="hljs-number">64</span>])
+
+        <span class="hljs-comment"># &#x5168;&#x8FDE;&#x63A5;&#x7ED3;&#x679C;&#x6FC0;&#x6D3B;</span>
+        y_fc1 = tf.nn.relu(tf.matmul(y_reshape, w_fc1) + b_fc1)
+
+    <span class="hljs-comment"># 5&#x3001;&#x5168;&#x8FDE;&#x63A5;&#x7B2C;&#x4E8C;&#x5C42;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;FC2&quot;</span>):
+
+        <span class="hljs-comment"># droupout&#x5C42;</span>
+        droup = tf.nn.dropout(y_fc1, <span class="hljs-number">1.0</span>)
+
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x6743;&#x91CD;,[1024, 10]</span>
+        w_fc2 = weight_variable([<span class="hljs-number">1024</span>, <span class="hljs-number">10</span>])
+
+        <span class="hljs-comment"># &#x6784;&#x5EFA;&#x504F;&#x7F6E; [10]</span>
+        b_fc2 = bias_variable([<span class="hljs-number">10</span>])
+
+        <span class="hljs-comment"># &#x6700;&#x540E;&#x7684;&#x5168;&#x8FDE;&#x63A5;&#x5C42;</span>
+        y_logit = tf.matmul(droup, w_fc2) + b_fc2
+
+    <span class="hljs-keyword">return</span> y_logit
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">total_loss</span><span class="hljs-params">(y_label, y_logit)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x8BA1;&#x7B97;&#x8BAD;&#x7EC3;&#x635F;&#x5931;
+    :param y_label: &#x76EE;&#x6807;&#x503C;
+    :param y_logit: &#x8BA1;&#x7B97;&#x503C;
+    :return: &#x635F;&#x5931;
+    &quot;&quot;&quot;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;loss&quot;</span>):
+        <span class="hljs-comment"># &#x5C06;y_label&#x8F6C;&#x6362;&#x4E3A;one-hot&#x7F16;&#x7801;&#x5F62;&#x5F0F;</span>
+        <span class="hljs-comment"># y_onehot = tf.one_hot(y_label, depth=10, on_value=1.0)</span>
+
+        <span class="hljs-comment"># softmax&#x56DE;&#x5F52;&#xFF0C;&#x4EE5;&#x53CA;&#x8BA1;&#x7B97;&#x4EA4;&#x53C9;&#x635F;&#x5931;&#x71B5;</span>
+        cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=y_label, logits=y_logit)
+
+        <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x635F;&#x5931;&#x5E73;&#x5747;&#x503C;</span>
+        loss = tf.reduce_mean(cross_entropy)
+
+    <span class="hljs-keyword">return</span> loss
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train</span><span class="hljs-params">(loss, y_label, y_logit, global_step)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x5F97;&#x51FA;&#x51C6;&#x786E;&#x7387;
+    :param loss: &#x635F;&#x5931;&#x5927;&#x5C0F;
+    :return:
+    &quot;&quot;&quot;</span>
+    <span class="hljs-keyword">with</span> tf.variable_scope(<span class="hljs-string">&quot;train&quot;</span>):
+        <span class="hljs-comment"># &#x8BA9;&#x5B66;&#x4E60;&#x7387;&#x6839;&#x636E;&#x6B65;&#x4F10;&#xFF0C;&#x81EA;&#x52A8;&#x53D8;&#x6362;&#x5B66;&#x4E60;&#x7387;&#xFF0C;&#x6307;&#x5B9A;&#x4E86;&#x6BCF;10&#x6B65;&#x8870;&#x51CF;&#x57FA;&#x6570;&#x4E3A;0.99&#xFF0C;0.001&#x4E3A;&#x521D;&#x59CB;&#x7684;&#x5B66;&#x4E60;&#x7387;</span>
+        lr = tf.train.exponential_decay(<span class="hljs-number">0.001</span>,
+                                        global_step,
+                                        <span class="hljs-number">10</span>,
+                                        <span class="hljs-number">0.99</span>,
+                                        staircase=<span class="hljs-keyword">True</span>)
+
+        <span class="hljs-comment"># &#x4F18;&#x5316;&#x5668;</span>
+        train_op = tf.train.GradientDescentOptimizer(lr).minimize(loss, global_step=global_step)
+
+        <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x51C6;&#x786E;&#x7387;</span>
+        equal_list = tf.equal(tf.argmax(y_logit, <span class="hljs-number">1</span>), tf.argmax(y_label, <span class="hljs-number">1</span>))
+
+        accuracy = tf.reduce_mean(tf.cast(equal_list, tf.float32))
+
+    <span class="hljs-keyword">return</span> train_op, accuracy
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">input</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x83B7;&#x53D6;&#x8F93;&#x5165;&#x6570;&#x636E;
+    :return: image,label
+    &quot;&quot;&quot;</span>
+
+    <span class="hljs-comment"># &#x5B9E;&#x4F8B;&#x5316;</span>
+    cfr = cifar_data.CifarRead()
+
+    <span class="hljs-comment"># &#x751F;&#x6210;&#x5F20;&#x91CF;</span>
+    image_batch, lab_batch = cfr.read_tfrecords()
+
+    <span class="hljs-comment"># &#x5C06;&#x76EE;&#x6807;&#x503C;&#x8F6C;&#x6362;&#x4E3A;one-hot&#x7F16;&#x7801;&#x683C;&#x5F0F;</span>
+    label = tf.one_hot(label_batch, depth=<span class="hljs-number">10</span>, on_value=<span class="hljs-number">1.0</span>)
+
+    <span class="hljs-keyword">return</span> image_batch, label, label_batch
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../chapter6/section1.html" class="navigation navigation-prev " aria-label="Previous page: 图片信息的读取与写入"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../chapter6/section3.html" class="navigation navigation-next " aria-label="Next page: 训练以及高级会话函数"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"katex":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

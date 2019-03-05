@@ -1,0 +1,1047 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Scikit-learn数据集 | 机器学习课件</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../chapter2/section2.html" />
+    
+    
+    <link rel="prev" href="../chapter2/index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="2.1"
+        data-chapter-title="Scikit-learn数据集"
+        data-filepath="chapter2/section1.md"
+        data-basepath=".."
+        data-revision="Sun Sep 03 2017 21:46:41 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        机器学习引言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
+            
+                
+                    <a href="../chapter1/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        sklearn与特征工程
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="chapter1/section1.html">
+            
+                
+                    <a href="../chapter1/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        数据的来源与类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1/section2.html">
+            
+                
+                    <a href="../chapter1/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        数据的特征抽取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapter1/section3.html">
+            
+                
+                    <a href="../chapter1/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        数据的特征预处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="chapter1/section4.html">
+            
+                
+                    <a href="../chapter1/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        数据的特征选择
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2/index.html">
+            
+                
+                    <a href="../chapter2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        sklearn数据集与机器学习组成
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="2.1" data-path="chapter2/section1.html">
+            
+                
+                    <a href="../chapter2/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Scikit-learn数据集
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="chapter2/section2.html">
+            
+                
+                    <a href="../chapter2/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        模型的选择
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="chapter2/section3.html">
+            
+                
+                    <a href="../chapter2/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        模型检验-交叉验证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="chapter2/section4.html">
+            
+                
+                    <a href="../chapter2/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        sklearn的estimator
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter3/index.html">
+            
+                
+                    <a href="../chapter3/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        sklearn的分类器算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="chapter3/section1.html">
+            
+                
+                    <a href="../chapter3/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        分类算法之k-近邻
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="chapter3/section2.html">
+            
+                
+                    <a href="../chapter3/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        k-近邻算法案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="chapter3/section3.html">
+            
+                
+                    <a href="../chapter3/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        朴素贝叶斯
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="chapter3/section4.html">
+            
+                
+                    <a href="../chapter3/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        分类算法之逻辑回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="chapter3/section5.html">
+            
+                
+                    <a href="../chapter3/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        逻辑回归算法案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="chapter3/section6.html">
+            
+                
+                    <a href="../chapter3/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        分类器性能评估
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="chapter3/section7.html">
+            
+                
+                    <a href="../chapter3/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        分类算法之决策树、随机森林
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter4/index.html">
+            
+                
+                    <a href="../chapter4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        回归算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="chapter4/section1.html">
+            
+                
+                    <a href="../chapter4/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        回归算法之线性回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="chapter4/section2.html">
+            
+                
+                    <a href="../chapter4/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        线性回归案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="chapter4/section3.html">
+            
+                
+                    <a href="../chapter4/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        回归性能评估与欠拟合、过拟合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="chapter4/section4.html">
+            
+                
+                    <a href="../chapter4/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        回归算法之岭回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="chapter4/section5.html">
+            
+                
+                    <a href="../chapter4/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        岭回归案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter5/index.html">
+            
+                
+                    <a href="../chapter5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        非监督学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="chapter5/section1.html">
+            
+                
+                    <a href="../chapter5/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        非监督学习之k-means
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="chapter5/section2.html">
+            
+                
+                    <a href="../chapter5/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        k-means案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6/index.html">
+            
+                
+                    <a href="../chapter6/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        推荐系统
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="chapter6/section1.html">
+            
+                
+                    <a href="../chapter6/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        推荐系统评测
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="chapter6/section2.html">
+            
+                
+                    <a href="../chapter6/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        基于协同过滤的推荐系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="chapter6/section3.html">
+            
+                
+                    <a href="../chapter6/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        代码案例
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >机器学习课件</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="scikitlearn&#x6570;&#x636E;&#x96C6;">scikit-learn&#x6570;&#x636E;&#x96C6;</h1>
+<p>&#x6211;&#x4EEC;&#x5C06;&#x4ECB;&#x7ECD;sklearn&#x4E2D;&#x7684;&#x6570;&#x636E;&#x96C6;&#x7C7B;&#xFF0C;&#x6A21;&#x5757;&#x5305;&#x62EC;&#x7528;&#x4E8E;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x96C6;&#x7684;&#x5B9E;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x5305;&#x62EC;&#x52A0;&#x8F7D;&#x548C;&#x83B7;&#x53D6;&#x6D41;&#x884C;&#x53C2;&#x8003;&#x6570;&#x636E;&#x96C6;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5B83;&#x8FD8;&#x5177;&#x6709;&#x4E00;&#x4E9B;&#x4EBA;&#x5DE5;&#x6570;&#x636E;&#x751F;&#x6210;&#x5668;&#x3002;</p>
+<h2 id="sklearndatasets">sklearn.datasets</h2>
+<p><strong>&#xFF08;1&#xFF09;datasets.load_*()</strong></p>
+<p>&#x83B7;&#x53D6;&#x5C0F;&#x89C4;&#x6A21;&#x6570;&#x636E;&#x96C6;&#xFF0C;&#x6570;&#x636E;&#x5305;&#x542B;&#x5728;datasets&#x91CC;</p>
+<p><strong>&#xFF08;2&#xFF09;datasets.fetch_*()</strong></p>
+<p>&#x83B7;&#x53D6;&#x5927;&#x89C4;&#x6A21;&#x6570;&#x636E;&#x96C6;&#xFF0C;&#x9700;&#x8981;&#x4ECE;&#x7F51;&#x7EDC;&#x4E0A;&#x4E0B;&#x8F7D;&#xFF0C;&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;data_home&#xFF0C;&#x8868;&#x793A;&#x6570;&#x636E;&#x96C6;&#x4E0B;&#x8F7D;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F; ~/scikit_learn_data/&#xFF0C;&#x8981;&#x4FEE;&#x6539;&#x9ED8;&#x8BA4;&#x76EE;&#x5F55;&#xFF0C;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;SCIKIT_LEARN_DATA</p>
+<p><strong>&#xFF08;3&#xFF09;datasets.make_*()</strong></p>
+<p>&#x672C;&#x5730;&#x751F;&#x6210;&#x6570;&#x636E;&#x96C6;</p>
+<p><strong>load<em>*&#x548C; fetch</em>* &#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x662F; datasets.base.Bunch&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x4E00;&#x4E2A; dict&#xFF0C;&#x5B83;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x53EF;&#x7528;&#x901A;&#x8FC7;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x65B9;&#x5F0F;&#x8BBF;&#x95EE;&#x3002;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x4EE5;&#x4E0B;&#x5C5E;&#x6027;&#xFF1A;</strong></p>
+<ul>
+<li><p>data&#xFF1A;&#x7279;&#x5F81;&#x6570;&#x636E;&#x6570;&#x7EC4;&#xFF0C;&#x662F; n_samples * n_features &#x7684;&#x4E8C;&#x7EF4; numpy.ndarray &#x6570;&#x7EC4;</p>
+</li>
+<li><p>target&#xFF1A;&#x6807;&#x7B7E;&#x6570;&#x7EC4;&#xFF0C;&#x662F; n_samples &#x7684;&#x4E00;&#x7EF4; numpy.ndarray &#x6570;&#x7EC4;</p>
+</li>
+<li><p>DESCR&#xFF1A;&#x6570;&#x636E;&#x63CF;&#x8FF0;</p>
+</li>
+<li><p>feature_names&#xFF1A;&#x7279;&#x5F81;&#x540D;</p>
+</li>
+<li><p>target_names&#xFF1A;&#x6807;&#x7B7E;&#x540D;</p>
+</li>
+</ul>
+<p><strong>&#x6570;&#x636E;&#x96C6;&#x76EE;&#x5F55;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;datasets.get_data_home()&#x83B7;&#x53D6;&#xFF0C;clear_data_home(data_home=None)&#x5220;&#x9664;&#x6240;&#x6709;&#x4E0B;&#x8F7D;&#x6570;&#x636E;</strong></p>
+<ul>
+<li>datasets.get_data_home(data_home=None)</li>
+</ul>
+<p>&#x8FD4;&#x56DE;scikit&#x5B66;&#x4E60;&#x6570;&#x636E;&#x76EE;&#x5F55;&#x7684;&#x8DEF;&#x5F84;&#x3002;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x88AB;&#x4E00;&#x4E9B;&#x5927;&#x7684;&#x6570;&#x636E;&#x96C6;&#x88C5;&#x8F7D;&#x5668;&#x4F7F;&#x7528;&#xFF0C;&#x4EE5;&#x907F;&#x514D;&#x4E0B;&#x8F7D;&#x6570;&#x636E;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6570;&#x636E;&#x76EE;&#x5F55;&#x8BBE;&#x7F6E;&#x4E3A;&#x7528;&#x6237;&#x4E3B;&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x540D;&#x4E3A;&#x201C;scikit_learn_data&#x201D;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x3002;&#x6216;&#x8005;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x201C;SCIKIT_LEARN_DATA&#x201D;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x6216;&#x901A;&#x8FC7;&#x7ED9;&#x51FA;&#x663E;&#x5F0F;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x8DEF;&#x5F84;&#x4EE5;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F;&#x8BBE;&#x7F6E;&#x5B83;&#x3002;&apos;&#x301C;&apos;&#x7B26;&#x53F7;&#x6269;&#x5C55;&#x5230;&#x7528;&#x6237;&#x4E3B;&#x6587;&#x4EF6;&#x5939;&#x3002;&#x5982;&#x679C;&#x6587;&#x4EF6;&#x5939;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x3002;</p>
+<ul>
+<li>sklearn.datasets.clear_data_home(data_home=None)</li>
+</ul>
+<p>&#x5220;&#x9664;&#x5B58;&#x50A8;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x6570;&#x636E;</p>
+<h2 id="&#x83B7;&#x53D6;&#x5C0F;&#x6570;&#x636E;&#x96C6;">&#x83B7;&#x53D6;&#x5C0F;&#x6570;&#x636E;&#x96C6;</h2>
+<p><strong>&#x7528;&#x4E8E;&#x5206;&#x7C7B;</strong></p>
+<ul>
+<li>sklearn.datasets.load_iris</li>
+</ul>
+<pre><code class="lang-python">class sklearn.datasets.load_iris(return_X_y=False)
+  &quot;&quot;&quot;
+  &#x52A0;&#x8F7D;&#x5E76;&#x8FD4;&#x56DE;&#x8679;&#x819C;&#x6570;&#x636E;&#x96C6;
+
+  :param return_X_y: &#x5982;&#x679C;&#x4E3A;True&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x800C;&#x4E0D;&#x662F;Bunch&#x5BF9;&#x8C61;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;False
+
+  :return: Bunch&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;return_X_y&#x4E3A;True&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE;tuple&#xFF0C;&#xFF08;data,target&#xFF09;
+  &quot;&quot;&quot;
+</code></pre>
+<pre><code class="lang-python">In [<span class="hljs-number">12</span>]: <span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_iris
+    ...: data = load_iris()
+    ...:
+
+In [<span class="hljs-number">13</span>]: data.target
+Out[<span class="hljs-number">13</span>]:
+array([<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,
+       <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,
+       <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,
+       <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,
+       <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>,
+       <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>,
+       <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>])
+
+In [<span class="hljs-number">14</span>]: data.feature_names
+Out[<span class="hljs-number">14</span>]:
+[<span class="hljs-string">&apos;sepal length (cm)&apos;</span>,
+ <span class="hljs-string">&apos;sepal width (cm)&apos;</span>,
+ <span class="hljs-string">&apos;petal length (cm)&apos;</span>,
+ <span class="hljs-string">&apos;petal width (cm)&apos;</span>]
+
+In [<span class="hljs-number">15</span>]: data.target_names
+Out[<span class="hljs-number">15</span>]:
+array([<span class="hljs-string">&apos;setosa&apos;</span>, <span class="hljs-string">&apos;versicolor&apos;</span>, <span class="hljs-string">&apos;virginica&apos;</span>],
+      dtype=<span class="hljs-string">&apos;|S10&apos;</span>)
+
+In [<span class="hljs-number">17</span>]: data.target[[<span class="hljs-number">1</span>,<span class="hljs-number">10</span>, <span class="hljs-number">100</span>]]
+Out[<span class="hljs-number">17</span>]: array([<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>])
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x540D;&#x79F0;</th>
+<th style="text-align:right">&#x6570;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x7C7B;&#x522B;</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x7279;&#x5F81;</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x6837;&#x672C;&#x6570;&#x91CF;</td>
+<td style="text-align:right">150</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x6BCF;&#x4E2A;&#x7C7B;&#x522B;&#x6570;&#x91CF;</td>
+<td style="text-align:right">50</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>sklearn.datasets.load_digits</li>
+</ul>
+<pre><code class="lang-python">class sklearn.datasets.load_digits(n_class=10, return_X_y=False)
+    &quot;&quot;&quot;
+    &#x52A0;&#x8F7D;&#x5E76;&#x8FD4;&#x56DE;&#x6570;&#x5B57;&#x6570;&#x636E;&#x96C6;
+
+    :param n_class: &#x6574;&#x6570;&#xFF0C;&#x4ECB;&#x4E8E;0&#x548C;10&#x4E4B;&#x95F4;&#xFF0C;&#x53EF;&#x9009;&#xFF08;&#x9ED8;&#x8BA4;= 10&#xFF0C;&#x8981;&#x8FD4;&#x56DE;&#x7684;&#x7C7B;&#x7684;&#x6570;&#x91CF;
+
+    :param return_X_y: &#x5982;&#x679C;&#x4E3A;True&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x800C;&#x4E0D;&#x662F;Bunch&#x5BF9;&#x8C61;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;False
+
+    :return: Bunch&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;return_X_y&#x4E3A;True&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE;tuple&#xFF0C;&#xFF08;data,target&#xFF09;
+    &quot;&quot;&quot;
+</code></pre>
+<pre><code class="lang-python">In [<span class="hljs-number">20</span>]: <span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_digits
+
+In [<span class="hljs-number">21</span>]: digits = load_digits()
+
+In [<span class="hljs-number">22</span>]: print(digits.data.shape)
+(<span class="hljs-number">1797</span>, <span class="hljs-number">64</span>)
+
+In [<span class="hljs-number">23</span>]: digits.target
+Out[<span class="hljs-number">23</span>]: array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, ..., <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">8</span>])
+
+In [<span class="hljs-number">24</span>]: digits.target_names
+Out[<span class="hljs-number">24</span>]: array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])
+
+In [<span class="hljs-number">25</span>]: digits.images
+Out[<span class="hljs-number">25</span>]:
+array([[[  <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>,   <span class="hljs-number">5.</span>, ...,   <span class="hljs-number">1.</span>,   <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>],
+        [  <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>,  <span class="hljs-number">13.</span>, ...,  <span class="hljs-number">15.</span>,   <span class="hljs-number">5.</span>,   <span class="hljs-number">0.</span>],
+        [  <span class="hljs-number">0.</span>,   <span class="hljs-number">3.</span>,  <span class="hljs-number">15.</span>, ...,  <span class="hljs-number">11.</span>,   <span class="hljs-number">8.</span>,   <span class="hljs-number">0.</span>],
+        ...,
+        [  <span class="hljs-number">0.</span>,   <span class="hljs-number">4.</span>,  <span class="hljs-number">11.</span>, ...,  <span class="hljs-number">12.</span>,   <span class="hljs-number">7.</span>,   <span class="hljs-number">0.</span>],
+        [  <span class="hljs-number">0.</span>,   <span class="hljs-number">2.</span>,  <span class="hljs-number">14.</span>, ...,  <span class="hljs-number">12.</span>,   <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>],
+        [  <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>,   <span class="hljs-number">6.</span>, ...,   <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>]],
+
+        [[  <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>,  <span class="hljs-number">10.</span>, ...,   <span class="hljs-number">1.</span>,   <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>],
+        [  <span class="hljs-number">0.</span>,   <span class="hljs-number">2.</span>,  <span class="hljs-number">16.</span>, ...,   <span class="hljs-number">1.</span>,   <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>],
+        [  <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>,  <span class="hljs-number">15.</span>, ...,  <span class="hljs-number">15.</span>,   <span class="hljs-number">0.</span>,   <span class="hljs-number">0.</span>],
+        ...,
+        [  <span class="hljs-number">0.</span>,   <span class="hljs-number">4.</span>,  <span class="hljs-number">16.</span>, ...,  <span class="hljs-number">16.</span>,   <span class="hljs-number">6.</span>,   <span class="hljs-number">0.</span>],
+        [  <span class="hljs-number">0.</span>,   <span class="hljs-number">8.</span>,  <span class="hljs-number">16.</span>, ...,  <span class="hljs-number">16.</span>,   <span class="hljs-number">8.</span>,   <span class="hljs-number">0.</span>],
+        [  <span class="hljs-number">0.</span>,   <span class="hljs-number">1.</span>,   <span class="hljs-number">8.</span>, ...,  <span class="hljs-number">12.</span>,   <span class="hljs-number">1.</span>,   <span class="hljs-number">0.</span>]]])
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x540D;&#x79F0;</th>
+<th style="text-align:right">&#x6570;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x7C7B;&#x522B;</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x7279;&#x5F81;</td>
+<td style="text-align:right">64</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x6837;&#x672C;&#x6570;&#x91CF;</td>
+<td style="text-align:right">1797</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#x7528;&#x4E8E;&#x56DE;&#x5F52;</strong></p>
+<ul>
+<li>sklearn.datasets.load_boston</li>
+</ul>
+<pre><code class="lang-python">class  sklearn.datasets.load_boston(return_X_y=False)
+  &quot;&quot;&quot;
+  &#x52A0;&#x8F7D;&#x5E76;&#x8FD4;&#x56DE;&#x6CE2;&#x58EB;&#x987F;&#x623F;&#x4EF7;&#x6570;&#x636E;&#x96C6;
+
+  :param return_X_y: &#x5982;&#x679C;&#x4E3A;True&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x800C;&#x4E0D;&#x662F;Bunch&#x5BF9;&#x8C61;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;False
+
+  :return: Bunch&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;return_X_y&#x4E3A;True&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE;tuple&#xFF0C;&#xFF08;data,target&#xFF09;
+  &quot;&quot;&quot;
+</code></pre>
+<pre><code class="lang-python">In [<span class="hljs-number">34</span>]: <span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_boston
+
+In [<span class="hljs-number">35</span>]: boston = load_boston()
+
+In [<span class="hljs-number">36</span>]: boston.data.shape
+Out[<span class="hljs-number">36</span>]: (<span class="hljs-number">506</span>, <span class="hljs-number">13</span>)
+
+In [<span class="hljs-number">37</span>]: boston.feature_names
+Out[<span class="hljs-number">37</span>]:
+array([<span class="hljs-string">&apos;CRIM&apos;</span>, <span class="hljs-string">&apos;ZN&apos;</span>, <span class="hljs-string">&apos;INDUS&apos;</span>, <span class="hljs-string">&apos;CHAS&apos;</span>, <span class="hljs-string">&apos;NOX&apos;</span>, <span class="hljs-string">&apos;RM&apos;</span>, <span class="hljs-string">&apos;AGE&apos;</span>, <span class="hljs-string">&apos;DIS&apos;</span>, <span class="hljs-string">&apos;RAD&apos;</span>,
+       <span class="hljs-string">&apos;TAX&apos;</span>, <span class="hljs-string">&apos;PTRATIO&apos;</span>, <span class="hljs-string">&apos;B&apos;</span>, <span class="hljs-string">&apos;LSTAT&apos;</span>],
+      dtype=<span class="hljs-string">&apos;|S7&apos;</span>)
+
+In [<span class="hljs-number">38</span>]:
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x540D;&#x79F0;</th>
+<th style="text-align:right">&#x6570;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x76EE;&#x6807;&#x7C7B;&#x522B;</td>
+<td style="text-align:right">5-50</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x7279;&#x5F81;</td>
+<td style="text-align:right">13</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x6837;&#x672C;&#x6570;&#x91CF;</td>
+<td style="text-align:right">506</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>sklearn.datasets.load_diabetes</li>
+</ul>
+<pre><code class="lang-python">class sklearn.datasets.load_diabetes(return_X_y=False)
+  &quot;&quot;&quot;
+  &#x52A0;&#x8F7D;&#x548C;&#x8FD4;&#x56DE;&#x7CD6;&#x5C3F;&#x75C5;&#x6570;&#x636E;&#x96C6;
+
+  :param return_X_y: &#x5982;&#x679C;&#x4E3A;True&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x800C;&#x4E0D;&#x662F;Bunch&#x5BF9;&#x8C61;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;False
+
+  :return: Bunch&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;return_X_y&#x4E3A;True&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE;tuple&#xFF0C;&#xFF08;data,target&#xFF09;
+  &quot;&quot;&quot;
+</code></pre>
+<pre><code class="lang-python">In [<span class="hljs-number">13</span>]:  <span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_diabetes
+
+In [<span class="hljs-number">14</span>]: diabetes = load_diabetes()
+
+In [<span class="hljs-number">15</span>]: diabetes.data
+Out[<span class="hljs-number">15</span>]:
+array([[ <span class="hljs-number">0.03807591</span>,  <span class="hljs-number">0.05068012</span>,  <span class="hljs-number">0.06169621</span>, ..., -<span class="hljs-number">0.00259226</span>,
+         <span class="hljs-number">0.01990842</span>, -<span class="hljs-number">0.01764613</span>],
+       [-<span class="hljs-number">0.00188202</span>, -<span class="hljs-number">0.04464164</span>, -<span class="hljs-number">0.05147406</span>, ..., -<span class="hljs-number">0.03949338</span>,
+        -<span class="hljs-number">0.06832974</span>, -<span class="hljs-number">0.09220405</span>],
+       [ <span class="hljs-number">0.08529891</span>,  <span class="hljs-number">0.05068012</span>,  <span class="hljs-number">0.04445121</span>, ..., -<span class="hljs-number">0.00259226</span>,
+         <span class="hljs-number">0.00286377</span>, -<span class="hljs-number">0.02593034</span>],
+       ...,
+       [ <span class="hljs-number">0.04170844</span>,  <span class="hljs-number">0.05068012</span>, -<span class="hljs-number">0.01590626</span>, ..., -<span class="hljs-number">0.01107952</span>,
+        -<span class="hljs-number">0.04687948</span>,  <span class="hljs-number">0.01549073</span>],
+       [-<span class="hljs-number">0.04547248</span>, -<span class="hljs-number">0.04464164</span>,  <span class="hljs-number">0.03906215</span>, ...,  <span class="hljs-number">0.02655962</span>,
+         <span class="hljs-number">0.04452837</span>, -<span class="hljs-number">0.02593034</span>],
+       [-<span class="hljs-number">0.04547248</span>, -<span class="hljs-number">0.04464164</span>, -<span class="hljs-number">0.0730303</span> , ..., -<span class="hljs-number">0.03949338</span>,
+        -<span class="hljs-number">0.00421986</span>,  <span class="hljs-number">0.00306441</span>]])
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x540D;&#x79F0;</th>
+<th style="text-align:right">&#x6570;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x76EE;&#x6807;&#x8303;&#x56F4;</td>
+<td style="text-align:right">25-346</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x7279;&#x5F81;</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x6837;&#x672C;&#x6570;&#x91CF;</td>
+<td style="text-align:right">442</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x83B7;&#x53D6;&#x5927;&#x6570;&#x636E;&#x96C6;">&#x83B7;&#x53D6;&#x5927;&#x6570;&#x636E;&#x96C6;</h2>
+<ul>
+<li>sklearn.datasets.fetch_20newsgroups</li>
+</ul>
+<pre><code class="lang-python">class sklearn.datasets.fetch_20newsgroups(data_home=None, subset=&apos;train&apos;, categories=None, shuffle=True, random_state=42, remove=(), download_if_missing=True)
+  &quot;&quot;&quot;
+  &#x52A0;&#x8F7D;20&#x4E2A;&#x65B0;&#x95FB;&#x7EC4;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x548C;&#x6570;&#x636E;
+
+  :param subset: &apos;train&apos;&#x6216;&#x8005;&apos;test&apos;,&apos;all&apos;&#xFF0C;&#x53EF;&#x9009;&#xFF0C;&#x9009;&#x62E9;&#x8981;&#x52A0;&#x8F7D;&#x7684;&#x6570;&#x636E;&#x96C6;&#xFF1A;&#x8BAD;&#x7EC3;&#x96C6;&#x7684;&#x201C;&#x8BAD;&#x7EC3;&#x201D;&#xFF0C;&#x6D4B;&#x8BD5;&#x96C6;&#x7684;&#x201C;&#x6D4B;&#x8BD5;&#x201D;&#xFF0C;&#x4E24;&#x8005;&#x7684;&#x201C;&#x5168;&#x90E8;&#x201D;&#xFF0C;&#x5177;&#x6709;&#x6D17;&#x724C;&#x987A;&#x5E8F;
+
+
+  :param data_home: &#x53EF;&#x9009;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#xFF1A;&#x65E0;&#xFF0C;&#x6307;&#x5B9A;&#x6570;&#x636E;&#x96C6;&#x7684;&#x4E0B;&#x8F7D;&#x548C;&#x7F13;&#x5B58;&#x6587;&#x4EF6;&#x5939;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x6240;&#x6709;scikit&#x5B66;&#x4E60;&#x6570;&#x636E;&#x90FD;&#x5B58;&#x50A8;&#x5728;&apos;&#x301C;/ scikit_learn_data&apos;&#x5B50;&#x6587;&#x4EF6;&#x5939;&#x4E2D;
+
+  :param categories: &#x65E0;&#x6216;&#x5B57;&#x7B26;&#x4E32;&#x6216;Unicode&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF08;&#x9ED8;&#x8BA4;&#xFF09;&#xFF0C;&#x52A0;&#x8F7D;&#x6240;&#x6709;&#x7C7B;&#x522B;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x65E0;&#xFF0C;&#x8981;&#x52A0;&#x8F7D;&#x7684;&#x7C7B;&#x522B;&#x540D;&#x79F0;&#x5217;&#x8868;&#xFF08;&#x5FFD;&#x7565;&#x5176;&#x4ED6;&#x7C7B;&#x522B;&#xFF09;
+
+  :param shuffle: &#x662F;&#x5426;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6D17;&#x724C;
+
+  :param random_state: numpy&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#x6216;&#x79CD;&#x5B50;&#x6574;&#x6570;
+
+  :param download_if_missing: &#x53EF;&#x9009;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;True&#xFF0C;&#x5982;&#x679C;False&#xFF0C;&#x5982;&#x679C;&#x6570;&#x636E;&#x4E0D;&#x5728;&#x672C;&#x5730;&#x53EF;&#x7528;&#x800C;&#x4E0D;&#x662F;&#x5C1D;&#x8BD5;&#x4ECE;&#x6E90;&#x7AD9;&#x70B9;&#x4E0B;&#x8F7D;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x5F15;&#x53D1;IOError
+
+  :param remove: &#x5143;&#x7EC4;
+  &quot;&quot;&quot;
+</code></pre>
+<pre><code class="lang-python">In [<span class="hljs-number">29</span>]: <span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> fetch_20newsgroups
+
+In [<span class="hljs-number">30</span>]: data_test = fetch_20newsgroups(subset=<span class="hljs-string">&apos;test&apos;</span>,shuffle=<span class="hljs-keyword">True</span>, random_sta
+    ...: te=<span class="hljs-number">42</span>)
+
+In [<span class="hljs-number">31</span>]: data_train = fetch_20newsgroups(subset=<span class="hljs-string">&apos;train&apos;</span>,shuffle=<span class="hljs-keyword">True</span>, random_s
+    ...: tate=<span class="hljs-number">42</span>)
+</code></pre>
+<ul>
+<li>sklearn.datasets.fetch_20newsgroups_vectorized</li>
+</ul>
+<pre><code class="lang-python">class sklearn.datasets.fetch_20newsgroups_vectorized(subset=&apos;train&apos;, remove=(), data_home=None)
+  &quot;&quot;&quot;
+  &#x52A0;&#x8F7D;20&#x4E2A;&#x65B0;&#x95FB;&#x7EC4;&#x6570;&#x636E;&#x96C6;&#x5E76;&#x5C06;&#x5176;&#x8F6C;&#x6362;&#x4E3A;tf-idf&#x5411;&#x91CF;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x65B9;&#x4FBF;&#x7684;&#x529F;&#x80FD;; &#x4F7F;&#x7528;sklearn.feature_extraction.text.Vectorizer&#x7684;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#x5B8C;&#x6210;tf-idf &#x8F6C;&#x6362;&#x3002;&#x5BF9;&#x4E8E;&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x4F7F;&#x7528;&#xFF08;&#x505C;&#x6B62;&#x8BCD;&#x8FC7;&#x6EE4;&#xFF0C;n-gram&#x63D0;&#x53D6;&#x7B49;&#xFF09;&#xFF0C;&#x5C06;fetch_20newsgroup&#x4E0E;&#x81EA;&#x5B9A;&#x4E49;Vectorizer&#x6216;CountVectorizer&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;
+
+  :param subset: &apos;train&apos;&#x6216;&#x8005;&apos;test&apos;,&apos;all&apos;&#xFF0C;&#x53EF;&#x9009;&#xFF0C;&#x9009;&#x62E9;&#x8981;&#x52A0;&#x8F7D;&#x7684;&#x6570;&#x636E;&#x96C6;&#xFF1A;&#x8BAD;&#x7EC3;&#x96C6;&#x7684;&#x201C;&#x8BAD;&#x7EC3;&#x201D;&#xFF0C;&#x6D4B;&#x8BD5;&#x96C6;&#x7684;&#x201C;&#x6D4B;&#x8BD5;&#x201D;&#xFF0C;&#x4E24;&#x8005;&#x7684;&#x201C;&#x5168;&#x90E8;&#x201D;&#xFF0C;&#x5177;&#x6709;&#x6D17;&#x724C;&#x987A;&#x5E8F;
+
+  :param data_home: &#x53EF;&#x9009;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#xFF1A;&#x65E0;&#xFF0C;&#x6307;&#x5B9A;&#x6570;&#x636E;&#x96C6;&#x7684;&#x4E0B;&#x8F7D;&#x548C;&#x7F13;&#x5B58;&#x6587;&#x4EF6;&#x5939;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x6240;&#x6709;scikit&#x5B66;&#x4E60;&#x6570;&#x636E;&#x90FD;&#x5B58;&#x50A8;&#x5728;&apos;&#x301C;/ scikit_learn_data&apos;&#x5B50;&#x6587;&#x4EF6;&#x5939;&#x4E2D;
+
+  :param remove: &#x5143;&#x7EC4;
+  &quot;&quot;&quot;
+</code></pre>
+<pre><code class="lang-python">In [<span class="hljs-number">57</span>]: <span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> fetch_20newsgroups_vectorized
+
+In [<span class="hljs-number">58</span>]: bunch = fetch_20newsgroups_vectorized(subset=<span class="hljs-string">&apos;all&apos;</span>)
+
+In [<span class="hljs-number">59</span>]: <span class="hljs-keyword">from</span> sklearn.utils <span class="hljs-keyword">import</span> shuffle
+
+In [<span class="hljs-number">60</span>]: X, y = shuffle(bunch.data, bunch.target)
+    ...: offset = int(X.shape[<span class="hljs-number">0</span>] * <span class="hljs-number">0.8</span>)
+    ...: X_train, y_train = X[:offset], y[:offset]
+    ...: X_test, y_test = X[offset:], y[offset:]
+    ...:
+</code></pre>
+<h2 id="&#x83B7;&#x53D6;&#x672C;&#x5730;&#x751F;&#x6210;&#x6570;&#x636E;">&#x83B7;&#x53D6;&#x672C;&#x5730;&#x751F;&#x6210;&#x6570;&#x636E;</h2>
+<p>&#x751F;&#x6210;&#x672C;&#x5730;&#x5206;&#x7C7B;&#x6570;&#x636E;&#xFF1A;</p>
+<ul>
+<li><p>sklearn.datasets.make_classification</p>
+<pre><code class="lang-python">class make_classification(n_samples=100, n_features=20, n_informative=2, n_redundant=2, n_repeated=0, n_classes=2, n_clusters_per_class=2, weights=None, flip_y=0.01, class_sep=1.0, hypercube=True, shift=0.0, scale=1.0, shuffle=True, random_state=None)
+&quot;&quot;&quot;
+&#x751F;&#x6210;&#x7528;&#x4E8E;&#x5206;&#x7C7B;&#x7684;&#x6570;&#x636E;&#x96C6;
+
+:param n_samples:int&#xFF0C;optional&#xFF08;default = 100)&#xFF0C;&#x6837;&#x672C;&#x6570;&#x91CF;
+
+:param n_features:int&#xFF0C;&#x53EF;&#x9009;&#xFF08;&#x9ED8;&#x8BA4;= 20&#xFF09;&#xFF0C;&#x7279;&#x5F81;&#x603B;&#x6570;
+
+:param n_classes:int&#xFF0C;&#x53EF;&#x9009;&#xFF08;default = 2),&#x7C7B;&#xFF08;&#x6216;&#x6807;&#x7B7E;&#xFF09;&#x7684;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x6570;&#x91CF;
+
+:param random_state:int&#xFF0C;RandomState&#x5B9E;&#x4F8B;&#x6216;&#x65E0;&#xFF0C;&#x53EF;&#x9009;&#xFF08;&#x9ED8;&#x8BA4;=&#x65E0;&#xFF09;
+  &#x5982;&#x679C;int&#xFF0C;random_state&#x662F;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#x4F7F;&#x7528;&#x7684;&#x79CD;&#x5B50;; &#x5982;&#x679C;RandomState&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;random_state&#x662F;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;; &#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#x6240;&#x4F7F;&#x7528;&#x7684;RandomState&#x5B9E;&#x4F8B;np.random
+
+:return :X,&#x7279;&#x5F81;&#x6570;&#x636E;&#x96C6;&#xFF1B;y,&#x76EE;&#x6807;&#x5206;&#x7C7B;&#x503C;
+&quot;&quot;&quot;
+</code></pre>
+</li>
+</ul>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> sklearn.datasets.samples_generator <span class="hljs-keyword">import</span> make_classification
+X,y= datasets.make_classification(n_samples=<span class="hljs-number">100000</span>, n_features=<span class="hljs-number">20</span>,n_informative=<span class="hljs-number">2</span>, n_redundant=<span class="hljs-number">10</span>,random_state=<span class="hljs-number">42</span>)
+</code></pre>
+<p>&#x751F;&#x6210;&#x672C;&#x5730;&#x56DE;&#x5F52;&#x6570;&#x636E;&#xFF1A;</p>
+<ul>
+<li>sklearn.datasets.make_regression</li>
+</ul>
+<pre><code class="lang-python">class make_regression(n_samples=100, n_features=100, n_informative=10, n_targets=1, bias=0.0, effective_rank=None, tail_strength=0.5, noise=0.0, shuffle=True, coef=False, random_state=None)
+  &quot;&quot;&quot;
+  &#x751F;&#x6210;&#x7528;&#x4E8E;&#x56DE;&#x5F52;&#x7684;&#x6570;&#x636E;&#x96C6;
+
+  :param n_samples:int&#xFF0C;optional&#xFF08;default = 100)&#xFF0C;&#x6837;&#x672C;&#x6570;&#x91CF;
+
+  :param  n_features:int,optional&#xFF08;default = 100)&#xFF0C;&#x7279;&#x5F81;&#x6570;&#x91CF;
+
+  :param  coef:boolean&#xFF0C;optional&#xFF08;default = False&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x4E3A;True&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x5E95;&#x5C42;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#x7684;&#x7CFB;&#x6570;
+
+  :param random_state:int&#xFF0C;RandomState&#x5B9E;&#x4F8B;&#x6216;&#x65E0;&#xFF0C;&#x53EF;&#x9009;&#xFF08;&#x9ED8;&#x8BA4;=&#x65E0;&#xFF09;
+    &#x5982;&#x679C;int&#xFF0C;random_state&#x662F;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#x4F7F;&#x7528;&#x7684;&#x79CD;&#x5B50;; &#x5982;&#x679C;RandomState&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;random_state&#x662F;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;; &#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#x6240;&#x4F7F;&#x7528;&#x7684;RandomState&#x5B9E;&#x4F8B;np.random
+
+  :return :X,&#x7279;&#x5F81;&#x6570;&#x636E;&#x96C6;&#xFF1B;y,&#x76EE;&#x6807;&#x503C;
+  &quot;&quot;&quot;
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> sklearn.datasets.samples_generator <span class="hljs-keyword">import</span> make_regression
+X, y = make_regression(n_samples=<span class="hljs-number">200</span>, n_features=<span class="hljs-number">5000</span>, random_state=<span class="hljs-number">42</span>)
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../chapter2/index.html" class="navigation navigation-prev " aria-label="Previous page: sklearn数据集与机器学习组成"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../chapter2/section2.html" class="navigation navigation-next " aria-label="Next page: 模型的选择"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"katex":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

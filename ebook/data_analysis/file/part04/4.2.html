@@ -1,0 +1,810 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <!-- Start book Python数据分析课程讲义 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Seaborn绘图 | Python数据分析课程讲义</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="BigCat">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-tbfed-pagefooter/footer.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../file/part04/4.3.html" />
+    
+    
+    <link rel="prev" href="../../file/part04/4.1.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="4.2"
+        data-chapter-title="Seaborn绘图"
+        data-filepath="file/part04/4.2.md"
+        data-basepath="../.."
+        data-revision="Thu Apr 27 2017 00:50:19 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        传智播客Python学院数据分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="file/part01/1.html">
+            
+                
+                    <a href="../../file/part01/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        一、工作环境准备及数据分析建模理论基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="file/part01/1.1.html">
+            
+                
+                    <a href="../../file/part01/1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Python 3.x新特性和编码回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="file/part01/1.2.html">
+            
+                
+                    <a href="../../file/part01/1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        DIKW模型与数据工程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="file/part01/1.3.html">
+            
+                
+                    <a href="../../file/part01/1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        数据分析建模理论基础
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="file/part02/2.html">
+            
+                
+                    <a href="../../file/part02/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        二、科学计算工具NumPy
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="file/part02/2.1.html">
+            
+                
+                    <a href="../../file/part02/2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        ndarray的创建与数据类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="file/part02/2.2.html">
+            
+                
+                    <a href="../../file/part02/2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        ndarray的矩阵处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="file/part02/2.3.html">
+            
+                
+                    <a href="../../file/part02/2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        ndarray的元素处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="file/part02/2.4.html">
+            
+                
+                    <a href="../../file/part02/2.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        实战案例：2016美国总统大选民意调查统计
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="file/part03/3.html">
+            
+                
+                    <a href="../../file/part03/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        三、数据分析工具Pandas
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="file/part03/3.1.html">
+            
+                
+                    <a href="../../file/part03/3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Pandas的数据结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="file/part03/3.2.html">
+            
+                
+                    <a href="../../file/part03/3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Pandas的索引操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="file/part03/3.3.html">
+            
+                
+                    <a href="../../file/part03/3.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        Pandas的对齐运算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="file/part03/3.4.html">
+            
+                
+                    <a href="../../file/part03/3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        Pandas的函数应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="file/part03/3.5.html">
+            
+                
+                    <a href="../../file/part03/3.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        Pandas的层级索引
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="file/part03/3.6.html">
+            
+                
+                    <a href="../../file/part03/3.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        Pandas统计计算和描述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="file/part03/3.7.html">
+            
+                
+                    <a href="../../file/part03/3.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        Pandas分组与聚合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="file/part03/3.8.html">
+            
+                
+                    <a href="../../file/part03/3.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        数据清洗、合并、转化和重构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="file/part03/3.9.html">
+            
+                
+                    <a href="../../file/part03/3.9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        聚类模型 -- K-Means介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="file/part03/3.10.html">
+            
+                
+                    <a href="../../file/part03/3.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                        实战案例：全球食品数据分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="file/part04/4.html">
+            
+                
+                    <a href="../../file/part04/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        四、数据可视化工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="file/part04/4.1.html">
+            
+                
+                    <a href="../../file/part04/4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Matplotlib绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.2" data-path="file/part04/4.2.html">
+            
+                
+                    <a href="../../file/part04/4.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        Seaborn绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="file/part04/4.3.html">
+            
+                
+                    <a href="../../file/part04/4.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Bokeh绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="file/part04/4.4.html">
+            
+                
+                    <a href="../../file/part04/4.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        实战案例：世界高峰数据可视化
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="file/part06/6.html">
+            
+                
+                    <a href="../../file/part06/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        五、自然语言处理NLTK
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="file/part06/6.1.html">
+            
+                
+                    <a href="../../file/part06/6.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        NLTK与自然语言处理基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="file/part06/6.2.html">
+            
+                
+                    <a href="../../file/part06/6.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        jieba分词
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="file/part06/6.3.html">
+            
+                
+                    <a href="../../file/part06/6.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        情感分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="file/part06/6.4.html">
+            
+                
+                    <a href="../../file/part06/6.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        文本相似度和分类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="file/part06/6.6.html">
+            
+                
+                    <a href="../../file/part06/6.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        实战案例：微博情感分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >Python数据分析课程讲义</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <p><img src="../images/Seaborn_logo.png" alt=""></p>
+<p><a href="http://seaborn.pydata.org/index.html" target="_blank">http://seaborn.pydata.org/index.html</a></p>
+<p>Seaborn&#x5176;&#x5B9E;&#x662F;&#x5728;matplotlib&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x8FDB;&#x884C;&#x4E86;&#x66F4;&#x9AD8;&#x7EA7;&#x7684;API&#x5C01;&#x88C5;&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x5F97;&#x4F5C;&#x56FE;&#x66F4;&#x52A0;&#x5BB9;&#x6613;&#xFF0C;&#x5728;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;seaborn&#x5C31;&#x80FD;&#x505A;&#x51FA;&#x5F88;&#x5177;&#x6709;&#x5438;&#x5F15;&#x529B;&#x7684;&#x56FE;&#xFF0C;&#x800C;&#x4F7F;&#x7528;matplotlib&#x5C31;&#x80FD;&#x5236;&#x4F5C;&#x5177;&#x6709;&#x66F4;&#x591A;&#x7279;&#x8272;&#x7684;&#x56FE;&#x3002;&#x5E94;&#x8BE5;&#x628A;Seaborn&#x89C6;&#x4E3A;matplotlib&#x7684;&#x8865;&#x5145;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x66FF;&#x4EE3;&#x7269;&#x3002;</p>
+<ul>
+<li><p>Python&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5236;&#x56FE;&#x5DE5;&#x5177;&#x5E93;&#xFF0C;&#x53EF;&#x4EE5;&#x5236;&#x4F5C;&#x51FA;&#x5438;&#x5F15;&#x4EBA;&#x7684;&#x3001;&#x4FE1;&#x606F;&#x91CF;&#x5927;&#x7684;&#x7EDF;&#x8BA1;&#x56FE;</p>
+</li>
+<li><p>&#x5728;Matplotlib&#x4E0A;&#x6784;&#x5EFA;&#xFF0C;&#x652F;&#x6301;numpy&#x548C;pandas&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x53EF;&#x89C6;&#x5316;&#x3002;</p>
+</li>
+<li><p>&#x591A;&#x4E2A;&#x5185;&#x7F6E;&#x4E3B;&#x9898;&#x53CA;&#x989C;&#x8272;&#x4E3B;&#x9898;</p>
+</li>
+<li><p>&#x53EF;&#x89C6;&#x5316;&#x5355;&#x4E00;&#x53D8;&#x91CF;&#x3001;&#x4E8C;&#x7EF4;&#x53D8;&#x91CF;&#x7528;&#x4E8E;&#x6BD4;&#x8F83;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x5404;&#x53D8;&#x91CF;&#x7684;&#x5206;&#x5E03;&#x60C5;&#x51B5;</p>
+</li>
+<li><p>&#x53EF;&#x89C6;&#x5316;&#x7EBF;&#x6027;&#x56DE;&#x5F52;&#x6A21;&#x578B;&#x4E2D;&#x7684;&#x72EC;&#x7ACB;&#x53D8;&#x91CF;&#x53CA;&#x4E0D;&#x72EC;&#x7ACB;&#x53D8;&#x91CF;</p>
+</li>
+</ul>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-comment"># from scipy import stats</span>
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns
+<span class="hljs-comment"># %matplotlib inline</span>
+</code></pre>
+<h1 id="&#x6570;&#x636E;&#x96C6;&#x5206;&#x5E03;&#x53EF;&#x89C6;&#x5316;">&#x6570;&#x636E;&#x96C6;&#x5206;&#x5E03;&#x53EF;&#x89C6;&#x5316;</h1>
+<h3 id="&#x5355;&#x53D8;&#x91CF;&#x5206;&#x5E03;-snsdistplot">&#x5355;&#x53D8;&#x91CF;&#x5206;&#x5E03; sns.distplot()</h3>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x5355;&#x53D8;&#x91CF;&#x5206;&#x5E03;</span>
+x1 = np.random.normal(size=<span class="hljs-number">1000</span>)
+sns.distplot(x1);
+
+x2 = np.random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>, <span class="hljs-number">500</span>)
+sns.distplot(x2);
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../images/sns_01.png" alt=""></p>
+<p><img src="../images/sns_02.png" alt=""></p>
+<h3 id="&#x76F4;&#x65B9;&#x56FE;-snsdistplotkdefalse">&#x76F4;&#x65B9;&#x56FE; sns.distplot(kde=False)</h3>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x76F4;&#x65B9;&#x56FE;</span>
+sns.distplot(x1, bins=<span class="hljs-number">20</span>, kde=<span class="hljs-keyword">False</span>, rug=<span class="hljs-keyword">True</span>)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../images/sns_03.png" alt=""></p>
+<h3 id="&#x6838;&#x5BC6;&#x5EA6;&#x4F30;&#x8BA1;-snsdistplothistfalse-&#x6216;-snskdeplot">&#x6838;&#x5BC6;&#x5EA6;&#x4F30;&#x8BA1; sns.distplot(hist=False) &#x6216; sns.kdeplot()</h3>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x6838;&#x5BC6;&#x5EA6;&#x4F30;&#x8BA1;</span>
+sns.distplot(x2, hist=<span class="hljs-keyword">False</span>, rug=<span class="hljs-keyword">True</span>)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;
+<img src="../images/sns_04.png" alt=""></p>
+<h3 id="&#x53CC;&#x53D8;&#x91CF;&#x5206;&#x5E03;">&#x53CC;&#x53D8;&#x91CF;&#x5206;&#x5E03;</h3>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x53CC;&#x53D8;&#x91CF;&#x5206;&#x5E03;</span>
+df_obj1 = pd.DataFrame({<span class="hljs-string">&quot;x&quot;</span>: np.random.randn(<span class="hljs-number">500</span>),
+                   <span class="hljs-string">&quot;y&quot;</span>: np.random.randn(<span class="hljs-number">500</span>)})
+
+df_obj2 = pd.DataFrame({<span class="hljs-string">&quot;x&quot;</span>: np.random.randn(<span class="hljs-number">500</span>),
+                   <span class="hljs-string">&quot;y&quot;</span>: np.random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>, <span class="hljs-number">500</span>)})
+</code></pre>
+<h4 id="&#x6563;&#x5E03;&#x56FE;-snsjointplot">&#x6563;&#x5E03;&#x56FE; sns.jointplot()</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x6563;&#x5E03;&#x56FE;</span>
+sns.jointplot(x=<span class="hljs-string">&quot;x&quot;</span>, y=<span class="hljs-string">&quot;y&quot;</span>, data=df_obj1)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../images/sns_05.png" alt=""></p>
+<h4 id="&#x4E8C;&#x7EF4;&#x76F4;&#x65B9;&#x56FE;-hexbin-snsjointplotkindhex">&#x4E8C;&#x7EF4;&#x76F4;&#x65B9;&#x56FE; Hexbin sns.jointplot(kind=&#x2018;hex&#x2019;)</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x4E8C;&#x7EF4;&#x76F4;&#x65B9;&#x56FE;</span>
+sns.jointplot(x=<span class="hljs-string">&quot;x&quot;</span>, y=<span class="hljs-string">&quot;y&quot;</span>, data=df_obj1, kind=<span class="hljs-string">&quot;hex&quot;</span>);
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../images/sns_06.png" alt=""></p>
+<h4 id="&#x6838;&#x5BC6;&#x5EA6;&#x4F30;&#x8BA1;-snsjointplotkindkde">&#x6838;&#x5BC6;&#x5EA6;&#x4F30;&#x8BA1; sns.jointplot(kind=&#x2018;kde&#x2019;)</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x6838;&#x5BC6;&#x5EA6;&#x4F30;&#x8BA1;</span>
+sns.jointplot(x=<span class="hljs-string">&quot;x&quot;</span>, y=<span class="hljs-string">&quot;y&quot;</span>, data=df_obj1, kind=<span class="hljs-string">&quot;kde&quot;</span>);
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../images/sns_07.png" alt=""></p>
+<h4 id="&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x53D8;&#x91CF;&#x95F4;&#x5173;&#x7CFB;&#x53EF;&#x89C6;&#x5316;-snspairplot">&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x53D8;&#x91CF;&#x95F4;&#x5173;&#x7CFB;&#x53EF;&#x89C6;&#x5316; sns.pairplot()</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x6570;&#x636E;&#x96C6;&#x4E2D;&#x53D8;&#x91CF;&#x95F4;&#x5173;&#x7CFB;&#x53EF;&#x89C6;&#x5316;</span>
+dataset = sns.load_dataset(<span class="hljs-string">&quot;tips&quot;</span>)
+<span class="hljs-comment">#dataset = sns.load_dataset(&quot;iris&quot;)</span>
+sns.pairplot(dataset);
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../images/sns_08.png" alt=""></p>
+<h1 id="&#x7C7B;&#x522B;&#x6570;&#x636E;&#x53EF;&#x89C6;&#x5316;">&#x7C7B;&#x522B;&#x6570;&#x636E;&#x53EF;&#x89C6;&#x5316;</h1>
+<pre><code class="lang-python"><span class="hljs-comment">#titanic = sns.load_dataset(&apos;titanic&apos;)</span>
+<span class="hljs-comment">#planets = sns.load_dataset(&apos;planets&apos;)</span>
+<span class="hljs-comment">#flights = sns.load_dataset(&apos;flights&apos;)</span>
+<span class="hljs-comment">#iris = sns.load_dataset(&apos;iris&apos;)</span>
+exercise = sns.load_dataset(<span class="hljs-string">&apos;exercise&apos;</span>)
+</code></pre>
+<h3 id="&#x7C7B;&#x522B;&#x6563;&#x5E03;&#x56FE;">&#x7C7B;&#x522B;&#x6563;&#x5E03;&#x56FE;</h3>
+<h4 id="snsstripplot-&#x6570;&#x636E;&#x70B9;&#x4F1A;&#x91CD;&#x53E0;">sns.stripplot() &#x6570;&#x636E;&#x70B9;&#x4F1A;&#x91CD;&#x53E0;</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python">sns.stripplot(x=<span class="hljs-string">&quot;diet&quot;</span>, y=<span class="hljs-string">&quot;pulse&quot;</span>, data=exercise)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../images/sns_09.png" alt=""></p>
+<h4 id="snsswarmplot-&#x6570;&#x636E;&#x70B9;&#x907F;&#x514D;&#x91CD;&#x53E0;&#xFF0C;hue&#x6307;&#x5B9A;&#x5B50;&#x7C7B;&#x522B;">sns.swarmplot() &#x6570;&#x636E;&#x70B9;&#x907F;&#x514D;&#x91CD;&#x53E0;&#xFF0C;hue&#x6307;&#x5B9A;&#x5B50;&#x7C7B;&#x522B;</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python">sns.swarmplot(x=<span class="hljs-string">&quot;diet&quot;</span>, y=<span class="hljs-string">&quot;pulse&quot;</span>, data=exercise, hue=<span class="hljs-string">&apos;kind&apos;</span>)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;
+<img src="../images/sns_10.png" alt=""></p>
+<h3 id="&#x7C7B;&#x522B;&#x5185;&#x6570;&#x636E;&#x5206;&#x5E03;">&#x7C7B;&#x522B;&#x5185;&#x6570;&#x636E;&#x5206;&#x5E03;</h3>
+<h4 id="&#x76D2;&#x5B50;&#x56FE;-snsboxplot-hue&#x6307;&#x5B9A;&#x5B50;&#x7C7B;&#x522B;">&#x76D2;&#x5B50;&#x56FE; sns.boxplot(), hue&#x6307;&#x5B9A;&#x5B50;&#x7C7B;&#x522B;</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x76D2;&#x5B50;&#x56FE;</span>
+sns.boxplot(x=<span class="hljs-string">&quot;diet&quot;</span>, y=<span class="hljs-string">&quot;pulse&quot;</span>, data=exercise)
+<span class="hljs-comment">#sns.boxplot(x=&quot;diet&quot;, y=&quot;pulse&quot;, data=exercise, hue=&apos;kind&apos;)</span>
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../images/sns_11.png" alt=""></p>
+<h4 id="&#x5C0F;&#x63D0;&#x7434;&#x56FE;-snsviolinplot-hue&#x6307;&#x5B9A;&#x5B50;&#x7C7B;&#x522B;">&#x5C0F;&#x63D0;&#x7434;&#x56FE; sns.violinplot(), hue&#x6307;&#x5B9A;&#x5B50;&#x7C7B;&#x522B;</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x5C0F;&#x63D0;&#x7434;&#x56FE;</span>
+<span class="hljs-comment">#sns.violinplot(x=&quot;diet&quot;, y=&quot;pulse&quot;, data=exercise)</span>
+sns.violinplot(x=<span class="hljs-string">&quot;diet&quot;</span>, y=<span class="hljs-string">&quot;pulse&quot;</span>, data=exercise, hue=<span class="hljs-string">&apos;kind&apos;</span>)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../images/sns_12.png" alt=""></p>
+<h3 id="&#x7C7B;&#x522B;&#x5185;&#x7EDF;&#x8BA1;&#x56FE;">&#x7C7B;&#x522B;&#x5185;&#x7EDF;&#x8BA1;&#x56FE;</h3>
+<h4 id="&#x67F1;&#x72B6;&#x56FE;-snsbarplot">&#x67F1;&#x72B6;&#x56FE; sns.barplot()</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x67F1;&#x72B6;&#x56FE;</span>
+sns.barplot(x=<span class="hljs-string">&quot;diet&quot;</span>, y=<span class="hljs-string">&quot;pulse&quot;</span>, data=exercise, hue=<span class="hljs-string">&apos;kind&apos;</span>)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../images/sns_13.png" alt=""></p>
+<h4 id="&#x70B9;&#x56FE;-snspointplot">&#x70B9;&#x56FE; sns.pointplot()</h4>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x70B9;&#x56FE;</span>
+sns.pointplot(x=<span class="hljs-string">&quot;diet&quot;</span>, y=<span class="hljs-string">&quot;pulse&quot;</span>, data=exercise, hue=<span class="hljs-string">&apos;kind&apos;</span>);
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../images/sns_14.png" alt=""></p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; BigCat all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x300C;Revision Time:
+2017-03-12 21:01:40&#x300D;
+</span></footer>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../file/part04/4.1.html" class="navigation navigation-prev " aria-label="Previous page: Matplotlib绘图"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../file/part04/4.3.html" class="navigation navigation-next " aria-label="Next page: Bokeh绘图"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/dododream"},"search-pro":{"cutWordLib":"nodejieba","defineWord":["gitbook-use"]},"sharing":{"weibo":true,"facebook":true,"twitter":true,"google":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"tbfed-pagefooter":{"copyright":"Copyright © BigCat","modify_label":"「Revision Time:","modify_format":"YYYY-MM-DD HH:mm:ss」"},"baidu":{"token":"ff100361cdce95dd4c8fb96b4009f7bc"},"sitemap":{"hostname":"http://www.treenewbee.top"},"donate":{"wechat":"http://weixin.png","alipay":"http://alipay.png","title":"","button":"赏","alipayText":"支付宝打赏","wechatText":"微信打赏"},"edit-link":{"base":"https://github.com/dododream/edit","label":"Edit This Page"},"splitter":{},"toggle-chapters":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book Python数据分析课程讲义 -->
+</html>

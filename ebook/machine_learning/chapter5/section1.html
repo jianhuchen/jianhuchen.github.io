@@ -1,0 +1,720 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>非监督学习之k-means | 机器学习课件</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../chapter5/section2.html" />
+    
+    
+    <link rel="prev" href="../chapter5/index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="5.1"
+        data-chapter-title="非监督学习之k-means"
+        data-filepath="chapter5/section1.md"
+        data-basepath=".."
+        data-revision="Sun Sep 03 2017 21:46:41 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        机器学习引言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
+            
+                
+                    <a href="../chapter1/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        sklearn与特征工程
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="chapter1/section1.html">
+            
+                
+                    <a href="../chapter1/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        数据的来源与类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1/section2.html">
+            
+                
+                    <a href="../chapter1/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        数据的特征抽取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapter1/section3.html">
+            
+                
+                    <a href="../chapter1/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        数据的特征预处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="chapter1/section4.html">
+            
+                
+                    <a href="../chapter1/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        数据的特征选择
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2/index.html">
+            
+                
+                    <a href="../chapter2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        sklearn数据集与机器学习组成
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="chapter2/section1.html">
+            
+                
+                    <a href="../chapter2/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Scikit-learn数据集
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="chapter2/section2.html">
+            
+                
+                    <a href="../chapter2/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        模型的选择
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="chapter2/section3.html">
+            
+                
+                    <a href="../chapter2/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        模型检验-交叉验证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="chapter2/section4.html">
+            
+                
+                    <a href="../chapter2/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        sklearn的estimator
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter3/index.html">
+            
+                
+                    <a href="../chapter3/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        sklearn的分类器算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="chapter3/section1.html">
+            
+                
+                    <a href="../chapter3/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        分类算法之k-近邻
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="chapter3/section2.html">
+            
+                
+                    <a href="../chapter3/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        k-近邻算法案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="chapter3/section3.html">
+            
+                
+                    <a href="../chapter3/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        朴素贝叶斯
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="chapter3/section4.html">
+            
+                
+                    <a href="../chapter3/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        分类算法之逻辑回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="chapter3/section5.html">
+            
+                
+                    <a href="../chapter3/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        逻辑回归算法案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="chapter3/section6.html">
+            
+                
+                    <a href="../chapter3/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        分类器性能评估
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="chapter3/section7.html">
+            
+                
+                    <a href="../chapter3/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        分类算法之决策树、随机森林
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter4/index.html">
+            
+                
+                    <a href="../chapter4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        回归算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="chapter4/section1.html">
+            
+                
+                    <a href="../chapter4/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        回归算法之线性回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="chapter4/section2.html">
+            
+                
+                    <a href="../chapter4/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        线性回归案例分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="chapter4/section3.html">
+            
+                
+                    <a href="../chapter4/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        回归性能评估与欠拟合、过拟合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="chapter4/section4.html">
+            
+                
+                    <a href="../chapter4/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        回归算法之岭回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="chapter4/section5.html">
+            
+                
+                    <a href="../chapter4/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        岭回归案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter5/index.html">
+            
+                
+                    <a href="../chapter5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        非监督学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="5.1" data-path="chapter5/section1.html">
+            
+                
+                    <a href="../chapter5/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        非监督学习之k-means
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="chapter5/section2.html">
+            
+                
+                    <a href="../chapter5/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        k-means案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6/index.html">
+            
+                
+                    <a href="../chapter6/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        推荐系统
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="chapter6/section1.html">
+            
+                
+                    <a href="../chapter6/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        推荐系统评测
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="chapter6/section2.html">
+            
+                
+                    <a href="../chapter6/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        基于协同过滤的推荐系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="chapter6/section3.html">
+            
+                
+                    <a href="../chapter6/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        代码案例
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >机器学习课件</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x975E;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#x4E4B;kmeans">&#x975E;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#x4E4B;k-means</h1>
+<p>K-means&#x901A;&#x5E38;&#x88AB;&#x79F0;&#x4E3A;&#x52B3;&#x57C3;&#x5FB7;&#x7B97;&#x6CD5;&#xFF0C;&#x8FD9;&#x5728;&#x6570;&#x636E;&#x805A;&#x7C7B;&#x4E2D;&#x662F;&#x6700;&#x7ECF;&#x5178;&#x7684;&#xFF0C;&#x4E5F;&#x662F;&#x76F8;&#x5BF9;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x7684;&#x6A21;&#x578B;&#x3002;&#x7B97;&#x6CD5;&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x5206;&#x4E3A;4&#x4E2A;&#x9636;&#x6BB5;&#x3002;</p>
+<ul>
+<li>1.&#x9996;&#x5148;&#xFF0C;&#x968F;&#x673A;&#x8BBE;K&#x4E2A;&#x7279;&#x5F81;&#x7A7A;&#x95F4;&#x5185;&#x7684;&#x70B9;&#x4F5C;&#x4E3A;&#x521D;&#x59CB;&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x3002;</li>
+<li>2.&#x7136;&#x540E;&#xFF0C;&#x5BF9;&#x4E8E;&#x6839;&#x636E;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#xFF0C;&#x4ECE;K&#x4E2A;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x4E2D;&#x5BFB;&#x627E;&#x8DDD;&#x79BB;&#x6700;&#x8FD1;&#x7684;&#x4E00;&#x4E2A;&#xFF0C;&#x5E76;&#x4E14;&#x628A;&#x8BE5;&#x6570;&#x636E;&#x6807;&#x8BB0;&#x4E3A;&#x8FD9;&#x4E2A;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x3002;</li>
+<li>3.&#x63A5;&#x7740;&#xFF0C;&#x5728;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x90FD;&#x88AB;&#x6807;&#x8BB0;&#x8FC7;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x4E4B;&#x540E;&#xFF0C;&#x6839;&#x636E;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x65B0;&#x5206;&#x914D;&#x7684;&#x7C7B;&#x7C07;&#xFF0C;&#x901A;&#x8FC7;&#x53D6;&#x5206;&#x914D;&#x7ED9;&#x6BCF;&#x4E2A;&#x5148;&#x524D;&#x8D28;&#x5FC3;&#x7684;&#x6240;&#x6709;&#x6837;&#x672C;&#x7684;&#x5E73;&#x5747;&#x503C;&#x6765;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8D28;&#x5FC3;&#x91CD;,&#x65B0;&#x5BF9;K&#x4E2A;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x505A;&#x8BA1;&#x7B97;&#x3002;</li>
+<li>4.&#x6700;&#x540E;&#xFF0C;&#x8BA1;&#x7B97;&#x65E7;&#x548C;&#x65B0;&#x8D28;&#x5FC3;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x5F02;,&#x5982;&#x679C;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x70B9;&#x4ECE;&#x5C5E;&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x4E0E;&#x4E0A;&#x4E00;&#x6B21;&#x7684;&#x5206;&#x914D;&#x7684;&#x7C7B;&#x7C07;&#x6CA1;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x90A3;&#x4E48;&#x8FED;&#x4EE3;&#x5C31;&#x53EF;&#x4EE5;&#x505C;&#x6B62;&#xFF0C;&#x5426;&#x5219;&#x56DE;&#x5230;&#x6B65;&#x9AA4;2&#x7EE7;&#x7EED;&#x5FAA;&#x73AF;&#x3002;</li>
+</ul>
+<p>K&#x5747;&#x503C;&#x7B49;&#x4E8E;&#x5177;&#x6709;&#x5C0F;&#x7684;&#x5168;&#x5BF9;&#x79F0;&#x534F;&#x65B9;&#x5DEE;&#x77E9;&#x9635;&#x7684;&#x671F;&#x671B;&#x6700;&#x5927;&#x5316;&#x7B97;&#x6CD5;</p>
+<h2 id="sklearnclusterkmeans">sklearn.cluster.KMeans</h2>
+<pre><code class="lang-python">class sklearn.cluster.KMeans(n_clusters=8, init=&apos;k-means++&apos;, n_init=10, max_iter=300, tol=0.0001, precompute_distances=&apos;auto&apos;, verbose=0, random_state=None, copy_x=True, n_jobs=1, algorithm=&apos;auto&apos;)
+  &quot;&quot;&quot;
+  :param n_clusters:&#x8981;&#x5F62;&#x6210;&#x7684;&#x805A;&#x7C7B;&#x6570;&#x4EE5;&#x53CA;&#x751F;&#x6210;&#x7684;&#x8D28;&#x5FC3;&#x6570;
+
+  :param init:&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&apos;k-means ++&apos;,&#x4EE5;&#x667A;&#x80FD;&#x65B9;&#x5F0F;&#x9009;&#x62E9;k-&#x5747;&#x503C;&#x805A;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#xFF0C;&#x4EE5;&#x52A0;&#x901F;&#x6536;&#x655B;;random,&#x4ECE;&#x521D;&#x59CB;&#x8D28;&#x5FC3;&#x6570;&#x636E;&#x4E2D;&#x968F;&#x673A;&#x9009;&#x62E9;k&#x4E2A;&#x89C2;&#x5BDF;&#x503C;&#xFF08;&#x884C;
+
+  :param n_init&#xFF1A;int&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#xFF1A;10&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x8D28;&#x5FC3;&#x79CD;&#x5B50;&#x8FD0;&#x884C;k-means&#x7B97;&#x6CD5;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x5C06;&#x662F;n_init&#x8FDE;&#x7EED;&#x8FD0;&#x884C;&#x5728;&#x60EF;&#x6027;&#x65B9;&#x9762;&#x7684;&#x6700;&#x4F73;&#x8F93;&#x51FA;&#x3002;
+
+  :param n_jobs&#xFF1A;int&#x7528;&#x4E8E;&#x8BA1;&#x7B97;&#x7684;&#x4F5C;&#x4E1A;&#x6570;&#x91CF;&#x3002;&#x8FD9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5E76;&#x884C;&#x8BA1;&#x7B97;&#x6BCF;&#x4E2A;&#x8FD0;&#x884C;&#x7684;n_init&#x3002;&#x5982;&#x679C;-1&#x4F7F;&#x7528;&#x6240;&#x6709;CPU&#x3002;&#x5982;&#x679C;&#x7ED9;&#x51FA;1&#xFF0C;&#x5219;&#x4E0D;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x5E76;&#x884C;&#x8BA1;&#x7B97;&#x4EE3;&#x7801;&#xFF0C;&#x8FD9;&#x5BF9;&#x8C03;&#x8BD5;&#x5F88;&#x6709;&#x7528;&#x3002;&#x5BF9;&#x4E8E;-1&#x4EE5;&#x4E0B;&#x7684;n_jobs&#xFF0C;&#x4F7F;&#x7528;&#xFF08;n_cpus + 1 + n_jobs&#xFF09;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5BF9;&#x4E8E;n_jobs = -2&#xFF0C;&#x6240;&#x6709;CPU&#x90FD;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x3002;
+
+  :param random_state:&#x968F;&#x673A;&#x6570;&#x79CD;&#x5B50;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x5168;&#x5C40;numpy&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;
+  &quot;&quot;&quot;
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> sklearn.cluster <span class="hljs-keyword">import</span> KMeans
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+X = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>],[<span class="hljs-number">4</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">4</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">0</span>]])
+kmeans = KMeans(n_clusters=<span class="hljs-number">2</span>, random_state=<span class="hljs-number">0</span>)
+</code></pre>
+<h3 id="&#x65B9;&#x6CD5;">&#x65B9;&#x6CD5;</h3>
+<p><strong>fit(X,y=None)</strong></p>
+<p>&#x4F7F;&#x7528;X&#x4F5C;&#x4E3A;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x62DF;&#x5408;&#x6A21;&#x578B;</p>
+<pre><code class="lang-python">kmeans.fit(X)
+</code></pre>
+<p><strong>predict(X)</strong></p>
+<p>&#x9884;&#x6D4B;&#x65B0;&#x7684;&#x6570;&#x636E;&#x6240;&#x5728;&#x7684;&#x7C7B;&#x522B;</p>
+<pre><code class="lang-python">kmeans.predict([[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">4</span>]])
+array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], dtype=int32)
+</code></pre>
+<h3 id="&#x5C5E;&#x6027;">&#x5C5E;&#x6027;</h3>
+<p><strong>cluster<em>centers</em></strong></p>
+<p>&#x96C6;&#x7FA4;&#x4E2D;&#x5FC3;&#x7684;&#x70B9;&#x5750;&#x6807;</p>
+<pre><code class="lang-python">kmeans.cluster_centers_
+array([[ <span class="hljs-number">1.</span>,  <span class="hljs-number">2.</span>],
+       [ <span class="hljs-number">4.</span>,  <span class="hljs-number">2.</span>]])
+</code></pre>
+<p><strong>labels_</strong></p>
+<p>&#x6BCF;&#x4E2A;&#x70B9;&#x7684;&#x7C7B;&#x522B;</p>
+<pre><code class="lang-python">kmeans.labels_
+</code></pre>
+<h2 id="kmeans-">k-means ++</h2>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../chapter5/index.html" class="navigation navigation-prev " aria-label="Previous page: 非监督学习"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../chapter5/section2.html" class="navigation navigation-next " aria-label="Next page: k-means案例分析"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"katex":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

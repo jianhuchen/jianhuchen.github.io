@@ -106,18 +106,18 @@
 
 
 
-  <meta name="description" content="选课已经结束了… 系统采用多线程的方式（每门课一个线程）抢课，所以可以同时抢多门课～ 环境依赖我的环境： python2.7，除此之外，还需要额外安装两个库： 12pip install requestspip install prettytable # 美美地打印表格 适用人员科大软件学院18级研究生 使用方法 将项目克隆到本地 1git clone https://github.com/jia">
+  <meta name="description" content="选课当天早上我自己手动选的课，这个程序当天下午才写完，所以我自己基本也没咋用 这个系统采用多线程的方式（每门课一个线程）选课，所以可以同时选多门课～ 环境依赖我的环境： python2.7，除此之外，还需要额外安装两个库： 12pip install requestspip install prettytable # 美美地打印表格 适用人员科大软件学院18级研究生 使用方法 将项目克隆到本地 1">
 <meta name="keywords" content="科大,爬虫,抢课">
 <meta property="og:type" content="article">
 <meta property="og:title" content="中科大软件学院研究生选课辅助系统">
 <meta property="og:url" content="http://cjh.zone/2019/03/08/中科大软件学院研究生选课辅助系统/index.html">
 <meta property="og:site_name" content="不想长大的石头">
-<meta property="og:description" content="选课已经结束了… 系统采用多线程的方式（每门课一个线程）抢课，所以可以同时抢多门课～ 环境依赖我的环境： python2.7，除此之外，还需要额外安装两个库： 12pip install requestspip install prettytable # 美美地打印表格 适用人员科大软件学院18级研究生 使用方法 将项目克隆到本地 1git clone https://github.com/jia">
+<meta property="og:description" content="选课当天早上我自己手动选的课，这个程序当天下午才写完，所以我自己基本也没咋用 这个系统采用多线程的方式（每门课一个线程）选课，所以可以同时选多门课～ 环境依赖我的环境： python2.7，除此之外，还需要额外安装两个库： 12pip install requestspip install prettytable # 美美地打印表格 适用人员科大软件学院18级研究生 使用方法 将项目克隆到本地 1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-08T07:34:27.114Z">
+<meta property="og:updated_time" content="2019-03-08T07:50:05.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中科大软件学院研究生选课辅助系统">
-<meta name="twitter:description" content="选课已经结束了… 系统采用多线程的方式（每门课一个线程）抢课，所以可以同时抢多门课～ 环境依赖我的环境： python2.7，除此之外，还需要额外安装两个库： 12pip install requestspip install prettytable # 美美地打印表格 适用人员科大软件学院18级研究生 使用方法 将项目克隆到本地 1git clone https://github.com/jia">
+<meta name="twitter:description" content="选课当天早上我自己手动选的课，这个程序当天下午才写完，所以我自己基本也没咋用 这个系统采用多线程的方式（每门课一个线程）选课，所以可以同时选多门课～ 环境依赖我的环境： python2.7，除此之外，还需要额外安装两个库： 12pip install requestspip install prettytable # 美美地打印表格 适用人员科大软件学院18级研究生 使用方法 将项目克隆到本地 1">
 
 
 
@@ -444,7 +444,7 @@
                 
               
 
-              <time title="创建时间：2019-03-08 14:07:00 / 修改时间：15:34:27" itemprop="dateCreated datePublished" datetime="2019-03-08T14:07:00+08:00">2019-03-08</time>
+              <time title="创建时间：2019-03-08 14:07:00 / 修改时间：15:50:05" itemprop="dateCreated datePublished" datetime="2019-03-08T14:07:00+08:00">2019-03-08</time>
             
 
             
@@ -521,8 +521,8 @@
       
 
       
-        <p>选课已经结束了…</p>
-<p>系统采用多线程的方式（每门课一个线程）抢课，所以可以同时抢多门课～</p>
+        <p>选课当天早上我自己手动选的课，这个程序当天下午才写完，所以我自己基本也没咋用</p>
+<p>这个系统采用多线程的方式（每门课一个线程）选课，所以可以同时选多门课～</p>
 <h2 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h2><p>我的环境： <strong>python2.7</strong>，除此之外，还需要额外安装两个库：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br><span class="line">pip install prettytable <span class="comment"># 美美地打印表格</span></span><br></pre></td></tr></table></figure>
 <h2 id="适用人员"><a href="#适用人员" class="headerlink" title="适用人员"></a>适用人员</h2><p>科大软件学院18级研究生</p>
@@ -535,18 +535,15 @@
 <li><p>在项目根目录运行：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python main.py</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<blockquote>
-<p><strong>退出方法</strong></p>
-<p>使用<code>ps -aux</code>命令，找到此进程的PID（如：10036），再用<code>kill 10036</code>杀死进程</p>
-<p><strong>程序在后台跑的方法</strong></p>
+<li><p><strong>退出方法</strong></p>
+<p>使用<code>ps -aux</code>命令，找到此进程的PID（如：10036），再用<code>kill 10036</code>杀死进程（有点麻烦…）</p>
+</li>
+<li><p><strong>程序在后台跑的方法</strong></p>
 <p>在命令行运行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> ./main.sh</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"></span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./main.sh</span><br></pre></td></tr></table></figure>
 <p>如果因为python版本报错的话，自己把脚本里的代码改一下就行</p>
-</blockquote>
+</li>
+</ul>
 
       
     </div>

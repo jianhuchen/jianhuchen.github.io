@@ -107,7 +107,7 @@
 
 
   <meta name="description" content="考完啦～希望各位都有好成绩！要感谢的人好多啊，等到年终总结再写吧（2018.12.15） 仅做自己复习使用，如有错误，感谢告知！ 另外一位同学的期末总结笔记，感觉写的比我好!  老师课件里的小猴子~到底该怎么更新参数？  绪论AI的四大主流流派 符号主义（Symbolism） 连接主义（Connectionism） 行为主义（Behaviourism） 统计主义（Statisticsism）">
-<meta name="keywords" content="机器学习,科大,人工智能,深度学习,总结">
+<meta name="keywords" content="科大,深度学习,人工智能,机器学习,总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="科大软院-人工智能期末总结">
 <meta property="og:url" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/index.html">
@@ -152,7 +152,7 @@
 <meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544707967820.png">
 <meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544698003702.png">
 <meta property="og:image" content="http://cjh.zone/2018/12/13/科大软院-人工智能期末总结/1544673331986.png">
-<meta property="og:updated_time" content="2018-12-15T03:34:45.282Z">
+<meta property="og:updated_time" content="2019-03-17T11:59:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="科大软院-人工智能期末总结">
 <meta name="twitter:description" content="考完啦～希望各位都有好成绩！要感谢的人好多啊，等到年终总结再写吧（2018.12.15） 仅做自己复习使用，如有错误，感谢告知！ 另外一位同学的期末总结笔记，感觉写的比我好!  老师课件里的小猴子~到底该怎么更新参数？  绪论AI的四大主流流派 符号主义（Symbolism） 连接主义（Connectionism） 行为主义（Behaviourism） 统计主义（Statisticsism）">
@@ -294,7 +294,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">22</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
 
   </li>
         
@@ -332,7 +332,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">40</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">36</span></a>
 
   </li>
         
@@ -500,7 +500,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-15 11:34:45" itemprop="dateModified" datetime="2018-12-15T11:34:45+08:00">2018-12-15</time>
+                <time title="修改时间：2019-03-17 19:59:39" itemprop="dateModified" datetime="2019-03-17T19:59:39+08:00">2019-03-17</time>
               
             
           </span>
@@ -758,22 +758,22 @@ w^{t+1} = (1-\eta\lambda)w^t - \eta\cfrac{\partial L}{\partial w}</script><block
 <script type="math/tex; mode=display">
 L'(\theta) = L(\theta) + \lambda\cdot[\rho \parallel\theta\parallel_1 + (1-\rho)\cdot\parallel\theta\parallel_2]</script></li>
 <li><p><strong>正则化的好处</strong></p>
-<p>正则化能是模型中的一些不比较的参数值减小甚至降为0，使得参数具有稀疏性，说白了就是模型的很多参数是0。这相当于对模型进行了一次特征选择，只留下一些比较重要的特<br>征，提高模型的泛化能力，降低过拟合的可能。</p>
+<p>正则化能使模型中的一些不必要的参数值减小甚至降为0，使得参数具有稀疏性，说白了就是模型的很多参数是0，能降低模型的复杂度。这相当于对模型进行了一次特征选择，只留下一些比较重要的特征，提高模型的泛化能力，降低过拟合的可能。</p>
 </li>
 </ul>
 <h3 id="如何加快模型的训练？"><a href="#如何加快模型的训练？" class="headerlink" title="如何加快模型的训练？"></a>如何加快模型的训练？</h3><ul>
 <li><p><strong>Tip 1: 特征缩放/归一化（Feature Scaling/Normalization）</strong></p>
 <p>对数值类型的特征做归一化可以将所有的特征都统一到一个大致相同的数值区间内。最常用的方法主要有以下两种:</p>
 <ul>
-<li><p><strong>线性函数归一化（Min-Max Scaling）：</strong>对原始数据进行线性变换，使<br>结果映射到[0, 1]的范围</p>
+<li><p><strong>线性函数归一化（Min-Max Scaling）：</strong>对原始数据进行线性变换，使结果映射到[0, 1]的范围</p>
 <script type="math/tex; mode=display">
 X_{norm} = \cfrac{X - X_{min}}{X_{max} - X_{min}}</script><p>其中 $X$ 为原始数据，$X_{max}$ 、$X_{min}$  分别为数据的最大值和最小值</p>
 </li>
-<li><p><strong>零均值归一化（Z-Score Normalization）：</strong>将原始数据映射到均值为<br>0，标准差为1的分布上</p>
+<li><p><strong>零均值归一化（Z-Score Normalization）：</strong>将原始数据映射到均值为0，标准差为1的分布上</p>
 </li>
 </ul>
 <script type="math/tex; mode=display">
-Z = \cfrac{x-\mu}{\sigma}</script><p><strong>特征归一化的好处：</strong>在学习速率相同的情况下，归一化后的更新速度会大于归一化前 ，需要更少的迭代就能找到最优解。</p>
+Z = \cfrac{x-\mu}{\sigma}</script><p><strong>特征归一化的好处：</strong>在学习速率相同的情况下，归一化后的更新速度会大于归一化前 ，需要更少的迭代次数就能找到最优解。</p>
 <p><img src=".\1544431873804.png" width="400/"></p>
 </li>
 <li><p><strong>Tip 2: Gradient Descent算法的变体（Variants of Gradient Descent）</strong></p>
@@ -867,7 +867,7 @@ Batch\_num = \cfrac{训练集样例数}{Batch\_size}</script></li>
 </tbody>
 </table>
 </div>
-<h3 id="为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？"><a href="#为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？" class="headerlink" title="为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？"></a>为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？</h3><p>一般来说，平方损失函数更适合输出为连续，并且最后一层不含Sigmoid或<br>Softmax激活函数的神经网络；交叉熵损失则更适合二分类或多分类的场景。</p>
+<h3 id="为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？"><a href="#为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？" class="headerlink" title="为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？"></a>为什么使用交叉熵（Cross-Entropy）而不是均方误差（MSE）来做逻辑回归的损失函数？</h3><p>一般来说，平方损失函数（均方误差MSE）更适合输出为连续，并且最后一层不含Sigmoid或Softmax激活函数的神经网络；交叉熵损失则更适合二分类或多分类的场景。</p>
 <p>如果使用均方差做损失函数，那么“三步曲”会变成下面的样子：</p>
 <ul>
 <li><p><strong>Step 1：</strong>$f_{w,b}(x)=\sigma(\sum_iw_ix_i+b)$</p>
@@ -907,7 +907,7 @@ L(f)=\cfrac{1}{2}\sum_n(f_{w,b}(x^{(n)})-\hat{y}^{(n)})^2</script></li>
 MSE=\cfrac{\sum_{i=1}^{n}\epsilon_i^2}{n}</script></blockquote>
 <h3 id="多分类任务的输出层为什么要使用Softmax"><a href="#多分类任务的输出层为什么要使用Softmax" class="headerlink" title="多分类任务的输出层为什么要使用Softmax"></a>多分类任务的输出层为什么要使用Softmax</h3><p>Softmax公式，模型预测当前样例为第 $i<br>$ 个类别的概率为：</p>
 <script type="math/tex; mode=display">
-y_i=\cfrac{e^{z_i}}{\sum_ie^{z_i}}</script><p>Softmax能将输出层的值转换为总和为1概率分布，这样方便我们在做分类时选择概率值最大的那个类别作为模型的预测类别</p>
+y_i=\cfrac{e^{z_i}}{\sum_ie^{z_i}}</script><p>Softmax能将输出层的值转换为总和为1概率分布，这样方便我们在做分类时选择概率值最大的那个类别作为模型的预测类别，同时，也能方便我们计算交叉熵损失。</p>
 <h3 id="Softmax与sigmoid"><a href="#Softmax与sigmoid" class="headerlink" title="Softmax与sigmoid"></a>Softmax与sigmoid</h3><p>其实可以将sigmoid看成是Softmax的特殊情况，当分类任务变成二分类时，Softmax也就变成了sigmoid</p>
 <p>推导如下：</p>
 <script type="math/tex; mode=display">
@@ -943,7 +943,12 @@ y_2=\cfrac{e^{z_2}}{e^{z_1}+e^{z_2}}=\cfrac{1}{1+e^{z_1-z_2}}=\sigma(z_2-z_1)</s
 <p>但是并不是所有的线性不可分问题都能这样简单地解决，因为这需要我们有这个领域的知识做基础，但事实上我们并不能把所有专业领域的知识都学习一遍，所以就有深度神经网络出来了，也就是说，上面这种级联的两层逻辑回归网络实际上是深度神经网络的雏形</p>
 </li>
 </ul>
-<h2 id="深度学习（Deep-learning）"><a href="#深度学习（Deep-learning）" class="headerlink" title="深度学习（Deep learning）"></a>深度学习（Deep learning）</h2><h3 id="为什么需要深度神经网络？"><a href="#为什么需要深度神经网络？" class="headerlink" title="为什么需要深度神经网络？"></a>为什么需要深度神经网络？</h3><p>自动筛选特征，能学到更抽象的特征。（没那么简单T^T，后面再更新）</p>
+<h2 id="深度学习（Deep-learning）"><a href="#深度学习（Deep-learning）" class="headerlink" title="深度学习（Deep learning）"></a>深度学习（Deep learning）</h2><h3 id="为什么需要深度神经网络？"><a href="#为什么需要深度神经网络？" class="headerlink" title="为什么需要深度神经网络？"></a>为什么需要深度神经网络？</h3><ul>
+<li><p>省去特征工程，自动筛选特征</p>
+</li>
+<li><p>能学到更抽象程度更高的特征</p>
+</li>
+</ul>
 <h3 id="比较训练过程中，机器学习与深度学习的“三步曲”的异同"><a href="#比较训练过程中，机器学习与深度学习的“三步曲”的异同" class="headerlink" title="比较训练过程中，机器学习与深度学习的“三步曲”的异同"></a>比较训练过程中，机器学习与深度学习的“三步曲”的异同</h3><ul>
 <li><p><strong>不同点：</strong>在训练阶段，机器学习与深度学习的“三步曲”中的第一步有细微差别，两者虽然都是定义一个模型，但是深度学习中的模型（Function Set）是一个<strong>神经网络结构</strong>，神经元之间不同的连接会导致不同的网络结构，从而导致不同的函数集合，即Given network structure, define a function set</p>
 </li>
@@ -1169,7 +1174,7 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
 <p>  <img src="1544707391072.png" width="550/"></p>
 <blockquote>
 <p><strong>问题1：</strong>为什么每次dropout掉一部分神经元，最后再结合起来效果会更好呢？</p>
-<p> <strong>答：</strong>我在一门视频课里看到的解释是，每次随机dropout掉一部分神经元，能减小神经元之间的相互依赖性，最终整体地提高神经网络的健壮性</p>
+<p> <strong>答：</strong>我在一门视频课里看到的解释是，每次随机dropout掉一部分神经元，能减小神经元之间的相互依赖性，最终整体地提高神经网络的鲁棒性（健壮性）</p>
 <p><strong>问题2：</strong>使用一个miniBatch来训练一个“新的网络结构”，会不会训练集太少而导致欠拟合呢？</p>
 <p><strong>答：</strong>不会，因为虽然好像dropout之后训练的是一个新的网络结构，但实际上这N个dropout之后的神经网络是共享参数的，所以相当于所有的miniBatch数据都作用到了这个网络中，不会因为训练数据少而导致欠拟合。</p>
 </blockquote>
@@ -1218,7 +1223,7 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
 <p>池化层可以认为是将一张分辨率较高的图片转化为分辨率较低的图片。通过池化层可以进一步缩小最后全连接层中结点的个数，从而达到减少整个神经网络中参数的目的。</p>
 </li>
 <li><p><strong>全连接层</strong></p>
-<p>在卷积神经网络的最后，一般会是由1到2个全连接层来给出最后的分类结果。经过几轮卷积层he池化层的处理之后，可以认为图像中的信息已经被抽象成了信息含量更高的特征。我们可以将卷积层和池化层看成自动提取图像特征的过程，在特征提取完成之后，仍然需要使用全连接层来完成分类任务。</p>
+<p>在卷积神经网络的最后，一般会是由1到2个全连接层来给出最后的分类结果。经过几轮卷积层和池化层的处理之后，可以认为图像中的信息已经被抽象成了信息含量更高的特征。我们可以将卷积层和池化层看成自动提取图像特征的过程，在特征提取完成之后，仍然需要使用全连接层来完成分类任务。</p>
 </li>
 <li><p><strong>Softmax层</strong></p>
 <p>跟上文提到的<strong>多分类任务的输出层为什么要使用Softmax</strong>原因一样，softmax层主要用于分类问题，通过它，可以得到当前样例属于不同种类的概率分布情况。</p>
@@ -1248,7 +1253,7 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
 </blockquote>
 <p>过滤器的常用尺寸有3x3、5x5。因为过滤器处理的矩阵深度和当前层神经网络节点矩阵的深度是一致的，所以虽然节点矩阵是三维的，但是过滤器的尺寸只需要指定两个维度。过滤器中另一个需要人工指定的设置是处理得到的单位节点矩阵的深度，这个设置称为过滤器的深度。</p>
 <blockquote>
-<p>上面这句话的意思是：你需要设置这个卷积层有多少个[长x宽x深度] 的Filter，可以理解为，一个Filter就代表图像中的一个局部特征</p>
+<p>上面这句话的意思是：你需要设置这个卷积层有多少个[长x宽x深度] 的Filter，可以理解为，一个Filter只对图像中的某一个局部特征敏感</p>
 <p>注意：过滤器的尺寸指的是一个过滤器输入节点矩阵的大小，而深度指的是输出单位节点矩阵的深度。</p>
 </blockquote>
 </li>
@@ -1336,13 +1341,13 @@ out_{width}=\lfloor\frac{in_{width}+2pad-filter_{width}}{stride_{width}}+1\rfloo
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
-          
             <a href="/tags/科大/" rel="tag"># 科大</a>
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
           
             <a href="/tags/人工智能/" rel="tag"># 人工智能</a>
           
-            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
             <a href="/tags/总结/" rel="tag"># 总结</a>
           
@@ -1357,8 +1362,8 @@ out_{width}=\lfloor\frac{in_{width}+2pad-filter_{width}}{stride_{width}}+1\rfloo
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/11/第9课:图像直方图(histogram)-计算机视觉基础:python+opencv学习笔记/" rel="next" title="第9课:图像直方图(histogram)-计算机视觉基础:python+opencv学习笔记">
-                <i class="fa fa-chevron-left"></i> 第9课:图像直方图(histogram)-计算机视觉基础:python+opencv学习笔记
+              <a href="/2018/12/11/Ubuntu16.04安装Windows虚拟机/" rel="next" title="Ubuntu16.04安装Windows虚拟机">
+                <i class="fa fa-chevron-left"></i> Ubuntu16.04安装Windows虚拟机
               </a>
             
           </div>
@@ -1444,7 +1449,7 @@ out_{width}=\lfloor\frac{in_{width}+2pad-filter_{width}}{stride_{width}}+1\rfloo
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1475,7 +1480,7 @@ out_{width}=\lfloor\frac{in_{width}+2pad-filter_{width}}{stride_{width}}+1\rfloo
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1560,15 +1565,7 @@ out_{width}=\lfloor\frac{in_{width}+2pad-filter_{width}}{stride_{width}}+1\rfloo
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

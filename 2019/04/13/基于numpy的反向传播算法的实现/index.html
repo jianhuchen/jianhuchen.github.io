@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.gif?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.gif?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="好久没更博了，太懒了~有错误记得告诉我哦🙇 相关基础理论知识前向传播算法（Forward propagation） 作用：用于预测输出，计算Loss  举例： 前向传播公式（以$sigmoid$函数为例）：  \sigma(z)=\cfrac{1}{1+e^{-z}}，z=wx+b  上面两个例子的结果：  f(\begin{bmatrix} 1 \\ -1 \\ \end{bmatrix})=">
+<meta name="keywords" content="反向传播算法,深度学习,人工智能,backpropagation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于numpy的反向传播算法的实现">
+<meta property="og:url" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/index.html">
+<meta property="og:site_name" content="不想长大的石头">
+<meta property="og:description" content="好久没更博了，太懒了~有错误记得告诉我哦🙇 相关基础理论知识前向传播算法（Forward propagation） 作用：用于预测输出，计算Loss  举例： 前向传播公式（以$sigmoid$函数为例）：  \sigma(z)=\cfrac{1}{1+e^{-z}}，z=wx+b  上面两个例子的结果：  f(\begin{bmatrix} 1 \\ -1 \\ \end{bmatrix})=">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544584038542.png">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544583978302.png">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544620071134.png">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544616480727.png">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544617223333.png">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544617793774.png">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544618843691.png">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544619422616.png">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544619688474.png">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544619858768.png">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544669757677.png">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1307765446.jpg">
+<meta property="og:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/523578690.jpg">
+<meta property="og:updated_time" content="2019-04-13T04:55:10.052Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于numpy的反向传播算法的实现">
+<meta name="twitter:description" content="好久没更博了，太懒了~有错误记得告诉我哦🙇 相关基础理论知识前向传播算法（Forward propagation） 作用：用于预测输出，计算Loss  举例： 前向传播公式（以$sigmoid$函数为例）：  \sigma(z)=\cfrac{1}{1+e^{-z}}，z=wx+b  上面两个例子的结果：  f(\begin{bmatrix} 1 \\ -1 \\ \end{bmatrix})=">
+<meta name="twitter:image" content="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544584038542.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>基于numpy的反向传播算法的实现 | 不想长大的石头</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不想长大的石头</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Give you my world.</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">9</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">36</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about_guestbook">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于 & 留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-share_resource">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JhChen">
+      <meta itemprop="description" content="不想长大的石头">
+      <meta itemprop="image" content="/images/100x100.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不想长大的石头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">基于numpy的反向传播算法的实现
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-13 11:45:58 / 修改时间：12:55:10" itemprop="dateCreated datePublished" datetime="2019-04-13T11:45:58+08:00">2019-04-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/Machine-Learning/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/13/基于numpy的反向传播算法的实现/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/04/13/基于numpy的反向传播算法的实现/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/13/基于numpy的反向传播算法的实现/" class="leancloud_visitors" data-flag-title="基于numpy的反向传播算法的实现">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>好久没更博了，太懒了~有错误记得告诉我哦🙇</p>
+<h1 id="相关基础理论知识"><a href="#相关基础理论知识" class="headerlink" title="相关基础理论知识"></a>相关基础理论知识</h1><h2 id="前向传播算法（Forward-propagation）"><a href="#前向传播算法（Forward-propagation）" class="headerlink" title="前向传播算法（Forward propagation）"></a>前向传播算法（Forward propagation）</h2><ul>
+<li><p><strong>作用：用于预测输出，计算Loss</strong></p>
+</li>
+<li><p><strong>举例：</strong></p>
+<p>前向传播公式（以$sigmoid$函数为例）：</p>
+<script type="math/tex; mode=display">
+\sigma(z)=\cfrac{1}{1+e^{-z}}，z=wx+b</script><p><img src="./1544584038542.png" width="500px"></p>
+<p><img src="./1544583978302.png" width="500px"></p>
+<p>上面两个例子的结果：</p>
+<script type="math/tex; mode=display">
+f(\begin{bmatrix} 1 \\ -1 \\ \end{bmatrix})=\begin{bmatrix} 0.62 \\ 0.83 \\ \end{bmatrix}，f(\begin{bmatrix} 0 \\ 0 \\ \end{bmatrix})=\begin{bmatrix} 0.51 \\ 0.85 \\ \end{bmatrix}</script></li>
+</ul>
+<h2 id="反向传播算法（Back-propagation）"><a href="#反向传播算法（Back-propagation）" class="headerlink" title="反向传播算法（Back propagation）"></a>反向传播算法（Back propagation）</h2><ul>
+<li><p><strong>作用：</strong>用于更新模型参数</p>
+</li>
+<li><p><strong>预备知识</strong>：链式求导法则（Chain Rule）</p>
+<ul>
+<li><p><strong>Case 1：</strong>$z=h(y), y= g(x)$</p>
+<p>$\Delta x\to\Delta y\to\Delta z$，此时$\cfrac{dz}{dx}=\cfrac{dz}{dy}\cfrac{dy}{dx}$</p>
+</li>
+<li><p><strong>Case2：</strong>$z=k(x,y),x=g(s),y=h(s)$</p>
+<p>$\Delta s\to\Delta x\to\Delta z$</p>
+<p>$\Delta s\to\Delta y\to\Delta z$，此时$\cfrac{dz}{ds}=\cfrac{\partial z}{\partial x}\cfrac{dx}{ds}+\cfrac{\partial z}{\partial y}\cfrac{dy}{ds}$</p>
+</li>
+</ul>
+</li>
+<li><p><strong>反向传播算法（Back propagation）</strong></p>
+<p>损失函数：</p>
+<script type="math/tex; mode=display">
+L(\theta)=\sum_{n=1}^{N}l^{(n)}(\theta) \Rightarrow \cfrac{\partial L(\theta)}{\partial w}=\sum_{n=1}^N\cfrac{\partial l^{(n)}(\theta)}{\partial w}</script><blockquote>
+<p>其中</p>
+<ul>
+<li>n：表示每个样例</li>
+<li>N：表示样例的总数</li>
+<li>$l^{(n)}(\theta)$ ：表示第$n$个样例的损失值</li>
+<li>$L(\theta)=\sum_{n=1}^{N}l^{(n)}(\theta) $：表示N个样例的总损失值</li>
+<li>$\theta=\{w1,w2,w3,w4,…,b1,b2,…\}$：为深度神经网络的参数</li>
+</ul>
+<p>这个例子的意思是通过Batch_size=N的一个batch来更新一次所有参数 $\theta$</p>
+</blockquote>
+<p>为了问题简单化，抽取其中的一个样本来计算 $\cfrac{\partial l(\theta)}{\partial w}​$，会计算这个，其他样本同理也可以计算，最后加起来就可以得到  $\cfrac{\partial L(\theta)}{\partial w}​$ ，从而去更新参数 $w​$ 。</p>
+<p>根据链式求导法则， $\cfrac{\partial l}{\partial w}=\cfrac{\partial l}{\partial z}\cfrac{\partial z}{\partial w}$</p>
+<p><strong>我们可以先通过下图整体性的理解一下反向传播算法</strong></p>
+<p><img src="./1544620071134.png" width="450px"></p>
+<p>反向传播算法虽然名为“反向传播”，但是实际上是正着需要计算一遍，反着再计算一遍</p>
+<p>正向计算时，我们能得到所有的 $\cfrac{\partial z}{\partial w}​$，都等于当前层的输入值，反向计算时，计算的是$\cfrac{\partial l}{\partial z}​$，然后将他们两个相乘就能得到$\cfrac{\partial l}{\partial w}​$，这就是总体的思想，至于怎么正向计算求$\cfrac{\partial z}{\partial w}​$和反向计算求$\cfrac{\partial l}{\partial z}​$，往下看~</p>
+<p><strong>其中反向计算部分 $\cfrac{\partial l}{\partial z}$待会儿再讨论，因为它比较麻烦，我们先计算正向计算部分$\cfrac{\partial z}{\partial w}$ </strong></p>
+<ul>
+<li><p><strong>正向计算部分：</strong></p>
+<p>看下面这个网络，我们能轻易地计算出 $\cfrac{\partial z}{\partial w_1}=x_1 ，\cfrac{\partial z}{\partial w_2}=x_2$</p>
+<p><img src="./1544616480727.png" width="450px"></p>
+<p>而且我们还能发现，其实$\cfrac{\partial z}{\partial w}$的值就是该层神经元的输入值，因此如果带入一些数据进去计算，可以得到下图</p>
+<p><img src="./1544617223333.png" width="450px"></p>
+<p>可以看到，每一层的$\cfrac{\partial z}{\partial w}$都等于该层的输入值</p>
+<blockquote>
+<p>上图在计算时，激活函数采用 $sigmoid$函数</p>
+</blockquote>
+</li>
+<li><p><strong>反向计算部分：</strong></p>
+<p>计算完了$\cfrac{\partial z}{\partial w}$，再来计算$\cfrac{\partial l}{\partial z}$，同样根据链式求导法则， $\cfrac{\partial l}{\partial z}=\cfrac{\partial l}{\partial a}\cfrac{\partial a}{\partial z}$，其中$a=\sigma(z)$</p>
+<p>上式中，$\cfrac{\partial a}{\partial z}=\sigma’(z)=\sigma(z)(1-\sigma(z))$ 是一个可以算出来的数值，而$\cfrac{\partial l}{\partial a}$ 怎么来计算呢？我们先来看看下面这张图</p>
+<p><img src="./1544617793774.png" width="500px"></p>
+<blockquote>
+<p>这张图中，第二层的两个神经元加权求和后的值分别为 $z’$ 和 $z’’$ </p>
+</blockquote>
+<p>通过这张图，根据链式求导法则我们能计算出$\cfrac{\partial l}{\partial a}=\cfrac{\partial l}{\partial z’}\cfrac{\partial z’}{\partial a}+\cfrac{\partial l}{\partial z’’}\cfrac{\partial z’’}{\partial a}$，而其中的 $ \cfrac{\partial z’}{\partial a}=w_3,\cfrac{\partial z’’}{\partial a}=w_4$ ，现在假设$\cfrac{\partial l}{\partial z’},\cfrac{\partial l}{\partial z’’}$已知，那么$\cfrac{\partial l}{\partial z}$也就计算出来了</p>
+<script type="math/tex; mode=display">
+\cfrac{\partial l}{\partial z}=\sigma'(z)\begin{bmatrix} w_3\cfrac{\partial l}{\partial z'}+w_4\cfrac{\partial l}{\partial z''} \end{bmatrix}</script><p><strong>(算法精华部分)</strong>可以将上式理解成一个线性的反向传播的网络（此算法因此得名），如下图所示</p>
+<p><img src="./1544618843691.png" width="300px"></p>
+<blockquote>
+<p>为什么这个网络是线性的呢？</p>
+<ul>
+<li>因为$\sigma’(z)$是一个常数，在前向传播时 $z$ 的值已经被确定了，因此$\sigma’(z)=\sigma(z)(1-\sigma(z))$也是一个常数值，所以$\cfrac{\partial l}{\partial z}$相当于 $\cfrac{\partial l}{\partial z’},\cfrac{\partial l}{\partial z’’}$加权求和后乘了一个常数，也就是线性变换啦</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>回头看看我们的目标，此时$\cfrac{\partial l}{\partial w}=\cfrac{\partial l}{\partial z}\cfrac{\partial z}{\partial w}$已经可以计算出来了，结束！那是不可能的。。。前面是假设$\cfrac{\partial l}{\partial z’}，\cfrac{\partial l}{\partial z’’}$ 已知，但实际未知，现在就要来求他们了，可以分为以下两种情况</p>
+<ul>
+<li><p><strong>Case1：刚才那张图的第二层就是输出层，也就是下图的情况</strong></p>
+<p><img src="./1544619422616.png" width="500px"></p>
+<p>此时， $\cfrac{\partial l}{\partial z’}=\cfrac{\partial l}{\partial y_1}\cfrac{\partial y_1}{\partial z’}，\cfrac{\partial l}{\partial z’’}=\cfrac{\partial l}{\partial y_2}\cfrac{\partial y_2}{\partial z’’}$，其中 $\cfrac{\partial l}{\partial y_1}, \cfrac{\partial l}{\partial y_2}$很好求，$\cfrac{\partial y_1}{\partial z’}=\sigma’(z’)$，搞定收工！</p>
+</li>
+<li><p><strong>Case2：刚才那张图的第二层不是输出层（此时是一个深度网络），也就是下图的情况</strong></p>
+<p><img src="./1544619688474.png" width="450px"></p>
+<p>此时</p>
+<script type="math/tex; mode=display">
+\cfrac{\partial l}{\partial z'}=\cfrac{\partial l}{\partial a'}\cfrac{\partial a'}{\partial z'}, 其中\cfrac{\partial a'}{\partial z'}=\sigma'(z'),
+\cfrac{\partial l}{\partial a'}=\cfrac{\partial l}{\partial z_a}\cfrac{\partial z_a}{\partial a'}+\cfrac{\partial l}{\partial z_b}\cfrac{\partial z_b}{\partial a'}
+
+\\ \cfrac{\partial l}{\partial z''}=\cfrac{\partial l}{\partial a''}\cfrac{\partial a''}{\partial z'}
+其中\cfrac{\partial a'}{\partial z''}=\sigma'(z''),
+\cfrac{\partial l}{\partial a''}=\cfrac{\partial l}{\partial z_a}\cfrac{\partial z_a}{\partial a''}+\cfrac{\partial l}{\partial z_b}\cfrac{\partial z_b}{\partial a''}</script><p>把上式转换成反向传播的形式</p>
+<script type="math/tex; mode=display">
+\cfrac{\partial l}{\partial z'}=\sigma'(z')\begin{bmatrix} w_5\cfrac{\partial l}{\partial z_a}+w_6\cfrac{\partial l}{\partial z_b} \end{bmatrix}\\
+\cfrac{\partial l}{\partial z''}=\sigma'(z'')\begin{bmatrix} w_7\cfrac{\partial l}{\partial z_a}+w_8\cfrac{\partial l}{\partial z_b} \end{bmatrix}</script><p><strong>（精华啊）</strong>也就是说，跟刚才一样，将上面的图看成一个线性的反向传播的网络，如下图所示</p>
+<p><img src="./1544619858768.png" width="450px"></p>
+<p>我们可以重复上面的步骤，直到到达输出层，就转换成了Case1的情况</p>
+<blockquote>
+<p><strong>（精华中的精华啊）</strong>事实上没必要向刚才推导的那样，<strong>从前往后</strong>计算$\cfrac{\partial l}{\partial z}$，我们可以<strong>从后往前</strong>计算，就像下面这张图一样</p>
+<p><img src="./1544669757677.png" width="500px"></p>
+<script type="math/tex; mode=display">
+最后一层：\cfrac{\partial l}{\partial z_5}=\cfrac{\partial l}{\partial y_1}\cfrac{\partial y_1}{\partial z_5},\cfrac{\partial l}{\partial z_6}=\cfrac{\partial l}{\partial y_2}\cfrac{\partial y_2}{\partial z_6}
+\\倒数第二层：\cfrac{\partial l}{\partial z_3}=\sigma'(z_3)\begin{bmatrix} w_9\cfrac{\partial l}{\partial z_5}+w_{10}\cfrac{\partial l}{\partial z_6} \end{bmatrix} 
+,\cfrac{\partial l}{\partial z_4}=\sigma'(z_4)\begin{bmatrix} w_{11}\cfrac{\partial l}{\partial z_5}+w_{12}\cfrac{\partial l}{\partial z_6} \end{bmatrix} 
+\\倒数第三层：\cfrac{\partial l}{\partial z_1}=\sigma'(z_1)\begin{bmatrix} w_5\cfrac{\partial l}{\partial z_3}+w_6\cfrac{\partial l}{\partial z_4} \end{bmatrix} 
+,\cfrac{\partial l}{\partial z_2}=\sigma'(z_2)\begin{bmatrix} w_7\cfrac{\partial l}{\partial z_3}+w_8\cfrac{\partial l}{\partial z_4} \end{bmatrix}
+\\......</script></blockquote>
+</li>
+</ul>
+<p>综上，通过前面的<strong>正向计算</strong>和<strong>反向计算</strong>分别得到所有的 $\cfrac{\partial z}{\partial w}$和$\cfrac{\partial l}{\partial z}$，再将他们相乘就得到了$\cfrac{\partial l}{\partial w}$</p>
+<blockquote>
+<p>bias的更新同理，只是有一点小区别是$\cfrac{\partial z}{\partial w}​$每次都是等于该层神经元的输入，而$\cfrac{\partial z}{\partial b}​$每次都是等于1的（这个求导很简单，看下面的公式），也就是说，只用计算$\cfrac{\partial l}{\partial z}​$就能知道bias的所有梯度值了，从而去更新它</p>
+<script type="math/tex; mode=display">
+z=\sum_i^nw_ix+b_i</script></blockquote>
+</li>
+<li><p><strong>反向传播算法练习</strong></p>
+<p><img src="./1307765446.jpg" width="500"></p>
+<p><strong>其中</strong></p>
+<ul>
+<li>lr=0.9</li>
+<li>Loss=MSE</li>
+<li>激活函数：sigmoid</li>
+<li>这个样例的label=1</li>
+</ul>
+<p><strong>参考答案</strong></p>
+</li>
+</ul>
+<p><img src="523578690.jpg"></p>
+<h1 id="反向传播算法的实现"><a href="#反向传播算法的实现" class="headerlink" title="反向传播算法的实现"></a>反向传播算法的实现</h1><p>实现步骤：</p>
+<ul>
+<li>步骤一：定义一个Network的类，里面包含实现神经网络训练和预测时的各个方法</li>
+<li>步骤二：写一个demo来验证上面的Network模块是否工作正常</li>
+</ul>
+<h2 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h2><p>首先导入需要使用到的标准库<code>random.py</code>和第三方库<code>numpy.py</code>。其中<code>random</code>库用来打乱训练数据，随机生成mini_batch（本次代码将使用SGD算法来训练模型）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<p>接下来定义类的构造方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Network</span><span class="params">(object)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, sizes)</span>:</span></span><br><span class="line">		self.sizes = sizes</span><br><span class="line">		self.num_layers = len(sizes)</span><br><span class="line">		self.weights = [np.random.randn(y, x) <span class="keyword">for</span> x, y <span class="keyword">in</span> zip(sizes[:<span class="number">-1</span>], sizes[<span class="number">1</span>:])]</span><br><span class="line">		self.biases = [np.random.randn(y, <span class="number">1</span>) <span class="keyword">for</span> y <span class="keyword">in</span> sizes[<span class="number">1</span>:]]</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><p>sizes：一个列表，表示网络模型每一层的神经元个数，例如<code>[784, 20, 10]</code></p>
+<blockquote>
+<p>后面的步骤二会使用mnist手写数字识别数据集来验证这个类，所以输入神经元的个数为784，输出为10，中间的隐藏层可以自定义，不同的隐藏层结构会导致模型有不同的性能。</p>
+</blockquote>
+</li>
+<li><p>num_layers：神经网络的层数</p>
+</li>
+<li><p>weights：一个列表，表示每两层神经元之间的权重值，初始时为随机数</p>
+<blockquote>
+<p>例如：当网络的sizes为<code>[784, 20, 10]</code>时，weights中一共有两个元素，它们的形状分别是<code>[20, 784]</code>，<code>[10, 20]</code></p>
+</blockquote>
+</li>
+<li><p>biases：一个列表，表示每层神经元的权重值，初始时为随机数</p>
+<blockquote>
+<p>例如：当网络的sizes为<code>[784, 20, 10]</code>时，biases中一共有两个元素，它们的形状分别是<code>[20, 1]</code>，<code>[10, 1]</code></p>
+</blockquote>
+</li>
+</ul>
+<p>接下来定义两个待会儿会用到的数学函数，他们分别是sigmoid函数和sigmoid的一阶导数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(self, z)</span>:</span></span><br><span class="line">	<span class="string">'''sigmoid函数</span></span><br><span class="line"><span class="string">	'''</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1.0</span> / (<span class="number">1.0</span> + np.exp(-z))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid_prime</span><span class="params">(self, z)</span>:</span></span><br><span class="line">	<span class="string">'''求sigmoid函数的一阶导数</span></span><br><span class="line"><span class="string">	'''</span></span><br><span class="line">	<span class="keyword">return</span> self.sigmoid(z) * (<span class="number">1.0</span> - self.sigmoid(z))</span><br></pre></td></tr></table></figure>
+<p>接下来定义全向传播算法方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">feedforward</span><span class="params">(self, a)</span>:</span></span><br><span class="line">	<span class="string">'''前向传播，得到预测结果并返回</span></span><br><span class="line"><span class="string">	'''</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(self.num_layers - <span class="number">1</span>):</span><br><span class="line">		z = np.dot(self.weights[i], a) + self.biases[i]</span><br><span class="line">		a = self.sigmoid(z)</span><br><span class="line">	<span class="keyword">return</span> a</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例如：在手写数字识别数据集中，输入值a是形状为<code>[784， 1]</code>的矩阵，输出结果为<code>[10, 1]</code>的矩阵</p>
+</blockquote>
+<p>接下来定义SGD算法的方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SGD</span><span class="params">(self, </span></span></span><br><span class="line"><span class="function"><span class="params">		training_data, </span></span></span><br><span class="line"><span class="function"><span class="params">		epochs, </span></span></span><br><span class="line"><span class="function"><span class="params">		mini_batch_size, </span></span></span><br><span class="line"><span class="function"><span class="params">		eta, </span></span></span><br><span class="line"><span class="function"><span class="params">		test_data=None)</span>:</span></span><br><span class="line">	<span class="string">'''随机梯度下降算法</span></span><br><span class="line"><span class="string">	eta: 学习率</span></span><br><span class="line"><span class="string">	'''</span></span><br><span class="line">	n = len(training_data)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(epochs):</span><br><span class="line">		<span class="comment"># 随机打乱训练集</span></span><br><span class="line">		random.shuffle(training_data)</span><br><span class="line">		<span class="comment"># 使用传入的数据构造mini_batch</span></span><br><span class="line">		mini_batches = [</span><br><span class="line">			training_data[k:k+mini_batch_size]</span><br><span class="line">			<span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">0</span>, n, mini_batch_size)</span><br><span class="line">		]</span><br><span class="line">		<span class="comment"># 使用一个mini_batch更新参数</span></span><br><span class="line">		<span class="keyword">for</span> mini_batch <span class="keyword">in</span> mini_batches:</span><br><span class="line">			self.update_mini_batch(mini_batch, eta)</span><br><span class="line">		<span class="comment"># 如果有测试集的话，每使用一个mini_batch更新完参数</span></span><br><span class="line">		<span class="comment"># 就在测试集上验证一下正确率</span></span><br><span class="line">		<span class="keyword">if</span> test_data:</span><br><span class="line">			print(<span class="string">'Epoch &#123;&#125;: accuracy = &#123;&#125;'</span>.format(i, self.accuracy(test_data)))</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			print(<span class="string">'Epoch &#123;&#125;: complete!'</span>.format(i))</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li>training_data：一个列表，里面存放每一个训练样本，而每一个训练样本（如：<code>training_data[0]</code>）又是一个元祖，里面包含两个元素，第一个是样本的属性，第二个是标签。以mnist数据集为例，<code>training_data[0][0]</code>和<code>training_data[0][1]</code>形状分别为<code>[784, 1]</code>和<code>[10, 1]</code>。（采用one-hot编码）</li>
+<li>epochs：训练的轮数</li>
+<li>mini_batch_size：采用SGD算法时的mini batch大小</li>
+<li>eta：学习率</li>
+<li>test_data：测试数据，每epoch训练结束后，会使用测试数据测试一次正确，数据格式与训练数据类似</li>
+</ul>
+<p>在上面的SGD算法中，第21行调用了一个方法：<code>self.update_mini_batch(mini_batch, eta)</code>，它使用一个mini_batch的数据来更新参数。除此之外，25行还调用了一个方法：<code>self.accuracy(test_data)</code>，这个方法比较简单，放在最后去讲。</p>
+<p>接下来，先定义<code>self.update_mini_batch(mini_batch, eta)</code>方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_mini_batch</span><span class="params">(self, mini_batch, eta)</span>:</span></span><br><span class="line">	<span class="string">'''用一个mini_batch来更新参数</span></span><br><span class="line"><span class="string">	'''</span></span><br><span class="line">	nabla_w = [np.zeros(w.shape) <span class="keyword">for</span> w <span class="keyword">in</span> self.weights]</span><br><span class="line">	nabla_b = [np.zeros(b.shape) <span class="keyword">for</span> b <span class="keyword">in</span> self.biases]</span><br><span class="line">	<span class="keyword">for</span> x, y <span class="keyword">in</span> mini_batch:</span><br><span class="line">		delta_nabla_w, delta_nabla_b = self.backprop(x, y)</span><br><span class="line">		nabla_w = [nw+dnw <span class="keyword">for</span> nw, dnw <span class="keyword">in</span> zip(nabla_w, delta_nabla_w)]</span><br><span class="line">		nabla_b = [nb+dnb <span class="keyword">for</span> nb, dnb <span class="keyword">in</span> zip(nabla_b, delta_nabla_b)]</span><br><span class="line">	self.weights = [w-(eta/len(mini_batch))*nw <span class="keyword">for</span> w, nw <span class="keyword">in</span> zip(self.weights, nabla_w)]</span><br><span class="line">	self.biases = [b-(eta/len(mini_batch))*nb <span class="keyword">for</span> b, nb <span class="keyword">in</span> zip(self.biases, nabla_b)]</span><br></pre></td></tr></table></figure>
+<p>该方法中，有几个变量需要注意：</p>
+<p><code>delta_nabla_w</code>和<code>delta_nabla_b</code>，他们是通过mini batch中的某一个样本计算出的每个需要更新的参数的梯度，但是我们需要使用整个mini batch对参数更新，所以使用<code>nabla_w</code>和<code>nabla_b</code>记录每个需要更新的参数的梯度的总和，相当于前面理论部分的$\cfrac{\partial l(\theta)}{\partial w}$和$\cfrac{\partial l(\theta)}{\partial b}$，最后再把这个总和除以mini batch的大小，得到平均梯度，再更新所有参数（对应最后两行代码）。</p>
+<p>在上面的方法中，第7行调用了一个方法：<code>self.backprop(x, y)</code>，这就是今天的主角，<strong>反向传播算法</strong>，它的作用是通过一个样本计算出所有参数的梯度，定义如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backprop</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">	<span class="string">'''反向传播算法，计算梯度</span></span><br><span class="line"><span class="string">	'''</span></span><br><span class="line">	nabla_w = [np.zeros(w.shape) <span class="keyword">for</span> w <span class="keyword">in</span> self.weights]</span><br><span class="line">	nabla_b = [np.zeros(b.shape) <span class="keyword">for</span> b <span class="keyword">in</span> self.biases]</span><br><span class="line">	<span class="comment"># feedfoward 前向</span></span><br><span class="line">	activation = x <span class="comment"># 第一层的输入</span></span><br><span class="line">	activations = [x] <span class="comment"># 记录每一层的输入，相当于z对w的梯度</span></span><br><span class="line">	zs = [] <span class="comment"># 经过激活函数前的加权求和值</span></span><br><span class="line">	<span class="keyword">for</span> w, b <span class="keyword">in</span> zip(self.weights, self.biases):</span><br><span class="line">		z = np.dot(w, activation) + b</span><br><span class="line">		zs.append(z)</span><br><span class="line">		activation = self.sigmoid(z)</span><br><span class="line">		activations.append(activation)</span><br><span class="line">	<span class="comment"># backward pass 反向</span></span><br><span class="line">	<span class="comment"># 先算最后一层</span></span><br><span class="line">	delta = (activations[<span class="number">-1</span>]-y)*self.sigmoid_prime(zs[<span class="number">-1</span>])</span><br><span class="line">	<span class="comment"># print(delta.shape)</span></span><br><span class="line">	nabla_w[<span class="number">-1</span>] = np.dot(delta, activations[<span class="number">-2</span>].transpose())</span><br><span class="line">	nabla_b[<span class="number">-1</span>] = delta</span><br><span class="line">	<span class="comment"># 再算前面几层，这里是从后往前计算的</span></span><br><span class="line">	<span class="keyword">for</span> layer <span class="keyword">in</span> range(<span class="number">2</span>, self.num_layers):</span><br><span class="line">		z = zs[-layer]</span><br><span class="line">		sp = self.sigmoid_prime(z)</span><br><span class="line">		delta = sp * np.dot(self.weights[-layer+<span class="number">1</span>].transpose(), delta)</span><br><span class="line">		<span class="comment"># print(delta.shape, activations[-layer-1].shape)</span></span><br><span class="line">		nabla_w[-layer] = np.dot(delta, activations[-layer<span class="number">-1</span>].transpose())</span><br><span class="line">		nabla_b[-layer] = delta</span><br><span class="line">	<span class="keyword">return</span> nabla_w, nabla_b</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<p><code>nabla_w</code>和<code>nabla_b</code>记录了每个需要更新的参数的梯度，他的形状与模型的参数的形状相同。</p>
+<blockquote>
+<p>这里的<code>nabla_w</code>和<code>nabla_b</code>与上一个方法的意义不同，这里的是只记录了通过一个样本所计算出的梯度，而上一个方法中记录的是通过一个mini batch中的所有样本所计算出的梯度的总和。</p>
+</blockquote>
+<p>整个方法分为两个部分：前向计算和反向计算，与上面的理论知识一致，代码只是将公式翻译了一遍。</p>
+<p><strong>前向计算：</strong>计算出所有的$\cfrac{\partial z}{\partial w}$ ​ ，都等于当前层的输入值，对应于代码中的列表<code>activations</code></p>
+<p><strong>反向计算：</strong>计算出所有的$\cfrac{\partial l}{\partial z}$，对应于代码中的变量<code>delta</code></p>
+<p>然后将他们两个相乘就能得到$\cfrac{\partial l}{\partial w}$，对应于代码中的列表<code>nabla_w</code>，而$\cfrac{\partial l}{\partial b}$ 与$\cfrac{\partial l}{\partial z}​$ 相等，对应的是列表<code>nabla_b</code></p>
+<blockquote>
+<p><strong>注意：</strong>最后一层的梯度计算方法与前面的层不同，而且这里计算最后一层的梯度时使用的损失函数是MSE而不是交叉熵。如果要使用交叉熵，只需要改第17行的代码即可。</p>
+</blockquote>
+<p>最后还差一个方法：用于计算测数据的正确率</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">accuracy</span><span class="params">(self, test_data)</span>:</span></span><br><span class="line">	<span class="string">'''计算测试数据的正确率</span></span><br><span class="line"><span class="string">	'''</span></span><br><span class="line">	n_test = len(test_data)</span><br><span class="line">	print(test_data[<span class="number">0</span>][<span class="number">0</span>], test_data[<span class="number">0</span>][<span class="number">1</span>])</span><br><span class="line">	test_results = [(np.argmax(self.feedforward(x)), y_) <span class="keyword">for</span> x, y_ <span class="keyword">in</span> test_data]</span><br><span class="line">	<span class="keyword">return</span> sum([int(x == y) <span class="keyword">for</span> x, y <span class="keyword">in</span> test_results]) * <span class="number">1.0</span> / n_test</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：这里的测试数据的label没有使用one-hot编码，是一个数字</p>
+</blockquote>
+<p>至此，network模块定义完成。</p>
+<h2 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h2><p>接下来，写一个demo来验证上面的Network模块是否工作正常</p>
+<p>这个demo使用了mnist数据集，所以我找了一个加载mnist数据集的模块，上面有很详细的注释，直接贴上代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Standard library</span></span><br><span class="line"><span class="keyword">import</span> cPickle</span><br><span class="line"><span class="keyword">import</span> gzip</span><br><span class="line"></span><br><span class="line"><span class="comment"># Third-party libraries</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_data</span><span class="params">(path)</span>:</span></span><br><span class="line">    <span class="string">"""Return the MNIST data as a tuple containing the training data,</span></span><br><span class="line"><span class="string">    the validation data, and the test data.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    The ``training_data`` is returned as a tuple with two entries.</span></span><br><span class="line"><span class="string">    The first entry contains the actual training images.  This is a</span></span><br><span class="line"><span class="string">    numpy ndarray with 50,000 entries.  Each entry is, in turn, a</span></span><br><span class="line"><span class="string">    numpy ndarray with 784 values, representing the 28 * 28 = 784</span></span><br><span class="line"><span class="string">    pixels in a single MNIST image.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    The second entry in the ``training_data`` tuple is a numpy ndarray</span></span><br><span class="line"><span class="string">    containing 50,000 entries.  Those entries are just the digit</span></span><br><span class="line"><span class="string">    values (0...9) for the corresponding images contained in the first</span></span><br><span class="line"><span class="string">    entry of the tuple.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    The ``validation_data`` and ``test_data`` are similar, except</span></span><br><span class="line"><span class="string">    each contains only 10,000 images.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    This is a nice data format, but for use in neural networks it's</span></span><br><span class="line"><span class="string">    helpful to modify the format of the ``training_data`` a little.</span></span><br><span class="line"><span class="string">    That's done in the wrapper function ``load_data_wrapper()``, see</span></span><br><span class="line"><span class="string">    below.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    f = gzip.open(path, <span class="string">'rb'</span>)</span><br><span class="line">    training_data, validation_data, test_data = cPickle.load(f)</span><br><span class="line">    f.close()</span><br><span class="line">    <span class="keyword">return</span> (training_data, validation_data, test_data)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_data_wrapper</span><span class="params">(path)</span>:</span></span><br><span class="line">    <span class="string">"""Return a tuple containing ``(training_data, validation_data,</span></span><br><span class="line"><span class="string">    test_data)``. Based on ``load_data``, but the format is more</span></span><br><span class="line"><span class="string">    convenient for use in our implementation of neural networks.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    In particular, ``training_data`` is a list containing 50,000</span></span><br><span class="line"><span class="string">    2-tuples ``(x, y)``.  ``x`` is a 784-dimensional numpy.ndarray</span></span><br><span class="line"><span class="string">    containing the input image.  ``y`` is a 10-dimensional</span></span><br><span class="line"><span class="string">    numpy.ndarray representing the unit vector corresponding to the</span></span><br><span class="line"><span class="string">    correct digit for ``x``.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    ``validation_data`` and ``test_data`` are lists containing 10,000</span></span><br><span class="line"><span class="string">    2-tuples ``(x, y)``.  In each case, ``x`` is a 784-dimensional</span></span><br><span class="line"><span class="string">    numpy.ndarry containing the input image, and ``y`` is the</span></span><br><span class="line"><span class="string">    corresponding classification, i.e., the digit values (integers)</span></span><br><span class="line"><span class="string">    corresponding to ``x``.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Obviously, this means we're using slightly different formats for</span></span><br><span class="line"><span class="string">    the training data and the validation / test data.  These formats</span></span><br><span class="line"><span class="string">    turn out to be the most convenient for use in our neural network</span></span><br><span class="line"><span class="string">    code."""</span></span><br><span class="line">    tr_d, va_d, te_d = load_data(path)</span><br><span class="line">    training_inputs = [np.reshape(x, (<span class="number">784</span>, <span class="number">1</span>)) <span class="keyword">for</span> x <span class="keyword">in</span> tr_d[<span class="number">0</span>]]</span><br><span class="line">    training_results = [vectorized_result(y) <span class="keyword">for</span> y <span class="keyword">in</span> tr_d[<span class="number">1</span>]]</span><br><span class="line">    training_data = zip(training_inputs, training_results)</span><br><span class="line">    validation_inputs = [np.reshape(x, (<span class="number">784</span>, <span class="number">1</span>)) <span class="keyword">for</span> x <span class="keyword">in</span> va_d[<span class="number">0</span>]]</span><br><span class="line">    validation_data = zip(validation_inputs, va_d[<span class="number">1</span>])</span><br><span class="line">    test_inputs = [np.reshape(x, (<span class="number">784</span>, <span class="number">1</span>)) <span class="keyword">for</span> x <span class="keyword">in</span> te_d[<span class="number">0</span>]]</span><br><span class="line">    test_data = zip(test_inputs, te_d[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> (training_data, validation_data, test_data)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vectorized_result</span><span class="params">(j)</span>:</span></span><br><span class="line">    <span class="string">"""Return a 10-dimensional unit vector with a 1.0 in the jth</span></span><br><span class="line"><span class="string">    position and zeroes elsewhere.  This is used to convert a digit</span></span><br><span class="line"><span class="string">    (0...9) into a corresponding desired output from the neural</span></span><br><span class="line"><span class="string">    network."""</span></span><br><span class="line">    e = np.zeros((<span class="number">10</span>, <span class="number">1</span>))</span><br><span class="line">    e[j] = <span class="number">1.0</span></span><br><span class="line">    <span class="keyword">return</span> e</span><br></pre></td></tr></table></figure>
+<p>对应的数据集的下载地址：<a href="https://pan.baidu.com/s/1b-29c3GwNVL5nvqRLEnznw" target="_blank" rel="noopener">https://pan.baidu.com/s/1b-29c3GwNVL5nvqRLEnznw</a>  密码:vycx</p>
+<p>开始写demo，三行代码搞定：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> Network <span class="keyword">import</span> Network</span><br><span class="line"><span class="keyword">from</span> mnist_loader <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">model = Network([<span class="number">784</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">10</span>])</span><br><span class="line">train, val, test = load_data_wrapper(<span class="string">'./data/mnist.pkl.gz'</span>)</span><br><span class="line">model.SGD(train, <span class="number">50</span>, <span class="number">2000</span>, <span class="number">0.8</span>, val)</span><br></pre></td></tr></table></figure>
+<p>上我定义的网络结构是一个三层的神经网络<code>[784, 20, 20, 10]</code>，可以随意更改，不同的网络结构有不同的预测效果。</p>
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Epoch <span class="number">0</span>: accuracy = <span class="number">0.1172</span></span><br><span class="line">Epoch <span class="number">1</span>: accuracy = <span class="number">0.1352</span></span><br><span class="line">......</span><br><span class="line">Epoch <span class="number">48</span>: accuracy = <span class="number">0.7056</span></span><br><span class="line">Epoch <span class="number">49</span>: accuracy = <span class="number">0.709</span></span><br></pre></td></tr></table></figure>
+<p><strong>源码地址：</strong></p>
+<ul>
+<li><a href="./Network.py">Network.py</a></li>
+<li><a href="./mnist_loader.py">mnist_loader.py</a></li>
+<li><a href="./demo.py">demo.py</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    <div>    
+     
+     
+        <ul class="post-copyright">
+          <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+            <a href="/2019/04/13/基于numpy的反向传播算法的实现/" title="基于numpy的反向传播算法的实现">https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明： </strong>
+            本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
+          </li>
+        </ul>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果你觉得此页面对你有帮助，或者想资瓷我一下，欢迎点击下面打赏哦，谢谢~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChatQR.png" alt="JhChen 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPayQR.png" alt="JhChen 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/反向传播算法/" rel="tag"># 反向传播算法</a>
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+            <a href="/tags/人工智能/" rel="tag"># 人工智能</a>
+          
+            <a href="/tags/backpropagation/" rel="tag"># backpropagation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/08/中科大软件学院研究生选课辅助系统/" rel="next" title="中科大软件学院研究生选课辅助系统">
+                <i class="fa fa-chevron-left"></i> 中科大软件学院研究生选课辅助系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/100x100.gif" alt="JhChen">
+            
+              <p class="site-author-name" itemprop="name">JhChen</p>
+              <p class="site-description motion-element" itemprop="description">不想长大的石头</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/jianhuchen" title="GitHub &rarr; https://github.com/jianhuchen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cjh18@mail.ustc.edu.cn" title="E-Mail &rarr; mailto:cjh18@mail.ustc.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://keyanjie.net" title="http://keyanjie.net" rel="noopener" target="_blank">柯延杰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://gysss.github.io" title="http://gysss.github.io" rel="noopener" target="_blank">高源</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#相关基础理论知识"><span class="nav-number">1.</span> <span class="nav-text">相关基础理论知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前向传播算法（Forward-propagation）"><span class="nav-number">1.1.</span> <span class="nav-text">前向传播算法（Forward propagation）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向传播算法（Back-propagation）"><span class="nav-number">1.2.</span> <span class="nav-text">反向传播算法（Back propagation）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反向传播算法的实现"><span class="nav-number">2.</span> <span class="nav-text">反向传播算法的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤一"><span class="nav-number">2.1.</span> <span class="nav-text">步骤一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤二"><span class="nav-number">2.2.</span> <span class="nav-text">步骤二</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JhChen</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  |  总访客数<span id="busuanzi_value_site_uv"></span>人
+</span>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz',
+        appKey: 'FTmW5pj1DN6mdeaKvW8ajsIo',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!\n填写正确的邮箱，这样如果有人回复您就会有邮件提醒哦~ \n此回复框MarkDown全语法支持,点击右下角Preview预览',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "YYDp5Xaws6vh3eOJM7bp6qsi-gzGzoHsz",
+                'X-LC-Key': "FTmW5pj1DN6mdeaKvW8ajsIo",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

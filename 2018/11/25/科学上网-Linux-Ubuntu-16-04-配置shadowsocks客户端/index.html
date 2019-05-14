@@ -54,21 +54,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+<link href="/blog/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.gif?v=6.5.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=6.5.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.gif?v=6.5.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/32x32.gif?v=6.5.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/16x16.gif?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=6.5.0" color="#222">
 
 
 
@@ -81,7 +81,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/blog/',
     scheme: 'Pisces',
     version: '6.5.0',
     sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -110,31 +110,31 @@
 <meta name="keywords" content="Linux,Ubuntu,科学上网,shadowsocks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="科学上网-Linux(Ubuntu 16.04)配置shadowsocks客户端">
-<meta property="og:url" content="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/index.html">
+<meta property="og:url" content="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/index.html">
 <meta property="og:site_name" content="不想长大的石头">
 <meta property="og:description" content="ubuntu16.04系统装好之后，第一件事就是要配置科学上网啦~ Linux下的Shadowsocks的客户端（下文简称为ss）有两种版本，一种是GUI的，这种有图形界面，比较适合新手使用，另一种是命令行形式的。接下来详细介绍下这两种形式的安装方法： 配置Shadowsocks命令行程序命令行版本我分了4个步骤，稍微有点繁琐，其实还好啦～ 安装ss打开终端，如果你没有安装pip那么先输入下面这个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/shadowsocksInstall.png">
-<meta property="og:image" content="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/ssRun.png">
-<meta property="og:image" content="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/libsodium.png">
-<meta property="og:image" content="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/addStart.png">
-<meta property="og:image" content="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/all.png">
-<meta property="og:image" content="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/select.png">
-<meta property="og:image" content="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/shadowsocks-qt5-search.png">
-<meta property="og:image" content="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/ss-qt5-setting.png">
-<meta property="og:image" content="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/shadowsocks-qt5.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/shadowsocksInstall.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/ssRun.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/libsodium.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/addStart.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/all.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/select.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/shadowsocks-qt5-search.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/ss-qt5-setting.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/shadowsocks-qt5.png">
 <meta property="og:updated_time" content="2018-12-15T03:27:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="科学上网-Linux(Ubuntu 16.04)配置shadowsocks客户端">
 <meta name="twitter:description" content="ubuntu16.04系统装好之后，第一件事就是要配置科学上网啦~ Linux下的Shadowsocks的客户端（下文简称为ss）有两种版本，一种是GUI的，这种有图形界面，比较适合新手使用，另一种是命令行形式的。接下来详细介绍下这两种形式的安装方法： 配置Shadowsocks命令行程序命令行版本我分了4个步骤，稍微有点繁琐，其实还好啦～ 安装ss打开终端，如果你没有安装pip那么先输入下面这个">
-<meta name="twitter:image" content="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/shadowsocksInstall.png">
+<meta name="twitter:image" content="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/shadowsocksInstall.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/">
+  <link rel="canonical" href="http://jianhuchen.gitee.io/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/">
 
 
 
@@ -202,7 +202,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">不想长大的石头</span>
         <span class="logo-line-after"><i></i></span>
@@ -246,7 +246,7 @@
       
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -265,7 +265,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
 
   </li>
         
@@ -284,7 +284,7 @@
       
     
 
-    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">9</span></a>
+    <a href="/blog/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">9</span></a>
 
   </li>
         
@@ -303,7 +303,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">36</span></a>
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">36</span></a>
 
   </li>
         
@@ -322,7 +322,7 @@
       
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于 & 留言</a>
+    <a href="/blog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于 & 留言</a>
 
   </li>
         
@@ -341,7 +341,7 @@
       
     
 
-    <a href="/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
+    <a href="/blog/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
 
   </li>
         
@@ -360,7 +360,7 @@
       
     
 
-    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+    <a href="/blog/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
 
   </li>
 
@@ -412,12 +412,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/">
+    <link itemprop="mainEntityOfPage" href="http://jianhuchen.gitee.io/blog/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JhChen">
       <meta itemprop="description" content="不想长大的石头">
-      <meta itemprop="image" content="/images/100x100.gif">
+      <meta itemprop="image" content="/blog/images/100x100.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -488,7 +488,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux相关/" itemprop="url" rel="index"><span itemprop="name">Linux相关</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/blog/categories/Linux相关/" itemprop="url" rel="index"><span itemprop="name">Linux相关</span></a></span>
 
                 
                 
@@ -503,8 +503,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/" itemprop="commentCount"></span>
+                <a href="/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -512,7 +512,7 @@
 
           
           
-             <span id="/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/" class="leancloud_visitors" data-flag-title="科学上网-Linux(Ubuntu 16.04)配置shadowsocks客户端">
+             <span id="/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/" class="leancloud_visitors" data-flag-title="科学上网-Linux(Ubuntu 16.04)配置shadowsocks客户端">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -612,7 +612,7 @@
         <ul class="post-copyright">
           <li class="post-copyright-link">
             <strong>本文链接：</strong>
-            <a href="/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/" title="科学上网-Linux(Ubuntu 16.04)配置shadowsocks客户端">https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/</a>
+            <a href="/blog/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/" title="科学上网-Linux(Ubuntu 16.04)配置shadowsocks客户端">https://cjh.zone/2018/11/25/科学上网-Linux-Ubuntu-16-04-配置shadowsocks客户端/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明： </strong>
@@ -641,14 +641,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/WeChatQR.png" alt="JhChen 微信支付">
+        <img id="wechat_qr" src="/blog/images/WeChatQR.png" alt="JhChen 微信支付">
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/AliPayQR.png" alt="JhChen 支付宝">
+        <img id="alipay_qr" src="/blog/images/AliPayQR.png" alt="JhChen 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -667,13 +667,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
+            <a href="/blog/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+            <a href="/blog/tags/Ubuntu/" rel="tag"># Ubuntu</a>
           
-            <a href="/tags/科学上网/" rel="tag"># 科学上网</a>
+            <a href="/blog/tags/科学上网/" rel="tag"># 科学上网</a>
           
-            <a href="/tags/shadowsocks/" rel="tag"># shadowsocks</a>
+            <a href="/blog/tags/shadowsocks/" rel="tag"># shadowsocks</a>
           
         </div>
       
@@ -686,7 +686,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/23/一、Linux常用命令（Linux学习系列）/" rel="next" title="一、Linux常用命令（Linux学习系列）">
+              <a href="/blog/2018/11/23/一、Linux常用命令（Linux学习系列）/" rel="next" title="一、Linux常用命令（Linux学习系列）">
                 <i class="fa fa-chevron-left"></i> 一、Linux常用命令（Linux学习系列）
               </a>
             
@@ -696,7 +696,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/26/Windows与Ubuntu时间不同步的解决方案/" rel="prev" title="Windows与Ubuntu时间不同步的解决方案">
+              <a href="/blog/2018/11/26/Windows与Ubuntu时间不同步的解决方案/" rel="prev" title="Windows与Ubuntu时间不同步的解决方案">
                 Windows与Ubuntu时间不同步的解决方案 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -760,7 +760,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/100x100.gif" alt="JhChen">
+              <img class="site-author-image" itemprop="image" src="/blog/images/100x100.gif" alt="JhChen">
             
               <p class="site-author-name" itemprop="name">JhChen</p>
               <p class="site-description motion-element" itemprop="description">不想长大的石头</p>
@@ -771,7 +771,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/blog/archives/">
                 
                     <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
@@ -783,7 +783,7 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  <a href="/blog/categories/index.html">
                     
                     
                       
@@ -814,7 +814,7 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  <a href="/blog/tags/index.html">
                     
                     
                       
@@ -1077,49 +1077,49 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.5.0"></script>
 
 
 

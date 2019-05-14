@@ -54,21 +54,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+<link href="/blog/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.gif?v=6.5.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=6.5.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.gif?v=6.5.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/32x32.gif?v=6.5.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/16x16.gif?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=6.5.0" color="#222">
 
 
 
@@ -81,7 +81,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/blog/',
     scheme: 'Pisces',
     version: '6.5.0',
     sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -110,35 +110,35 @@
 <meta name="keywords" content="反向传播算法,深度学习,人工智能,backpropagation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于numpy的反向传播算法的实现">
-<meta property="og:url" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/index.html">
+<meta property="og:url" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/index.html">
 <meta property="og:site_name" content="不想长大的石头">
 <meta property="og:description" content="好久没更博了，太懒了~有错误记得告诉我哦🙇 相关基础理论知识前向传播算法（Forward propagation） 作用：用于预测输出，计算Loss  举例： 前向传播公式（以$sigmoid$函数为例）：  \sigma(z)=\cfrac{1}{1+e^{-z}}，z=wx+b  上面两个例子的结果：  f(\begin{bmatrix} 1 \\ -1 \\ \end{bmatrix})=">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544584038542.png">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544583978302.png">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544620071134.png">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544616480727.png">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544617223333.png">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544617793774.png">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544618843691.png">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544619422616.png">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544619688474.png">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544619858768.png">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544669757677.png">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1307765446.jpg">
-<meta property="og:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/523578690.jpg">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544584038542.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544583978302.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544620071134.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544616480727.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544617223333.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544617793774.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544618843691.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544619422616.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544619688474.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544619858768.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544669757677.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1307765446.jpg">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/523578690.jpg">
 <meta property="og:updated_time" content="2019-04-13T04:55:10.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于numpy的反向传播算法的实现">
 <meta name="twitter:description" content="好久没更博了，太懒了~有错误记得告诉我哦🙇 相关基础理论知识前向传播算法（Forward propagation） 作用：用于预测输出，计算Loss  举例： 前向传播公式（以$sigmoid$函数为例）：  \sigma(z)=\cfrac{1}{1+e^{-z}}，z=wx+b  上面两个例子的结果：  f(\begin{bmatrix} 1 \\ -1 \\ \end{bmatrix})=">
-<meta name="twitter:image" content="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/1544584038542.png">
+<meta name="twitter:image" content="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/1544584038542.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/">
+  <link rel="canonical" href="http://jianhuchen.gitee.io/blog/2019/04/13/基于numpy的反向传播算法的实现/">
 
 
 
@@ -206,7 +206,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">不想长大的石头</span>
         <span class="logo-line-after"><i></i></span>
@@ -250,7 +250,7 @@
       
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
 
   </li>
         
@@ -288,7 +288,7 @@
       
     
 
-    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">9</span></a>
+    <a href="/blog/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">9</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">36</span></a>
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">36</span></a>
 
   </li>
         
@@ -326,7 +326,7 @@
       
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于 & 留言</a>
+    <a href="/blog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于 & 留言</a>
 
   </li>
         
@@ -345,7 +345,7 @@
       
     
 
-    <a href="/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
+    <a href="/blog/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
 
   </li>
         
@@ -364,7 +364,7 @@
       
     
 
-    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+    <a href="/blog/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
 
   </li>
 
@@ -416,12 +416,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/">
+    <link itemprop="mainEntityOfPage" href="http://jianhuchen.gitee.io/blog/blog/2019/04/13/基于numpy的反向传播算法的实现/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JhChen">
       <meta itemprop="description" content="不想长大的石头">
-      <meta itemprop="image" content="/images/100x100.gif">
+      <meta itemprop="image" content="/blog/images/100x100.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -480,21 +480,21 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/blog/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/blog/categories/Artificial-Intelligence/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/Machine-Learning/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/blog/categories/Artificial-Intelligence/Machine-Learning/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a></span>
 
                 
                 
@@ -509,8 +509,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/13/基于numpy的反向传播算法的实现/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/04/13/基于numpy的反向传播算法的实现/" itemprop="commentCount"></span>
+                <a href="/blog/2019/04/13/基于numpy的反向传播算法的实现/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/blog/2019/04/13/基于numpy的反向传播算法的实现/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -518,7 +518,7 @@
 
           
           
-             <span id="/2019/04/13/基于numpy的反向传播算法的实现/" class="leancloud_visitors" data-flag-title="基于numpy的反向传播算法的实现">
+             <span id="/blog/2019/04/13/基于numpy的反向传播算法的实现/" class="leancloud_visitors" data-flag-title="基于numpy的反向传播算法的实现">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -776,7 +776,7 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
         <ul class="post-copyright">
           <li class="post-copyright-link">
             <strong>本文链接：</strong>
-            <a href="/2019/04/13/基于numpy的反向传播算法的实现/" title="基于numpy的反向传播算法的实现">https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/</a>
+            <a href="/blog/2019/04/13/基于numpy的反向传播算法的实现/" title="基于numpy的反向传播算法的实现">https://cjh.zone/2019/04/13/基于numpy的反向传播算法的实现/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明： </strong>
@@ -805,14 +805,14 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/WeChatQR.png" alt="JhChen 微信支付">
+        <img id="wechat_qr" src="/blog/images/WeChatQR.png" alt="JhChen 微信支付">
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/AliPayQR.png" alt="JhChen 支付宝">
+        <img id="alipay_qr" src="/blog/images/AliPayQR.png" alt="JhChen 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -831,13 +831,13 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
       
         <div class="post-tags">
           
-            <a href="/tags/反向传播算法/" rel="tag"># 反向传播算法</a>
+            <a href="/blog/tags/反向传播算法/" rel="tag"># 反向传播算法</a>
           
-            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+            <a href="/blog/tags/深度学习/" rel="tag"># 深度学习</a>
           
-            <a href="/tags/人工智能/" rel="tag"># 人工智能</a>
+            <a href="/blog/tags/人工智能/" rel="tag"># 人工智能</a>
           
-            <a href="/tags/backpropagation/" rel="tag"># backpropagation</a>
+            <a href="/blog/tags/backpropagation/" rel="tag"># backpropagation</a>
           
         </div>
       
@@ -850,7 +850,7 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/08/中科大软件学院研究生选课辅助系统/" rel="next" title="中科大软件学院研究生选课辅助系统">
+              <a href="/blog/2019/03/08/中科大软件学院研究生选课辅助系统/" rel="next" title="中科大软件学院研究生选课辅助系统">
                 <i class="fa fa-chevron-left"></i> 中科大软件学院研究生选课辅助系统
               </a>
             
@@ -920,7 +920,7 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/100x100.gif" alt="JhChen">
+              <img class="site-author-image" itemprop="image" src="/blog/images/100x100.gif" alt="JhChen">
             
               <p class="site-author-name" itemprop="name">JhChen</p>
               <p class="site-description motion-element" itemprop="description">不想长大的石头</p>
@@ -931,7 +931,7 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/blog/archives/">
                 
                     <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
@@ -943,7 +943,7 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  <a href="/blog/categories/index.html">
                     
                     
                       
@@ -974,7 +974,7 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  <a href="/blog/tags/index.html">
                     
                     
                       
@@ -1237,49 +1237,49 @@ z=\sum_i^nw_ix+b_i</script></blockquote>
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.5.0"></script>
 
 
 

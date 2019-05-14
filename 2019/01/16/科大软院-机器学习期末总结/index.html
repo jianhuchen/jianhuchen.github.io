@@ -54,21 +54,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+<link href="/blog/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.gif?v=6.5.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=6.5.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.gif?v=6.5.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/32x32.gif?v=6.5.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/16x16.gif?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=6.5.0" color="#222">
 
 
 
@@ -81,7 +81,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/blog/',
     scheme: 'Pisces',
     version: '6.5.0',
     sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -110,27 +110,27 @@
 <meta name="keywords" content="科大,深度学习,人工智能,机器学习,总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="科大软院-机器学习期末总结">
-<meta property="og:url" content="https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/index.html">
+<meta property="og:url" content="http://jianhuchen.gitee.io/blog/2019/01/16/科大软院-机器学习期末总结/index.html">
 <meta property="og:site_name" content="不想长大的石头">
 <meta property="og:description" content="贝叶斯分类器 单属性情况  离散多属性情况  朴素贝叶斯分类算法  问题1：对于条件概率 $P(X|c_j )$，由于涉及到关于 $x$ 的所有属性的联合概率，尽管我们假设属性之间是相互独立的，但直接根据样本出现的频率来估算概率实际会遇到很大困难。 解决办法：平滑处理 常用拉普拉斯修正（$Laplacian\ correction$）  问题2：稀少事件的概率估算 用相对频率估算概率值的方法，只有">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547534421369.png">
-<meta property="og:image" content="https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547464321719.png">
-<meta property="og:image" content="https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547538635281.png">
-<meta property="og:image" content="https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547539051364.png">
-<meta property="og:image" content="https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547539531400.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/01/16/科大软院-机器学习期末总结/1547534421369.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/01/16/科大软院-机器学习期末总结/1547464321719.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/01/16/科大软院-机器学习期末总结/1547538635281.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/01/16/科大软院-机器学习期末总结/1547539051364.png">
+<meta property="og:image" content="http://jianhuchen.gitee.io/blog/2019/01/16/科大软院-机器学习期末总结/1547539531400.png">
 <meta property="og:updated_time" content="2019-01-17T03:04:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="科大软院-机器学习期末总结">
 <meta name="twitter:description" content="贝叶斯分类器 单属性情况  离散多属性情况  朴素贝叶斯分类算法  问题1：对于条件概率 $P(X|c_j )$，由于涉及到关于 $x$ 的所有属性的联合概率，尽管我们假设属性之间是相互独立的，但直接根据样本出现的频率来估算概率实际会遇到很大困难。 解决办法：平滑处理 常用拉普拉斯修正（$Laplacian\ correction$）  问题2：稀少事件的概率估算 用相对频率估算概率值的方法，只有">
-<meta name="twitter:image" content="https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/1547534421369.png">
+<meta name="twitter:image" content="http://jianhuchen.gitee.io/blog/2019/01/16/科大软院-机器学习期末总结/1547534421369.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/">
+  <link rel="canonical" href="http://jianhuchen.gitee.io/blog/2019/01/16/科大软院-机器学习期末总结/">
 
 
 
@@ -198,7 +198,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">不想长大的石头</span>
         <span class="logo-line-after"><i></i></span>
@@ -242,7 +242,7 @@
       
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -261,7 +261,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
 
   </li>
         
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">9</span></a>
+    <a href="/blog/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-bars"></i> <br>分类<span class="badge">9</span></a>
 
   </li>
         
@@ -299,7 +299,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">36</span></a>
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">36</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于 & 留言</a>
+    <a href="/blog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于 & 留言</a>
 
   </li>
         
@@ -337,7 +337,7 @@
       
     
 
-    <a href="/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
+    <a href="/blog/2018/11/20/共享一些资源" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud-download"></i> <br>共享资源</a>
 
   </li>
         
@@ -356,7 +356,7 @@
       
     
 
-    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+    <a href="/blog/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
 
   </li>
 
@@ -408,12 +408,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/">
+    <link itemprop="mainEntityOfPage" href="http://jianhuchen.gitee.io/blog/blog/2019/01/16/科大软院-机器学习期末总结/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JhChen">
       <meta itemprop="description" content="不想长大的石头">
-      <meta itemprop="image" content="/images/100x100.gif">
+      <meta itemprop="image" content="/blog/images/100x100.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -484,14 +484,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/blog/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Artificial-Intelligence/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/blog/categories/Artificial-Intelligence/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
 
                 
                 
@@ -506,8 +506,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/16/科大软院-机器学习期末总结/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/16/科大软院-机器学习期末总结/" itemprop="commentCount"></span>
+                <a href="/blog/2019/01/16/科大软院-机器学习期末总结/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/blog/2019/01/16/科大软院-机器学习期末总结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -515,7 +515,7 @@
 
           
           
-             <span id="/2019/01/16/科大软院-机器学习期末总结/" class="leancloud_visitors" data-flag-title="科大软院-机器学习期末总结">
+             <span id="/blog/2019/01/16/科大软院-机器学习期末总结/" class="leancloud_visitors" data-flag-title="科大软院-机器学习期末总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1250,7 +1250,7 @@ E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>过拟合、欠拟合、错误率、正确率<br>正则化<br>训练集组织：留出法、交叉验证法、<br>自助法<br>多分类实现方式：softmax、一对多、<br>一对一方式。<br>距离公式、相似度公式等</p>
 <h2 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h2><p>感谢张曙老师辛勤授课！</p>
 <p>写这篇总结的主要目的是方便以后自己查看，可能会不定时更新，如有错误，感谢留言告知！</p>
-<p><a href="https://cjh.zone">陈建虎</a> 2019年1月15日 苏州</p>
+<p><a href="https://cjh.zone" target="_blank" rel="noopener">陈建虎</a> 2019年1月15日 苏州</p>
 <p><br></p>
 <blockquote>
 <p>参考资料：</p>
@@ -1270,7 +1270,7 @@ E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
         <ul class="post-copyright">
           <li class="post-copyright-link">
             <strong>本文链接：</strong>
-            <a href="/2019/01/16/科大软院-机器学习期末总结/" title="科大软院-机器学习期末总结">https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/</a>
+            <a href="/blog/2019/01/16/科大软院-机器学习期末总结/" title="科大软院-机器学习期末总结">https://cjh.zone/2019/01/16/科大软院-机器学习期末总结/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明： </strong>
@@ -1299,14 +1299,14 @@ E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/WeChatQR.png" alt="JhChen 微信支付">
+        <img id="wechat_qr" src="/blog/images/WeChatQR.png" alt="JhChen 微信支付">
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/AliPayQR.png" alt="JhChen 支付宝">
+        <img id="alipay_qr" src="/blog/images/AliPayQR.png" alt="JhChen 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -1325,15 +1325,15 @@ E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
       
         <div class="post-tags">
           
-            <a href="/tags/科大/" rel="tag"># 科大</a>
+            <a href="/blog/tags/科大/" rel="tag"># 科大</a>
           
-            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+            <a href="/blog/tags/深度学习/" rel="tag"># 深度学习</a>
           
-            <a href="/tags/人工智能/" rel="tag"># 人工智能</a>
+            <a href="/blog/tags/人工智能/" rel="tag"># 人工智能</a>
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+            <a href="/blog/tags/机器学习/" rel="tag"># 机器学习</a>
           
-            <a href="/tags/总结/" rel="tag"># 总结</a>
+            <a href="/blog/tags/总结/" rel="tag"># 总结</a>
           
         </div>
       
@@ -1346,7 +1346,7 @@ E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/13/科大软院-人工智能期末总结/" rel="next" title="科大软院-人工智能期末总结">
+              <a href="/blog/2018/12/13/科大软院-人工智能期末总结/" rel="next" title="科大软院-人工智能期末总结">
                 <i class="fa fa-chevron-left"></i> 科大软院-人工智能期末总结
               </a>
             
@@ -1356,7 +1356,7 @@ E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/" rel="prev" title="使用TensorFlow对象检测API进行实时目标检测">
+              <a href="/blog/2019/01/19/使用TensorFlow对象检测API进行实时目标检测/" rel="prev" title="使用TensorFlow对象检测API进行实时目标检测">
                 使用TensorFlow对象检测API进行实时目标检测 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -1420,7 +1420,7 @@ E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/100x100.gif" alt="JhChen">
+              <img class="site-author-image" itemprop="image" src="/blog/images/100x100.gif" alt="JhChen">
             
               <p class="site-author-name" itemprop="name">JhChen</p>
               <p class="site-description motion-element" itemprop="description">不想长大的石头</p>
@@ -1431,7 +1431,7 @@ E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/blog/archives/">
                 
                     <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
@@ -1443,7 +1443,7 @@ E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  <a href="/blog/categories/index.html">
                     
                     
                       
@@ -1474,7 +1474,7 @@ E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  <a href="/blog/tags/index.html">
                     
                     
                       
@@ -1737,49 +1737,49 @@ E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||^2</script></li>
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.5.0"></script>
 
 
 
